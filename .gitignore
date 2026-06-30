@@ -1,0 +1,12 @@
+_build/
+_deps/
+_results/
+*.vo
+*.vos
+*.vok
+*.glob
+*.aux
+*.log
+*.cache
+__pycache__/
+.vscode/

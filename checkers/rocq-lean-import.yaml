@@ -1,0 +1,12 @@
+version: "rocq-community/rocq-lean-import@master + ndjson-adapter"
+serious: false
+description: |
+  Rocq checker using `rocq-community/rocq-lean-import`.
+
+  Lean Kernel Arena passes Lean 4 exports in the current NDJSON format. The
+  Rocq plugin currently consumes the older line-oriented Lean export format, so
+  this checker converts NDJSON to that format and then compiles a generated
+  Rocq file containing `Lean Import`.
+dir: rocq-lean-import
+build: ROCQLKA_OPAM_SWITCH="${ROCQLKA_OPAM_SWITCH:-rocq93_dev}" ./scripts/build.sh
+run: ROCQLKA_OPAM_SWITCH="${ROCQLKA_OPAM_SWITCH:-rocq93_dev}" ./scripts/run.sh "$IN"
