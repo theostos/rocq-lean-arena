@@ -77,7 +77,7 @@ Known first failure:
 UInt32.toBitVec
 ```
 
-For small reproducers and error text, see
+For the first observed failure, see
 [docs/mathlib-root-repros.md](docs/mathlib-root-repros.md).
 
 ## Variables
