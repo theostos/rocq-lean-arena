@@ -1,47 +1,54 @@
 # Tutorial Gaps
 
-Result with `rocq-lean-import` pinned to upstream `master`:
+Result with `rocq-lean-import` pinned to upstream `master`
+(`38fb4791bc7a3bc49995526448778c6e5555aaf1`):
 
 ```text
-correct:   125 / 133
-incorrect:   8 / 133
+correct:   129 / 133
+incorrect:   4 / 133
 ```
 
-The eight mismatches are:
+The four remaining mismatches are:
 
 ```text
-052_reduceCtorParam.mk
-084_projProp1
-086_projProp3
+089_projProp6
 102_unitEta1
 103_unitEta2
 109_etaRuleK
-113_reduceCtorParamRefl.mk
-114_reduceCtorParamRefl2.mk
 ```
 
 ## Errors
 
-### `052_reduceCtorParam.mk`
+### `089_projProp6`
+
+No Rocq error is returned. This is a false accept:
 
 ```text
-Error at line 79 (for reduceCtorParam): #IND 1 12 8 1 13 23
-Dependent induction is not allowed for reduceCtorParam.
-Primitive records must have eta conversion to allow dependent elimination.
-```
+line 25: PUnit
+line 74: Eq
+Eq is predeclared
+line 133: PropStructure
+line 133: PropStructure.(field).aFinalProof
+line 133: PropStructure.(field).aProofAboutData
+line 133: PropStructure.(field).someMoreData
+line 133: PropStructure.(field).aSecondProof
+line 133: PropStructure.(field).someData
+line 133: PropStructure.(field).aProof
+line 142: projProp6
+line 142: PropStructure_inst1.(field).aFinalProof
+line 142: PropStructure_inst1.(field).aProofAboutData
+line 142: PropStructure_inst1.(field).someMoreData
+line 142: PropStructure_inst1.(field).aSecondProof
+line 142: PropStructure_inst1.(field).someData
+line 142: PropStructure_inst1.(field).aProof
 
-### `084_projProp1`
-
-```text
-Error at line 142 (for projProp1): #DEF 30 100 102
-TODO projection for non record Prop inductive
-```
-
-### `086_projProp3`
-
-```text
-Error at line 142 (for projProp3): #DEF 30 100 102
-TODO projection for non record Prop inductive
+Done!
+- 4 entries (9 possible instances).
+- 5 universe expressions
+- 32 names
+- 103 expression nodes
+Max universe instance length 2.
+0 inductives have non syntactically arity types.
 ```
 
 ### `102_unitEta1`
@@ -91,20 +98,4 @@ Done!
 - 85 expression nodes
 Max universe instance length 1.
 0 inductives have non syntactically arity types.
-```
-
-### `113_reduceCtorParamRefl.mk`
-
-```text
-Error at line 87 (for reduceCtorParamRefl): #IND 1 12 8 1 13 23
-Dependent induction is not allowed for reduceCtorParamRefl.
-Primitive records must have eta conversion to allow dependent elimination.
-```
-
-### `114_reduceCtorParamRefl2.mk`
-
-```text
-Error at line 87 (for reduceCtorParamRefl2): #IND 1 12 8 1 13 23
-Dependent induction is not allowed for reduceCtorParamRefl2.
-Primitive records must have eta conversion to allow dependent elimination.
 ```

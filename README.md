@@ -41,11 +41,12 @@ The results are produced with `rocq-lean-import` pinned to upstream `master`.
 See [docs/tutorial-gaps.md](docs/tutorial-gaps.md) for notes from the local
 investigation.
 
-Current result with upstream `rocq-lean-import`:
+Current result with upstream `rocq-lean-import` master
+(`38fb4791bc7a3bc49995526448778c6e5555aaf1`):
 
 ```text
-correct:   125 / 133
-incorrect:   8 / 133
+correct:   129 / 133
+incorrect:   4 / 133
 ```
 
 ## Mathlib
