@@ -18,6 +18,8 @@ BINDER_KIND = {
     "instImplicit": "#BC",
 }
 
+NAME_COMPONENT_ESCAPE_PREFIX = "_lean_export_str_"
+
 
 class ConvertError(Exception):
     pass
@@ -161,13 +163,24 @@ class Converter:
             raise ConvertError(f"{what} cannot be represented in legacy export syntax: {text!r}")
         return text
 
+    @staticmethod
+    def name_component(value: Any) -> str:
+        text = str(value)
+        if (
+            text
+            and not any(ch.isspace() for ch in text)
+            and not text.startswith(NAME_COMPONENT_ESCAPE_PREFIX)
+        ):
+            return text
+        return f"{NAME_COMPONENT_ESCAPE_PREFIX}{text.encode('utf-8').hex()}"
+
     def convert_name(self, obj: dict[str, Any]) -> None:
         original = int(obj["in"])
         dense = self.fresh_name(original)
         if "str" in obj:
             data = obj["str"]
             self.raw_names[original] = {"tag": "str", "pre": int(data["pre"]), "str": str(data["str"])}
-            self.emit(f"{dense} #NS {self.name(int(data['pre']))} {self.atom(data['str'], 'name component')}")
+            self.emit(f"{dense} #NS {self.name(int(data['pre']))} {self.name_component(data['str'])}")
         elif "num" in obj:
             data = obj["num"]
             self.raw_names[original] = {"tag": "num", "pre": int(data["pre"]), "i": int(data["i"])}
@@ -418,7 +431,7 @@ class Converter:
     def convert_theorem(self, decl: dict[str, Any]) -> None:
         if self.raw_expr(int(decl["type"]))["tag"] == "sort":
             raise RejectExport("theorem type is a universe, not a proposition")
-        self.convert_definition(decl, "#THM")
+        self.convert_definition(decl)
 
     def convert_quot(self, decl: dict[str, Any]) -> None:
         if decl.get("kind") == "type" and not self.emitted_quot:
@@ -530,7 +543,7 @@ class StreamingConverter(Converter):
         dense = self.names.define(original)
         if "str" in obj:
             data = obj["str"]
-            self.emit(f"{dense} #NS {self.name(int(data['pre']))} {self.atom(data['str'], 'name component')}")
+            self.emit(f"{dense} #NS {self.name(int(data['pre']))} {self.name_component(data['str'])}")
         elif "num" in obj:
             data = obj["num"]
             self.emit(f"{dense} #NI {self.name(int(data['pre']))} {self.atom(data['i'], 'numeric name component')}")
@@ -634,7 +647,7 @@ class StreamingConverter(Converter):
             self.emit(" ".join(parts))
 
     def convert_theorem(self, decl: dict[str, Any]) -> None:
-        self.convert_definition(decl, "#THM")
+        self.convert_definition(decl)
 
 
 def use_streaming_converter(src: Path) -> bool:
