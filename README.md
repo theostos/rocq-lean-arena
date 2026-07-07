@@ -89,8 +89,17 @@ Keep going after errors for diagnostics:
 ROCQLKA_LEAN_ERROR_MODE=Skip make run TEST=mathlib
 ```
 
-Keep the generated temporary `Check.v`:
+Each run keeps a temporary checker directory by default and prints its path.
+It contains the generated `Check.v`, converter logs, and Rocq stdout/stderr.
+
+Use a different location for these directories:
 
 ```sh
-ROCQLKA_KEEP_TMP=1 make run TEST=mathlib
+ROCQLKA_TMP_ROOT=/tmp/rocq-lean-runs make run TEST=mathlib
+```
+
+Remove the temporary directory automatically:
+
+```sh
+ROCQLKA_KEEP_TMP=0 make run TEST=mathlib
 ```

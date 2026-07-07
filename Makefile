@@ -18,5 +18,6 @@ build-test: bootstrap
 
 run: build-checker
 	cd $(ARENA_DIR) && PATH="$(LKA_PATH)" ROCQLKA_OPAM_SWITCH=$(ROCQLKA_OPAM_SWITCH) $(LKA) run --checker '$(CHECKER)' --test '$(TEST)'
+	cd $(ARENA_DIR) && CHECKER='$(CHECKER)' TEST='$(TEST)' python3 '$(CURDIR)/scripts/print_tmpdirs.py'
 
 smoke: build-checker build-test run

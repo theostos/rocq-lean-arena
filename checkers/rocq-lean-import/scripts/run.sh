@@ -18,17 +18,34 @@ if [[ -n "${ROCQLKA_OPAM_SWITCH:-}" ]]; then
   rocq_cmd=(opam exec --switch="${ROCQLKA_OPAM_SWITCH}" -- "$rocq_bin")
 fi
 
-tmpdir="$(mktemp -d)"
-cleanup() {
-  if [[ -z "${ROCQLKA_KEEP_TMP:-}" ]]; then
-    rm -rf "$tmpdir"
-  else
-    echo "Keeping temporary checker directory: $tmpdir" >&2
+announce() {
+  echo "$*" >&2
+  if [[ ! -t 2 && "${ROCQLKA_ANNOUNCE_TTY:-1}" != 0 ]]; then
+    printf '%s\n' "$*" >/dev/tty 2>/dev/null || true
   fi
+}
+
+tmp_root="${ROCQLKA_TMP_ROOT:-${TMPDIR:-/tmp}}"
+mkdir -p "$tmp_root"
+tmpdir="$(mktemp -d "$tmp_root/rocq-lean-import.XXXXXX")"
+announce "Temporary checker directory: $tmpdir"
+
+keep_tmp="${ROCQLKA_KEEP_TMP:-1}"
+cleanup() {
+  case "$keep_tmp" in
+    0|false|FALSE|no|NO|never|NEVER|off|OFF)
+      rm -rf "$tmpdir"
+      ;;
+    *)
+      announce "Keeping temporary checker directory: $tmpdir"
+      ;;
+  esac
 }
 trap cleanup EXIT
 
 legacy="$tmpdir/input.lean-export"
+adapter_stdout="$tmpdir/adapter.stdout"
+adapter_stderr="$tmpdir/adapter.stderr"
 first_nonempty="$(sed -n '/[^[:space:]]/{p;q;}' "$input")"
 
 if [[ "$first_nonempty" == \{* ]]; then
@@ -71,7 +88,7 @@ if [[ "$first_nonempty" == \{* ]]; then
       mkdir -p "$(dirname "$cache")"
       cache_tmp="$cache.tmp.$$"
       set +e
-      python3 "$converter" "$input" "$cache_tmp"
+      python3 "$converter" "$input" "$cache_tmp" >"$adapter_stdout" 2>"$adapter_stderr"
       adapter_status=$?
       set -e
       if [[ "$adapter_status" -eq 0 ]]; then
@@ -83,15 +100,19 @@ if [[ "$first_nonempty" == \{* ]]; then
     fi
   else
     set +e
-    python3 "$converter" "$input" "$legacy"
+    python3 "$converter" "$input" "$legacy" >"$adapter_stdout" 2>"$adapter_stderr"
     adapter_status=$?
     set -e
   fi
 
   if [[ "${adapter_status:-0}" -eq 10 ]]; then
+    cat "$adapter_stdout"
+    cat "$adapter_stderr" >&2
     exit 1
   fi
   if [[ "${adapter_status:-0}" -ne 0 ]]; then
+    cat "$adapter_stdout"
+    cat "$adapter_stderr" >&2
     echo "Declining: unsupported NDJSON export for rocq-lean-import adapter." >&2
     exit 2
   fi
