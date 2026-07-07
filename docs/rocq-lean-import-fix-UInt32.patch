@@ -1,0 +1,273 @@
+diff --git a/src/Lean.v b/src/Lean.v
+index 910a317e69..08bea627c9 100644
+--- a/src/Lean.v
++++ b/src/Lean.v
+@@ -321,6 +321,40 @@ Section strings.
+   Definition Nat_isValidChar (n : Nat) : SProp
+     := n < 0xd800 \/ (0xdfff < n /\ n < 0x110000).
+ 
++  Definition isValidChar_UInt32_match_1_1
++    (n : Nat) (motive : Nat_isValidChar n -> SProp)
++    (h : Nat_isValidChar n)
++    (h_1 : forall h : n < 0xd800, motive (Or_inl _ _ h))
++    (h_2 : forall (left : 0xdfff < n) (right : n < 0x110000),
++      motive (Or_inr _ _ (And_intro _ _ left right)))
++    : motive h
++    := match h with
++       | Or_inl _ _ h => h_1 h
++       | Or_inr _ _ h => h_2 (left _ _ h) (right _ _ h)
++       end.
++
++  Lemma isValidChar_UInt32 (n : Nat) (h : Nat_isValidChar n) : n < UInt32_size.
++  Proof.
++    destruct h as [h | h].
++    - apply nat_le_Nat_le.
++      apply Nat_le_nat_le' in h.
++      cbv [UInt32_size Nat_of_num_uint Nat_of_N N.of_num_uint N.of_hex_uint Pos.of_hex_uint Pos.of_hex_uint_acc] in *.
++      cbn [nat_of_Nat] in *.
++      rewrite ?nat2Natid in *.
++      change (N.to_nat 0xd800%N) with 55296%nat in h.
++      change (N.to_nat 0x100000000%N) with 4294967296%nat.
++      lia.
++    - destruct h as [_ h].
++      apply nat_le_Nat_le.
++      apply Nat_le_nat_le' in h.
++      cbv [UInt32_size Nat_of_num_uint Nat_of_N N.of_num_uint N.of_hex_uint Pos.of_hex_uint Pos.of_hex_uint_acc] in *.
++      cbn [nat_of_Nat] in *.
++      rewrite ?nat2Natid in *.
++      change (N.to_nat 0x110000%N) with 1114112%nat in h.
++      change (N.to_nat 0x100000000%N) with 4294967296%nat.
++      lia.
++  Qed.
++
+   Record Char@{} := Char_mk
+   { val1 : UInt32; valid : Nat_isValidChar val1.(toBitVec).(toFin _).(val _) }.
+ 
+@@ -355,6 +389,57 @@ Section strings.
+     unfold Nat_of_N. rewrite N2Nat.inj_pow.
+     eapply Nat_nat_pow. 
+   Qed.
++
++  Lemma Nat_lt_to_N_pow_l (n : Nat) (m : N) :
++    (N_of_Nat n <? 2 ^ m)%N = true -> n < Nat_pow 2 (Nat_of_N m).
++  Proof.
++    rewrite <- Nat_pow_comm. eapply Nat_lt_to_N_l.
++  Qed.
++
++  Lemma N_ltb_of_Nat_lt_to_N (n : Nat) (m : N) :
++    n < Nat_of_N m -> (N_of_Nat n <? m)%N = true.
++  Proof.
++    intro H.
++    apply N.ltb_lt.
++    apply N2Z.inj_lt.
++    cbv [N_of_Nat].
++    rewrite nat_N_Z.
++    rewrite <- (N2Nat.id m).
++    rewrite nat_N_Z.
++    apply Nat_le_nat_le' in H.
++    cbv [Nat_of_N] in H.
++    cbn [nat_of_Nat] in H.
++    rewrite nat2Natid in H.
++    lia.
++  Qed.
++
++  Lemma isValidChar_pow32 (n : Nat) (h : Nat_isValidChar n) : n < Nat_pow 2 32.
++  Proof.
++    destruct h as [h | h].
++    - change (n < Nat_pow 2 (Nat_of_N 32)).
++      apply Nat_lt_to_N_pow_l.
++      apply N.ltb_lt.
++      eapply N.lt_trans.
++      + apply N.ltb_lt.
++        apply (N_ltb_of_Nat_lt_to_N n 0xd800).
++        exact h.
++      + vm_compute. reflexivity.
++    - destruct h as [_ h].
++      change (n < Nat_pow 2 (Nat_of_N 32)).
++      apply Nat_lt_to_N_pow_l.
++      apply N.ltb_lt.
++      eapply N.lt_trans.
++      + apply N.ltb_lt.
++        apply (N_ltb_of_Nat_lt_to_N n 0x110000).
++        exact h.
++      + vm_compute. reflexivity.
++  Qed.
++
++  Definition Char_ofNatAux (n : Nat) (h : Nat_isValidChar n) : Char :=
++    Char_mk
++      (UInt32_ofBitVec
++        (BitVec_ofFin 32 (Fin_mk (Nat_pow 2 32) n (isValidChar_pow32 n h))))
++      h.
+   
+   Lemma Nat_lt_to_N_pow (n : N) (m : N) : (n <? 2 ^ m)%N = true -> Nat_of_N n < Nat_pow 2 (Nat_of_N m).
+   Proof.
+@@ -394,6 +479,36 @@ Section strings.
+   Definition Char_mk_N (val : N) (isLt : ((val <? 0x100000000)%N && check_N_isValidChar val)%bool = true) : Char
+     := Char_mk (UInt32_mk_N val (proj1 (andb_prop _ _ isLt))) (Nat_isValidChar_mk_N val (proj2 (andb_prop _ _ isLt))).
+ 
++  Lemma Nat_of_N_N_of_Nat (n : Nat) : Nat_of_N (N_of_Nat n) = n.
++  Proof.
++    cbv [Nat_of_N N_of_Nat].
++    rewrite Nat2N.id.
++    apply Nat2natid.
++  Qed.
++
++  Lemma Nat_isValidChar_of_check_N (n : Nat) :
++    check_N_isValidChar (N_of_Nat n) = true -> Nat_isValidChar n.
++  Proof.
++    intro H.
++    rewrite <- Nat_of_N_N_of_Nat.
++    apply Nat_isValidChar_mk_N.
++    exact H.
++  Qed.
++
++  Lemma Nat_isValidChar_zero : Nat_isValidChar 0.
++  Proof.
++    change (Nat_isValidChar (Nat_of_N 0)).
++    apply Nat_isValidChar_mk_N.
++    vm_compute. reflexivity.
++  Qed.
++
++  Definition Char_ofNat (n : Nat) : Char :=
++    match check_N_isValidChar (N_of_Nat n) as isValid
++          return check_N_isValidChar (N_of_Nat n) = isValid -> Char with
++    | true => fun H => Char_ofNatAux n (Nat_isValidChar_of_check_N n H)
++    | false => fun _ => Char_ofNatAux 0 Nat_isValidChar_zero
++    end Logic.eq_refl.
++
+   Definition reflective_Char_mk (val : N)
+     : if ((val <? 0x100000000)%N && check_N_isValidChar val)%bool
+       then Char
+@@ -456,10 +571,14 @@ Section strings.
+ End strings.
+ 
+ Register Nat_isValidChar as lean.Nat_isValidChar.
++Register isValidChar_UInt32_match_1_1 as lean._private_Init_Prelude0_isValidChar_UInt32_match_1_1.
++Register isValidChar_UInt32 as lean._private_Init_Prelude0_isValidChar_UInt32.
++Register Char_ofNatAux as lean.Char_ofNatAux.
++Register Char_ofNat as lean.Char_ofNat.
+ Register Char as lean.Char.
+ Register reflective_Char_mk_prim as lean.Char.mk.reflective_prim.
+ 
+ Goal forall a n, Nat_pow a (Nat_succ n) = Nat_mul (Nat_pow a n) a.
+ Proof.
+   intros. simpl. reflexivity.
+-Abort.
+\ No newline at end of file
++Abort.
+diff --git a/src/lean.ml b/src/lean.ml
+index 8cfa185909..05c33be95c 100644
+--- a/src/lean.ml
++++ b/src/lean.ml
+@@ -720,7 +720,16 @@ let get_predeclared_def defn n i =
+   else None
+ 
+ type predeclared_ind_kind = Eq | Nat | Nat_le | Or | And | Fin | UInt32 | BitVec | Char
+-type predeclared_def_kind = UInt32_size | Add | Mult | Pow | Nat_isValidChar
++type predeclared_def_kind =
++  | UInt32_size
++  | Add
++  | Mult
++  | Pow
++  | Nat_isValidChar
++  | IsValidChar_UInt32
++  | IsValidChar_UInt32_match_1_1
++  | Char_ofNatAux
++  | Char_ofNat
+ type predeclared_ind_as_def_kind = ULift_cumul
+ 
+ let get_predeclared_cnames (k : predeclared_ind_kind) n =
+@@ -785,6 +794,14 @@ let get_predeclared_def_any n i =
+       (Mult, [ "Nat"; "mul" ]);
+       (Pow, [ "Nat" ; "pow" ]);
+       (Nat_isValidChar, [ "Nat"; "isValidChar" ]);
++      ( IsValidChar_UInt32_match_1_1,
++        [ "_private"; "Init"; "Prelude0"; "isValidChar_UInt32"; "match_1_1" ]
++      );
++      ( IsValidChar_UInt32,
++        [ "_private"; "Init"; "Prelude0"; "isValidChar_UInt32" ]
++      );
++      (Char_ofNatAux, [ "Char"; "ofNatAux" ]);
++      (Char_ofNat, [ "Char"; "ofNat" ]);
+     ]
+ 
+ let get_predeclared_def_some n i =
+@@ -992,7 +1009,7 @@ let mk_list list uinst ty l =
+   in
+   mk_list_rec l
+ 
+-let mk_string char string list char_uinst mkChar s =
++let mk_string char list char_uinst mkChar string_mk s =
+   let codepoints =
+     try check_valid_codepoints (string_to_codepoints s)
+     with Failure msg as exn ->
+@@ -1001,7 +1018,7 @@ let mk_string char string list char_uinst mkChar s =
+   in
+   let chars = List.map (mk_char mkChar) codepoints in
+   let ls = mk_list list char_uinst char chars in
+-  Constr.(mkApp (mkConstructU ((string, 1), UVars.Instance.empty), [| ls |]))
++  Constr.(mkApp (string_mk, [| ls |]))
+ 
+ (* [c] has type [indu] applied to [args] *)
+ let unfold_proj_case env evd ~field ~indu ~mib ~mip ~args c =
+@@ -1045,7 +1062,10 @@ let unfold_proj_case env evd ~field ~indu ~mib ~mip ~args c =
+     in
+     get_field_type 0 ctor_ty
+   in
+-  let case_relev = mip.mind_relevance in
++  let case_relev =
++    EConstr.Unsafe.to_relevance
++      (Retyping.relevance_of_type env evd (EConstr.of_constr field_ty))
++  in
+   let self_annot = Context.make_annot Name.Anonymous mip.mind_relevance in
+   let ret_ty = Vars.lift 1 field_ty in
+   let p = ([| self_annot |], ret_ty) in
+@@ -1152,9 +1172,16 @@ let rec to_constr =
+     | String s ->
+       (* instantiate (N.append N.anon "Char") [] >>= fun char -> *)
+       (* let (_, charu) = Constr.destInd char in *)
+-      instantiate (N.append N.anon "String") [] >>= fun string ->
+-      let string, _ = Constr.destInd string in
+-      instantiate (N.append (N.append N.anon "String") "mk") []
++      instantiate (N.append N.anon "String") [] >>= fun _string ->
++      let string_mk_name = N.append (N.append N.anon "String") "mk" in
++      let string_of_list_name = N.append (N.append N.anon "String") "ofList" in
++      (fun uconv ->
++        try instantiate string_mk_name [] uconv
++        with e ->
++          let e = Exninfo.capture e in
++          if N.Map.mem string_of_list_name !entries then
++            instantiate string_of_list_name [] uconv
++          else Exninfo.iraise e)
+       >>= fun string_mk ->
+       get_uconv >>= fun uconv ->
+       let list, char =
+@@ -1193,7 +1220,7 @@ let rec to_constr =
+             EConstr.to_constr evd mkChar)
+           ()
+       in
+-      ret (mk_string char string list UVars.Instance.empty mkChar s)
++      ret (mk_string char list UVars.Instance.empty mkChar string_mk s)
+ 
+ and instantiate n univs uconv =
+   assert (List.length univs < Sys.int_size);
+@@ -1238,7 +1265,18 @@ and ensure_exists n i =
+ and declare_def { name = n; ty; body; univs; } i =
+   let ref, algs =
+     match get_predeclared_def_some n i with
+-    | Some ((UInt32_size | Add | Mult | Pow | Nat_isValidChar), _, (def_name, c)) ->
++    | Some
++        ( ( UInt32_size
++          | Add
++          | Mult
++          | Pow
++          | Nat_isValidChar
++          | IsValidChar_UInt32
++          | IsValidChar_UInt32_match_1_1
++          | Char_ofNatAux
++          | Char_ofNat ),
++          _,
++          (def_name, c) ) ->
+       (* Hack to let the user predeclare some constants
+          TODO make a more general Register-like API? *)
+       Feedback.msg_info Pp.(Id.print def_name ++ str " is predeclared");
