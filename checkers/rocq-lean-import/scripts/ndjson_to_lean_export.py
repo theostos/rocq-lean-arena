@@ -394,10 +394,10 @@ class Converter:
     def level_params(self, decl: dict[str, Any]) -> list[str]:
         return [str(self.name(int(param))) for param in decl.get("levelParams", [])]
 
-    def convert_definition(self, decl: dict[str, Any]) -> None:
+    def convert_definition(self, decl: dict[str, Any], marker: str = "#DEF") -> None:
         self.declare_name(int(decl["name"]), "definition")
         parts = [
-            "#DEF",
+            marker,
             str(self.name(int(decl["name"]))),
             str(self.expr(int(decl["type"]))),
             str(self.expr(int(decl["value"]))),
@@ -418,7 +418,7 @@ class Converter:
     def convert_theorem(self, decl: dict[str, Any]) -> None:
         if self.raw_expr(int(decl["type"]))["tag"] == "sort":
             raise RejectExport("theorem type is a universe, not a proposition")
-        self.convert_definition(decl)
+        self.convert_definition(decl, "#THM")
 
     def convert_quot(self, decl: dict[str, Any]) -> None:
         if decl.get("kind") == "type" and not self.emitted_quot:
@@ -634,7 +634,7 @@ class StreamingConverter(Converter):
             self.emit(" ".join(parts))
 
     def convert_theorem(self, decl: dict[str, Any]) -> None:
-        self.convert_definition(decl)
+        self.convert_definition(decl, "#THM")
 
 
 def use_streaming_converter(src: Path) -> bool:
