@@ -12,8 +12,8 @@ admitted terms, native casts, or theorem-opacity shortcuts.
 ## Current result
 
 - Every proposed branch was inspected and rebuilt on Rocq 9.3.
-- The final integration head, `pr/compact-nat` at `2e54c2c`, passes the full
-  repository suite in 40.34 seconds with 1,597,916 KiB peak RSS.
+- The final integration head, `pr/compact-nat` at `48ba271`, passes the full
+  repository suite in 42.85 seconds with 1,597,332 KiB peak RSS.
 - The former `Char.ofNat`-specific implementation was removed. Its branch now
   implements generic certified transport for imported proof arguments.
 - The comparison branch now actually applies its Boolean certificates during
@@ -24,7 +24,8 @@ admitted terms, native casts, or theorem-opacity shortcuts.
 - The mutual-nested implementation was rewritten to remove its separate Array
   path, remove speculative registration of 32 auxiliary recursors, and share
   one structural path across Array, List, Option, Prod, mutual blocks, and
-  eligible records.
+  eligible records. Rocq 9.3 `AllForall` evidence is now reused recursively
+  instead of maintaining a second direct-recursion engine.
 - A final clarity pass replaced opaque mutual/layout tuples with named state,
   merged the repeated unary-container paths, shared closed-term reduction
   between arithmetic and comparisons, and extracted primitive projection
@@ -41,7 +42,7 @@ admitted terms, native casts, or theorem-opacity shortcuts.
 | `pr/projection-relevance` | Replaced repeated dependent-field rebuilding with one linear telescope walk and exact checks. |
 | `pr/mutual-inductives` | Centralized scheme declaration and recursor registration; named translated packets and pending-block state replace shadowed functions and tuple plumbing. |
 | `pr/nested-containers` | Retained the structural adapter after testing Rocq 9.3 limits; its argument parsing and two-stage adaptation are now explicit and documented. |
-| `pr/mutual-nested-recursor` | Rewritten substantially: one structural path, actual `rec_N` parsing, no fixed auxiliary-name limit, named layout views, and one unary-container path. |
+| `pr/mutual-nested-recursor` | Reduced to one final-design commit: one structural path, actual `rec_N` parsing, no fixed auxiliary-name limit, and recursive reuse of Rocq 9.3 `AllForall` evidence. Generated export dumps are collapsed in GitHub reviews. |
 | `pr/nested-record-containers` | Replaced Boolean folding state with explicit `RawLeaves`/`FoldedLeaves` states. |
 | `pr/sprop-scheme-relevance` | Relevance now comes from instantiated types; SProp regressions check exact sorts. |
 | `pr/uint32-version-aware` | Tightened modern layout assertions while preserving the legacy fixture. |
@@ -105,9 +106,9 @@ Then submit the two dependent trains in order.
 | 2 | `pr/projection-relevance` | `18440ee` |
 | 3 | `pr/mutual-inductives` | `a086ac3` |
 | 4 | `pr/nested-containers` | `9c6fea8` |
-| 5 | `pr/mutual-nested-recursor` | `fd8922f` |
-| 6 | `pr/nested-record-containers` | `dec5434` |
-| 7 | `pr/sprop-scheme-relevance` | `cce0242` |
+| 5 | `pr/mutual-nested-recursor` | `7dc75d0` |
+| 6 | `pr/nested-record-containers` | `66d38b7` |
+| 7 | `pr/sprop-scheme-relevance` | `a528b89` |
 
 ### Lean-core compatibility train
 
@@ -120,19 +121,19 @@ Then submit the two dependent trains in order.
 
 ### Arithmetic and scalability train
 
-This train currently sits on `test/professional-pr-stack`, which combines the
+This train currently sits on `integration/cslib-import-stack`, which combines the
 accepted bases above. Do not propose the integration branch itself.
 
 | Order | Branch | Current head |
 |---:|---|---|
-| 1 | `feature/proof-producing-arithmetic` | `124f209` |
-| 2 | `pr/char-of-nat` | `01b2bd5` |
-| 3 | `feature/primitive-record-eliminators` | `e2f5bfc` |
-| 4 | `feature/eta-long-record-definitions` | `bfcb800` |
-| 5 | `feature/proof-producing-nat-sub` | `d3ef0fa` |
-| 6 | `feature/proof-producing-nat-comparisons` | `3ce41c8` |
-| 7 | `pr/nat-deceq` | `e19b12b` |
-| 8 | `pr/compact-nat` | `2e54c2c` |
+| 1 | `feature/proof-producing-arithmetic` | `b53e59c` |
+| 2 | `pr/char-of-nat` | `1f8dd90` |
+| 3 | `feature/primitive-record-eliminators` | `ef61de6` |
+| 4 | `feature/eta-long-record-definitions` | `374d595` |
+| 5 | `feature/proof-producing-nat-sub` | `0b05bde` |
+| 6 | `feature/proof-producing-nat-comparisons` | `d3bb9f8` |
+| 7 | `pr/nat-deceq` | `b43b35f` |
+| 8 | `pr/compact-nat` | `48ba271` |
 
 After predecessor PRs merge, rebase each next branch onto the merged upstream
 head and push with `--force-with-lease`. This keeps each GitHub diff focused
@@ -319,7 +320,9 @@ Array, List, Option, Prod, mutual inductives, and supported records.
 This rewrite removes the former Array-specific path, derives the real mutual
 block from the recursor type, and replaces speculative registration of 32
 auxiliary names with registration of only declarations present in the export.
-It is roughly 400 integration lines smaller than the earlier implementation.
+It also reuses Rocq 9.3 `AllForall` evidence recursively instead of carrying a
+second hand-written recursion engine. The branch is one final-design commit;
+generated export dumps are marked as generated for GitHub review.
 
 ### Before and after
 
@@ -655,7 +658,7 @@ API for every consumer.
 
 Checks compact exposure and certificates, the full Char fixture, large
 comparison transport, and the complete repository suite. Final result:
-40.34 seconds and 1,597,916 KiB peak RSS on Rocq 9.3.
+42.85 seconds and 1,597,332 KiB peak RSS on Rocq 9.3.
 
 ## Remaining cslib work
 
