@@ -102,13 +102,13 @@ Then submit the two dependent trains in order.
 
 | Order | Branch | Current head |
 |---:|---|---|
-| 1 | `pr/universe-instances` | `acc57bd` |
-| 2 | `pr/projection-relevance` | `18440ee` |
-| 3 | `pr/mutual-inductives` | `a086ac3` |
-| 4 | `pr/nested-containers` | `9c6fea8` |
-| 5 | `pr/mutual-nested-recursor` | `7dc75d0` |
-| 6 | `pr/nested-record-containers` | `66d38b7` |
-| 7 | `pr/sprop-scheme-relevance` | `a528b89` |
+| 1 | `pr/universe-instances` | `2dc7529` |
+| 2 | `pr/projection-relevance` | `644cbc0` |
+| 3 | `pr/mutual-inductives` | `109a70c` |
+| 4 | `pr/nested-containers` | `2ce8454` |
+| 5 | `pr/mutual-nested-recursor` | `326a481` |
+| 6 | `pr/nested-record-containers` | `c5e9540` |
+| 7 | `pr/sprop-scheme-relevance` | `2eb42ea` |
 
 ### Lean-core compatibility train
 
@@ -197,29 +197,34 @@ suite passes on Rocq 9.3.
 
 ## `pr/universe-instances`
 
-**Title:** Represent imported universe instances uniformly
+**Title:** Preserve constraints in translated universe instances
 
 ### Summary
 
-Represent every translated universe instance as a complete list of
-expressions over the Lean universe parameters. Add a kernel type assertion to
-the regression so parameter shifts cannot pass unnoticed.
+Represent translated universe instances as complete expressions over the
+Lean universe parameters.
 
 ### Before and after
 
-Before, separating original parameters from algebraic `max`/`succ`
-expressions could duplicate or shift an instance. After, an application such
-as `UniverseBox.{0, 1} Nat` receives exactly the instance exported by Lean.
+Before, original parameters and synthesized `max`/`succ` parameters were
+tracked separately. This could misalign a reference's universe instance with
+its declaration and omit required constraints.
+
+In cslib, this caused `Int64.toInt_minValue` to fail with missing constraints
+for `eq_ind_r` and `eq_sind_r`. With this change, the declaration imports
+successfully.
 
 ### Why it matters
 
-The same representation is used for definitions, inductives, eliminators,
-quotients, and cumulative `ULift`; it is not declaration-specific.
+The same representation is used uniformly for definitions, inductives,
+eliminators, quotients, and cumulative `ULift`.
 
 ### Tests
 
-Exercises successor/maximum universes and checks the exact imported result
-type. The branch suite passes on Rocq 9.3.
+The regression checks the exact universe instance and result type for a
+successor/maximum declaration. It fails on upstream because the declaration
+expects four parameters instead of two, and passes on this branch. The full
+branch suite passes on Rocq 9.3.
 
 ## `pr/projection-relevance`
 
