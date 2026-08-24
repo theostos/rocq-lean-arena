@@ -12,8 +12,9 @@ admitted terms, native casts, or theorem-opacity shortcuts.
 ## Current result
 
 - Every proposed branch was inspected and rebuilt on Rocq 9.3.
-- The final integration head, `pr/compact-nat` at `48ba271`, passes the full
-  repository suite in 42.85 seconds with 1,597,332 KiB peak RSS.
+- The translation head, `pr/sprop-scheme-relevance` at `a45bf12`, and the
+  modern-Lean compatibility head, `pr/string-of-list` at `e0219e1`, both pass
+  their full repository suites on Rocq 9.3.
 - The former `Char.ofNat`-specific implementation was removed. Its branch now
   implements generic certified transport for imported proof arguments.
 - The comparison branch now actually applies its Boolean certificates during
@@ -21,11 +22,19 @@ admitted terms, native casts, or theorem-opacity shortcuts.
 - Generated primitive-record eliminators and eta expansions are now checked
   for conversion against the original term, not merely assigned a similar
   type.
-- The mutual-nested implementation was rewritten to remove its separate Array
-  path, remove speculative registration of 32 auxiliary recursors, and share
-  one structural path across Array, List, Option, Prod, mutual blocks, and
-  eligible records. Rocq 9.3 `AllForall` evidence is now reused recursively
-  instead of maintaining a second direct-recursion engine.
+- Mutual groups are retained when lazy universe instances are declared, so a
+  member is never redeclared as an invalid singleton. The same group-aware
+  path is used to determine Prop/SProp translation.
+- The nested-recursion implementation has one structural path across Array,
+  List, Option, Prod, mutual blocks, and eligible records. Rocq 9.3
+  `AllForall` evidence is reused recursively, and target-partial recursor
+  applications are eta-expanded.
+- `pr/mutual-nested-recursor` now contains only the five source lines that
+  enable the generic adapter for a mutual block; the rest of its diff is its
+  focused Lean export and Rocq test.
+- Generated record schemes are restricted to wrappers whose last field is the
+  only field containing the element parameter. This avoids silently ignoring
+  recursive values in an earlier direct or nested field.
 - A final clarity pass replaced opaque mutual/layout tuples with named state,
   merged the repeated unary-container paths, shared closed-term reduction
   between arithmetic and comparisons, and extracted primitive projection
@@ -40,13 +49,13 @@ admitted terms, native casts, or theorem-opacity shortcuts.
 | `pr/name-escaping` | Kept the generic escape table; added a collision regression for already-escaped source names. |
 | `pr/universe-instances` | Kept the unified representation; added an exact imported-type assertion. |
 | `pr/projection-relevance` | Replaced repeated dependent-field rebuilding with one linear telescope walk and exact checks. |
-| `pr/mutual-inductives` | Centralized scheme declaration and recursor registration; named translated packets and pending-block state replace shadowed functions and tuple plumbing. |
-| `pr/nested-containers` | Retained the structural adapter after testing Rocq 9.3 limits; its argument parsing and two-stage adaptation are now explicit and documented. |
-| `pr/mutual-nested-recursor` | Reduced to one final-design commit: one structural path, actual `rec_N` parsing, no fixed auxiliary-name limit, and recursive reuse of Rocq 9.3 `AllForall` evidence. Generated export dumps are collapsed in GitHub reviews. |
-| `pr/nested-record-containers` | Replaced Boolean folding state with explicit `RawLeaves`/`FoldedLeaves` states. |
+| `pr/mutual-inductives` | Retains the full mutual group for lazy universe instances and Prop/SProp classification; recursors remain shared across the block. |
+| `pr/nested-containers` | Contains the generic structural adapter, including real `rec_N` parsing, recursive reuse of Rocq 9.3 `AllForall`, target-partial application, and validated Prod orientation. |
+| `pr/mutual-nested-recursor` | Reduced to enabling the preceding generic adapter for every member of a mutual block: five source lines plus one focused fixture. |
+| `pr/nested-record-containers` | Uses explicit `RawLeaves`/`FoldedLeaves` state and only registers a record scheme when no earlier field contains the recursive parameter. |
 | `pr/sprop-scheme-relevance` | Relevance now comes from instantiated types; SProp regressions check exact sorts. |
-| `pr/uint32-version-aware` | Tightened modern layout assertions while preserving the legacy fixture. |
-| `pr/string-of-list` | Small shape-based compatibility patch retained and rebuilt unchanged. |
+| `pr/uint32-modern-dump` | Regenerates the core fixture from current Lean and checks its BitVec-backed UInt32/Char layout. No legacy dispatch layer remains. |
+| `pr/string-of-list` | Rebased directly on the modern UInt32 fixture; the diff contains only String construction and its focused test. |
 | `feature/proof-producing-arithmetic` | Rebased onto the reviewed importer pipeline; factored one transparent closed-reduction step shared by all certificate reifiers. |
 | `pr/char-of-nat` | Old private-name implementations deleted; branch replaced by generic certified application-argument transport. |
 | `feature/primitive-record-eliminators` | Added a kernel conversion check and extracted projection-alias discovery from inductive declaration. |
@@ -56,11 +65,11 @@ admitted terms, native casts, or theorem-opacity shortcuts.
 | `pr/nat-deceq` | Kept the checked core predeclaration; verified both Decidable branches and removed unrelated dependencies. |
 | `pr/compact-nat` | Replaced all-or-nothing compact decoding with an adaptive small/eager/compact policy after a Char stack-overflow regression. |
 
-Full cached cslib does not compile yet. After the clarity pass, the final head
-was rerun with the importer stopped immediately before export line 500,013;
-that frontier check passes. The integrated importer also passes the earlier
-nested-array, nested-Prod, and mutual-recursion reproductions. A complete run
-then reaches the next item,
+Full cached cslib does not compile yet. The previously integrated arithmetic
+head was run with the importer stopped immediately before export line 500,013;
+that frontier check passed. The rewritten PR branches retain the focused
+nested-array, nested-Prod, mutual-recursion, universe-instance, and record
+regressions. A complete run on the previous integration head reached the next item,
 `Std.DTreeMap.Internal.Impl.link2._unary._proof_1`. That item remains a generic
 proof-term evaluation and sharing problem: the process reached roughly 6 GiB
 before being stopped. This must not be described as full cslib support.
@@ -94,7 +103,7 @@ These PRs can start independently:
 1. `pr/hex-parser`
 2. `pr/name-escaping`
 3. `pr/universe-instances`
-4. `pr/uint32-version-aware` against upstream `fix-UInt32`
+4. `pr/uint32-modern-dump` against upstream `fix-UInt32`
 
 Then submit the two dependent trains in order.
 
@@ -104,25 +113,30 @@ Then submit the two dependent trains in order.
 |---:|---|---|
 | 1 | `pr/universe-instances` | `2dc7529` |
 | 2 | `pr/projection-relevance` | `644cbc0` |
-| 3 | `pr/mutual-inductives` | `109a70c` |
-| 4 | `pr/nested-containers` | `2ce8454` |
-| 5 | `pr/mutual-nested-recursor` | `326a481` |
-| 6 | `pr/nested-record-containers` | `c5e9540` |
-| 7 | `pr/sprop-scheme-relevance` | `2eb42ea` |
+| 3 | `pr/mutual-inductives` | `077617b` |
+| 4 | `pr/nested-containers` | `27d874e` |
+| 5 | `pr/mutual-nested-recursor` | `fa21b66` |
+| 6 | `pr/nested-record-containers` | `c146209` |
+| 7 | `pr/sprop-scheme-relevance` | `a45bf12` |
 
 ### Lean-core compatibility train
 
 | Order | Branch | Current head |
 |---:|---|---|
-| 1 | `pr/uint32-version-aware` | `4846a81` |
-| 2 | `pr/string-of-list` | `3aa1dc3` |
+| 1 | `pr/uint32-modern-dump` | `1d28c21` |
+| 2 | `pr/string-of-list` | `e0219e1` |
 
-`pr/uint32-base` mirrors upstream `fix-UInt32`; do not open it as a PR.
+`pr/uint32-modern-dump` is based directly on upstream `fix-UInt32`; there is
+no intermediate mirror branch to submit.
 
 ### Arithmetic and scalability train
 
 This train currently sits on `integration/cslib-import-stack`, which combines the
 accepted bases above. Do not propose the integration branch itself.
+
+These arithmetic branches still use the previously tested integration base;
+they were not rewritten as part of the inductive and modern-Lean clarity pass.
+Rebase them only after the two base trains have settled.
 
 | Order | Branch | Current head |
 |---:|---|---|
@@ -267,13 +281,15 @@ Rocq 9.3.
 ### Summary
 
 Detect consecutive entries from one Lean mutual block, declare them together
-in Rocq, and share recursor declaration and registration across every member.
+in Rocq, and retain that group when declaring later universe instances or
+determining Prop/SProp translation.
 
 ### Before and after
 
-Before, mutually recursive `Tree` and `Forest` entries were declared
-separately, leaving invalid recursive references. After, both recursors have
-the expected mutual motives and a closed fold reduces to `2`.
+Before, mutually recursive `Tree` and `Forest` entries were initially declared
+together, but a later universe instance could redeclare one member alone and
+lose its recursive references. After, every instance is declared from the
+original group; a closed fold reduces to `2`.
 
 ### Why it matters
 
@@ -282,7 +298,8 @@ structure, not from type names.
 
 ### Tests
 
-Checks the exact types of both recursors and evaluates the mutual fold. The
+Checks that both recursors are available, evaluates the mutual fold, and covers
+a polymorphic mutual block instantiated at Prop plus a mutual Prop block. The
 branch suite passes on Rocq 9.3.
 
 ## `pr/nested-containers`
@@ -292,15 +309,16 @@ branch suite passes on Rocq 9.3.
 ### Summary
 
 Use Rocq 9.3 registered nested schemes where available and structurally adapt
-recursive hypotheses through Array, its List representation, and the
-recursive component of Prod.
+recursive hypotheses through Array, List, Option, and the second component of
+Prod. Recursor applications missing only their final target are eta-expanded.
 
 ### Before and after
 
 Before, a rose tree constructor with `children : Array (Rose α)` produced a
 Rocq eliminator that did not match Lean’s nested recursor. After, the main and
 auxiliary size functions import and reduce to `2`; the Prod example reduces
-to `3`.
+to `3`. A definition written as `Rose.rec ...` without its final tree argument
+now imports as a function instead of bypassing the adapter.
 
 ### Why it matters
 
@@ -309,8 +327,10 @@ namespace is recognized specially.
 
 ### Tests
 
-Includes Array, List-auxiliary, and Prod regressions with computation checks.
-The branch suite passes on Rocq 9.3.
+Includes Array, List-auxiliary, Prod, and partial-application regressions with
+computation checks. Unsupported Prod orientations are rejected explicitly
+instead of being translated as if recursion were in the second component. The
+branch suite passes on Rocq 9.3.
 
 ## `pr/mutual-nested-recursor`
 
@@ -318,16 +338,9 @@ The branch suite passes on Rocq 9.3.
 
 ### Summary
 
-Generalize nested-recursion adaptation to mutual blocks and auxiliary
-`rec_N` declarations. The implementation now has one structural path for
-Array, List, Option, Prod, mutual inductives, and supported records.
-
-This rewrite removes the former Array-specific path, derives the real mutual
-block from the recursor type, and replaces speculative registration of 32
-auxiliary names with registration of only declarations present in the export.
-It also reuses Rocq 9.3 `AllForall` evidence recursively instead of carrying a
-second hand-written recursion engine. The branch is one final-design commit;
-generated export dumps are marked as generated for GitHub review.
+Enable the generic nested-recursion adapter from the preceding branch for all
+members of a mutual inductive block. The source change is five lines; the rest
+of the commit is its focused fixture.
 
 ### Before and after
 
@@ -343,7 +356,7 @@ not reprove or replace any imported theorem.
 ### Tests
 
 Checks main and auxiliary recursors for Option and mutual List nesting. The
-branch and final integration suites pass on Rocq 9.3.
+branch suite passes on Rocq 9.3.
 
 ## `pr/nested-record-containers`
 
@@ -352,13 +365,17 @@ branch and final integration suites pass on Rocq 9.3.
 ### Summary
 
 Derive projection-based nested schemes for eligible primitive records and
-make the folding state explicit as `RawLeaves` or `FoldedLeaves`.
+make the folding state explicit as `RawLeaves` or `FoldedLeaves`. A record is
+eligible only when its last field is the sole field containing the element
+parameter.
 
 ### Before and after
 
 Before, recursion stopped when a recursive value was wrapped in a record such
 as `Payload RecordTree`. After, `List (Payload RecordTree)` imports through
-the same structural adapter and the example reduces to `10`.
+the same structural adapter and the example reduces to `10`. Records with two
+recursive fields, including an earlier `List α` field, do not receive an
+incomplete generated scheme.
 
 ### Why it matters
 
@@ -367,8 +384,8 @@ record’s name.
 
 ### Tests
 
-Exercises the main record recursor plus List and Payload auxiliary recursors.
-The branch suite passes on Rocq 9.3.
+Exercises the main record recursor plus List and Payload auxiliary recursors,
+and checks both ineligible record shapes. The branch suite passes on Rocq 9.3.
 
 ## `pr/sprop-scheme-relevance`
 
@@ -393,34 +410,31 @@ including future SProp-valued inputs.
 ### Tests
 
 Checks exact `Box` and `Nonempty` SProp instantiations. The translation train
-and final integration suite pass on Rocq 9.3.
+passes on Rocq 9.3.
 
-## `pr/uint32-version-aware`
+## `pr/uint32-modern-dump`
 
-**Title:** Support legacy and current UInt32 layouts
+**Title:** Update the core fixture for modern UInt32
 
 ### Summary
 
-Inspect the exported kernel shape and select the matching UInt32 and Char
-predeclarations. Keep the legacy Fin-backed representation and support the
-current BitVec-backed representation.
+Regenerate the core export from current Lean, whose UInt32 and Char
+representations are already supported by upstream `fix-UInt32`.
 
 ### Before and after
 
-Before, choosing one representation unconditionally broke exports from the
-other Lean generation. After, current-Lean definitions
-`modernUInt32Identity` and `modernCharIdentity` import while the legacy fixture
-continues to pass.
+Before, the repository fixture still described the older Fin-backed UInt32.
+After, it imports the current BitVec-backed UInt32 and Char layout.
 
 ### Why it matters
 
-Dispatch follows the core type shape and is independent of downstream
-libraries.
+This tests the upstream importer against the representation used by current
+Lean libraries without carrying a second legacy-dispatch implementation.
 
 ### Tests
 
-Checks exact modern UInt32, BitVec, and Char shapes plus the legacy tests. The
-branch suite passes on Rocq 9.3.
+The core test checks `UInt32_toBitVec : UInt32 -> BitVec 32` and
+`val1 : Char -> UInt32`. The full branch suite passes on Rocq 9.3.
 
 ## `pr/string-of-list`
 
@@ -434,8 +448,8 @@ export and inferring its character and list types.
 ### Before and after
 
 Before, modern literals built with `String.ofList` were not recognized.
-After, `def stringFromLiteral : String := "ok"` imports as a Rocq `String`,
-while older `String.mk` exports remain supported.
+After, `def stringFromLiteral : String := "ok"` imports as a Rocq `String`.
+The existing `String.mk` path remains the fallback when that name is present.
 
 ### Why it matters
 
@@ -443,8 +457,8 @@ This is version-compatible Lean core handling, not a library-specific rewrite.
 
 ### Tests
 
-Adds a current-Lean string literal fixture. The compatibility and integration
-suites pass on Rocq 9.3.
+Adds a current-Lean string literal fixture. The full compatibility-branch
+suite passes on Rocq 9.3.
 
 ## `feature/proof-producing-arithmetic`
 
