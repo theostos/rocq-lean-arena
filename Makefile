@@ -1,7 +1,8 @@
 ARENA_DIR ?= _deps/lean-kernel-arena
 CHECKER ?= rocq-lean-import
 TEST ?= sparse-name-index
-ROCQLKA_OPAM_SWITCH ?= rocq93_dev
+ROCQLKA_OPAM_SWITCH ?= rocq93_clean
+ROCQLKA_IMPORTER_ROOT ?= $(CURDIR)/_worktrees/rocq-lean-import/generic-cslib-current
 LKA ?= python3 lka.py
 LKA_PATH := $(CURDIR)/scripts/no-perf:$(PATH)
 
@@ -11,13 +12,13 @@ bootstrap:
 	./scripts/bootstrap_arena.sh
 
 build-checker: bootstrap
-	cd $(ARENA_DIR) && PATH="$(LKA_PATH)" ROCQLKA_OPAM_SWITCH=$(ROCQLKA_OPAM_SWITCH) $(LKA) build-checker '$(CHECKER)'
+	cd $(ARENA_DIR) && PATH="$(LKA_PATH)" ROCQLKA_OPAM_SWITCH=$(ROCQLKA_OPAM_SWITCH) ROCQLKA_IMPORTER_ROOT="$(ROCQLKA_IMPORTER_ROOT)" $(LKA) build-checker '$(CHECKER)'
 
 build-test: bootstrap
 	cd $(ARENA_DIR) && PATH="$(LKA_PATH)" $(LKA) build-test '$(TEST)'
 
 run: build-checker
-	cd $(ARENA_DIR) && PATH="$(LKA_PATH)" ROCQLKA_OPAM_SWITCH=$(ROCQLKA_OPAM_SWITCH) $(LKA) run --checker '$(CHECKER)' --test '$(TEST)'
+	cd $(ARENA_DIR) && PATH="$(LKA_PATH)" ROCQLKA_OPAM_SWITCH=$(ROCQLKA_OPAM_SWITCH) ROCQLKA_IMPORTER_ROOT="$(ROCQLKA_IMPORTER_ROOT)" $(LKA) run --checker '$(CHECKER)' --test '$(TEST)'
 	cd $(ARENA_DIR) && CHECKER='$(CHECKER)' TEST='$(TEST)' python3 '$(CURDIR)/scripts/print_tmpdirs.py'
 
 smoke: build-checker build-test run

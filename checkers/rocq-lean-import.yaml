@@ -1,4 +1,4 @@
-version: "rocq-community/rocq-lean-import@master + ndjson-adapter"
+version: "rocq-lean-import + ndjson-adapter"
 serious: false
 description: |
   Rocq checker using `rocq-community/rocq-lean-import`.
@@ -8,5 +8,5 @@ description: |
   this checker converts NDJSON to that format and then compiles a generated
   Rocq file containing `Lean Import`.
 dir: rocq-lean-import
-build: ROCQLKA_OPAM_SWITCH="${ROCQLKA_OPAM_SWITCH:-rocq93_dev}" ./scripts/build.sh
-run: ROCQLKA_OPAM_SWITCH="${ROCQLKA_OPAM_SWITCH:-rocq93_dev}" ./scripts/run.sh "$IN"
+build: ROCQLKA_OPAM_SWITCH="${ROCQLKA_OPAM_SWITCH:-rocq93_clean}" ./scripts/build.sh
+run: ROCQLKA_OPAM_SWITCH="${ROCQLKA_OPAM_SWITCH:-rocq93_clean}" ./scripts/run.sh "$IN"

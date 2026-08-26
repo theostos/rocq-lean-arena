@@ -1,0 +1,15 @@
+{
+  "rocq": {
+    "commit": "f756383de2e66f63c95815c73838596d7d97c1c2",
+    "repository": "https://github.com/rocq-prover/rocq.git",
+    "version": "9.3+rc1"
+  },
+  "rocq_stdlib": {
+    "commit": "3e47b26f345f36e375d81ade399eed0e310984b3",
+    "repository": "https://github.com/coq/stdlib.git"
+  },
+  "rocq_lean_import": {
+    "base_commit": "38fb4791bc7a3bc49995526448778c6e5555aaf1",
+    "integration_branch": "integration/generic-cslib-current"
+  }
+}

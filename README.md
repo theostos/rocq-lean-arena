@@ -12,10 +12,17 @@ Lean Kernel Arena NDJSON -> legacy lean-export -> rocq-lean-import -> Rocq
 
 ## Setup
 
-Create the opam switch used for these runs.
+The reference environment is a clean `rocq93_clean` opam switch. Exact Rocq,
+stdlib, and importer-base commits are recorded in
+[`config/rocq-lean-import.lock.json`](config/rocq-lean-import.lock.json).
 
-This uses the latest development version by pinning
-`rocq-community/rocq-lean-import` to upstream `master` (require Rocq 9.3+).
+```sh
+scripts/setup_rocq93_clean.sh
+```
+
+Development runs load both the Rocq library and plugin from the selected local
+importer worktree. This avoids accidentally combining an installed plugin with
+locally built `.vo` files.
 
 ## Bootstrap
 
@@ -37,7 +44,7 @@ make build-test TEST=tutorial
 make run TEST='tutorial/*'
 ```
 
-The results are produced with `rocq-lean-import` pinned to upstream `master`.
+The results below were produced with the original upstream importer baseline.
 See [docs/tutorial-gaps.md](docs/tutorial-gaps.md) for notes from the local
 investigation.
 
@@ -81,12 +88,36 @@ UInt32.toBitVec
 For the first observed failure, see
 [docs/mathlib-root-repros.md](docs/mathlib-root-repros.md).
 
+## Cslib frontier
+
+Run one reproducible first-failure experiment with the canonical generic
+integration branch:
+
+```sh
+scripts/run_rocq_frontier.py \
+  _deps/lean-kernel-arena/_build/tests/cslib.lean-export
+```
+
+The runner builds the selected importer worktree, verifies the importer commit
+and Rocq version, records time and memory, and writes the current frontier to
+`_build/frontier/state.json`.
+
+Use `--from-line` and `--until-line` together to check a bounded export range.
+
 ## Variables
 
 Keep going after errors for diagnostics:
 
 ```sh
 ROCQLKA_LEAN_ERROR_MODE=Skip make run TEST=mathlib
+```
+
+Override the canonical local importer or clean Rocq switch with:
+
+```sh
+make run \
+  ROCQLKA_OPAM_SWITCH=rocq93_clean \
+  ROCQLKA_IMPORTER_ROOT=/path/to/rocq-lean-import
 ```
 
 Each run keeps a temporary checker directory by default and prints its path.
