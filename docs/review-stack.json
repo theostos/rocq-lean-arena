@@ -1,0 +1,140 @@
+{
+  "date": "2026-09-07",
+  "repositories": {
+    "kernel": {
+      "url": "https://github.com/theostos/rocq",
+      "snapshot": "f4fd58e46053ba54f6650973344debf263896c5c",
+      "branches": [
+        {
+          "branch": "review/compact-peano",
+          "commit": "f0e7266ac7f13efcefb51e9438479bb9d297685c",
+          "base": "review/reduction-registrations"
+        },
+        {
+          "branch": "review/conversion-strategies",
+          "commit": "9d4289d1b2580c7f5d285967a946a9f1ee89a548",
+          "base": "review/unit-eta"
+        },
+        {
+          "branch": "review/dependency-cache",
+          "commit": "9e03f679fc93c3b3a434dd777ef8e10521757641",
+          "base": "f756383de2e66f63c95815c73838596d7d97c1c2"
+        },
+        {
+          "branch": "review/kernel-diagnostics",
+          "commit": "25a4980b566917f20d6585935f2e961fbe20c993",
+          "base": "review/conversion-strategies"
+        },
+        {
+          "branch": "review/reduction-registrations",
+          "commit": "10ae699a327b3848fb029e6a209fde7fd166a464",
+          "base": "review/term-sharing"
+        },
+        {
+          "branch": "review/term-sharing",
+          "commit": "86cc3df709f15a371463b6fb121bd7e6ec83da11",
+          "base": "review/dependency-cache"
+        },
+        {
+          "branch": "review/unit-eta",
+          "commit": "d97781f8b297902f61259921be93ccaeb85429ec",
+          "base": "review/compact-peano"
+        }
+      ]
+    },
+    "importer": {
+      "url": "https://github.com/theostos/rocq-lean-import",
+      "snapshot": "3fb5e38e529f89f411083cf4c7a8a6b172d2655e",
+      "branches": [
+        {
+          "branch": "review/compact-kernel-integration",
+          "commit": "f8046b100f73a7d196d9139522d1d0342103b34d",
+          "base": "review/nested-fix-match"
+        },
+        {
+          "branch": "review/constructor-owners",
+          "commit": "dbea36ac8542e3978b8437a66d8f36fe9da8cfad",
+          "base": "review/strict-import-errors"
+        },
+        {
+          "branch": "review/dependent-projections",
+          "commit": "8a1033a6a901035ca5fee2cda653bb170b017a88",
+          "base": "review/constructor-owners"
+        },
+        {
+          "branch": "review/importer-diagnostics",
+          "commit": "6f2198766a3462a9f915309d2252acec97269888",
+          "base": "review/indexed-checkpoints"
+        },
+        {
+          "branch": "review/indexed-checkpoints",
+          "commit": "6063313b236973c38a8e8eeb8a4aa250fe14feb6",
+          "base": "review/translation-sharing"
+        },
+        {
+          "branch": "review/modern-core-foundation",
+          "commit": "c6502cc0dea873e86476641f5a84528cfb8fd3d4",
+          "base": "review/compact-kernel-integration"
+        },
+        {
+          "branch": "review/nested-fix-match",
+          "commit": "36a0297cde5c016e2910baa0b7fbf159d4cba5c5",
+          "base": "review/dependent-projections"
+        },
+        {
+          "branch": "review/nullary-unit-schemes",
+          "commit": "705f9ef3991fea7c793550100e714acfd9ca9dd4",
+          "base": "review/reducibility-hints"
+        },
+        {
+          "branch": "review/reducibility-hints",
+          "commit": "e13420cf1184c4b7ef8a8b2f412cedb1391e5b94",
+          "base": "review/modern-core-foundation"
+        },
+        {
+          "branch": "review/strict-import-errors",
+          "commit": "3840f95234f1d3701a17ef14b0b9a162e521f45c",
+          "base": "2fe11f4c304e13a854f855de0ad45311b6eca718"
+        },
+        {
+          "branch": "review/translation-sharing",
+          "commit": "47c933828deb6d7db53972c53e4241f8e2d51fc3",
+          "base": "review/nullary-unit-schemes"
+        }
+      ]
+    }
+  },
+  "arena": {
+    "url": "https://github.com/theostos/rocq-lean-arena",
+    "branches": [
+      {
+        "branch": "review/export-hints",
+        "base": "b7febb4cd2968812d8b5185b1d8d10b7f49bcfaf",
+        "commit": "1b5f10a63df5e8b0378370098380907ae637129a",
+        "title": "Preserve Lean reducibility metadata in the arena converter"
+      },
+      {
+        "branch": "review/guarded-runs",
+        "base": "review/export-hints",
+        "commit": "ad28f0a57a824c341cc1ede52d6c54948889a054",
+        "title": "Guard checker entry points and serialize heavyweight jobs"
+      },
+      {
+        "branch": "review/atomic-checkpoints",
+        "base": "review/guarded-runs",
+        "commit": "f27ec588301c6b45f39216f122929743f02aaa2e",
+        "title": "Promote checkpoints atomically and audit full-pass evidence"
+      }
+    ]
+  },
+  "validation": {
+    "runtime_sources_match_snapshots": true,
+    "implementation_worktrees_unchanged": true,
+    "ocaml_parsing": "passed for changed sources in both stacks",
+    "ocaml_typing": "importer lean.ml/leanParse.ml at each head and extracted kernel conversion variants; against built experimental interfaces",
+    "arena_unit_tests": "42 passed from the review tree, including exporter hints; mock-only, no Rocq workload",
+    "parser_unit_tests": "chunked indexes and indexed checkpoints passed from review/indexed-checkpoints",
+    "clean_branch_builds": "not run while full import is active",
+    "full_cslib_pass": "not established"
+  }
+}

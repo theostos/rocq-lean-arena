@@ -1,4 +1,9 @@
-# `rocq-lean-import` review-ready PR stack
+# Earlier `rocq-lean-import` PR stack
+
+Historical handoff: the experiment has since changed, especially nested
+recursors and arithmetic. For current branches, bases and validation limits,
+use the [cslib review map](docs/review-map.md). The results below describe the
+earlier stack, not the current full-library frontier.
 
 This is the current handoff for the branches in
 [`theostos/rocq-lean-import`](https://github.com/theostos/rocq-lean-import).

@@ -1,8 +1,8 @@
-# Promote checkpoints atomically and audit full-pass evidence
+# Map the cslib experiment to review branches and their evidence
 
-Base: `review/guarded-runs`. Compare against this base, not upstream.
+Base: `review/atomic-checkpoints`. Compare against this base, not upstream.
 
-Keep the last good .vo until its guarded replacement succeeds. Record source/toolchain hashes, require expected EOF and a successful save, and keep fresh-process reload as a separate gate. Includes the exact experimental launchers under work/: those pin local binaries/checkpoints and are not portable fresh-install instructions.
+Link each importer/kernel/pipeline topic to its focused branch diff, retain earlier PR links, distinguish superseded implementations and record validation limits. Runtime sources, pinned runners and ongoing experiments are untouched.
 
 ## Validation
 

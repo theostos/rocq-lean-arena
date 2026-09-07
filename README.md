@@ -4,6 +4,9 @@ Small experiment: run Lean Kernel Arena exports through
 [`rocq-lean-import`](https://github.com/rocq-community/rocq-lean-import), then let
 Rocq check the result.
 
+For developers: the [cslib review map](docs/review-map.md) links each importer,
+kernel and runner change to its branch, topic diff and validation status.
+
 Pipeline:
 
 ```text
