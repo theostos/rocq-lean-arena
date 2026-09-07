@@ -1,8 +1,8 @@
-# Preserve Lean reducibility metadata in the arena converter
+# Guard checker entry points and serialize heavyweight jobs
 
-Base: `b7febb4cd2968812d8b5185b1d8d10b7f49bcfaf`. Compare against this base, not upstream.
+Base: `review/export-hints`. Compare against this base, not upstream.
 
-Emit abbreviation, regular-height, opaque-hint and genuinely opaque records. This is the exporter counterpart to importer review/reducibility-hints. Copies the converter used by the current experiment out of the dependency checkout, with small marker/validation tests.
+Route checker builds/runs and frontier probes through a single user-wide cgroup memory guard. Test process liveness, service ownership and wrapper cleanup with fake commands, not a live Rocq workload. This addresses the earlier concurrent-worker and out-of-memory incidents.
 
 ## Validation
 
