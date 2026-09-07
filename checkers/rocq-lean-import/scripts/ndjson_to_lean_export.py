@@ -407,10 +407,28 @@ class Converter:
     def level_params(self, decl: dict[str, Any]) -> list[str]:
         return [str(self.name(int(param))) for param in decl.get("levelParams", [])]
 
-    def convert_definition(self, decl: dict[str, Any], marker: str = "#DEF") -> None:
+    def convert_definition(self, decl: dict[str, Any], marker: str | None = None) -> None:
+        marker_args: list[str] = []
+        if marker is None:
+            hints = decl.get("hints")
+            if hints == "abbrev":
+                marker = "#ABBREV"
+            elif hints == "opaque":
+                marker = "#HINT_OPAQUE"
+            elif isinstance(hints, dict) and set(hints) == {"regular"}:
+                height = hints["regular"]
+                if isinstance(height, bool) or not isinstance(height, int) or height < 0:
+                    raise ConvertError(f"invalid regular reducibility height: {height!r}")
+                marker = "#REGULAR"
+                marker_args.append(str(height))
+            elif hints is None:
+                marker = "#DEF"
+            else:
+                raise ConvertError(f"unknown reducibility hints: {hints!r}")
         self.declare_name(int(decl["name"]), "definition")
         parts = [
             marker,
+            *marker_args,
             str(self.name(int(decl["name"]))),
             str(self.expr(int(decl["type"]))),
             str(self.expr(int(decl["value"]))),
@@ -431,7 +449,7 @@ class Converter:
     def convert_theorem(self, decl: dict[str, Any]) -> None:
         if self.raw_expr(int(decl["type"]))["tag"] == "sort":
             raise RejectExport("theorem type is a universe, not a proposition")
-        self.convert_definition(decl)
+        self.convert_definition(decl, marker="#HINT_OPAQUE")
 
     def convert_quot(self, decl: dict[str, Any]) -> None:
         if decl.get("kind") == "type" and not self.emitted_quot:
@@ -489,7 +507,7 @@ class Converter:
         elif "thm" in obj:
             self.convert_theorem(obj["thm"])
         elif "opaque" in obj:
-            self.convert_definition(obj["opaque"])
+            self.convert_definition(obj["opaque"], marker="#OPAQUE")
         elif "quot" in obj:
             self.convert_quot(obj["quot"])
         elif "inductive" in obj:
@@ -647,7 +665,7 @@ class StreamingConverter(Converter):
             self.emit(" ".join(parts))
 
     def convert_theorem(self, decl: dict[str, Any]) -> None:
-        self.convert_definition(decl)
+        self.convert_definition(decl, marker="#HINT_OPAQUE")
 
 
 def use_streaming_converter(src: Path) -> bool:
