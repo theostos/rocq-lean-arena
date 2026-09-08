@@ -1,0 +1,207 @@
+{
+  "date": "2026-09-08",
+  "status": "Local review heads; full cslib checking remains incomplete.",
+  "repositories": {
+    "arena": {
+      "branches": [
+        {
+          "branch": "review/export-hints",
+          "commit": "1b5f10a63df5e8b0378370098380907ae637129a",
+          "base": "b7febb4"
+        },
+        {
+          "branch": "review/guarded-runs",
+          "commit": "ad28f0a57a824c341cc1ede52d6c54948889a054",
+          "base": "review/export-hints"
+        },
+        {
+          "branch": "review/atomic-checkpoints",
+          "commit": "f27ec588301c6b45f39216f122929743f02aaa2e",
+          "base": "review/guarded-runs"
+        },
+        {
+          "branch": "review/checkpoint-resume",
+          "commit": "3b135b5ec89aff92ab1e66eb80c4dda920dc9c1c",
+          "base": "review/atomic-checkpoints"
+        },
+        {
+          "branch": "review/chunked-import",
+          "commit": "9a44d520e6b87427841cb2927aab550c9b18e25b",
+          "base": "review/checkpoint-resume"
+        },
+        {
+          "branch": "review/checkpoint-generations",
+          "commit": "009ee60ebebe89d505bbcdc106b326881bb4a4e9",
+          "base": "review/chunked-import"
+        },
+        {
+          "branch": "review/cslib-repair-loop",
+          "commit": "2ae3fe408026174dc6ffa27f2f55648917c8f8b8",
+          "base": "review/checkpoint-generations"
+        },
+        {
+          "branch": "review/mathlib-export",
+          "commit": "9eb6c04644a4cf3e7938f4bf49fa6d21d1ee1282",
+          "base": "review/cslib-repair-loop"
+        },
+        {
+          "branch": "review/mathlib-repair-loop",
+          "commit": "4f55e16dab73c4fcc654dfe8a38fec4a447943b3",
+          "base": "review/mathlib-export"
+        },
+        {
+          "branch": "review/checkpoint-cleanup",
+          "commit": "99c94ab68a715eaa81d38688b7b9ee1f514b721d",
+          "base": "review/mathlib-repair-loop"
+        },
+        {
+          "branch": "review/isolated-loop-tests",
+          "commit": "da1f74a83e71b66730a59bd4c176123c7ba00c17",
+          "base": "review/checkpoint-cleanup"
+        }
+      ]
+    },
+    "importer": {
+      "branches": [
+        {
+          "branch": "review/strict-import-errors",
+          "commit": "3840f95234f1d3701a17ef14b0b9a162e521f45c",
+          "base": "2fe11f4"
+        },
+        {
+          "branch": "review/constructor-owners",
+          "commit": "dbea36ac8542e3978b8437a66d8f36fe9da8cfad",
+          "base": "review/strict-import-errors"
+        },
+        {
+          "branch": "review/dependent-projections",
+          "commit": "8a1033a6a901035ca5fee2cda653bb170b017a88",
+          "base": "review/constructor-owners"
+        },
+        {
+          "branch": "review/nested-fix-match",
+          "commit": "36a0297cde5c016e2910baa0b7fbf159d4cba5c5",
+          "base": "review/dependent-projections"
+        },
+        {
+          "branch": "review/compact-kernel-integration",
+          "commit": "f8046b100f73a7d196d9139522d1d0342103b34d",
+          "base": "review/nested-fix-match"
+        },
+        {
+          "branch": "review/modern-core-foundation",
+          "commit": "c6502cc0dea873e86476641f5a84528cfb8fd3d4",
+          "base": "review/compact-kernel-integration"
+        },
+        {
+          "branch": "review/reducibility-hints",
+          "commit": "e13420cf1184c4b7ef8a8b2f412cedb1391e5b94",
+          "base": "review/modern-core-foundation"
+        },
+        {
+          "branch": "review/nullary-unit-schemes",
+          "commit": "705f9ef3991fea7c793550100e714acfd9ca9dd4",
+          "base": "review/reducibility-hints"
+        },
+        {
+          "branch": "review/translation-sharing",
+          "commit": "47c933828deb6d7db53972c53e4241f8e2d51fc3",
+          "base": "review/nullary-unit-schemes"
+        },
+        {
+          "branch": "review/indexed-checkpoints",
+          "commit": "6063313b236973c38a8e8eeb8a4aa250fe14feb6",
+          "base": "review/translation-sharing"
+        },
+        {
+          "branch": "fix/source-nat-comparisons",
+          "commit": "c9f96650a91ab5c60ff5458e647df5a31e43bfdd",
+          "base": "review/indexed-checkpoints"
+        }
+      ]
+    },
+    "kernel": {
+      "branches": [
+        {
+          "branch": "review/dependency-cache",
+          "commit": "9e03f679fc93c3b3a434dd777ef8e10521757641",
+          "base": "f756383de2"
+        },
+        {
+          "branch": "review/term-sharing",
+          "commit": "86cc3df709f15a371463b6fb121bd7e6ec83da11",
+          "base": "review/dependency-cache"
+        },
+        {
+          "branch": "review/reduction-registrations",
+          "commit": "10ae699a327b3848fb029e6a209fde7fd166a464",
+          "base": "review/term-sharing"
+        },
+        {
+          "branch": "review/compact-peano",
+          "commit": "f0e7266ac7f13efcefb51e9438479bb9d297685c",
+          "base": "review/reduction-registrations"
+        },
+        {
+          "branch": "review/unit-eta",
+          "commit": "d97781f8b297902f61259921be93ccaeb85429ec",
+          "base": "review/compact-peano"
+        },
+        {
+          "branch": "review/conversion-strategies",
+          "commit": "9d4289d1b2580c7f5d285967a946a9f1ee89a548",
+          "base": "review/unit-eta"
+        },
+        {
+          "branch": "fix/direct-unfolding-dependency",
+          "commit": "eb0b398bbf2dc9bfaee6df668094b1891772a0fa",
+          "base": "review/conversion-strategies"
+        },
+        {
+          "branch": "fix/compact-fueled-arguments",
+          "commit": "b4db6046c3eeddb3ddb5cc513040a40586a3903b",
+          "base": "fix/direct-unfolding-dependency"
+        },
+        {
+          "branch": "fix/constructor-wrapper-conversion",
+          "commit": "33ee807ae0fc9fca1394b5938dec9e6abfd63261",
+          "base": "fix/compact-fueled-arguments"
+        },
+        {
+          "branch": "fix/stuck-record-eta",
+          "commit": "066b95cc9b1e55fd772e280fc25e1b242d9a3510",
+          "base": "fix/constructor-wrapper-conversion"
+        },
+        {
+          "branch": "fix/congruence-probe-scope",
+          "commit": "42bb6c4a0b6f06048773aaa7f9b8cd0b637e2873",
+          "base": "fix/stuck-record-eta"
+        },
+        {
+          "branch": "fix/bounded-congruence",
+          "commit": "1ff9ec82b3485fb29a7103f26076087464fd6ca8",
+          "base": "fix/congruence-probe-scope"
+        },
+        {
+          "branch": "review/kernel-diagnostics-current",
+          "commit": "6b3b044c7027f19060863162a9ecfa2b8ccbea46",
+          "base": "fix/bounded-congruence",
+          "optional_diagnostics": true
+        }
+      ]
+    }
+  },
+  "validation": {
+    "arena_unit_tests": {
+      "discovered": 171,
+      "passed": 169,
+      "skipped": 2,
+      "command": "env -u GENERATION_SYSTEMD_TEST -u CSLIB_LOOP_SYSTEMD_TEST python3 -B -m unittest discover -s scripts/tests"
+    },
+    "rocq": "Prior combined implementation: 58-stage gate passed. Newly split heads not rebuilt; active UTF-8 repair excluded."
+  },
+  "excluded": [
+    "Runtime logs, compiled checkpoints, binaries, service state and bulk exports",
+    "Unvalidated String.utf8EncodeChar.eq_def repair"
+  ]
+}

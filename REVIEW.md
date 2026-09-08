@@ -1,20 +1,14 @@
-# Make orchestration unit tests independent of saved runs
+# Index the importer, kernel and pipeline review stacks
 
-Base: `review/checkpoint-cleanup`.
+Base: `review/isolated-loop-tests`.
 
-Use temporary mock toolchains, plans and stage sources instead of reading
-the operator's compiled foundation or 15M checkpoint sources. Keep real shell
-orchestration and refusal checks; the compiler and model remain mocked.
+Start with [docs/review-map.md](docs/review-map.md). It lists topic branches,
+predecessors, motivating failures and validation limits. Exact commit hashes
+are recorded in [docs/review-stack.json](docs/review-stack.json).
 
-The historical-source range assertion is removed from the launcher test:
-generated interval coverage belongs to `test_chunked_import.py`.
+The UTF-8 investigation separates observed checkpoint behavior and conversion
+traces from the still-unproven history of the regression.
 
-Validation from this isolated worktree:
-
-```sh
-env -u GENERATION_SYSTEMD_TEST -u CSLIB_LOOP_SYSTEMD_TEST \
-  python3 -B -m unittest discover -s scripts/tests
-```
-
-171 tests: 169 passed, two opt-in systemd integration tests skipped.
-No Rocq compilation, model call or live service mutation is involved.
+Documentation only. No runtime state, checkpoint, binary or full export is
+included. The preceding tip passed 169 unit tests, with two opt-in integration
+tests skipped. Newly split compiler heads have not been rebuilt in isolation.
