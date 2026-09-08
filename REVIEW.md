@@ -1,16 +1,13 @@
-# Run guarded compilation locally and invoke bounded repair on failure
+# Prepare pinned Mathlib exports with streaming and provenance checks
 
-Base: `review/checkpoint-generations`.
+Base: `review/cslib-repair-loop`.
 
-A systemd supervisor owns guarded compilation and local waiting. Invoke GPT-6
-Astra with xhigh reasoning only for actionable declaration failures, then run
-independent gates. Repairs may build and run regressions, but not monitor or
-launch the full pass. Preserve the dedicated session and bounded repair count.
+Select the Lean 4.27.0-rc1 Mathlib checkout matching cslib. Verify source and
+exporter provenance, stream NDJSON into the converter and promote only after
+both processes succeed. Require memory/disk admission and a pinned toolchain;
+prepare isolated full and smoke exports with unseeded 2M checkpoint plans.
 
-The explicit --retry-validation path reruns a reviewed candidate's gate without
-a model turn, preserving its original result. Representation changes force a
-fresh chain; compatible kernel migrations may resume. Tests mock external work.
-Full-local repair access is opt-in, not filesystem isolation. Runtime sessions,
-logs, credentials and checkpoints are excluded.
+Tests use tiny subprocesses and fake source trees. The real Mathlib export and
+full import have not run yet. No library export/cache/checkpoint is committed.
 
 The active repair and running supervisor are unchanged by this review split.
