@@ -1,13 +1,15 @@
-# Plan sealed imports in resumable two-million-line chunks
+# Validate representation changes in fresh checkpoint generations
 
-Base: `review/checkpoint-resume`.
+Base: `review/chunked-import`.
 
-Plan declaration-safe chunks, preserve mutual-inductive blocks at boundaries,
-seal each result and reload it in a fresh process before recording progress.
-Resume the newest contiguous verified checkpoint. Require verified EOF, not
-just a successful partial import. Resource and disk failures stop safely.
+A changed importer/foundation cannot silently reuse old stored terms. Freeze
+its tested foundation, bind a new toolchain manifest and create an unseeded
+chain. Stage and hash relative Rocq Load dependencies; never copy old test .vo
+files. Run the complete regression gate before full compilation.
 
-Tests use tiny fake exports and compiler stubs, without Lean, Rocq or models.
-Real full-library exports/checkpoints are excluded.
+Unit tests use temporary fixtures. The opt-in systemd test requires a configured
+experimental toolchain. The live harness passed 58 Rocq stages on 2026-09-08;
+this split does not rerun them or vendor bulk generated exports. Provisioned
+work/*-repro fixtures and both toolchain checkouts remain required for that gate.
 
 The active repair and running supervisor are unchanged by this review split.
