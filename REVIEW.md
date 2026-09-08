@@ -1,13 +1,13 @@
-# Prepare pinned Mathlib exports with streaming and provenance checks
+# Queue the Mathlib repair loop after verified cslib completion
 
-Base: `review/cslib-repair-loop`.
+Base: `review/mathlib-export`.
 
-Select the Lean 4.27.0-rc1 Mathlib checkout matching cslib. Verify source and
-exporter provenance, stream NDJSON into the converter and promote only after
-both processes succeed. Require memory/disk admission and a pinned toolchain;
-prepare isolated full and smoke exports with unseeded 2M checkpoint plans.
+Wait locally for cslib's verified EOF, seal and reload result. Follow explicit
+cslib restarts and keep paused runs waiting. Only after successful handoff,
+freeze the tested foundation, prepare Mathlib and enter its own repair session
+using the shared single-heavyweight locks and checkpoint machinery.
 
-Tests use tiny subprocesses and fake source trees. The real Mathlib export and
-full import have not run yet. No library export/cache/checkpoint is committed.
+Tests mock model/compiler activity. The real Mathlib queue is still waiting for
+cslib; end-to-end Mathlib verification is not claimed.
 
 The active repair and running supervisor are unchanged by this review split.
