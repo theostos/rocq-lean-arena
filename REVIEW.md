@@ -1,13 +1,20 @@
-# Audit obsolete checkpoint files before scoped cleanup
+# Make orchestration unit tests independent of saved runs
 
-Base: `review/mathlib-repair-loop`.
+Base: `review/checkpoint-cleanup`.
 
-Restrict cleanup to explicit legacy directories and Cslib*.vo candidates.
-Record identity and source/artifact hashes; refuse changed or open files.
-Preserve sources/logs and current checkpoints/seals. Deletion requires an
-explicit apply step after the audit.
+Use temporary mock toolchains, plans and stage sources instead of reading
+the operator's compiled foundation or 15M checkpoint sources. Keep real shell
+orchestration and refusal checks; the compiler and model remain mocked.
 
-Tests use temporary files, including refusal cases. This commit does not run
-cleanup or include historical deletion manifests, checkpoints or logs.
+The historical-source range assertion is removed from the launcher test:
+generated interval coverage belongs to `test_chunked_import.py`.
 
-The active repair and running supervisor are unchanged by this review split.
+Validation from this isolated worktree:
+
+```sh
+env -u GENERATION_SYSTEMD_TEST -u CSLIB_LOOP_SYSTEMD_TEST \
+  python3 -B -m unittest discover -s scripts/tests
+```
+
+171 tests: 169 passed, two opt-in systemd integration tests skipped.
+No Rocq compilation, model call or live service mutation is involved.

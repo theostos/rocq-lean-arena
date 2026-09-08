@@ -18,6 +18,24 @@ class LoopTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
+        # No dependency on installed toolchains or an operator's run state.
+        plan = self.root / "plan.json"
+        loop.atomic_json(plan, {})
+        foundation = self.root / "foundation"
+        foundation.mkdir()
+        for suffix in (".v", ".vo"):
+            (foundation / ("Lean" + suffix)).write_text("mock foundation\n")
+        worker = self.root / "rocqworker.exe"
+        worker.write_text("mock worker; never executed\n")
+        for module, name, value in (
+            (loop, "CHUNK_PLAN", plan),
+            (loop, "SMOKE_PLAN", plan),
+            (loop.chunks, "FOUNDATION", foundation),
+            (loop.chunks, "WORKER", worker),
+        ):
+            patcher = patch.object(module, name, value)
+            patcher.start()
+            self.addCleanup(patcher.stop)
         self.attempt = self.root / "attempt.example"
         self.attempt.mkdir()
         self.log = self.root / "compile.log"
