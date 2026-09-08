@@ -1,11 +1,13 @@
-# Promote checkpoints atomically and audit full-pass evidence
+# Seal and resume immutable checkpoints
 
-Base: `review/guarded-runs`. Compare against this base, not upstream.
+Base: `review/atomic-checkpoints`.
 
-Keep the last good .vo until its guarded replacement succeeds. Record source/toolchain hashes, require expected EOF and a successful save, and keep fresh-process reload as a separate gate. Includes the exact experimental launchers under work/: those pin local binaries/checkpoints and are not portable fresh-install instructions.
+Keep producer hashes separate from current migration checks. Reuse a saved
+checkpoint only when its seal, sources and toolchain inputs match. Preserve
+atomic promotion and the shared memory/worker guards. The legacy 15M launcher
+and explicit migration checker are included as historical experiment tooling,
+not portable fresh-install commands.
 
-## Validation
-
-Not rebuilt at this split head. Earlier checks cover the combined experimental sources, not this intermediate branch.
-
-This is an experimental review branch, not a claim of a complete cslib check.
+This commit contains no compiled checkpoints, binary tools, runtime seals,
+credentials or full-library exports. Tests use temporary fake artifacts.
+The active repair worktree and running supervisor were not modified.
