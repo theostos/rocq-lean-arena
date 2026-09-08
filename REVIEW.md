@@ -1,13 +1,13 @@
-# Queue the Mathlib repair loop after verified cslib completion
+# Audit obsolete checkpoint files before scoped cleanup
 
-Base: `review/mathlib-export`.
+Base: `review/mathlib-repair-loop`.
 
-Wait locally for cslib's verified EOF, seal and reload result. Follow explicit
-cslib restarts and keep paused runs waiting. Only after successful handoff,
-freeze the tested foundation, prepare Mathlib and enter its own repair session
-using the shared single-heavyweight locks and checkpoint machinery.
+Restrict cleanup to explicit legacy directories and Cslib*.vo candidates.
+Record identity and source/artifact hashes; refuse changed or open files.
+Preserve sources/logs and current checkpoints/seals. Deletion requires an
+explicit apply step after the audit.
 
-Tests mock model/compiler activity. The real Mathlib queue is still waiting for
-cslib; end-to-end Mathlib verification is not claimed.
+Tests use temporary files, including refusal cases. This commit does not run
+cleanup or include historical deletion manifests, checkpoints or logs.
 
 The active repair and running supervisor are unchanged by this review split.
