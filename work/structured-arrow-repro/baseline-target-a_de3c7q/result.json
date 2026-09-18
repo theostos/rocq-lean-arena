@@ -1,0 +1,7 @@
+{
+  "kernel": "baseline",
+  "worker_sha256": "78cfbfb0660e84e0c62e110fd1e60b3262057b815f5f3deda10edf48fccb8ad7",
+  "exit_code": 1,
+  "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/baseline-target-a_de3c7q/run.log",
+  "scope": "target and requested dependencies; intermediate declarations are deferred"
+}

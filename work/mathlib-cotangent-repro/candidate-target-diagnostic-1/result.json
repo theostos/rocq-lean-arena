@@ -1,0 +1,6 @@
+{
+  "exit_code": 1,
+  "wall_seconds": 130.43194337899968,
+  "module": "CotangentDiagnostic",
+  "worker_sha256": "9685f52c1152ff6f7a054a7d654f58b7176b0e593c7477eda608b5f8047b359a"
+}

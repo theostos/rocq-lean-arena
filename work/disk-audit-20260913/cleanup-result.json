@@ -1,0 +1,53 @@
+{
+  "finished": 1789332456.6305032,
+  "removed_files": 155109,
+  "removed": {
+    "export-review": {
+      "files": 35,
+      "allocated_bytes": 13262786560
+    },
+    "git-temporary": {
+      "files": 64,
+      "allocated_bytes": 11288854528
+    },
+    "derived-index": {
+      "files": 10,
+      "allocated_bytes": 1219387392
+    },
+    "compiled-artifact": {
+      "files": 25701,
+      "allocated_bytes": 6350012416
+    },
+    "build-cache": {
+      "files": 118062,
+      "allocated_bytes": 9696890880
+    },
+    "interrupted-export": {
+      "files": 3,
+      "allocated_bytes": 370565120
+    },
+    "obsolete-checkpoint": {
+      "files": 129,
+      "allocated_bytes": 1446404096
+    },
+    "historical-log": {
+      "files": 11105,
+      "allocated_bytes": 901918720
+    }
+  },
+  "allocated_bytes_from_audit": 44536819712,
+  "dirty_tracked_source_mismatches": [],
+  "recovery": "No trash copy. Rebuild/re-export generated files from preserved sources; removed historical logs and incomplete temporary files are not recoverable from this journal.",
+  "protected": [
+    "work/mathlib-alignment-5m-20260913-with-terminal/",
+    "work/kernel-alignment-pass/importer.lFy9zJVL/",
+    "_worktrees/rocq/compact-peano-view/",
+    "_worktrees/rocq/stdlib-int32-repro/",
+    "work/kernel-alignment-pass/final-gates-21/",
+    "work/mathlib-thin-skeleton-repro/",
+    "_deps/lean-kernel-arena/_build/tests/mathlib.ndjson",
+    "_worktrees/review/rocq-upstream-runtime-20260908/_build/.sandbox/",
+    "_worktrees/rocq/compact-peano-view/_build/.sandbox/"
+  ],
+  "worktrees_removed": 0
+}

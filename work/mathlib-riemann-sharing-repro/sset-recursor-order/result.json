@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 10.202826088061556,
+  "module": "SSetTarget",
+  "worker_sha256": "7ce6e569024b1756c9576773b77fca5a21d91ce919a189bd363e29b90e62fcad",
+  "vo_sha256": "1d4b63a42c8e7f54428e14cddaf1d2710c396a7c5cd5537a52c9caca93475cf6"
+}

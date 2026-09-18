@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 80.17127434899885,
+  "module": "SimplexPrefix",
+  "worker_sha256": "bb48befc1cd8dd8c14df1ae1db1822a8a5fab1ccb40c95e53a38e7f3082d65e3",
+  "vo_sha256": "fbadd9f4ad55b602c15d437aa494042844ed87797fef25dd0d64c7a1edd68869"
+}

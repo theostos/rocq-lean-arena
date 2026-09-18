@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 759.6950376079999,
+  "module": "RiemannianPreparedTargets",
+  "worker_sha256": "e17936ee0b3a7417d9452e083ccf9ef64cc1225eea856f2076a2456c6447bc3f",
+  "vo_sha256": "025cd43e4147fb09098101a1b9d386f36d4d528fa4c286b583be7d657071ee6c"
+}

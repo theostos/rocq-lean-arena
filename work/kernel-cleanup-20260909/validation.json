@@ -1,0 +1,59 @@
+{
+  "head": "f911b15599a80422a0f768b749c530e6ebcabbf9",
+  "parsed": [
+    "checker/mod_checking.ml",
+    "checker/values.ml",
+    "kernel/cClosure.ml",
+    "kernel/cClosure.mli",
+    "kernel/conversion.ml",
+    "kernel/environ.ml",
+    "kernel/hConstr.ml",
+    "kernel/inferCumulativity.ml",
+    "kernel/mod_subst.ml",
+    "kernel/primred.ml",
+    "kernel/primred.mli",
+    "kernel/retroknowledge.ml",
+    "kernel/retroknowledge.mli",
+    "kernel/safe_typing.ml",
+    "kernel/safe_typing.mli",
+    "kernel/vars.ml",
+    "library/global.ml",
+    "library/global.mli",
+    "pretyping/inductiveops.ml",
+    "tactics/indrec.ml",
+    "vernac/vernacentries.ml"
+  ],
+  "typed_against_existing_interfaces": [
+    "kernel/cClosure.ml",
+    "kernel/conversion.ml",
+    "kernel/environ.ml",
+    "kernel/hConstr.ml",
+    "kernel/inferCumulativity.ml",
+    "kernel/mod_subst.ml",
+    "kernel/primred.ml",
+    "kernel/retroknowledge.ml",
+    "kernel/safe_typing.ml",
+    "kernel/vars.ml",
+    "library/global.ml",
+    "pretyping/inductiveops.ml",
+    "tactics/indrec.ml",
+    "vernac/vernacentries.ml"
+  ],
+  "unavailable_interfaces": {
+    "checker/mod_checking.ml": "Standalone checker interfaces are not built (its Values differs from kernel.Values).",
+    "checker/values.ml": "Standalone checker interfaces are not built (its Values differs from kernel.Values)."
+  },
+  "runtime_inputs_unchanged": {
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/bin/rocq": "0042ebbdf4c82f718aae8f0e88fed49fd8ddd4aebdfc7843eef1026d07f3b909",
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/default/topbin/rocqworker.exe": "78cfbfb0660e84e0c62e110fd1e60b3262057b815f5f3deda10edf48fccb8ad7",
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/compact-peano-importer-current/src/lean_import.cmxs": "9253723274cd44802f675aef6c536e0c1e1a762ebfe0fad7b26a5ce36af6d934",
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/compact-peano-importer-current/src/META.coq-lean-import": "abd4acfa1ffedcb33b27f7325e6aa4a9771a0bdbafe7b83ca031e6e554b37726",
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/compact-peano-importer-current/src/Lean.v": "a7b5dbd48fee5c55bd57fed60d4fc78602d8dd73786efbb97ea34a2c60e985bf",
+    "/home/theo/Documents/github/rocq-lean-typechecker/work/run-memory-guarded.sh": "f50bf02d00e24748513d0e031a6fbaba3e0160e4c3ad9ebd39ac654f43b7630d",
+    "/home/theo/Documents/github/rocq-lean-typechecker/scripts/run_cslib_from_start.py": "075c257470ef76f47c2d57f50403fbbba40de56ab8e59facecdd2fcdae4ffee3",
+    "/home/theo/Documents/github/rocq-lean-typechecker/scripts/run_mathlib_from_start.py": "1bed027e638c906651b3cf5341e7807f1116fa5776b513c1dace28f15cc85a75"
+  },
+  "live_kernel_sources_unchanged": true,
+  "full_build": "not run",
+  "runtime_regressions": "not run while Mathlib is active"
+}

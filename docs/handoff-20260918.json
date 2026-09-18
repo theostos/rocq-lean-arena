@@ -1,0 +1,60 @@
+{
+  "format": "mathlib-source-handoff-v1",
+  "snapshot_date": "2026-09-18",
+  "branch": "handoff/mathlib-20260918",
+  "arena_repository": "https://github.com/theostos/rocq-lean-arena.git",
+  "components": {
+    "kernel": {
+      "repository": "https://github.com/theostos/rocq.git",
+      "commit": "d17b66af824e344393b126e57fbcec99174f926a",
+      "base": "f756383de2e66f63c95815c73838596d7d97c1c2",
+      "directory": "_worktrees/rocq/compact-peano-view"
+    },
+    "importer": {
+      "repository": "https://github.com/theostos/rocq-lean-import.git",
+      "commit": "5cf335ec68a41ad23dd720018a191f95b161a5cc",
+      "base": "d3e25df20a47bcc23fe539335e0b21652a59baca",
+      "directory": "_worktrees/rocq-lean-import/cslib-ndjson",
+      "source": "Exact tracked runtime source of importer.rEXkanSl; base dump assets retained unchanged"
+    },
+    "stdlib": {
+      "repository": "https://github.com/coq/stdlib.git",
+      "commit": "3e47b26f345f36e375d81ade399eed0e310984b3",
+      "directory": "_worktrees/rocq/stdlib-int32-repro"
+    },
+    "reference_arena": {
+      "repository": "https://github.com/leanprover/lean-kernel-arena.git",
+      "commit": "4ce4d513d6f38614d801ab95e4ac069fb3740b0d",
+      "directory": "_deps/lean-kernel-arena"
+    },
+    "exporter": {
+      "repository": "https://github.com/leanprover/lean4export.git",
+      "commit": "3de59f10bc4b4a0f2de698597aeb1246caa0df0a",
+      "directory": "_deps/lean-kernel-arena/_build/lean4export/leanprover_lean4_v4.29.0",
+      "lean_toolchain_override": "leanprover/lean4:v4.29.0"
+    }
+  },
+  "build_versions": {"ocaml": "4.14.2", "dune": "3.23.1", "ocamlfind": "1.9.8", "zarith": "1.14"},
+  "reference": {
+    "lean": "98dc76e3c0a9b856c9b98726b713fb04fab16740",
+    "lean_version": "4.29.0",
+    "mathlib": "8a178386ffc0f5fef0b77738bb5449d50efeea95",
+    "exporter_version": "3.1.0",
+    "lines": 100001405,
+    "bytes": 5636308621,
+    "ndjson_sha256": "a466d22a521f0fc0406b6d0ece2173f2b2e3d9eb4d8bc26a5e14316d39944d27",
+    "slice_converter_sha256": "fff4aa5d44ed71a69019be02ae5eddfcc226308ca057788b30ad81d9df89e0e0"
+  },
+  "evidence": {
+    "sealed_through": 55000000,
+    "worker_sha256": "484cb306cb0f5d114071d601202a45c93de9c7ee803bbcd5c455553a6863649a",
+    "checker_sha256": "03fc74e26566f707a62042d1147243b41f0555371795dc2ef30c582be7c68181",
+    "checkpoint_sha256": "73f1db317d8e41388b6f115efa9be34cb1f98d72be946034557125b6987e9f67",
+    "reload_sha256": "77ee0411986b2bb2a186aec9c1fc063e073b8975e98541c237d93d05fcfbe260",
+    "full_mathlib_pass": false,
+    "strict_full_recheck": false,
+    "remote_build_validated": false
+  },
+  "production_policy": {"interval": 5000000, "seconds_per_declaration": 1800, "memory_bytes": 25000000000, "host_reserve_mib": 2048, "workload_swap": false},
+  "transfer_policy": "Source and small review evidence only; regenerate binaries, exports and checkpoints on the remote machine. No migration of historical producer seals."
+}

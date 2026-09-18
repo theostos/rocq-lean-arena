@@ -1,0 +1,25 @@
+{
+  "result": "passed",
+  "checks": "Every retained submission/integration revision matches its clean, successful recorded validation. No source code changed during cleanup.",
+  "manifests": [
+    "work/review-importer-20260908/stock-batch-20260908/universe-instances/result.json",
+    "work/review-importer-20260908/stock-fixed-20260908/dependent-projections/result.json",
+    "work/review-importer-20260908/stock-fixed-20260908/mutual-inductives/result.json",
+    "work/review-importer-20260908/stock-fixed-20260908/nested-recursors/result.json",
+    "work/review-importer-20260908/stock-fixed-20260908/primitive-record-eliminators/result.json",
+    "work/review-importer-20260908/stock-fixed-20260908/constructor-owners/result.json",
+    "work/review-importer-20260908/stock-fixed-20260908/strict-import-errors/result.json",
+    "work/review-importer-20260908/stock-fixed-20260908/reducibility-hints/result.json",
+    "work/review-importer-20260908/stock-fixed-20260908/parser-sharing/result.json",
+    "work/review-importer-20260908/stock-fixed-20260908/uint32-constructor/result.json",
+    "work/review-importer-20260908/stock-fixed-20260908/string-of-list/result.json",
+    "work/review-importer-20260908/stock-checkpoints-c04270d/result.json",
+    "work/review-importer-20260908/stock-integration-2dd60b9/result.json",
+    "work/review-importer-20260908/experimental-topics-clean-20260908/compact-arithmetic/result.json",
+    "work/review-importer-20260908/experimental-integration-clean-20260908/unit-like-eliminators/result.json",
+    "work/review-importer-20260908/experimental-topics-clean-20260908/translation-sharing/result.json",
+    "work/review-importer-20260908/experimental-topics-clean-20260908/cache-validation/result.json",
+    "work/review-importer-20260908/experimental-topics-clean-20260908/cache-disabled/result.json",
+    "work/review-importer-20260908/experimental-integration-clean-20260908/experimental-integration/result.json"
+  ]
+}

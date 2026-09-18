@@ -1,0 +1,160 @@
+{
+  "worktree": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with",
+  "revision": "68fe7e6589c9266941c99d5e9503e902f9f6e6fc",
+  "tracked_changes": "",
+  "runtime": "experimental",
+  "runtime_prefix": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default",
+  "runtime_revision": "22cc1ac2301bc2089732b7ab9dde6288d9d2af3e",
+  "stdlib": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+  "guard": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/arena-loop-20260908/checkers/rocq-lean-import/scripts/run-memory-guarded.sh",
+  "output": "/home/theo/Documents/github/rocq-lean-typechecker/work/pr70-cslib-ablation/with-cslib",
+  "environment": {
+    "PATH": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/home/theo/.elan/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/home/theo/.codex/tmp/arg0/codex-arg0iVtBmQ:/home/theo/.local/bin:/home/theo/.elan/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/home/theo/.nvm/versions/node/v22.16.0/bin:/home/theo/miniconda3/bin:/home/theo/miniconda3/condabin:/home/theo/.cargo/bin:/home/theo/.local/bin:/home/theo/.elan/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/theo/.vscode/extensions/openai.chatgpt-26.901.22334-linux-x64/bin/linux-x86_64",
+    "OCAMLPATH": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/lib",
+    "COQBIN": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/",
+    "COQLIB": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/lib/coq",
+    "ROCQLIB": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/lib/coq",
+    "ROCQ_MAX_RSS_KIB": "3145728",
+    "ROCQ_MEMORY_MAX_KIB": "3145728",
+    "ROCQ_MEMORY_HIGH_KIB": "3145728",
+    "ROCQ_MEMORY_SWAP_MAX_KIB": "0",
+    "ROCQ_MIN_AVAILABLE_KIB": "6291456",
+    "ROCQ_ALLOW_EXTERNAL_ROCQ": "0",
+    "ROCQ_STACK_KIB": "262144",
+    "ROCQ_MEMORY_STATUS_SECONDS": "60",
+    "OCAMLRUNPARAM": "b",
+    "MAKEFLAGS": "",
+    "MFLAGS": ""
+  },
+  "stages": [
+    {
+      "name": "configure",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with",
+      "timeout": 60,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "makefile",
+        "-f",
+        "_CoqProject",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-o",
+        "Makefile.review"
+      ]
+    },
+    {
+      "name": "build",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with",
+      "timeout": 600,
+      "command": [
+        "make",
+        "-f",
+        "Makefile.review",
+        "-j1",
+        "COQC=timeout --signal=TERM --kill-after=5s 600 /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq c -q -bytecode-compiler no",
+        "all"
+      ]
+    },
+    {
+      "name": "test-01-core",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with/tests",
+      "timeout": 600,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with/tests/core.v"
+      ]
+    },
+    {
+      "name": "test-02-ablation_int64",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with/tests",
+      "timeout": 600,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with/tests/ablation_int64.v"
+      ]
+    },
+    {
+      "name": "test-03-ablation_finloop",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with/tests",
+      "timeout": 600,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with/tests/ablation_finloop.v"
+      ]
+    },
+    {
+      "name": "test-04-ablation_cslib",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with/tests",
+      "timeout": 600,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with/tests/ablation_cslib.v"
+      ]
+    }
+  ],
+  "compatibility_blocker": null,
+  "status": "blocked",
+  "results": [],
+  "guard_exit_code": 75
+}

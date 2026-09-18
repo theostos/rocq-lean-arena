@@ -1,0 +1,6 @@
+{
+  "exit_code": 1,
+  "wall_seconds": 9.45153564400971,
+  "module": "DiagnosticTarget",
+  "worker_sha256": "d472e356d5ff7fd79511d3e64326aa5fe1edd117e06c91628bcde71aa826c7fa"
+}

@@ -1,0 +1,7 @@
+{
+  "completed": "2026-09-12T11:21:52.582421+00:00",
+  "exit_code": 125,
+  "success": false,
+  "error": "125",
+  "attempt": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-ndjson/attempts/20260912T100206892784Z"
+}

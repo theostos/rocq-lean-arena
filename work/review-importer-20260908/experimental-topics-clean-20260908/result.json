@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "runtime_revision": "22cc1ac2301bc2089732b7ab9dde6288d9d2af3e",
+  "topics": [
+    {
+      "topic": "compact-arithmetic",
+      "branch": "submit/compact-arithmetic",
+      "revision": "3e826ab2bb30ef3bcd6a23a88c70e7e65dd1998d",
+      "status": "passed",
+      "exit_code": 0,
+      "cache_switches": {},
+      "result": "work/review-importer-20260908/experimental-topics-clean-20260908/compact-arithmetic/result.json"
+    },
+    {
+      "topic": "unit-like-eliminators",
+      "branch": "submit/unit-like-eliminators",
+      "revision": "839561a87d4dafad6be0ff811da5f63af894dd9e",
+      "status": "passed",
+      "exit_code": 0,
+      "cache_switches": {},
+      "result": "work/review-importer-20260908/experimental-topics-clean-20260908/unit-like-eliminators/result.json"
+    },
+    {
+      "topic": "translation-sharing",
+      "branch": "submit/translation-sharing",
+      "revision": "5faa8483b8c6b2d336a2cc059e0b7631e2f1695e",
+      "status": "passed",
+      "exit_code": 0,
+      "cache_switches": {},
+      "result": "work/review-importer-20260908/experimental-topics-clean-20260908/translation-sharing/result.json"
+    },
+    {
+      "topic": "cache-validation",
+      "branch": "submit/translation-sharing",
+      "revision": "5faa8483b8c6b2d336a2cc059e0b7631e2f1695e",
+      "status": "passed",
+      "exit_code": 0,
+      "cache_switches": {
+        "LEAN_IMPORT_VALIDATE_TRANSLATION_CACHE": "1"
+      },
+      "result": "work/review-importer-20260908/experimental-topics-clean-20260908/cache-validation/result.json"
+    },
+    {
+      "topic": "cache-disabled",
+      "branch": "submit/translation-sharing",
+      "revision": "5faa8483b8c6b2d336a2cc059e0b7631e2f1695e",
+      "status": "passed",
+      "exit_code": 0,
+      "cache_switches": {
+        "LEAN_IMPORT_DISABLE_TRANSLATION_CACHE": "1"
+      },
+      "result": "work/review-importer-20260908/experimental-topics-clean-20260908/cache-disabled/result.json"
+    }
+  ]
+}

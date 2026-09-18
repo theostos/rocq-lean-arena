@@ -1,0 +1,5 @@
+{
+  "accepted": false,
+  "exit_status": 3,
+  "error": "worker requested an already loaded prerequisite"
+}

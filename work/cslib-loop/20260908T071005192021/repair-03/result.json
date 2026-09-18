@@ -1,0 +1,12 @@
+{
+  "status": "ready",
+  "summary": "Fixed the reported UTF-8 bitvector timeout generically by requiring direct witnesses for one-sided unfolding preferences. Evidence: work/utf8-bitvec-two-repro/README.md. Full-library success and soundness are not claimed.",
+  "tests": [
+    "Guarded kernel build and six new focused fixtures passed, including the unchanged target, adjacent theorems, reloads and negative controls.",
+    "All six previous UTF-8 focused fixtures passed.",
+    "Broader gate passed 58 compiler stages; 170 unit tests completed successfully with two existing skips.",
+    "Worker digest updated and verified; importer and foundation hashes unchanged."
+  ],
+  "checkpoint_action": "reuse",
+  "foundation": ""
+}

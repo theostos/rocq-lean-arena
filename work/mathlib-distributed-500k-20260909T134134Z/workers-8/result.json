@@ -1,0 +1,5 @@
+{
+  "accepted": false,
+  "exit_status": 3,
+  "error": "Instance2429_1: exit 1 without a batch report; see /home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-distributed-500k-20260909T134134Z/workers-8/attempts/Instance2429_1_001/rocq.log"
+}

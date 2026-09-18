@@ -1,0 +1,7 @@
+{
+  "kernel": "candidate",
+  "worker_sha256": "2d631c655cb65e6b1998886414c36ef10e5a322826b613e338a15009cc090c9f",
+  "exit_code": 0,
+  "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/candidate-target-tsmtbu17/run.log",
+  "scope": "target and requested dependencies; intermediate declarations are deferred"
+}

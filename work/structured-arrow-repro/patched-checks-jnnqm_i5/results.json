@@ -1,0 +1,17 @@
+[
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/AliasedUnitProjection.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-jnnqm_i5/0/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/ArrowAlias.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-jnnqm_i5/1/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/AliasControls.v",
+    "exit_code": 1,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-jnnqm_i5/2/run.log"
+  }
+]

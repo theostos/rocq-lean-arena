@@ -1,0 +1,93 @@
+[
+  {
+    "check": "dependencies-build",
+    "exit_code": 0,
+    "command": [
+      "bash",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/run-memory-guarded.sh",
+      "timeout",
+      "180s",
+      "ocamlfind",
+      "ocamlopt",
+      "-rectypes",
+      "-thread",
+      "-package",
+      "rocq-runtime.kernel",
+      "-c",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/test-suite/unit-tests/kernel/constant_deps.ml",
+      "-o",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-original-dependency-cache/checks-f6sfhytz/constant_deps.cmx"
+    ]
+  },
+  {
+    "check": "dependencies-link",
+    "exit_code": 0,
+    "command": [
+      "bash",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/run-memory-guarded.sh",
+      "timeout",
+      "180s",
+      "ocamlfind",
+      "ocamlopt",
+      "-rectypes",
+      "-thread",
+      "-package",
+      "rocq-runtime.kernel",
+      "-linkpkg",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-original-dependency-cache/checks-f6sfhytz/constant_deps.cmx",
+      "-o",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-original-dependency-cache/checks-f6sfhytz/constant_deps.exe"
+    ]
+  },
+  {
+    "check": "dependencies",
+    "exit_code": 0,
+    "command": [
+      "bash",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/run-memory-guarded.sh",
+      "timeout",
+      "180s",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-original-dependency-cache/checks-f6sfhytz/constant_deps.exe"
+    ]
+  },
+  {
+    "check": "regressions",
+    "exit_code": 0,
+    "command": [
+      "/home/theo/miniconda3/bin/python3",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/validate.py"
+    ]
+  },
+  {
+    "check": "reload9m",
+    "exit_code": 1,
+    "command": [
+      "bash",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/run-memory-guarded.sh",
+      "timeout",
+      "180s",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/default/topbin/rocqworker.exe",
+      "--kind=compile",
+      "-coqlib",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq",
+      "-q",
+      "-bytecode-compiler",
+      "no",
+      "-R",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories",
+      "Stdlib",
+      "-Q",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-ndjson/checkpoints",
+      "",
+      "-Q",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-ndjson/foundation",
+      "LeanImport",
+      "-I",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/cslib-ndjson/src",
+      "-Q",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-original-dependency-cache/checks-f6sfhytz",
+      "CacheRestore",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-original-dependency-cache/checks-f6sfhytz/Reload9M.v"
+    ]
+  }
+]

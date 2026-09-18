@@ -1,0 +1,6 @@
+Require Import MathlibTo13000000.
+Set Printing Universes.
+Print MathlibTo1000000.PUnit.
+Print MathlibTo1000000.CategoryTheory_Discrete.
+Print MathlibTo1000000.CategoryTheory_discreteCategory.
+Print MathlibTo6000000.CategoryTheory_eqToIso.

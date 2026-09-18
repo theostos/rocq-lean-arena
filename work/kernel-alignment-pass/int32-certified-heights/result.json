@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 88.78566973295528,
+  "module": "Int32Tdiv",
+  "worker_sha256": "20c123da6294a4b235f1dd5aa02c88d4e494313292cc998f767e81e64b8d6d05",
+  "vo_sha256": "7f12d0badf50095ac62552ff6896f8ba35d8d7afe74dbacdc7450eff4611a9b8"
+}

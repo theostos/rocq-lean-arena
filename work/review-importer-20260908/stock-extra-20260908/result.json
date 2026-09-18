@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "runtime": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default",
+  "stdlib": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+  "topics": [
+    {
+      "topic": "reducibility-hints",
+      "revision": "9663ea7ba311ae4f501d646e9c85188a3fee16d4",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-extra-20260908/reducibility-hints/result.json"
+    },
+    {
+      "topic": "parser-sharing",
+      "revision": "827bbd6791b6a129dc86ffcc2af486c99495c64a",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-extra-20260908/parser-sharing/result.json"
+    },
+    {
+      "topic": "nested-recursors",
+      "revision": "12e2aabee58ed07706187c30bfddddb161d48671",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-extra-20260908/nested-recursors/result.json"
+    },
+    {
+      "topic": "primitive-record-eliminators",
+      "revision": "71dd0df660791fa991b0eb612fe0b5add8bc8889",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-extra-20260908/primitive-record-eliminators/result.json"
+    },
+    {
+      "topic": "stock-integration",
+      "revision": "34d0da8797da69c1ee6c6613a48a8ffcb8484407",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-extra-20260908/stock-integration/result.json"
+    },
+    {
+      "topic": "indexed-checkpoints",
+      "revision": "baaece66283ff5fcd6a9709d8aaa56111afe1e18",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-extra-20260908/indexed-checkpoints/result.json"
+    }
+  ]
+}

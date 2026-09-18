@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 59.514056719024666,
+  "module": "ProofNoSharing",
+  "worker_sha256": "c42fffa304564fd25d6f04aca508d8b9bd2a8dfa2d7003cd459e25e9423b749a",
+  "vo_sha256": "e34ac72d4f0fa1a958f7714d2b5377c45c330972b11ee96b1967e52557533349"
+}

@@ -1,0 +1,5130 @@
+(************************************************************************)
+(*         *   The Coq Proof Assistant / The Coq Development Team       *)
+(*  v      *   INRIA, CNRS and contributors - Copyright 1999-2019       *)
+(* <O___,, *       (see CREDITS file for the list of authors)           *)
+(*   \VV/  **************************************************************)
+(*    //   *    This file is distributed under the terms of the         *)
+(*         *     GNU Lesser General Public License Version 2.1          *)
+(*         *     (see LICENSE file for the text of the license)         *)
+(************************************************************************)
+
+open Names
+open Univ
+open UVars
+module RelDecl = Context.Rel.Declaration
+open LeanExpr
+
+let __ () = assert false
+let invalid = Constr.(mkApp (mkSet, [| mkSet |]))
+
+let add_universe l ~lbound g =
+  let g = UGraph.add_universe l ~strict:false g in
+  UGraph.enforce_constraint (lbound, Le, l) g
+
+let quickdef ?(opaque = false) ~name ~types ~univs body =
+  let trace stage =
+    if Option.has_some (Sys.getenv_opt "LEAN_IMPORT_QUICKDEF_TRACE") then
+      Printf.eprintf "[quickdef] %s\n%!" stage
+  in
+  let () = trace "before entry" in
+  let entry = Declare.definition_entry ~opaque ?types ~univs body in
+  let () = trace "after entry" in
+  let scope = Locality.(Global ImportDefaultBehavior) in
+  let kind = Decls.(IsDefinition Definition) in
+  let uctx =
+    UState.empty
+    (* used for ubinders and hook *)
+  in
+  let () = trace "before declare" in
+  let ref = Declare.declare_entry ~name ~scope ~kind ~impargs:[] ~uctx entry in
+  let () = trace "after declare" in
+  ref
+
+type extended_level = Level of Level.t | LSProp
+
+type scheme_family = SchemeSProp | SchemeType
+
+(** produce [args, recargs] inside mixed context [args/recargs] [info] is in
+    reverse order, ie the head is about the last arg in application order
+
+    examples: [] -> [],[] [false] -> [1],[] [true] -> [2],[1] [true;false] ->
+    [3;2],[1] [false;true] -> [3;1],[2] [false;false] -> [2;1],[] [true;true] ->
+    [4;2],[3;1] *)
+let reorder_inside_core info =
+  let rec aux i args recargs = function
+    | [] -> (args, recargs)
+    | false :: info -> aux (i + 1) (i :: args) recargs info
+    | true :: info -> aux (i + 2) ((i + 1) :: args) (i :: recargs) info
+  in
+  aux 1 [] [] info
+
+let reorder_inside info =
+  let args, recargs = reorder_inside_core info in
+  CArray.map_of_list Constr.mkRel (List.append args recargs)
+
+let rec insert_after k ((n, t) as v) c =
+  if k = 0 then Constr.mkProd (n, t, Vars.lift 1 c)
+  else
+    match Constr.kind c with
+    | Prod (na, a, b) -> Constr.mkProd (na, a, insert_after (k - 1) v b)
+    | _ -> assert false
+
+let insert_after k (n, t) c =
+  insert_after k (n, Vars.lift k t) (Vars.subst1 invalid c)
+
+let rec reorder_outside info hyps c =
+  match (info, hyps) with
+  | [], [] -> (c, 0)
+  | false :: info, (n, t) :: hyps ->
+    let c, k = reorder_outside info hyps c in
+    (Constr.mkProd (n, t, c), k + 1)
+  | true :: info, (n, t) :: rhyp :: hyps ->
+    let c, k = reorder_outside info hyps c in
+    let c = insert_after k rhyp c in
+    (Constr.mkProd (n, t, c), k + 1)
+  | _ -> assert false
+
+(** produce [forall args recargs, P (C args)] from mixed
+    [forall args/recargs, P (C args)] *)
+let reorder_outside info ft =
+  let hyps, out = Term.decompose_prod ft in
+  fst (reorder_outside (List.rev info) (List.rev hyps) out)
+
+(** Rocq normally generates a [match] for a record eliminator.  When the
+    scrutinee is neutral, reducing projections of the result can then force the
+    scrutinee merely to expose its constructor.  This is especially harmful
+    when the neutral term contains a large closed computation.
+
+    Primitive records have judgmental eta in Rocq.  Their one-branch
+    eliminator can therefore apply the branch to the primitive projections of
+    the scrutinee instead.  We check that the replacement has the original
+    generated scheme's type, so this optimization relies only on Rocq's kernel
+    eta rule and is independent of any particular Lean declaration. *)
+let project_primitive_record_scheme env (mind, ind_index) body =
+  let mib = Global.lookup_mind mind in
+  let packet = mib.mind_packets.(ind_index) in
+  match packet.mind_record with
+  | Declarations.PrimRecord { has_eta = Declarations.NoEta; _ } -> body
+  | Declarations.PrimRecord _ ->
+    let nb_lambdas = mib.mind_nparams + 3 in
+    let binders, inside = Term.decompose_lambda_n_assum nb_lambdas body in
+    (match Constr.kind inside with
+    | Constr.Case (_, _, _, _, _, scrutinee, branches)
+      when Constr.equal scrutinee (Constr.mkRel 1)
+           && Array.length branches = 1 ->
+      let target = Constr.mkRel 1 in
+      let fields =
+        List.init packet.mind_consnrealargs.(0) (fun proj_arg ->
+            let projection, relevance =
+              Declareops.inductive_make_projection (mind, ind_index) mib
+                ~proj_arg
+            in
+            Constr.mkProj
+              (Projection.make projection false, relevance, target))
+      in
+      let projected =
+        Term.it_mkLambda_or_LetIn
+          (Constr.mkApp (Constr.mkRel 2, Array.of_list fields))
+          binders
+      in
+      let evd = Evd.from_env env in
+      if
+        Reductionops.is_conv env evd (EConstr.of_constr body)
+          (EConstr.of_constr projected)
+      then
+        projected
+      else
+        CErrors.user_err
+          Pp.(str "Projection-based primitive-record scheme changed meaning")
+    | _ -> body)
+  | _ -> body
+
+(** A nullary unit-like constructor has no fields to inspect. Lean's recursor
+    returns its sole branch even on a neutral scrutinee; Rocq's generated
+    [match] does not. Use the already registered unit eta rule to typecheck
+    the branch-only eliminator against the original dependent scheme type.
+    Indexed types and constructors with fields must keep their usual scheme. *)
+let nullary_unit_scheme env ind body =
+  let mib, packet = Inductive.lookup_mind_specif env ind in
+  if
+    List.exists (Ind.UserOrd.equal ind)
+      (Environ.retroknowledge env).Retroknowledge.retro_unit_like
+    && Int.equal packet.mind_nrealargs 0
+    && Array.length packet.mind_consnrealdecls = 1
+    && Int.equal packet.mind_consnrealdecls.(0) 0
+  then
+    let binders, inside =
+      Term.decompose_lambda_n_assum (mib.mind_nparams + 3) body
+    in
+    match Constr.kind inside with
+    | Constr.Case (_, _, _, _, _, scrutinee, branches)
+      when Constr.equal scrutinee (Constr.mkRel 1)
+           && Array.length branches = 1
+           && Array.length (fst branches.(0)) = 0
+           && Constr.equal (snd branches.(0)) (Constr.mkRel 2) ->
+      let replacement = Term.it_mkLambda_or_LetIn (Constr.mkRel 2) binders in
+      let ty = (Typeops.infer env body).Environ.uj_type in
+      ignore
+        (Typeops.infer env (Constr.mkCast (replacement, Constr.DEFAULTcast, ty)));
+      replacement
+    | _ -> body
+  else body
+
+(** Whether Rocq's induction-scheme generator will add a recursive hypothesis
+    for an argument of type [term]. A mere occurrence of [mind] is not enough:
+    for a nested occurrence, Rocq only adds the hypothesis when the enclosing
+    inductive has a suitable [AllForall] scheme registered. *)
+let rec has_rec_hyp env mind term =
+  let locals, head = Reduction.whd_decompose_prod_decls env term in
+  let env = Environ.push_rel_context locals env in
+  let head, args = Constr.decompose_app head in
+  match Constr.kind head with
+  | Constr.Ind (((nested_mind, _) as nested_ind), _) ->
+    if MutInd.UserOrd.equal mind nested_mind then true
+    else
+      let nested_mib = Global.lookup_mind nested_mind in
+      let positive =
+        AllScheme.compute_params_rec_strpos env nested_mind nested_mib
+      in
+      let uniform = Array.sub args 0 nested_mib.mind_nparams_rec in
+      let nested =
+        Array.to_list
+          (Array.mapi
+             (fun i arg ->
+               List.nth positive i && has_rec_hyp env mind arg)
+             uniform)
+      in
+      List.exists (fun x -> x) nested
+      && Result.is_ok
+           (AllScheme.lookup_all_theorem (mind, 0)
+              (GlobRef.IndRef nested_ind) nested)
+  | Constr.Const (constant, _) when Environ.is_array_type env constant ->
+    Array.length args = 1
+    && has_rec_hyp env mind args.(0)
+    && Result.is_ok
+         (AllScheme.lookup_all_theorem (mind, 0)
+            (GlobRef.ConstRef constant) [ true ])
+  | _ -> false
+
+(** Whether [mind] occurs anywhere in [term].  This is deliberately weaker
+    than [has_rec_hyp]: Lean generates auxiliary recursors for every strictly
+    positive nested occurrence, including occurrences below containers for
+    which Rocq has no registered [All] scheme.  Those are precisely the cases
+    handled by the direct nested-recursor adapter below. *)
+let contains_mind mind term =
+  let exception Found in
+  let rec visit term =
+    match Constr.kind term with
+    | Constr.Ind ((term_mind, _), _)
+      when MutInd.UserOrd.equal mind term_mind ->
+      raise_notrace Found
+    | _ -> Constr.iter visit term
+  in
+  try
+    visit term;
+    false
+  with Found -> true
+
+(** Build the body of a Lean-style scheme. [u] instantiates the inductive, [s]
+    is [None] for the SProp scheme and [Some l] for a scheme with motive [l].
+
+    Lean schemes differ from Coq schemes:
+    - the motive universe is the first bound universe for Lean but the last for
+      Coq (handled by caller)
+    - Lean puts induction hypotheses after all the constructor arguments, Coq
+      puts them immediately after the corresponding recursive argument. *)
+let lean_scheme env ~dep (mind, ind_index) u s =
+  let mib = Global.lookup_mind mind in
+  let nparams = mib.mind_nparams in
+  (* if we start using non recursive params in the translation it will
+     involve reordering arguments *)
+  assert (nparams = mib.mind_nparams_rec);
+  let body =
+    let sigma = Evd.from_env env in
+    let motive_level = ref None in
+    let sigma, s' =
+      match s with
+      | LSProp -> sigma, EConstr.ESorts.sprop
+      | Level _ ->
+        let sigma, u = Evd.new_univ_level_variable UnivRigid sigma in
+        motive_level := Some u;
+        sigma, EConstr.ESorts.make @@ Sorts.sort_of_univ @@ Universe.make u
+    in
+    let sigma, body =
+      if Array.length mib.mind_packets = 1 then
+        Indrec.build_induction_scheme env sigma
+          ((mind, ind_index), EConstr.EInstance.make u)
+          dep s'
+      else
+        let specs =
+          List.init (Array.length mib.mind_packets)
+            (fun index -> ((mind, index), dep, s'))
+        in
+        let sigma, bodies =
+          Indrec.build_mutual_induction_scheme env sigma ~force_mutual:true
+            specs (EConstr.EInstance.make u)
+        in
+        sigma, List.nth bodies ind_index
+    in
+    let body = EConstr.Unsafe.to_constr body in
+    let uctx = Evd.sort_context_set sigma in
+    let subst_scheme_context quality default_level usubst =
+      let (qvars, scheme_levels), csts = uctx in
+      let body_qvars, _ = Vars.sort_and_universes_of_constr body in
+      let qvars =
+        Sorts.Quality.Set.fold
+          (fun q qvars ->
+            match q with
+            | Sorts.Quality.QVar q -> Sorts.QVar.Set.add q qvars
+            | Sorts.Quality.QConstant _ | Sorts.Quality.QGlobal _ -> qvars)
+          body_qvars qvars
+      in
+      let qsubst =
+        Sorts.QVar.Set.fold
+          (fun q subst -> Sorts.QVar.Map.add q quality subst)
+          qvars Sorts.QVar.Map.empty
+      in
+      let _, ind_levels = Instance.to_array u in
+      let allowed_levels =
+        Array.fold_left
+          (fun levels level -> Level.Set.add level levels)
+          (Level.Set.singleton Level.set) ind_levels
+      in
+      let add_scheme_level level graph =
+        try UGraph.add_universe level ~strict:false graph
+        with UGraph.AlreadyDeclared -> graph
+      in
+      let scheme_graph =
+        UGraph.merge_constraints (PConstraints.univs csts)
+          (Level.Set.fold add_scheme_level scheme_levels
+             (Environ.universes env))
+      in
+      let equal_allowed_level level =
+        let level_univ = Universe.make level in
+        Level.Set.fold
+          (fun allowed acc ->
+            match acc with
+            | Some _ -> acc
+            | None ->
+              let allowed_univ = Universe.make allowed in
+              if UGraph.check_eq scheme_graph level_univ allowed_univ then
+                Some allowed
+              else None)
+          allowed_levels None
+      in
+      let usubst =
+        Level.Set.fold
+          (fun level subst ->
+            if
+              Level.Map.mem level subst
+              || Level.Set.mem level allowed_levels
+            then subst
+            else
+              let target =
+                match equal_allowed_level level with
+                | Some allowed -> allowed
+                | None -> default_level
+              in
+              Level.Map.add level target subst)
+          scheme_levels usubst
+      in
+      Vars.subst_univs_level_constr (qsubst, usubst) body
+    in
+    match s with
+    | LSProp ->
+      subst_scheme_context Sorts.Quality.qsprop Level.set Level.Map.empty
+    | Level s ->
+      let v = match !motive_level with Some v -> v | None -> assert false in
+      subst_scheme_context Sorts.Quality.qtype s (Level.Map.singleton v s)
+  in
+  let packet_recinfo (mip : Declarations.one_inductive_body) =
+    assert (
+      CArray.for_all2 Int.equal mip.mind_consnrealargs mip.mind_consnrealdecls);
+    Array.mapi
+      (fun i (args, _) ->
+        let nargs = mip.mind_consnrealargs.(i) in
+        (* skip params *)
+        let args = CList.firstn nargs args in
+        CList.map
+          (fun arg ->
+            let t = RelDecl.get_type arg in
+            has_rec_hyp env mind t)
+          args)
+      mip.mind_nf_lc
+  in
+  let recinfo =
+    Array.concat
+      (Array.to_list (Array.map packet_recinfo mib.mind_packets))
+  in
+  let hasrec =
+    (* NB: if the only recursive arg is the last arg, no need for reordering *)
+    Array.exists
+      (function [] -> false | _ :: info -> List.exists (fun x -> x) info)
+      recinfo
+  in
+
+  let body =
+    if not hasrec then body
+    else begin
+    (* body := fun params P (fc : forall args/recargs, P (C args)) => ...
+
+       becomes
+
+       fun params P (fc : forall args, forall recargs, P (C args)) =>
+       body params P (fun args/recargs, fc args recargs)
+    *)
+    let open Constr in
+    let nlc = Array.length recinfo in
+    let nmotives = Array.length mib.mind_packets in
+    let paramsP, inside =
+      Term.decompose_lambda_n_assum (nparams + nmotives) body
+    in
+    let fcs, inside = Term.decompose_lambda_n nlc inside in
+    let fcs = List.rev fcs in
+
+    let body =
+      mkApp
+        ( body,
+          Array.init (nparams + nmotives)
+            (fun i -> mkRel (nlc + nparams + nmotives - i)) )
+    in
+    let body =
+      mkApp
+        ( body,
+          Array.of_list
+            (CList.map_i
+               (fun i (_, ft) ->
+                 let info = recinfo.(i) in
+                 if not (List.exists (fun x -> x) info) then mkRel (nlc - i)
+                 else
+                   let hyps, _ = Term.decompose_prod ft in
+                   let args = reorder_inside info in
+                   Term.it_mkLambda_or_LetIn
+                     (mkApp (mkRel (nlc - i + List.length hyps), args))
+                     (List.map (fun (n, t) -> RelDecl.LocalAssum (n, t)) hyps))
+               0 fcs) )
+    in
+
+    let fcs =
+      CList.map_i
+        (fun i (n, ft) ->
+          let info = recinfo.(i) in
+          let ft = reorder_outside info ft in
+          RelDecl.LocalAssum (n, ft))
+        0 fcs
+    in
+    let fcs = List.rev fcs in
+    let body =
+      let open CClosure in
+      let open RedFlags in
+      let env = Environ.push_rel_context paramsP env in
+      let env = Environ.push_rel_context fcs env in
+      norm_val (create_clos_infos betaiota env) (create_tab ()) (inject body)
+    in
+    Term.it_mkLambda_or_LetIn (Term.it_mkLambda_or_LetIn body fcs) paramsP
+    end
+  in
+  let body = project_primitive_record_scheme env (mind, ind_index) body in
+  nullary_unit_scheme env (mind, ind_index) body
+
+let with_unsafe_univs f () =
+  let flags = Global.typing_flags () in
+  Global.set_typing_flags { flags with check_eliminations = false };
+  try
+    let v = f () in
+    Global.set_typing_flags flags;
+    v
+  with e ->
+    let e = Exninfo.capture e in
+    Global.set_typing_flags flags;
+    Exninfo.iraise e
+
+module N = LeanName
+
+let sort_of_level = function
+  | LSProp -> Sorts.sprop
+  | Level u -> Sorts.sort_of_univ (Universe.make u)
+
+let univ_of_sort = function
+  | Sorts.SProp -> None
+  | Prop -> assert false
+  | Set -> Some Universe.type0
+  | Type u | GSort (_, u) | VSort (_, u) -> Some u
+
+let sort_max (s1 : Sorts.t) (s2 : Sorts.t) =
+  match (s1, s2) with
+  | SProp, SProp | Prop, Prop | Set, Set -> s1
+  | SProp, ((Prop | Set | Type _) as s) | ((Prop | Set | Type _) as s), SProp ->
+    s
+  | Prop, ((Set | Type _) as s) | ((Set | Type _) as s), Prop -> s
+  | Set, Type u | Type u, Set ->
+    Sorts.sort_of_univ (Univ.Universe.sup Univ.Universe.type0 u)
+  | Type u, Type v -> Sorts.sort_of_univ (Univ.Universe.sup u v)
+  | GSort _, _ | _, GSort _ -> assert false
+  | VSort _, _ | _, VSort _ -> assert false
+
+(** [map] goes from lean names to universes (in practice either SProp or a named
+    level) *)
+let rec to_universe map = function
+  | U.Prop -> Sorts.sprop
+  | UNamed n -> sort_of_level (N.Map.get n map)
+  | Succ u -> Sorts.super (to_universe map u)
+  | Max (a, b) -> sort_max (to_universe map a) (to_universe map b)
+  | IMax (a, b) ->
+    let ub = to_universe map b in
+    if Sorts.is_sprop ub then ub else sort_max (to_universe map a) ub
+
+let rec do_n f x n = if n = 0 then x else do_n f (f x) (n - 1)
+
+(** in lean, imax(Prop+1,l)+1 <= max(Prop+1,l+1) because:
+    - either l=Prop, so Prop+1 <= Prop+1
+    - or Prop+1 <= l so l+1 <= l+1
+
+    to simulate this, each named level becomes > Set and we compute maxes
+    accordingly *)
+
+let simplify_universe u =
+  match Universe.repr u with
+  | (l, n) :: (l', n') :: rest when Level.is_set l ->
+    if n <= n' + 1 || List.exists (fun (_, n') -> n <= n' + 1) rest then
+      List.fold_left
+        (fun u (l, n) ->
+          Universe.sup u (do_n Universe.super (Universe.make l) n))
+        (do_n Universe.super (Universe.make l') n')
+        rest
+    else u
+  | _ -> u
+
+let simplify_sort = function
+  | Sorts.Type u -> Sorts.sort_of_univ (simplify_universe u)
+  | s -> s
+
+(* Return the biggest [n] such that [Set+n <= u]. Assumes a simplified
+   [u] as above. *)
+let max_increment u =
+  match Universe.repr u with
+  | (l, n) :: rest when Level.is_set l -> n
+  | l -> List.fold_left (fun m (_, n) -> max m (n + 1)) 0 l
+
+let to_universe map u =
+  let u = to_universe map u in
+  simplify_sort u
+
+(** Map from [n] to the global level standing for [Set+n] (not including n=0).
+*)
+let sets : Level.t Int.Map.t ref =
+  Summary.ref ~name:"lean-set-surrogates" Int.Map.empty
+
+let expression_hash expr = Hashtbl.hash_param 16 128 expr
+
+let translation_hash (expr, depth, context) =
+  Hashtbl.hash_param 16 128 (expression_hash expr, depth, context)
+
+module TranslationCache = Hashtbl.Make (struct
+  type t = LeanExpr.expr * int * int list
+
+  let equal (expr1, depth1, context1) (expr2, depth2, context2) =
+    expr1 == expr2 && Int.equal depth1 depth2
+    && List.equal Int.equal context1 context2
+  let hash = translation_hash
+end)
+
+module ExpressionCache = Hashtbl.Make (struct
+  type t = LeanExpr.expr
+
+  let equal = ( == )
+  let hash = expression_hash
+end)
+
+module PhysicalConstrCache = Hashtbl.Make (struct
+  type t = Constr.t
+
+  let equal = ( == )
+  let hash term = Hashtbl.hash_param 1 1 term
+end)
+
+module ContextCache = Hashtbl.Make (struct
+  type t = Constr.rel_declaration
+
+  let declaration_equal declaration1 declaration2 =
+    match declaration1, declaration2 with
+    | RelDecl.LocalAssum (annot1, ty1), RelDecl.LocalAssum (annot2, ty2) ->
+      Sorts.relevance_equal annot1.Context.binder_relevance
+        annot2.Context.binder_relevance
+      && Constr.equal ty1 ty2
+    | RelDecl.LocalDef (annot1, body1, ty1),
+      RelDecl.LocalDef (annot2, body2, ty2) ->
+      Sorts.relevance_equal annot1.Context.binder_relevance
+        annot2.Context.binder_relevance
+      && Constr.equal body1 body2
+      && Constr.equal ty1 ty2
+    | RelDecl.LocalAssum _, RelDecl.LocalDef _
+    | RelDecl.LocalDef _, RelDecl.LocalAssum _ -> false
+
+  let equal = declaration_equal
+
+  let hash declaration =
+    match declaration with
+    | RelDecl.LocalAssum (annot, ty) ->
+      Hashtbl.hash_param 4 16
+        (0, annot.Context.binder_relevance, ty)
+    | RelDecl.LocalDef (annot, body, ty) ->
+      Hashtbl.hash_param 4 16
+        (1, annot.Context.binder_relevance, body, ty)
+end)
+
+type uconv = {
+  map : extended_level N.Map.t;  (** Map from lean names to Coq universes *)
+  levels : Level.t Universe.Map.t;
+      (** Map from algebraic universes to levels (only levels representing an
+          algebraic) *)
+  direct : Level.Set.t;
+      (** Named Lean levels that occur directly in universe instances. Levels
+          that only occur below an algebraic successor do not need to be exposed
+          as parameters of the translated declaration. *)
+  graph : UGraph.t;
+  translations : Constr.t TranslationCache.t;
+  context_free_translations : Constr.t ExpressionCache.t;
+  context_free_expressions : bool ExpressionCache.t;
+  loose_bound_ranges : int ExpressionCache.t;
+  contexts : int ContextCache.t;
+  next_context : int ref;
+  translation_calls : int ref;
+  translation_hits : int ref;
+  translation_misses : int ref;
+}
+
+let lean_id = Id.of_string "Lean"
+
+let { Goptions.get = lean_fancy_univs } =
+  Goptions.declare_bool_option_and_ref
+    ~key:[ "Lean"; "Fancy"; "Universes" ]
+    ~value:true ()
+
+let level_of_universe_core u =
+  let u =
+    List.map
+      (fun (l, n) ->
+        let open Level in
+        if is_set l then "Set+" ^ string_of_int n
+        else
+          match name l with
+          | None -> assert false
+          | Some name ->
+            let d, s, i = UGlobal.repr name in
+            let d = DirPath.repr d in
+            (match (d, i) with
+            | [ name; l ], 0 when Id.equal l lean_id ->
+              Id.to_string name ^ if n = 0 then "" else "+" ^ string_of_int n
+            | _ -> to_string l))
+      u
+  in
+  let s = (match u with [ _ ] -> "" | _ -> "max__") ^ String.concat "_" u in
+  Level.(
+    make (UGlobal.make (DirPath.make [ Id.of_string_soft s; lean_id ]) "" 0))
+
+let level_of_universe u =
+  let u = Universe.repr u in
+  level_of_universe_core u
+
+let level_of_universe u =
+  if lean_fancy_univs () then level_of_universe u else UnivGen.fresh_level ()
+
+let update_graph (l, u) (l', u') graph =
+  if UGraph.check_leq graph (Universe.super u) u' then
+    UGraph.enforce_constraint (l, Lt, l') graph
+  else if UGraph.check_leq graph (Universe.super u') u then
+    UGraph.enforce_constraint (l', Lt, l) graph
+  else if UGraph.check_leq graph u u' then
+    UGraph.enforce_constraint (l, Le, l') graph
+  else if UGraph.check_leq graph u' u then
+    UGraph.enforce_constraint (l', Le, l) graph
+  else graph
+
+let is_sets u =
+  match Universe.repr u with
+  | [ (u, n) ] -> if Level.is_set u then Some n else None
+  | _ -> None
+
+(** Find or add a global level for Set+n *)
+let rec level_of_sets uconv n =
+  if n = 0 then (uconv, Level.set)
+  else
+    try (uconv, Int.Map.find n !sets)
+    with Not_found ->
+      let uconv, p = level_of_sets uconv (n - 1) in
+      let l =
+        if lean_fancy_univs () then level_of_universe_core [ (Level.set, n) ]
+        else UnivGen.fresh_level ()
+      in
+      Global.push_context_set
+        (Level.Set.singleton l, UnivConstraints.singleton (p, Lt, l));
+      sets := Int.Map.add n l !sets;
+      let graph = add_universe l ~lbound:p uconv.graph in
+      ({ uconv with graph }, l)
+
+let to_univ_level u uconv =
+  match Universe.level u with
+  | Some l -> ({ uconv with direct = Level.Set.add l uconv.direct }, l)
+  | None ->
+    (match is_sets u with
+    | Some n -> level_of_sets uconv n
+    | None ->
+      (match Universe.Map.find_opt u uconv.levels with
+      | Some l -> (uconv, l)
+      | None ->
+        let uconv, mset = level_of_sets uconv (max_increment u) in
+        let l = level_of_universe u in
+        let graph = add_universe l ~lbound:mset uconv.graph in
+        let graph =
+          Universe.Map.fold
+            (fun u' l' graph -> update_graph (l, u) (l', u') graph)
+            uconv.levels graph
+        in
+        let graph =
+          N.Map.fold
+            (fun _ l' graph ->
+              match l' with
+              | LSProp -> graph
+              | Level l' -> update_graph (l, u) (l', Universe.make l') graph)
+            uconv.map graph
+        in
+        let uconv =
+          { uconv with levels = Universe.Map.add u l uconv.levels; graph }
+        in
+        (uconv, l)))
+
+(** Definitional height, used for unfolding heuristics.
+
+    The definitional height is the longest sequence of constant unfoldings until
+    we get a term without definitions (recursors don't count). *)
+
+let height_cache = Summary.ref ~name:"lean-heights" N.Map.empty
+
+(** Lean names whose translated definitions are non-forcing structural
+    eliminators.  Rocq's conversion oracle should expose these before it tries
+    to reduce their neutral arguments. *)
+let expand_head_cache = Summary.ref ~name:"lean-expand-heads" N.Set.empty
+
+let rec expands_at_head = function
+  | Const (constant, _) -> N.Set.mem constant !expand_head_cache
+  | App (function_, _) -> expands_at_head function_
+  | Lam (_, _, _, body) -> expands_at_head body
+  | Let { rest; _ } -> expands_at_head rest
+  | Bound _ | Sort _ | Pi _ | Proj _ | Nat _ | String _ -> false
+
+let rec height = function
+  | Const (c, _) ->
+    (try N.Map.find c !height_cache + 1
+     with Not_found ->
+       (* non constant, recursor, or just skipped *)
+       0)
+  | Bound _ | Sort _ -> 0
+  | Lam (_, _, a, b) | Pi (_, _, a, b) | App (a, b) -> max (height a) (height b)
+  | Let { name = _; ty; v; rest } -> max (height ty) (max (height v) (height rest))
+  | Proj (_, _, c) -> height c
+  | Nat _ | String _ -> 0
+
+let height n body =
+  match N.Map.find_opt n !height_cache with
+  | Some h -> h
+  | None ->
+    let h = height body in
+    height_cache := N.Map.add n h !height_cache;
+    h
+
+type instantiation = {
+  ref : GlobRef.t;
+  algs : Universe.t list;
+      (** Full Rocq universe instance as algebraic universes over the Lean
+          universe parameters. *)
+}
+
+let universe_var i = Universe.make (Level.var i)
+let identity_algs n = List.init n universe_var
+
+let non_sprop_univ_count nunivs i =
+  let rec loop j acc =
+    if j = nunivs then acc
+    else
+      let acc = if i land (1 lsl j) = 0 then acc + 1 else acc in
+      loop (j + 1) acc
+  in
+  loop 0 0
+
+(*
+Lean classifies inductives in the following way:
+- inductive landing in always >Prop (even when instantiated to all Prop) -> never squashed
+- inductive which has Prop instantiation:
+  + no constructor -> never squashed
+  + multi constructor -> always squashed
+  + 1 constructor
+    * no non param arguments
+      -> not squashed, special reduction
+      typically [eq]
+    * all arguments appear in the output type
+      -> not squashed, basic reduction
+      no real world examples? eg [Inductive foo : nat -> Prop := bar : forall x, foo x.]
+      2019 "type theory of lean" implies that there should be special reduction
+      but testing says otherwise
+    * some arguments don't appear in the output type, but are Prop or recursive
+      -> not squashed, basic reduction
+      typically [Acc], [and]
+    * some non-Prop non-recursive arguments (for some instantiation) don't appear in the output type
+      -> squashed
+      typically [exists]
+
+Additionally, the recursor is always dependent (since Lean 4)
+(this implem detail isn't in the TTofLean paper)
+Special reduction also seems restricted to always-Prop types.
+
+NB: in practice (all stdlib and mathlib) the target universe is available without reduction
+(ie syntactic arity) even though the system doesn't require it.
+so we can just look at it directly (we don't want to implement a reduction system)
+Update: now we have correct Coq envs so we could reduce the Coq term?
+
+Difference with Coq:
+- a non-Prop instantiation of possibly Prop types will never be squashed
+- non squashed possibly-Prop types at a Prop instantiation are squashed
+  (unless empty or uip branch)
+- we need uip for the special reduction.
+  TTofLean sounds like we need an encoding with primitive records
+  but testing indicates otherwise (all args in output type case).
+- we will always need unsafe flags for [Acc], and possibly for [and].
+
+Instantiating the type with all-Prop may side-effect instantiate
+some other globals with Prop that won't actually be used
+(assuming the inductive is not used with all-Prop)
+This probably doesn't matter much, also if we start using upfront
+instantiations it won't matter at all.
+
+Primitive records:
+Lean autodetects all record-capable types as having primitive
+projections, and also autogenerates the eliminators.
+Squashed Props with 1 ctor have primitive projections up to the first non-Prop field.
+*)
+
+type squashy = {
+  maybe_prop : bool;  (** used for optim, not fundamental *)
+  always_prop : bool;
+      (** controls special reduction, but we just let Coq do its thing for that
+      *)
+  lean_squashes : bool;
+      (** Self descriptive. We handle necessity of unsafe flags
+          per-instantiation. *)
+}
+
+let noprop = { maybe_prop = false; always_prop = false; lean_squashes = false }
+
+let pp_squashy { maybe_prop; always_prop; lean_squashes } =
+  let open Pp in
+  (if maybe_prop then
+     if always_prop then str "is always Prop" else str "may be Prop"
+   else str "is never Prop")
+  ++ spc ()
+  ++
+  if lean_squashes then str "and is squashed by Lean"
+  else str "and is not squashed by Lean"
+
+let coq_squashes graph (entry : Entries.mutual_inductive_entry) =
+  let env = Global.env () in
+  let env = Environ.set_universes graph env in
+  let ind =
+    match entry.mind_entry_inds with [ ind ] -> ind | _ -> assert false
+  in
+  let params = entry.mind_entry_params in
+  let ty = ind.mind_entry_arity in
+  let env_params = Environ.push_rel_context params env in
+  let _, s = Reduction.dest_arity env_params ty in
+  (* TODO merge with uip branch *)
+  if not (Sorts.is_sprop s) then false
+  else
+    match ind.mind_entry_lc with
+    | [] -> false
+    | _ :: _ :: _ -> true
+    | [ c ] -> (match Constr.kind c with Rel _ | App _ -> false | _ -> true)
+
+let with_env_evm rels uconv f x =
+  (* In non upfront mode,
+     because we interleave defining new constants as we encounter them,
+     pushing rels and handling local universes,
+     we pass just the rel_context_val and merge it with the global env and the uconv here *)
+  let env = Global.env () in
+  let env = Environ.set_rel_context_val rels env in
+  let env = Environ.set_universes uconv.graph env in
+  let evd = Evd.from_env env in
+  f env evd x
+
+let annotation_trace_count = ref 0
+
+let time_translation_operation label f =
+  if Option.is_empty (Sys.getenv_opt "LEAN_IMPORT_TRANSLATION_TIMINGS") then f ()
+  else
+    let started = Sys.time () in
+    let before = Gc.quick_stat () in
+    Fun.protect f ~finally:(fun () ->
+      let elapsed = Sys.time () -. started in
+      if elapsed >= 0.01 then
+        let after = Gc.quick_stat () in
+        Printf.eprintf
+          "[translation timing] %s cpu=%.3f duration=%.3f major=%d\n%!"
+          label (Sys.time ()) elapsed
+          (after.Gc.major_collections - before.Gc.major_collections))
+
+let to_annot rels n t uconv =
+  incr annotation_trace_count;
+  let trace = Option.has_some (Sys.getenv_opt "LEAN_IMPORT_ANNOT_TRACE") in
+  let () =
+    if trace then
+      Printf.eprintf "[annotation start] %d %s\n%!" !annotation_trace_count
+        (N.to_lean_string n)
+  in
+  let r =
+    time_translation_operation "annotation" (fun () ->
+      with_env_evm rels uconv
+        (fun env evd r ->
+          let r = Retyping.relevance_of_type env evd r in
+          EConstr.Unsafe.to_relevance r)
+        (EConstr.of_constr t))
+  in
+  let () =
+    if trace then
+      Printf.eprintf "[annotation done] %d %s\n%!" !annotation_trace_count
+        (N.to_lean_string n)
+  in
+  Context.make_annot (N.to_name n) r
+
+(* bit n of [int_of_univs univs] is 1 iff [List.nth univs n] is SProp *)
+let int_of_univs =
+  let rec aux i acc = function
+    | [] -> (i, acc)
+    | u :: rest ->
+      (match univ_of_sort u with
+      | None -> aux ((i * 2) + 1) acc rest
+      | Some u -> aux (i * 2) (u :: acc) rest)
+  in
+  fun l -> aux 0 [] (List.rev l)
+
+let univ_of_name u =
+  if lean_fancy_univs () then
+    let u = DirPath.make [ N.to_id u; lean_id ] in
+    Level.(make (UGlobal.make u "" 0))
+  else UnivGen.fresh_level ()
+
+let start_uconv univs i =
+  let uconv =
+    {
+      graph = Global.universes ();
+      map = N.Map.empty;
+      levels = Universe.Map.empty;
+      direct = Level.Set.empty;
+      translations = TranslationCache.create 251;
+      context_free_translations = ExpressionCache.create 251;
+      context_free_expressions = ExpressionCache.create 251;
+      loose_bound_ranges = ExpressionCache.create 251;
+      contexts = ContextCache.create 251;
+      next_context = ref 0;
+      translation_calls = ref 0;
+      translation_hits = ref 0;
+      translation_misses = ref 0;
+    }
+  in
+  let uconv, set1 = level_of_sets uconv 1 in
+  let rec aux uconv i = function
+    | [] ->
+      assert (i = 0);
+      uconv
+    | u :: univs ->
+      let map, graph =
+        if i mod 2 = 0 then
+          let v = univ_of_name u in
+          ( N.Map.add u (Level v) uconv.map,
+            add_universe v ~lbound:set1 uconv.graph )
+        else (N.Map.add u LSProp uconv.map, uconv.graph)
+      in
+      aux { uconv with map; graph } (i / 2) univs
+  in
+  aux uconv i univs
+
+let univ_entry_gen ?(drop_global_lower_bounds = false)
+    { map; levels; direct; graph } ounivs =
+  let original_pairs =
+    CList.map_filter
+      (fun u ->
+        let v = N.Map.get u map in
+        match v with LSProp -> None | Level v -> Some (u, v))
+      ounivs
+  in
+  let original_levels = List.map snd original_pairs in
+  let original_instance =
+    Instance.of_array ([||], Array.of_list original_levels)
+  in
+  let original_subst = snd (make_instance_subst original_instance) in
+  let direct_pairs =
+    List.filter (fun (_, l) -> Level.Set.mem l direct) original_pairs
+  in
+  let direct_set =
+    List.fold_left
+      (fun kept (_, l) -> Level.Set.add l kept)
+      Level.Set.empty direct_pairs
+  in
+  let extra_pairs =
+    Universe.Map.fold (fun alg l acc -> (alg, l) :: acc) levels [] |> List.rev
+  in
+  let decl_pairs =
+    List.map (fun (u, l) -> (Some u, Universe.make l, l)) direct_pairs
+    @ List.map (fun (alg, l) -> (None, alg, l)) extra_pairs
+  in
+  let univs = List.map (fun (_, _, l) -> l) decl_pairs in
+  let uset =
+    List.fold_left (fun kept l -> Level.Set.add l kept) Level.Set.empty univs
+  in
+  let kept = Level.Set.add Level.set uset in
+  let kept = Int.Map.fold (fun _ -> Level.Set.add) !sets kept in
+  let csts = UGraph.constraints_for ~kept graph in
+  let csts =
+    UnivConstraints.filter
+      (fun (a, _, b) ->
+        if drop_global_lower_bounds then
+          (Level.Set.mem a uset && Level.Set.mem b uset)
+          || Level.Set.mem a direct_set || Level.Set.mem b direct_set
+        else Level.Set.mem a uset || Level.Set.mem b uset)
+      csts
+  in
+  let unames =
+    {
+      quals = [||];
+      univs =
+        Array.of_list
+          (List.map
+             (function
+               | Some u, _, _ -> N.to_name u
+               | None, _, l -> Name (Id.of_string_soft (Level.to_string l)))
+             decl_pairs);
+    }
+  in
+  let univs_inst = Instance.of_array ([||], Array.of_list univs) in
+  let uctx = UContext.make unames (univs_inst, PConstraints.of_univs csts) in
+  let algs =
+    List.map
+      (fun (_, alg, _) ->
+        simplify_universe (subst_univs_level_universe original_subst alg))
+      decl_pairs
+  in
+  (uctx, algs)
+
+let univ_entry a b =
+  let uctx, algs = univ_entry_gen a b in
+  ((UState.Polymorphic_entry uctx, UnivNames.empty_binders), algs)
+
+(* TODO restrict univs (eg [has_add : Sort (u+1) -> Sort(u+1)] can
+   drop the [u] and keep only the replacement for [u+1]??
+
+   Preserve algebraics in codomain position? *)
+
+let name_for_core n i =
+  if i = 0 then N.to_id n
+  else Id.of_string (N.to_coq_string n ^ "_inst" ^ string_of_int i)
+
+(* NB collisions for constructors/recursors are still possible but
+   should be rare *)
+let name_for n i =
+  let base = name_for_core n i in
+  if not (Global.exists_objlabel base) then base
+  else
+    (* prevent resetting the number *)
+    let base = if i = 0 then base else Id.of_string (Id.to_string base ^ "_") in
+    Namegen.next_global_ident_away (Global.safe_env ()) base Id.Set.empty
+
+let get_predeclared_ind indn n i =
+  if N.equal n (N.append_list N.anon indn) then
+    let ind_name = name_for_core n i in
+    let reg = "lean." ^ Id.to_string ind_name in
+    match Rocqlib.lib_ref reg with
+    | IndRef (ind, 0) -> Some (ind_name, ind)
+    | _ ->
+      CErrors.user_err
+        Pp.(
+          str "Bad registration for "
+          ++ str reg
+          ++ str " expected an inductive.")
+    | exception _ -> None
+  else None
+
+(** Like [get_predeclared_ind] but looks for an inductive predeclared as a
+    definition (using a ".cumul" suffix on the registration). Returns the
+    ConstRef of the predeclared definition. *)
+let get_predeclared_ind_as_def indn n i =
+  if N.equal n (N.append_list N.anon indn) then
+    let ind_name = name_for_core n i in
+    let reg = "lean." ^ Id.to_string ind_name ^ ".cumul" in
+    match Rocqlib.lib_ref reg with
+    | ConstRef c -> Some (ind_name, c)
+    | _ ->
+      CErrors.user_err
+        Pp.(
+          str "Bad registration for "
+          ++ str reg
+          ++ str " expected a constant.")
+    | exception _ -> None
+  else None
+
+let get_predeclared_def defn n i =
+  if N.equal n (N.append_list N.anon defn) then
+    let def_name = name_for_core n i in
+    let reg = "lean." ^ Id.to_string def_name in
+    match Rocqlib.lib_ref reg with
+    | ConstRef c -> Some (def_name, c)
+    | _ ->
+      CErrors.user_err
+        Pp.(
+          str "Bad registration for " ++ str reg ++ str " expected a constant.")
+    | exception _ -> None
+  else None
+
+type predeclared_ind_kind =
+  | Eq
+  | False
+  | Decidable
+  | Bool
+  | Nat
+  | Nat_le
+  | Or
+  | And
+  | Fin
+  | UInt32
+  | BitVec
+  | Char
+type predeclared_def_kind =
+  | UInt32_size
+  | Add
+  | Mult
+  | Pow
+  | Pred
+  | Sub
+  | Beq
+  | Ble
+  | Blt
+  | Nat_decEq
+  | Nat_isValidChar
+  | UInt32_toNat
+  | UInt32_isValidChar
+type predeclared_ind_as_def_kind = ULift_cumul
+
+let get_predeclared_cnames (k : predeclared_ind_kind) n =
+  match k with
+  | Eq -> [ N.append n "refl" ]
+  | False -> []
+  | Decidable -> [ N.append n "isFalse"; N.append n "isTrue" ]
+  | Bool -> [ N.append n "false"; N.append n "true" ]
+  | Nat -> [ N.append n "zero"; N.append n "succ" ]
+  | Nat_le -> [ N.append n "refl"; N.append n "step" ]
+  | Or -> [ N.append n "inl"; N.append n "inr" ]
+  | And -> [ N.append n "intro" ]
+  | Fin -> [ N.append n "mk" ]
+  | UInt32 -> [ N.append n "ofBitVec" ]
+  | BitVec -> [ N.append n "ofFin" ]
+  | Char -> [ N.append n "mk" ]
+
+let get_predeclared_ind_any n i =
+  List.filter_map
+    (fun (indk, indh) ->
+      get_predeclared_ind indh n i |> Option.map (fun x -> (indk, indh, x)))
+    [
+      (Eq, [ "Eq" ]);
+      (False, [ "False" ]);
+      (Decidable, [ "Decidable" ]);
+      (Bool, [ "Bool" ]);
+      (Nat, [ "Nat" ]);
+      (Nat_le, [ "Nat"; "le" ]);
+      (Or, [ "Or" ]);
+      (And, [ "And" ]);
+      (Fin, [ "Fin" ]);
+      (UInt32, [ "UInt32" ]);
+      (BitVec, [ "BitVec" ]);
+      (Char, [ "Char" ]);
+    ]
+
+let get_predeclared_ind_some n i =
+  match get_predeclared_ind_any n i with
+  | [] -> None
+  | [ x ] -> Some x
+  | _ :: _ :: _ ->
+    CErrors.user_err
+      Pp.(str "Multiple predeclared inductive types for " ++ N.pp n)
+
+let get_predeclared_ind_as_def_any n i =
+  List.filter_map
+    (fun (k, h) ->
+      get_predeclared_ind_as_def h n i |> Option.map (fun x -> (k, h, x)))
+    [
+      (ULift_cumul, [ "ULift" ]);
+    ]
+
+let get_predeclared_ind_as_def_some n i =
+  match get_predeclared_ind_as_def_any n i with
+  | [] -> None
+  | [ x ] -> Some x
+  | _ :: _ :: _ ->
+    CErrors.user_err
+      Pp.(str "Multiple predeclared ind-as-def constants for " ++ N.pp n)
+
+let get_predeclared_def_any n i =
+  List.filter_map
+    (fun (defk, defh) ->
+      get_predeclared_def defh n i |> Option.map (fun x -> (defk, defh, x)))
+    [
+      (UInt32_size, [ "UInt32"; "size" ]);
+      (Add, [ "Nat"; "add" ]);
+      (Mult, [ "Nat"; "mul" ]);
+      (Pow, [ "Nat" ; "pow" ]);
+      (Pred, [ "Nat"; "pred" ]);
+      (Sub, [ "Nat"; "sub" ]);
+      (Beq, [ "Nat"; "beq" ]);
+      (Ble, [ "Nat"; "ble" ]);
+      (Blt, [ "Nat"; "blt" ]);
+      (Nat_decEq, [ "Nat"; "decEq" ]);
+      (Nat_isValidChar, [ "Nat"; "isValidChar" ]);
+      (UInt32_toNat, [ "UInt32"; "toNat" ]);
+      (UInt32_isValidChar, [ "UInt32"; "isValidChar" ]);
+    ]
+
+let get_predeclared_def_some n i =
+  match get_predeclared_def_any n i with
+  | [] -> None
+  | [ x ] -> Some x
+  | _ :: _ :: _ ->
+    CErrors.user_err Pp.(str "Multiple predeclared constants for " ++ N.pp n)
+
+(* let get_predeclared_eq n i = get_predeclared_ind "eq" n i *)
+let mk_char_prim = "Char.mk.reflective_prim"
+
+(*
+Register Nat_isValidChar as lean.Nat_isValidChar.
+Register reflective_Char_mk_prim as lean.Char.mk.reflective_prim. *)
+(** For each name, the instantiation with all non-sprop univs should always be
+    declared, but the instantiations with SProp may be lazily declared. We
+    expect small instance lengths (experimentally at most 4 in the stdlib) so we
+    represent instantiations as bit fields, bit n is 1 iff universe n is
+    instantiated by SProp. *)
+let declared : instantiation Int.Map.t N.Map.t ref =
+  Summary.ref ~name:"lean-declared-instances" N.Map.empty
+
+let entries : entry N.Map.t ref = Summary.ref ~name:"lean-entries" N.Map.empty
+
+(* A constructor may be the first reference to a new universe instance of its
+   inductive. This derived index is rebuilt from [entries] on checkpoint load. *)
+let constructor_owners : N.t N.Map.t ref =
+  Summary.ref ~name:"lean-constructor-owners" N.Map.empty
+
+let index_constructors (ind : ind) owners =
+  List.fold_left
+    (fun owners (name, _) -> N.Map.add name ind.name owners)
+    owners ind.ctors
+
+(** Every member points to its complete mutual block.  Keeping this separately
+    from [entries] is necessary when a later SProp universe instance is
+    requested: such an instance must be declared as the same mutual block, not
+    as an isolated inductive. *)
+let mutual_entries : ind list N.Map.t ref =
+  Summary.ref ~name:"lean-mutual-entries" N.Map.empty
+
+let squash_info : squashy N.Map.t ref =
+  Summary.ref ~name:"lean-squash-info" N.Map.empty
+
+type translated_mutual_inductive = {
+  source_inductive : ind;
+  translated_arity : Constr.t;
+  constructor_names : N.t list;
+  constructor_types : Constr.t list;
+}
+
+let mutual_group_index names name =
+  let rec find i = function
+    | [] -> None
+    | name' :: names ->
+      if N.equal name name' then Some i else find (i + 1) names
+  in
+  find 0 names
+
+let remap_mutual_constructor ~nparams ~ntypes ~group_names ~current =
+  let rec remap depth = function
+    | Bound k when k = nparams + depth ->
+      Bound (nparams + (ntypes - current - 1) + depth)
+    | Const (name, univs) ->
+      (match mutual_group_index group_names name with
+      | Some target -> Bound (nparams + (ntypes - target - 1) + depth)
+      | None -> Const (name, univs))
+    | (Bound _ | Sort _ | Nat _ | String _) as expr -> expr
+    | App (f, x) -> App (remap depth f, remap depth x)
+    | Let { name; ty; v; rest } ->
+      Let
+        {
+          name;
+          ty = remap depth ty;
+          v = remap depth v;
+          rest = remap (depth + 1) rest;
+        }
+    | Lam (bk, name, ty, body) ->
+      Lam (bk, name, remap depth ty, remap (depth + 1) body)
+    | Pi (bk, name, ty, body) ->
+      Pi (bk, name, remap depth ty, remap (depth + 1) body)
+    | Proj (name, field, c) -> Proj (name, field, remap depth c)
+  in
+  remap 0
+
+type projection_alias = {
+  projection_inst : instantiation;
+  projection_record : N.t;
+  projection_ind : Names.inductive;
+  projection_field : int;
+}
+
+let projection_aliases : projection_alias Int.Map.t N.Map.t ref =
+  Summary.ref ~name:"lean-projection-aliases" N.Map.empty
+
+let add_projection_alias name instance alias =
+  projection_aliases :=
+    N.Map.update name
+      (function
+        | None -> Some (Int.Map.singleton instance alias)
+        | Some aliases -> Some (Int.Map.add instance alias aliases))
+      !projection_aliases
+
+let find_projection_alias name instance =
+  Option.bind (N.Map.find_opt name !projection_aliases) (fun aliases ->
+      Int.Map.find_opt instance aliases)
+
+let find_projection_alias_for_universes uconv name universes =
+  let sorts = List.map (to_universe uconv.map) universes in
+  let instance, _ = int_of_univs sorts in
+  find_projection_alias name instance
+
+let rec is_projection_wrapper record field = function
+  | Lam (_, _, _, body) -> is_projection_wrapper record field body
+  | Proj (projected_record, projected_field, Bound 0) ->
+    N.equal record projected_record && Int.equal field projected_field
+  | _ -> false
+
+let collect_projection_aliases ~record_name ~record_ind ~algs projections
+    field_names =
+  let rec collect field projections names aliases =
+    match projections, names with
+    | [], [] -> List.rev aliases
+    | projection :: projections, name :: names ->
+      let aliases =
+        match name, projection with
+        | Some name, { Structures.Structure.proj_body = Some constant; _ } ->
+          ( name,
+            {
+              projection_inst = { ref = GlobRef.ConstRef constant; algs };
+              projection_record = record_name;
+              projection_ind = record_ind;
+              projection_field = field;
+            } )
+          :: aliases
+        | _ -> aliases
+      in
+      collect (field + 1) projections names aliases
+    | _ ->
+      CErrors.user_err
+        Pp.(str "Primitive-record fields and projections differ")
+  in
+  collect 0 projections field_names []
+
+let add_declared n i inst =
+  declared :=
+    N.Map.update n
+      (function
+        | None -> Some (Int.Map.singleton i inst)
+        | Some m -> Some (Int.Map.add i inst m))
+      !declared
+
+let to_univ_level' u uconv =
+  match to_universe uconv.map u with
+  | SProp -> (uconv, LSProp)
+  | Type u | GSort (_, u) | VSort (_, u) ->
+    let uconv, u = to_univ_level u uconv in
+    (uconv, Level u)
+  | Set -> (uconv, Level Level.set)
+  | Prop -> assert false
+
+let empty_env = Environ.empty_rel_context_val
+let default_proj_id = Id.of_string "default_proj_id"
+
+type error_mode = Skip | Stop | Fail
+
+let { Goptions.get = error_mode } =
+  let print = function Skip -> "Skip" | Stop -> "Stop" | Fail -> "Fail" in
+  let interp = function
+    | "Skip" -> Skip
+    | "Stop" -> Stop
+    | "Fail" -> Fail
+    | s ->
+      CErrors.user_err Pp.(str "Unknown error mode " ++ qstring s ++ str ".")
+  in
+  Goptions.declare_interpreted_string_option_and_ref ~stage:Interp
+    ~key:[ "Lean"; "Error"; "Mode" ]
+    ~value:Fail interp print ()
+
+exception MissingQuot
+
+let { Goptions.get = skip_missing_quot } =
+  Goptions.declare_bool_option_and_ref ~stage:Interp
+    ~key:[ "Lean"; "Skip"; "Missing"; "Quotient" ]
+    ~value:true ()
+
+let error_mode = function
+  | MissingQuot when skip_missing_quot () -> Skip
+  | _ -> error_mode ()
+
+let registered_ref key =
+  Constr.mkRef (Rocqlib.lib_ref key, UVars.Instance.empty)
+
+let rec positive_int i =
+  assert (Z.lt Z.zero i);
+  if Z.equal i Z.one then registered_ref "num.pos.xH"
+  else
+    let constructor =
+      if Z.equal (Z.rem i (Z.of_int 2)) Z.zero then "num.pos.xO"
+      else "num.pos.xI"
+    in
+    Constr.mkApp
+      (registered_ref constructor, [| positive_int (Z.div i (Z.of_int 2)) |])
+
+let n_int i =
+  assert (Z.leq Z.zero i);
+  if Z.equal i Z.zero then registered_ref "num.N.N0"
+  else
+    Constr.mkApp (registered_ref "num.N.Npos", [| positive_int i |])
+
+let max_eager_nat_int = Z.of_string "5000"
+
+let nat_int nat_of_n eager_nat_of_n i =
+  assert (Z.leq Z.zero i);
+  let decoder =
+    if Z.leq i max_eager_nat_int then eager_nat_of_n else nat_of_n
+  in
+  Constr.mkApp (decoder, [| n_int i |])
+
+(* Decode a UTF-8 string into a list of valid codepoints, with error reporting for bad characters *)
+(* let string_to_codepoints s =
+  (* Create a UTF-8 decoder for the input string *)
+  let decoder = Uutf.decoder ~encoding:`UTF_8 (`String s) in
+
+  (* Define the condition for filtering codepoints *)
+  let is_valid_codepoint n = n < 0xd800 || (0xdfff < n && n < 0x110000) in
+
+  (* Decode the string and collect valid codepoints *)
+  let rec collect_codepoints acc =
+    match Uutf.decode decoder with
+    | `Uchar u when is_valid_codepoint (Uchar.to_int u) ->
+      collect_codepoints (Uchar.to_int u :: acc)
+    | `Uchar u when Uchar.to_int u >= 0x110000 ->
+      (* Raise an exception with the problematic character *)
+      let bad_char = Printf.sprintf "U+%04X" (Uchar.to_int u) in
+      failwith (Printf.sprintf "Invalid codepoint (>= 0x110000): %s" bad_char)
+    | `Uchar u when Uchar.to_int u >= 0xd800 && 0xdfff >= Uchar.to_int u ->
+      (* Raise an exception with the problematic character *)
+      let bad_char = Printf.sprintf "U+%04X" (Uchar.to_int u) in
+      failwith
+        (Printf.sprintf "Invalid codepoint (u >= 0xd800 && 0xdfff >= u): %s"
+           bad_char)
+    | `Uchar _ -> assert false
+    | `End -> List.rev acc
+    | `Malformed s ->
+      (* Handle malformed UTF-8 sequences *)
+      failwith (Printf.sprintf "Malformed UTF-8 sequence: %S" s)
+    | `Await -> assert false (* This case should not occur for a string input *)
+  in
+  collect_codepoints [] *)
+
+let string_to_codepoints str =
+  let rec decode_utf8 s pos acc =
+    if pos >= String.length s then List.rev acc
+    else
+      let c = Char.code (String.get s pos) in
+      let n =
+        if c < 0x80 then (1, c)
+        else if c < 0xE0 then (2, c land 0x1F)
+        else if c < 0xF0 then (3, c land 0x0F)
+        else (4, c land 0x07)
+      in
+      let bytes, value = n in
+      let code_point = ref value in
+      for i = 1 to bytes - 1 do
+        let next_byte = Char.code (String.get s (pos + i)) in
+        code_point := (!code_point lsl 6) lor (next_byte land 0x3F)
+      done;
+      decode_utf8 s (pos + bytes) (!code_point :: acc)
+  in
+  decode_utf8 str 0 []
+
+let check_valid_codepoints cs =
+  List.map
+    (fun c ->
+      if c < 0xd800 || (0xdfff < c && c < 0x110000) then c
+      else
+        let bad_char = Printf.sprintf "U+%04X" c in
+        CErrors.user_err
+          Pp.(str (Printf.sprintf "Invalid codepoint: %s" bad_char)))
+    cs
+
+let mk_char mkChar (c : int) =
+  Constr.(mkApp (mkChar, [| mkInt (Uint63.of_int c) |]))
+
+let mk_list list uinst ty l =
+  let cNil = Constr.(mkApp (mkConstructU ((list, 1), uinst), [| ty |])) in
+  let cCons = Constr.mkConstructU ((list, 2), uinst) in
+  let rec mk_list_rec l =
+    match l with
+    | [] -> cNil
+    | hd :: tl -> Constr.mkApp (cCons, [| ty; hd; mk_list_rec tl |])
+  in
+  mk_list_rec l
+
+let mk_string char list char_uinst mkChar string_of_chars s =
+  let codepoints =
+    try check_valid_codepoints (string_to_codepoints s)
+    with Failure msg as exn ->
+      let _, info = Exninfo.capture exn in
+      CErrors.user_err ~info Pp.(str msg)
+  in
+  let chars = List.map (mk_char mkChar) codepoints in
+  let ls = mk_list list char_uinst char chars in
+  Constr.mkApp (string_of_chars, [| ls |])
+
+(* [c] has type [indu] applied to [args] *)
+let unfold_proj_case env evd ~field ~indu ~mib ~mip ~args c =
+  let ind = fst indu in
+  let npar = mib.Declarations.mind_nparams in
+  let ntypes = Declareops.mind_ntypes mib in
+  let u = snd indu in
+  let ind_subst =
+    List.init ntypes (fun i -> Constr.mkIndU ((fst ind, ntypes - i - 1), u))
+  in
+  let ctx, cty0 = mip.Declarations.mind_nf_lc.(0) in
+  let cty_full = Term.it_mkProd_or_LetIn cty0 ctx in
+  let rctx, _ = Term.decompose_prod_decls (Vars.substl ind_subst cty_full) in
+  let ctor_ctx, _paramslet = CList.chop mip.mind_consnrealdecls.(0) rctx in
+  let nargs = mip.mind_consnrealdecls.(0) in
+  let ci =
+    {
+      Constr.ci_ind = ind;
+      ci_npar = npar;
+      ci_cstr_ndecls = mip.mind_consnrealdecls;
+      ci_cstr_nargs = mip.mind_consnrealargs;
+      ci_pp_info = { style = LetStyle };
+    }
+  in
+  let params = Array.map EConstr.Unsafe.to_constr (Array.sub args 0 npar) in
+  let self_annot = Context.make_annot Name.Anonymous mip.mind_relevance in
+  let self_ty =
+    Constr.mkApp
+      (Constr.mkIndU indu, Array.map EConstr.Unsafe.to_constr args)
+  in
+  let env_self =
+    Environ.push_rel
+      (Context.Rel.Declaration.LocalAssum (self_annot, self_ty)) env
+  in
+  let make_case ~ret_env ~params ~field ~ret_ty c =
+    let case_relev =
+      EConstr.Unsafe.to_relevance
+        (Retyping.relevance_of_type ret_env evd (EConstr.of_constr ret_ty))
+    in
+    let p = ([| self_annot |], ret_ty) in
+    let branch_nas =
+      Array.of_list (List.rev_map Context.Rel.Declaration.get_annot ctor_ctx)
+    in
+    let branch = (branch_nas, Constr.mkRel (nargs - field)) in
+    Constr.mkCase
+      (ci, u, params, (p, case_relev), Constr.NoInvert, c, [| branch |])
+  in
+  let params_self = Array.map (Vars.lift 1) params in
+  let env_inner =
+    Environ.push_rel
+      (Context.Rel.Declaration.LocalAssum
+         (self_annot, Vars.lift 1 self_ty))
+      env_self
+  in
+  let ret_ty =
+    let ctor = Constr.mkConstructU ((ind, 1), u) in
+    let ctor_applied = Constr.mkApp (ctor, params) in
+    let rec get_field_type i ty =
+      match Constr.kind ty with
+      | Constr.Prod (_, t, rest) ->
+        if i = field then t
+        else
+          let previous =
+            make_case ~ret_env:env_inner ~params:params_self ~field:i
+              ~ret_ty:(Vars.lift 1 t) (Constr.mkRel 1)
+          in
+          get_field_type (i + 1) (Vars.subst1 previous rest)
+      | _ -> assert false
+    in
+    let ctor_ty =
+      Retyping.get_type_of env evd (EConstr.of_constr ctor_applied)
+    in
+    let ctor_ty =
+      EConstr.Unsafe.to_constr (Reductionops.whd_all env evd ctor_ty)
+    in
+    get_field_type 0 (Vars.lift 1 ctor_ty)
+  in
+  make_case ~ret_env:env_self ~params ~field ~ret_ty c
+
+let lcnt = ref 0
+
+let line_msg name =
+  Feedback.msg_info Pp.(str "line " ++ int !lcnt ++ str ": " ++ N.pp name)
+
+let list_name = N.append N.anon "List"
+let option_name = N.append N.anon "Option"
+let array_name = N.append N.anon "Array"
+let prod_name = N.append N.anon "Prod"
+
+let array_minds : MutInd.t list ref =
+  Summary.ref ~name:"lean-array-minds" []
+
+let prod_minds : MutInd.t list ref =
+  Summary.ref ~name:"lean-prod-minds" []
+
+let list_minds : MutInd.t list ref =
+  Summary.ref ~name:"lean-list-minds" []
+
+let option_minds : MutInd.t list ref =
+  Summary.ref ~name:"lean-option-minds" []
+
+type mutual_nested_focus = MutualMain of int | MutualAux of int
+
+type mutual_nested_rec_info = {
+  base_recs : N.t list;
+  mind : MutInd.t;
+  nparams : int;
+  focus : mutual_nested_focus;
+}
+
+let mutual_nested_rec_info : mutual_nested_rec_info N.Map.t ref =
+  Summary.ref ~name:"lean-mutual-nested-recursor-info" N.Map.empty
+
+let register_mutual_nested_recursors ~mind ~nparams names =
+  let base_recs = List.map (fun name -> N.append name "rec") names in
+  List.iteri
+    (fun index base_rec ->
+      mutual_nested_rec_info :=
+        N.Map.add base_rec
+          { base_recs; mind; nparams; focus = MutualMain index }
+          !mutual_nested_rec_info)
+    base_recs
+
+let split_auxiliary_recursor_name name =
+  match N.unappend name with
+  | Some (parent, component) when String.starts_with ~prefix:"rec_" component ->
+    let index_start = String.length "rec_" in
+    let index_length = String.length component - index_start in
+    let index =
+      try
+        let index =
+          int_of_string (String.sub component index_start index_length)
+        in
+        if index > 0 then Some (index - 1) else None
+      with Failure _ -> None
+    in
+    Option.map (fun index -> parent, index) index
+  | None | Some _ -> None
+
+let find_declared_inductive name =
+  Option.bind (N.Map.find_opt name !declared) (fun instances ->
+      Int.Map.fold
+        (fun _ instance found ->
+          match (found, instance.ref) with
+          | Some _, _ -> found
+          | None, GlobRef.IndRef (mind, _) -> Some mind
+          | None, _ -> None)
+        instances None)
+
+let find_mutual_nested_rec_info name =
+  match N.Map.find_opt name !mutual_nested_rec_info with
+  | Some _ as info -> info
+  | None -> (
+    match split_auxiliary_recursor_name name with
+    | None -> None
+    | Some (parent, index) ->
+      let base_rec = N.append parent "rec" in
+      (match N.Map.find_opt base_rec !mutual_nested_rec_info with
+      | Some info -> Some { info with focus = MutualAux index }
+      | None ->
+        (* Nested recursors generated by Lean are not separate declarations in
+           the export stream.  Recover their family lazily as well, both for
+           old compiled checkpoints and for containers which Rocq's scheme
+           machinery does not itself recognize.  Never shadow a real Lean
+           declaration with the same spelling. *)
+        if N.Map.mem name !entries || N.Map.mem name !declared then None
+        else
+          Option.map
+            (fun mind ->
+              {
+                base_recs = [ base_rec ];
+                mind;
+                nparams = (Global.lookup_mind mind).mind_nparams;
+                focus = MutualAux index;
+              })
+            (find_declared_inductive parent)))
+
+let append_array a b = Array.append a b
+
+let extended_all_uctx source_uctx =
+  let source_inst = UContext.instance source_uctx in
+  let source_names = UContext.names source_uctx in
+  let qinst, uinst = Instance.to_array source_inst in
+  let q = Sorts.Quality.var (Array.length qinst) in
+  let u = Level.var (Array.length uinst) in
+  let names =
+    {
+      quals = append_array source_names.quals [| Name (Id.of_string "s") |];
+      univs = append_array source_names.univs [| Name (Id.of_string "motive") |];
+    }
+  in
+  let inst =
+    Instance.of_array
+      (append_array qinst [| q |], append_array uinst [| u |])
+  in
+  ( UContext.make names (inst, UContext.constraints source_uctx),
+    source_inst,
+    q,
+    u )
+
+let qsort q u = Constr.mkSort (Sorts.make q u)
+
+let reln n = Constr.mkRel n
+
+let app f args = Constr.mkApp (f, Array.of_list args)
+
+let annot_for_type env name ty =
+  let evd = Evd.from_env env in
+  let relevance =
+    Retyping.relevance_of_type env evd (EConstr.of_constr ty)
+    |> EConstr.Unsafe.to_relevance
+  in
+  Context.make_annot name relevance
+
+let push_typed_assum env name ty =
+  Environ.push_rel
+    (RelDecl.LocalAssum (annot_for_type env name ty, ty))
+    env
+
+let typed_prod env name ty body =
+  Constr.mkProd (annot_for_type env name ty, ty, body)
+
+let rec typed_lambdas env binders body =
+  match binders with
+  | [] -> body
+  | (name, ty) :: rest ->
+    let annot = annot_for_type env name ty in
+    let env = Environ.push_rel (RelDecl.LocalAssum (annot, ty)) env in
+    Constr.mkLambda (annot, ty, typed_lambdas env rest body)
+
+let mk_global_ref ref inst = Constr.mkRef (ref, inst)
+
+let all_name ind_name = Id.of_string (Id.to_string ind_name ^ "_all")
+let all_forall_name ind_name =
+  Id.of_string (Id.to_string ind_name ^ "_all_forall")
+
+let dest_nested_ind_app c =
+  let hd, args = Constr.decompose_app c in
+  match Constr.kind hd with
+  | Ind (ind, inst) -> Some (ind, inst, args)
+  | _ -> None
+
+let declare_array_all_scheme mind ind_name source_uctx fields projections =
+  match (fields, projections) with
+  | [ (_, field_ty) ], [ { Structures.Structure.proj_body = Some proj_c; _ } ] -> (
+    match dest_nested_ind_app (EConstr.Unsafe.to_constr field_ty) with
+    | Some (list_ind, list_inst, field_args) when Array.length field_args = 1 -> (
+      match
+        ( DeclareScheme.lookup_scheme_opt "All" (GlobRef.IndRef list_ind),
+          DeclareScheme.lookup_scheme_opt "AllForall" (GlobRef.IndRef list_ind) )
+      with
+      | Some list_all_ref, Some list_all_forall_ref ->
+        let all_uctx, source_inst, q, motive_level =
+          extended_all_uctx source_uctx
+        in
+        let motive_univ = Universe.make motive_level in
+        let a_ty =
+          let params = (Global.lookup_mind mind).mind_params_ctxt in
+          match params with
+          | [ RelDecl.LocalAssum (_, ty) ] -> ty
+          | _ -> Constr.mkSet
+        in
+        let motive_sort = qsort q motive_univ in
+        let qinst, uinst = Instance.to_array list_inst in
+        let list_all_inst =
+          Instance.of_array
+            ( append_array qinst [| q |],
+              append_array uinst [| motive_level |] )
+        in
+        let list_all = mk_global_ref list_all_ref list_all_inst in
+        let list_all_forall = mk_global_ref list_all_forall_ref list_all_inst in
+        let array_ref = Constr.mkIndU ((mind, 0), source_inst) in
+        let proj_ref = Constr.mkConstU (proj_c, source_inst) in
+        let array_a rel_a = app array_ref [ reln rel_a ] in
+        let proj_a rel_a rel_arr = app proj_ref [ reln rel_a; reln rel_arr ] in
+        let scheme_env = Environ.push_context all_uctx (Global.env ()) in
+        let a_name = Name (Id.of_string "A") in
+        let p_name = Name (Id.of_string "P") in
+        let x_name = Name (Id.of_string "x") in
+        let value_name = Name (Id.of_string "a") in
+        let env_a = push_typed_assum scheme_env a_name a_ty in
+        let motive_ty = typed_prod env_a x_name (reln 1) motive_sort in
+        let env_ap = push_typed_assum env_a p_name motive_ty in
+        let forall_ty =
+          typed_prod env_ap x_name (reln 2) (app (reln 2) [ reln 1 ])
+        in
+        let all_body =
+          let body = app list_all [ reln 3; reln 2; proj_a 3 1 ] in
+          typed_lambdas scheme_env
+            [ (a_name, a_ty); (p_name, motive_ty); (value_name, array_a 2) ]
+            body
+        in
+        let univs = (UState.Polymorphic_entry all_uctx, UnivNames.empty_binders) in
+        let all_c =
+          quickdef ~name:(all_name ind_name) ~types:None ~univs all_body
+        in
+        DeclareScheme.declare_scheme Libobject.SuperGlobal "All"
+          (GlobRef.IndRef (mind, 0), all_c);
+        let forall_body =
+          let body =
+            app list_all_forall [ reln 4; reln 3; reln 2; proj_a 4 1 ]
+          in
+          typed_lambdas scheme_env
+            [
+              (a_name, a_ty);
+              (p_name, motive_ty);
+              (Name (Id.of_string "h"), forall_ty);
+              (value_name, array_a 3);
+            ]
+            body
+        in
+        let forall_c =
+          quickdef ~name:(all_forall_name ind_name) ~types:None ~univs forall_body
+        in
+        DeclareScheme.declare_scheme Libobject.SuperGlobal "AllForall"
+          (GlobRef.IndRef (mind, 0), forall_c)
+      | _ -> ())
+    | _ -> ())
+  | _ -> ()
+
+let declare_prod_second_all_scheme mind ind_name source_uctx projections =
+  match projections with
+  | [ _; { Structures.Structure.proj_body = Some snd_c; _ } ] ->
+    let all_uctx, source_inst, q, motive_level =
+      extended_all_uctx source_uctx
+    in
+    let motive_univ = Universe.make motive_level in
+    let motive_sort = qsort q motive_univ in
+    let params = (Global.lookup_mind mind).mind_params_ctxt in
+    let a_ty, b_ty =
+      match params with
+      | [ RelDecl.LocalAssum (_, b_ty); RelDecl.LocalAssum (_, a_ty) ] ->
+        (a_ty, b_ty)
+      | _ -> (Constr.mkSet, Constr.mkSet)
+    in
+    let prod_ref = Constr.mkIndU ((mind, 0), source_inst) in
+    let snd_ref = Constr.mkConstU (snd_c, source_inst) in
+    let scheme_env = Environ.push_context all_uctx (Global.env ()) in
+    let a_name = Name (Id.of_string "A") in
+    let b_name = Name (Id.of_string "B") in
+    let p_name = Name (Id.of_string "P") in
+    let x_name = Name (Id.of_string "x") in
+    let value_name = Name (Id.of_string "p") in
+    let env_a = push_typed_assum scheme_env a_name a_ty in
+    let env_ab = push_typed_assum env_a b_name b_ty in
+    let motive_ty =
+      typed_prod env_ab x_name (reln 1) motive_sort
+    in
+    let env_abp = push_typed_assum env_ab p_name motive_ty in
+    let forall_ty =
+      typed_prod env_abp x_name (reln 2) (app (reln 2) [ reln 1 ])
+    in
+    let prod_ab rel_a rel_b = app prod_ref [ reln rel_a; reln rel_b ] in
+    let snd_abp rel_a rel_b rel_p =
+      app snd_ref [ reln rel_a; reln rel_b; reln rel_p ]
+    in
+    let all_body =
+      typed_lambdas scheme_env
+        [
+          (a_name, a_ty);
+          (b_name, b_ty);
+          (p_name, motive_ty);
+          (value_name, prod_ab 3 2);
+        ]
+        (app (reln 2) [ snd_abp 4 3 1 ])
+    in
+    let univs =
+      (UState.Polymorphic_entry all_uctx, UnivNames.empty_binders)
+    in
+    let all_c =
+      quickdef ~name:(Id.of_string (Id.to_string ind_name ^ "_all_01"))
+        ~types:None ~univs all_body
+    in
+    DeclareScheme.declare_scheme Libobject.SuperGlobal "All_01"
+      (GlobRef.IndRef (mind, 0), all_c);
+    let all_forall_body =
+      typed_lambdas scheme_env
+        [
+          (a_name, a_ty);
+          (b_name, b_ty);
+          (p_name, motive_ty);
+          (Name (Id.of_string "h"), forall_ty);
+          (value_name, prod_ab 4 3);
+        ]
+        (app (reln 2) [ snd_abp 5 4 1 ])
+    in
+    let all_forall_c =
+      quickdef
+        ~name:
+          (Id.of_string (Id.to_string ind_name ^ "_all_forall_01"))
+        ~types:None ~univs all_forall_body
+    in
+    DeclareScheme.declare_scheme Libobject.SuperGlobal "AllForall_01"
+      (GlobRef.IndRef (mind, 0), all_forall_c)
+  | _ -> ()
+
+let projection_parameter_usage source_uctx = function
+  | { Structures.Structure.proj_body = Some field_c; _ } ->
+    let env = Environ.push_context source_uctx (Global.env ()) in
+    let evd = Evd.from_env env in
+    let field_ref = Constr.mkConstU (field_c, UContext.instance source_uctx) in
+    let field_ty =
+      EConstr.Unsafe.to_constr
+        (Retyping.get_type_of env evd (EConstr.of_constr field_ref))
+    in
+    let whd env term =
+      EConstr.Unsafe.to_constr
+        (Reductionops.whd_all env evd (EConstr.of_constr term))
+    in
+    (match Constr.kind (whd env field_ty) with
+    | Constr.Prod (param_annot, param_ty, body) ->
+      let env =
+        Environ.push_rel (RelDecl.LocalAssum (param_annot, param_ty)) env
+      in
+      (match Constr.kind (whd env body) with
+      | Constr.Prod (value_annot, value_ty, result_ty) ->
+        let env =
+          Environ.push_rel
+            (RelDecl.LocalAssum (value_annot, value_ty))
+            env
+        in
+        Some
+          ( Reductionops.is_conv env evd
+              (EConstr.of_constr result_ty)
+              (EConstr.of_constr (Constr.mkRel 2)),
+            not (Vars.noccurn 2 result_ty) )
+      | _ -> None)
+    | _ -> None)
+  | _ -> None
+
+let last_projection_is_only_parameter_use mind source_uctx projections =
+  match
+    ((Global.lookup_mind mind).mind_params_ctxt, List.rev projections)
+  with
+  | [ RelDecl.LocalAssum _ ], last :: previous -> (
+    match projection_parameter_usage source_uctx last with
+    | Some (true, _) ->
+      List.for_all
+        (fun projection ->
+          match projection_parameter_usage source_uctx projection with
+          | Some (_, false) -> true
+          | Some (_, true) | None -> false)
+        previous
+    | Some (false, _) | None -> false)
+  | _ -> false
+
+let declare_last_field_all_scheme mind ind_name source_uctx projections =
+  match List.rev projections with
+  | { Structures.Structure.proj_body = Some field_c; _ } :: _ -> (
+    match (Global.lookup_mind mind).mind_params_ctxt with
+    | [ RelDecl.LocalAssum (a_na, a_ty) ] ->
+      let all_uctx, source_inst, q, motive_level =
+        extended_all_uctx source_uctx
+      in
+      let motive_univ = Universe.make motive_level in
+      let motive_sort = qsort q motive_univ in
+      let ind_ref = Constr.mkIndU ((mind, 0), source_inst) in
+      let field_ref = Constr.mkConstU (field_c, source_inst) in
+      let scheme_env = Environ.push_context all_uctx (Global.env ()) in
+      let a_name = a_na.Context.binder_name in
+      let p_name = Name (Id.of_string "P") in
+      let x_name = Name (Id.of_string "x") in
+      let value_name = Name (Id.of_string "value") in
+      let env_a = push_typed_assum scheme_env a_name a_ty in
+      let motive_ty =
+        typed_prod env_a x_name (reln 1) motive_sort
+      in
+      let env_ap = push_typed_assum env_a p_name motive_ty in
+      let forall_ty =
+        typed_prod env_ap x_name (reln 2) (app (reln 2) [ reln 1 ])
+      in
+      let ind_a rel_a = app ind_ref [ reln rel_a ] in
+      let field_ap rel_a rel_p = app field_ref [ reln rel_a; reln rel_p ] in
+      let all_body =
+        typed_lambdas scheme_env
+          [ (a_name, a_ty); (p_name, motive_ty); (value_name, ind_a 2) ]
+          (app (reln 2) [ field_ap 3 1 ])
+      in
+      let univs =
+        (UState.Polymorphic_entry all_uctx, UnivNames.empty_binders)
+      in
+      let all_c =
+        quickdef ~name:(all_name ind_name) ~types:None ~univs all_body
+      in
+      DeclareScheme.declare_scheme Libobject.SuperGlobal "All"
+        (GlobRef.IndRef (mind, 0), all_c);
+      let all_forall_body =
+        typed_lambdas scheme_env
+          [
+            (a_name, a_ty);
+            (p_name, motive_ty);
+            (Name (Id.of_string "h"), forall_ty);
+            (value_name, ind_a 3);
+          ]
+          (app (reln 2) [ field_ap 4 1 ])
+      in
+      let all_forall_c =
+        quickdef ~name:(all_forall_name ind_name) ~types:None ~univs
+          all_forall_body
+      in
+      DeclareScheme.declare_scheme Libobject.SuperGlobal "AllForall"
+        (GlobRef.IndRef (mind, 0), all_forall_c)
+    | _ -> ())
+  | _ -> ()
+
+let rec decompose_lean_app acc = function
+  | App (f, x) -> decompose_lean_app (x :: acc) f
+  | head -> (head, acc)
+
+let constr_app f args =
+  match args with [] -> f | _ -> Constr.mkApp (f, Array.of_list args)
+
+let whd_constr env evd c =
+  EConstr.Unsafe.to_constr
+    (Reductionops.whd_all env evd (EConstr.of_constr c))
+
+let type_of_constr env evd term =
+  EConstr.Unsafe.to_constr
+    (Retyping.get_type_of env evd (EConstr.of_constr term))
+
+let whd_type_of_constr env evd term =
+  whd_constr env evd (type_of_constr env evd term)
+
+let anon_annot_for_type env evd ty =
+  Context.make_annot Name.Anonymous
+    (EConstr.Unsafe.to_relevance
+       (Retyping.relevance_of_type env evd (EConstr.of_constr ty)))
+
+let prod_domain env evd ty =
+  match Constr.kind (whd_constr env evd ty) with
+  | Prod (_, domain, _) -> domain
+  | _ -> CErrors.user_err Pp.(str "Nested recursor is over-applied")
+
+let prod_after_apply env evd ty arg =
+  match Constr.kind (whd_constr env evd ty) with
+  | Prod (_, _, body) -> Vars.subst1 arg body
+  | _ -> CErrors.user_err Pp.(str "Nested recursor is over-applied")
+
+let prod_parts env evd prod =
+  let prod_ty = whd_type_of_constr env evd prod in
+  let prod_head, _ = Constr.decompose_app prod_ty in
+  let prod_ind =
+    match Constr.kind prod_head with
+    | Ind (ind, _) -> ind
+    | _ -> CErrors.user_err Pp.(str "Nested recursor target is not a Prod")
+  in
+  let mib = Global.lookup_mind (fst prod_ind) in
+  let fst_p, fst_r =
+    Declareops.inductive_make_projection prod_ind mib ~proj_arg:0
+  in
+  let snd_p, snd_r =
+    Declareops.inductive_make_projection prod_ind mib ~proj_arg:1
+  in
+  ( Constr.mkProj (Projection.make fst_p false, fst_r, prod),
+    Constr.mkProj (Projection.make snd_p false, snd_r, prod) )
+
+let require_recursive_prod_second env evd mind fst snd =
+  let recursive term = has_rec_hyp env mind (type_of_constr env evd term) in
+  match (recursive fst, recursive snd) with
+  | false, true -> ()
+  | true, false ->
+    CErrors.user_err
+      Pp.(str "Nested recursion through the first component of Prod is unsupported")
+  | true, true ->
+    CErrors.user_err
+      Pp.(str "Nested recursion through both components of Prod is unsupported")
+  | false, false ->
+    CErrors.user_err Pp.(str "Nested Prod has no recursive component")
+
+type mutual_aux_spec = {
+  aux_domain : Constr.t;
+  aux_motive : Constr.t;
+  aux_cases : Constr.t list;
+}
+
+let mind_is_one_of mind minds =
+  List.exists (MutInd.UserOrd.equal mind) minds
+
+let type_head_ind env evd ty =
+  let ty = whd_constr env evd ty in
+  let head, args = Constr.decompose_app ty in
+  match Constr.kind head with
+  | Constr.Ind (ind, inst) -> Some (ind, inst, args)
+  | _ -> None
+
+let motive_domain env evd motive =
+  let ty = type_of_constr env evd motive in
+  match Constr.kind (whd_constr env evd ty) with
+  | Constr.Prod (_, domain, _) -> Some domain
+  | _ -> None
+
+let convertible env evd a b =
+  Reductionops.is_conv env evd (EConstr.of_constr a) (EConstr.of_constr b)
+
+let same_inductive_head env evd a b =
+  match (type_head_ind env evd a, type_head_ind env evd b) with
+  | Some ((a_mind, a_index), _, _), Some ((b_mind, b_index), _, _) ->
+    a_index = b_index && MutInd.UserOrd.equal a_mind b_mind
+  | _ -> false
+
+let find_aux_spec env evd ~depth target_ty specs =
+  let domain spec = Vars.lift depth spec.aux_domain in
+  match
+    List.find_opt
+      (fun spec -> convertible env evd target_ty (domain spec))
+      specs
+  with
+  | Some _ as spec -> spec
+  | None -> (
+    match
+      List.filter
+        (fun spec -> same_inductive_head env evd target_ty (domain spec))
+        specs
+    with
+    | [ spec ] -> Some spec
+    | [] | _ :: _ :: _ -> None)
+
+let aux_ctor_count env evd domain =
+  match type_head_ind env evd domain with
+  | Some ((mind, index), _, _) ->
+    Some
+      (Array.length
+         (Global.lookup_mind mind).mind_packets.(index).mind_consnames)
+  | None -> None
+
+let case_scheme_for env evd motive target =
+  let target_ty = whd_type_of_constr env evd target in
+  let target_ind, target_inst, target_args =
+    match type_head_ind env evd target_ty with
+    | Some (ind, inst, args) -> (ind, inst, args)
+    | None -> CErrors.user_err Pp.(str "Case target is not inductive")
+  in
+  let result_ty = type_of_constr env evd (constr_app motive [ target ]) in
+  let result_sort =
+    match Constr.kind (whd_constr env evd result_ty) with
+    | Constr.Sort sort -> sort
+    | _ -> CErrors.user_err Pp.(str "Case motive does not return a sort")
+  in
+  let _, scheme, _ =
+    Indrec.build_case_analysis_scheme env evd
+      (target_ind, EConstr.EInstance.make target_inst)
+      true (EConstr.ESorts.make result_sort)
+  in
+  let mib = Global.lookup_mind (fst target_ind) in
+  let params =
+    Array.to_list (Array.sub target_args 0 mib.mind_nparams)
+  in
+  constr_app (EConstr.Unsafe.to_constr scheme) (params @ [ motive ])
+
+(** Build the auxiliary recursive result with local fixpoints over containers.
+    Unlike an [All]/[AllForall] bridge, this has the same fix-match shape for
+    main and auxiliary Lean recursors, preserving their computation rules. *)
+let find_local_rec target_ind local_recs =
+  List.find_opt
+    (fun (local_ind, _) -> Ind.UserOrd.equal target_ind local_ind)
+    local_recs
+
+let nested_result_needed env evd ~depth mind specs local_recs argument =
+  let argument_ty = whd_type_of_constr env evd argument in
+  match type_head_ind env evd argument_ty with
+  | Some (((target_mind, _) as target_ind), _, _)
+    when MutInd.UserOrd.equal target_mind mind
+         || not (Option.is_empty (find_local_rec target_ind local_recs)) -> true
+  | Some _ ->
+    contains_mind mind argument_ty
+    && not
+         (Option.is_empty (find_aux_spec env evd ~depth argument_ty specs))
+  | None -> false
+
+let rec direct_nested_result env evd ~depth ~local_recs mind specs main_recs
+    target =
+  let open Constr in
+  let target_ty = whd_type_of_constr env evd target in
+  match type_head_ind env evd target_ty with
+  | Some ((target_mind, target_index), _, _)
+    when MutInd.UserOrd.equal target_mind mind ->
+    constr_app (Vars.lift depth (List.nth main_recs target_index)) [ target ]
+  | Some (target_ind, _, _)
+    when not (Option.is_empty (find_local_rec target_ind local_recs)) ->
+    let _, local_rec = Option.get (find_local_rec target_ind local_recs) in
+    constr_app (Vars.lift depth local_rec) [ target ]
+  | Some ((target_mind, _), _, _)
+    when mind_is_one_of target_mind !array_minds ->
+    let spec =
+      match find_aux_spec env evd ~depth target_ty specs with
+      | Some spec -> spec
+      | None -> CErrors.user_err Pp.(str "No motive for nested Array")
+    in
+    let target_head, _ = decompose_app target_ty in
+    let array_ind, _ = destInd target_head in
+    let array_mib = Global.lookup_mind (fst array_ind) in
+    let projection, relevance =
+      Declareops.inductive_make_projection array_ind array_mib ~proj_arg:0
+    in
+    let list = mkProj (Projection.make projection false, relevance, target) in
+    let result =
+      direct_nested_result env evd ~depth ~local_recs mind specs main_recs list
+    in
+    (match spec.aux_cases with
+    | [ array_case ] ->
+      constr_app (Vars.lift depth array_case) [ list; result ]
+    | _ -> CErrors.user_err Pp.(str "Nested Array has unexpected cases"))
+  | Some ((target_mind, _), _target_inst, target_args)
+    when mind_is_one_of target_mind !list_minds ->
+    let spec =
+      match find_aux_spec env evd ~depth target_ty specs with
+      | Some spec -> spec
+      | None -> CErrors.user_err Pp.(str "No motive for nested List")
+    in
+    let motive = Vars.lift depth spec.aux_motive in
+    (match List.map (Vars.lift depth) spec.aux_cases with
+    | [ nil_case; cons_case ] ->
+      let target_annot = anon_annot_for_type env evd target_ty in
+      let fix_ty =
+        mkProd
+          ( target_annot,
+            target_ty,
+            constr_app (Vars.lift 1 motive) [ mkRel 1 ] )
+      in
+      let fix_relevance =
+        EConstr.Unsafe.to_relevance
+          (Retyping.relevance_of_type env evd (EConstr.of_constr fix_ty))
+      in
+      let fix_name =
+        Context.make_annot (Name (Id.of_string "nested_list")) fix_relevance
+      in
+      let rec_declaration = ([| fix_name |], [| fix_ty |], [| fix_ty |]) in
+      let env_fix = Environ.push_rec_types rec_declaration env in
+      let target_ty_fix = Vars.lift 1 target_ty in
+      let target_annot_fix =
+        anon_annot_for_type env_fix evd target_ty_fix
+      in
+      let env_target =
+        Environ.push_rel
+          (RelDecl.LocalAssum (target_annot_fix, target_ty_fix)) env_fix
+      in
+      let motive_target = Vars.lift 2 motive in
+      let case_head = case_scheme_for env_target evd motive_target (mkRel 1) in
+      let element_ty =
+        Vars.lift 2 target_args.(Array.length target_args - 1)
+      in
+      let head_annot = anon_annot_for_type env_target evd element_ty in
+      let env_head =
+        Environ.push_rel (RelDecl.LocalAssum (head_annot, element_ty))
+          env_target
+      in
+      let tail_ty = Vars.lift 3 target_ty in
+      let tail_annot = anon_annot_for_type env_head evd tail_ty in
+      let env_tail =
+        Environ.push_rel (RelDecl.LocalAssum (tail_annot, tail_ty)) env_head
+      in
+      let head_result =
+        direct_nested_result env_tail evd ~depth:(depth + 4) ~local_recs mind
+          specs main_recs (mkRel 2)
+      in
+      let tail_result = constr_app (mkRel 4) [ mkRel 1 ] in
+      let cons_body =
+        constr_app (Vars.lift 4 cons_case)
+          [ mkRel 2; mkRel 1; head_result; tail_result ]
+      in
+      let cons_branch =
+        mkLambda
+          (head_annot, element_ty,
+           mkLambda (tail_annot, tail_ty, cons_body))
+      in
+      let fix_body =
+        mkLambda
+          ( target_annot_fix,
+            target_ty_fix,
+            constr_app case_head
+              [ Vars.lift 2 nil_case; cons_branch; mkRel 1 ] )
+      in
+      let local_fix =
+        mkFix
+          (([| 0 |], 0), ([| fix_name |], [| fix_ty |], [| fix_body |]))
+      in
+      constr_app local_fix [ target ]
+    | _ -> CErrors.user_err Pp.(str "Nested List has unexpected cases"))
+  | Some ((target_mind, _), _, target_args)
+    when mind_is_one_of target_mind !option_minds ->
+    let spec =
+      match find_aux_spec env evd ~depth target_ty specs with
+      | Some spec -> spec
+      | None -> CErrors.user_err Pp.(str "No motive for nested Option")
+    in
+    let motive = Vars.lift depth spec.aux_motive in
+    (match List.map (Vars.lift depth) spec.aux_cases with
+    | [ none_case; some_case ] ->
+      let case_head = case_scheme_for env evd motive target in
+      let element_ty = target_args.(Array.length target_args - 1) in
+      let head_annot = anon_annot_for_type env evd element_ty in
+      let env_head =
+        Environ.push_rel (RelDecl.LocalAssum (head_annot, element_ty)) env
+      in
+      let head_result =
+        direct_nested_result env_head evd ~depth:(depth + 1) ~local_recs mind
+          specs main_recs (mkRel 1)
+      in
+      let some_branch =
+        mkLambda
+          ( head_annot,
+            element_ty,
+            constr_app (Vars.lift 1 some_case) [ mkRel 1; head_result ] )
+      in
+      constr_app case_head [ none_case; some_branch; target ]
+    | _ -> CErrors.user_err Pp.(str "Nested Option has unexpected cases"))
+  | Some ((target_mind, _), _, _)
+    when mind_is_one_of target_mind !prod_minds ->
+    let spec =
+      match find_aux_spec env evd ~depth target_ty specs with
+      | Some spec -> spec
+      | None -> CErrors.user_err Pp.(str "No motive for nested Prod")
+    in
+    let fst, snd = prod_parts env evd target in
+    require_recursive_prod_second env evd mind fst snd;
+    let result =
+      direct_nested_result env evd ~depth ~local_recs mind specs main_recs snd
+    in
+    (match spec.aux_cases with
+    | [ prod_case ] ->
+      constr_app (Vars.lift depth prod_case) [ fst; snd; result ]
+    | _ -> CErrors.user_err Pp.(str "Nested Prod has unexpected cases"))
+  | Some (((target_mind, target_index) as target_ind), _, _) ->
+    let spec =
+      match find_aux_spec env evd ~depth target_ty specs with
+      | Some spec -> spec
+      | None -> CErrors.user_err Pp.(str "No motive for nested record")
+    in
+    let target_mib = Global.lookup_mind target_mind in
+    let packet = target_mib.mind_packets.(target_index) in
+    (match (packet.mind_record, spec.aux_cases) with
+    | Declarations.PrimRecord _, [ record_case ] ->
+      let fields =
+        List.init packet.mind_consnrealargs.(0) (fun proj_arg ->
+            let projection, relevance =
+              Declareops.inductive_make_projection target_ind target_mib
+                ~proj_arg
+            in
+            mkProj (Projection.make projection false, relevance, target))
+      in
+      let recursive_results =
+        List.filter_map
+          (fun field ->
+            if
+              nested_result_needed env evd ~depth mind specs local_recs field
+            then
+              Some
+                (direct_nested_result env evd ~depth ~local_recs mind specs
+                   main_recs field)
+            else None)
+          fields
+      in
+      constr_app (Vars.lift depth record_case) (fields @ recursive_results)
+    | Declarations.PrimRecord _, _ ->
+      CErrors.user_err Pp.(str "Nested record has unexpected cases")
+    | _ ->
+      direct_auxiliary_inductive_result env evd ~depth ~local_recs mind specs
+        main_recs spec target target_ind)
+  | None ->
+    CErrors.user_err
+      Pp.(
+        str "Nested target is not inductive: "
+        ++ Printer.pr_constr_env env evd target_ty)
+
+and direct_auxiliary_inductive_result env evd ~depth ~local_recs mind specs
+    main_recs spec target target_ind =
+  let open Constr in
+  let target_ty = whd_type_of_constr env evd target in
+  let target_mib = Global.lookup_mind (fst target_ind) in
+  if not (Int.equal (Array.length target_mib.mind_packets) 1) then
+    CErrors.user_err Pp.(str "Mutual auxiliary containers are unsupported");
+  let packet = target_mib.mind_packets.(snd target_ind) in
+  let motive = Vars.lift depth spec.aux_motive in
+  let recursive_container =
+    Array.exists
+      (fun (constructor_args, _) ->
+        List.exists
+          (fun argument ->
+            contains_mind (fst target_ind) (RelDecl.get_type argument))
+          constructor_args)
+      packet.mind_nf_lc
+  in
+  if not recursive_container then
+    let case_head = case_scheme_for env evd motive target in
+    let arities = Array.to_list packet.mind_consnrealargs in
+    let rec build_cases ty cases arities built =
+      match (cases, arities) with
+      | [], [] -> List.rev built
+      | source_case :: cases, nargs :: arities ->
+        let branch_ty = prod_domain env evd ty in
+        let branch =
+          direct_main_branch env evd ~depth ~local_recs mind specs main_recs
+            source_case nargs branch_ty
+        in
+        build_cases (prod_after_apply env evd ty branch) cases arities
+          (branch :: built)
+      | _ -> CErrors.user_err Pp.(str "Malformed auxiliary constructor cases")
+    in
+    let case_ty = type_of_constr env evd case_head in
+    let branches = build_cases case_ty spec.aux_cases arities [] in
+    constr_app case_head (branches @ [ target ])
+  else
+  let target_annot = anon_annot_for_type env evd target_ty in
+  let fix_ty =
+    mkProd
+      ( target_annot,
+        target_ty,
+        constr_app (Vars.lift 1 motive) [ mkRel 1 ] )
+  in
+  let fix_relevance =
+    EConstr.Unsafe.to_relevance
+      (Retyping.relevance_of_type env evd (EConstr.of_constr fix_ty))
+  in
+  let fix_name =
+    Context.make_annot (Name (Id.of_string "lean_nested_aux")) fix_relevance
+  in
+  let rec_declaration = ([| fix_name |], [| fix_ty |], [| fix_ty |]) in
+  let env_fix = Environ.push_rec_types rec_declaration env in
+  let target_ty_fix = Vars.lift 1 target_ty in
+  let target_annot_fix = anon_annot_for_type env_fix evd target_ty_fix in
+  let env_target =
+    Environ.push_rel
+      (RelDecl.LocalAssum (target_annot_fix, target_ty_fix)) env_fix
+  in
+  let motive_target = Vars.lift 2 motive in
+  let case_head = case_scheme_for env_target evd motive_target (mkRel 1) in
+  let lift_spec amount spec =
+    {
+      aux_domain = Vars.lift amount spec.aux_domain;
+      aux_motive = Vars.lift amount spec.aux_motive;
+      aux_cases = List.map (Vars.lift amount) spec.aux_cases;
+    }
+  in
+  let specs_fix = List.map (lift_spec (depth + 1)) specs in
+  let main_recs_fix = List.map (Vars.lift (depth + 1)) main_recs in
+  let local_recs_fix =
+    (target_ind, mkRel 1)
+    :: List.map
+         (fun (local_ind, local_rec) ->
+           (local_ind, Vars.lift (depth + 1) local_rec))
+         local_recs
+  in
+  let source_cases = List.map (Vars.lift (depth + 1)) spec.aux_cases in
+  let arities = Array.to_list packet.mind_consnrealargs in
+  let rec build_cases ty cases arities built =
+    match (cases, arities) with
+    | [], [] -> List.rev built
+    | source_case :: cases, nargs :: arities ->
+      let branch_ty = prod_domain env_target evd ty in
+      let branch =
+        direct_main_branch env_target evd ~depth:1
+          ~local_recs:local_recs_fix mind specs_fix main_recs_fix source_case
+          nargs branch_ty
+      in
+      build_cases (prod_after_apply env_target evd ty branch) cases arities
+        (branch :: built)
+    | _ -> CErrors.user_err Pp.(str "Malformed auxiliary constructor cases")
+  in
+  let case_ty = type_of_constr env_target evd case_head in
+  let branches = build_cases case_ty source_cases arities [] in
+  let fix_body =
+    mkLambda
+      ( target_annot_fix,
+        target_ty_fix,
+        constr_app case_head (branches @ [ mkRel 1 ]) )
+  in
+  let local_fix =
+    mkFix (([| 0 |], 0), ([| fix_name |], [| fix_ty |], [| fix_body |]))
+  in
+  constr_app local_fix [ target ]
+
+and direct_main_branch env evd ~depth ~local_recs mind specs main_recs
+    source_case nargs branch_ty =
+  let open Constr in
+  let rec bind env depth remaining ty arguments =
+    if remaining = 0 then
+      let recursive_results =
+        List.filter_map
+          (fun argument ->
+            if
+              nested_result_needed env evd ~depth mind specs local_recs
+                argument
+            then
+              Some
+                (direct_nested_result env evd ~depth ~local_recs mind specs
+                   main_recs argument)
+            else None)
+          arguments
+      in
+      constr_app (Vars.lift depth source_case)
+        (arguments @ recursive_results)
+    else
+      match Constr.kind (whd_constr env evd ty) with
+      | Constr.Prod (annot, domain, body) ->
+        let env' =
+          Environ.push_rel (RelDecl.LocalAssum (annot, domain)) env
+        in
+        let arguments = List.map (Vars.lift 1) arguments @ [ mkRel 1 ] in
+        mkLambda
+          (annot, domain,
+           bind env' (depth + 1) (remaining - 1) body arguments)
+      | _ -> CErrors.user_err Pp.(str "Malformed constructor branch")
+  in
+  bind env depth nargs branch_ty []
+
+let build_direct_main_recursors env evd info main_motives
+    lean_main_cases specs ctor_arities =
+  let open Constr in
+  let mib = Global.lookup_mind info.mind in
+  let ntypes = Array.length mib.mind_packets in
+  let target_types =
+    List.map
+      (fun motive ->
+        match motive_domain env evd motive with
+        | Some domain -> domain
+        | None -> CErrors.user_err Pp.(str "Main motive is not a function"))
+      main_motives
+  in
+  let fix_types =
+    Array.of_list
+      (List.map2
+         (fun motive target_ty ->
+           let annot = anon_annot_for_type env evd target_ty in
+           mkProd (annot, target_ty, constr_app (Vars.lift 1 motive) [ mkRel 1 ]))
+         main_motives target_types)
+  in
+  let fix_names =
+    Array.mapi
+      (fun index fix_ty ->
+        let relevance =
+          EConstr.Unsafe.to_relevance
+            (Retyping.relevance_of_type env evd (EConstr.of_constr fix_ty))
+        in
+        Context.make_annot
+          (Name (Id.of_string ("lean_nested_" ^ string_of_int index)))
+          relevance)
+      fix_types
+  in
+  let env_fix =
+    Environ.push_rec_types (fix_names, fix_types, fix_types) env
+  in
+  let main_recs =
+    List.init ntypes (fun index -> mkRel (ntypes - index))
+  in
+  let lift_spec spec =
+    {
+      aux_domain = Vars.lift ntypes spec.aux_domain;
+      aux_motive = Vars.lift ntypes spec.aux_motive;
+      aux_cases = List.map (Vars.lift ntypes) spec.aux_cases;
+    }
+  in
+  let specs = List.map lift_spec specs in
+  let main_motives = List.map (Vars.lift ntypes) main_motives in
+  let lean_main_cases = List.map (Vars.lift ntypes) lean_main_cases in
+  let cases_by_type, arities_by_type =
+    let rec split counts cases arities case_acc arity_acc =
+      match counts with
+      | [] -> (List.rev case_acc, List.rev arity_acc)
+      | count :: counts ->
+        let type_cases, cases = CList.chop count cases in
+        let type_arities, arities = CList.chop count arities in
+        split counts cases arities (type_cases :: case_acc)
+          (type_arities :: arity_acc)
+    in
+    let counts =
+      Array.to_list
+        (Array.map
+           (fun (packet : Declarations.one_inductive_body) ->
+             Array.length packet.mind_consnames)
+           mib.mind_packets)
+    in
+    split counts lean_main_cases ctor_arities [] []
+  in
+  let fix_bodies =
+    Array.init ntypes (fun index ->
+        let target_ty = Vars.lift ntypes (List.nth target_types index) in
+        let target_annot = anon_annot_for_type env_fix evd target_ty in
+        let env_target =
+          Environ.push_rel (RelDecl.LocalAssum (target_annot, target_ty))
+            env_fix
+        in
+        let motive = Vars.lift 1 (List.nth main_motives index) in
+        let case_head = case_scheme_for env_target evd motive (mkRel 1) in
+        let source_cases = List.nth cases_by_type index in
+        let type_arities = List.nth arities_by_type index in
+        let rec build_cases ty cases arities built =
+          match (cases, arities) with
+          | [], [] -> List.rev built
+          | source_case :: cases, nargs :: arities ->
+            let branch_ty = prod_domain env_target evd ty in
+            let branch =
+              direct_main_branch env_target evd ~depth:1 ~local_recs:[]
+                info.mind specs main_recs source_case nargs branch_ty
+            in
+            build_cases (prod_after_apply env_target evd ty branch) cases arities
+              (branch :: built)
+          | _ -> CErrors.user_err Pp.(str "Malformed main constructor cases")
+        in
+        let case_ty = type_of_constr env_target evd case_head in
+        let branches = build_cases case_ty source_cases type_arities [] in
+        mkLambda
+          ( target_annot,
+            target_ty,
+            constr_app case_head (branches @ [ mkRel 1 ]) ))
+  in
+  let rargs = Array.make ntypes 0 in
+  List.init ntypes (fun index ->
+      mkFix ((rargs, index), (fix_names, fix_types, fix_bodies)))
+
+let rec final_product_domain env evd ty =
+  match Constr.kind (whd_constr env evd ty) with
+  | Constr.Prod (annot, domain, body) ->
+    let env =
+      Environ.push_rel (RelDecl.LocalAssum (annot, domain)) env
+    in
+    (match Constr.kind (whd_constr env evd body) with
+    | Constr.Prod _ -> final_product_domain env evd body
+    | _ -> domain)
+  | _ -> CErrors.user_err Pp.(str "Nested recursor has no target argument")
+
+let recursor_mind env evd recursor =
+  let ty = type_of_constr env evd recursor in
+  match type_head_ind env evd (final_product_domain env evd ty) with
+  | Some ((mind, _), _, _) -> mind
+  | None -> CErrors.user_err Pp.(str "Nested recursor target is not inductive")
+
+type mutual_recursor_layout = {
+  layout_domains : Constr.t list;
+  layout_case_counts : int list;
+  layout_has_target : bool;
+}
+
+let adapt_mutual_nested_recursor env evd info recursors args =
+  let recursor =
+    match recursors with
+    | recursor :: _ -> recursor
+    | [] -> CErrors.user_err Pp.(str "Mutual recursor block is empty")
+  in
+  let info = { info with mind = recursor_mind env evd recursor } in
+  let mib = Global.lookup_mind info.mind in
+  let ntypes = Array.length mib.mind_packets in
+  let nmain_cases =
+    Array.fold_left
+      (fun n (packet : Declarations.one_inductive_body) ->
+        n + Array.length packet.mind_consnames)
+      0 mib.mind_packets
+  in
+  if List.length args < info.nparams + ntypes + nmain_cases + 1 then None
+  else
+    let params, args = CList.chop info.nparams args in
+    let main_motives, tail = CList.chop ntypes args in
+    let focus_matches aux_domains target =
+      let target_ty = type_of_constr env evd target in
+      match info.focus with
+      | MutualMain index -> (
+        match type_head_ind env evd target_ty with
+        | Some ((target_mind, target_index), _, _) ->
+          MutInd.UserOrd.equal target_mind info.mind && target_index = index
+        | None -> false)
+      | MutualAux index ->
+        index < List.length aux_domains
+        &&
+        let domain = List.nth aux_domains index in
+        convertible env evd target_ty domain
+        || same_inductive_head env evd target_ty domain
+    in
+    let partial_focus_matches aux_domains =
+      match info.focus with
+      | MutualMain index -> index < ntypes
+      | MutualAux index -> index < List.length aux_domains
+    in
+    let rec find_layout k =
+      if k > List.length tail then None
+      else
+        let aux_motives, _ = CList.chop k tail in
+        let aux_domains = List.map (motive_domain env evd) aux_motives in
+        if List.exists Option.is_empty aux_domains then find_layout (k + 1)
+        else
+          let aux_domains = List.map Option.get aux_domains in
+          let counts = List.map (aux_ctor_count env evd) aux_domains in
+          if List.exists Option.is_empty counts then find_layout (k + 1)
+          else
+            let naux_cases =
+              List.fold_left ( + ) 0 (List.map Option.get counts)
+            in
+            let target_index = k + nmain_cases + naux_cases in
+            if target_index > List.length tail then find_layout (k + 1)
+            else if target_index = List.length tail then
+              if partial_focus_matches aux_domains then
+                Some
+                  {
+                    layout_domains = aux_domains;
+                    layout_case_counts = List.map Option.get counts;
+                    layout_has_target = false;
+                  }
+              else find_layout (k + 1)
+            else
+              let target = List.nth tail target_index in
+              if focus_matches aux_domains target then
+                Some
+                  {
+                    layout_domains = aux_domains;
+                    layout_case_counts = List.map Option.get counts;
+                    layout_has_target = true;
+                  }
+              else find_layout (k + 1)
+    in
+    match find_layout 0 with
+    | None -> None
+    | Some { layout_domains = []; layout_has_target = true; _ } -> (
+      match info.focus with
+      | MutualMain index ->
+        Some (constr_app (List.nth recursors index) (params @ args))
+      | MutualAux _ -> None)
+    | Some
+        {
+          layout_domains = aux_domains;
+          layout_case_counts = aux_counts;
+          layout_has_target;
+        } ->
+      let naux = List.length aux_domains in
+      let aux_motives, rest = CList.chop naux tail in
+      let lean_main_cases, rest = CList.chop nmain_cases rest in
+      let rest, specs_rev =
+        CList.fold_left3
+          (fun (rest, specs) domain motive count ->
+            let cases, rest = CList.chop count rest in
+            ( rest,
+              { aux_domain = domain; aux_motive = motive; aux_cases = cases }
+              :: specs ))
+          (rest, []) aux_domains aux_motives aux_counts
+      in
+      let specs = List.rev specs_rev in
+      let target_and_extra =
+        match (layout_has_target, rest) with
+        | true, target :: extra -> Some (target, extra)
+        | false, [] -> None
+        | _ -> CErrors.user_err Pp.(str "Malformed nested recursor application")
+      in
+      let ctor_arities =
+        Array.to_list
+          (Array.concat
+             (Array.to_list
+                (Array.map
+                   (fun (packet : Declarations.one_inductive_body) ->
+                     packet.mind_consnrealargs)
+                   mib.mind_packets)))
+      in
+      let default_main_recs =
+        build_direct_main_recursors env evd info main_motives
+          lean_main_cases specs ctor_arities
+      in
+      let result_at env specs main_recs target =
+        match info.focus with
+        | MutualMain index -> constr_app (List.nth main_recs index) [ target ]
+        | MutualAux _ ->
+          direct_nested_result env evd ~depth:0 ~local_recs:[] info.mind specs
+            main_recs target
+      in
+      (match target_and_extra with
+      | Some (target, extra) ->
+        Some
+          (constr_app
+             (result_at env specs default_main_recs target)
+             extra)
+      | None ->
+        let target_ty =
+          match info.focus with
+          | MutualMain index ->
+            prod_domain env evd
+              (type_of_constr env evd (List.nth default_main_recs index))
+          | MutualAux index -> List.nth aux_domains index
+        in
+        let annot = anon_annot_for_type env evd target_ty in
+        let env_target =
+          Environ.push_rel (RelDecl.LocalAssum (annot, target_ty)) env
+        in
+        let lift_spec spec =
+          {
+            aux_domain = Vars.lift 1 spec.aux_domain;
+            aux_motive = Vars.lift 1 spec.aux_motive;
+            aux_cases = List.map (Vars.lift 1) spec.aux_cases;
+          }
+        in
+        let body =
+          result_at env_target (List.map lift_spec specs)
+            (List.map (Vars.lift 1) default_main_recs)
+            (Constr.mkRel 1)
+        in
+        Some (Constr.mkLambda (annot, target_ty, body)))
+
+(** Give record-valued definitions an eta-long outer shape.  Conversion can
+    then expose the constructor without evaluating the definition's result;
+    its fields remain ordinary, independently checked projections of the
+    original body.  This is judgmentally equal to [body] for primitive records
+    and does not evaluate or trust the imported computation. *)
+let _eta_expand_primitive_record_definition env evd ty body =
+  let binders, result = Term.decompose_lambda body in
+  let type_binders, result_ty = Term.decompose_prod ty in
+  if List.length binders <> List.length type_binders then body
+  else
+    let rel_context =
+      List.map
+        (fun (annot, binder_ty) -> RelDecl.LocalAssum (annot, binder_ty))
+        binders
+    in
+    let result_env = Environ.push_rel_context rel_context env in
+    let reduced_ty =
+      Reductionops.whd_all result_env evd (EConstr.of_constr result_ty)
+      |> EConstr.Unsafe.to_constr
+    in
+    let head, args = Constr.decompose_app reduced_ty in
+    match Constr.kind head with
+    | Constr.Ind (ind, instance) ->
+      let mib = Global.lookup_mind (fst ind) in
+      let packet = mib.mind_packets.(snd ind) in
+      (match packet.mind_record with
+      | Declarations.PrimRecord _ ->
+        let nparams = mib.mind_nparams in
+        let nfields = packet.mind_consnrealargs.(0) in
+        if Array.length args < nparams || nfields = 0 then body
+        else
+          let result_head, _ = Constr.decompose_app result in
+          (match Constr.kind result_head with
+          | Constr.Construct ((result_ind, 1), _)
+            when Names.Ind.UserOrd.equal result_ind ind -> body
+          | _ ->
+            let target = Constr.mkRel 1 in
+            let parameters =
+              Array.sub args 0 nparams |> Array.map (Vars.lift 1)
+            in
+            let fields =
+              Array.init nfields (fun proj_arg ->
+                  let projection, relevance =
+                    Declareops.inductive_make_projection ind mib ~proj_arg
+                  in
+                  Constr.mkProj
+                    (Projection.make projection false, relevance, target))
+            in
+            let rebuilt =
+              Constr.mkApp
+                ( Constr.mkConstructU ((ind, 1), instance),
+                  Array.append parameters fields )
+            in
+            let relevance =
+              Retyping.relevance_of_type result_env evd
+                (EConstr.of_constr result_ty)
+              |> EConstr.Unsafe.to_relevance
+            in
+            let annot = Context.make_annot Anonymous relevance in
+            let expanded =
+              Term.compose_lam binders
+                (Constr.mkLetIn (annot, result, result_ty, rebuilt))
+            in
+            if
+              Reductionops.is_conv env evd (EConstr.of_constr body)
+                (EConstr.of_constr expanded)
+            then expanded
+            else
+              CErrors.user_err
+                Pp.(str "Eta-expanded primitive-record definition changed meaning"))
+      | _ -> body)
+    | _ -> body
+
+let intern_translation_declaration uconv parent declaration =
+  let substitution = List.map Constr.mkMeta parent in
+  let declaration =
+    time_translation_operation "context substitution" (fun () ->
+      RelDecl.map_constr (Vars.substl substitution) declaration)
+  in
+  match time_translation_operation "context lookup" (fun () ->
+      ContextCache.find_opt uconv.contexts declaration) with
+  | Some context -> context
+  | None ->
+    incr uconv.next_context;
+    let context = !(uconv.next_context) in
+    ContextCache.add uconv.contexts declaration context;
+    context
+
+let translation_context uconv env =
+  let rec declarations index collected =
+    match Environ.lookup_rel_ctxt index env with
+    | declaration -> declarations (index + 1) (declaration :: collected)
+    | exception Not_found -> collected
+  in
+  List.fold_left
+    (fun parent declaration ->
+      intern_translation_declaration uconv parent declaration :: parent)
+    [] (declarations 1 [])
+
+let rec loose_bound_range uconv expr =
+  match ExpressionCache.find_opt uconv.loose_bound_ranges expr with
+  | Some range -> range
+  | None ->
+    let range =
+      match expr with
+      | Bound index -> index + 1
+      | Sort _ | Const _ | Nat _ | String _ -> 0
+      | App (function_, argument) ->
+        Stdlib.max (loose_bound_range uconv function_)
+          (loose_bound_range uconv argument)
+      | Let { ty; v; rest; _ } ->
+        Stdlib.max (loose_bound_range uconv ty)
+          (Stdlib.max (loose_bound_range uconv v)
+             (Stdlib.max 0 (loose_bound_range uconv rest - 1)))
+      | Lam (_, _, ty, body) | Pi (_, _, ty, body) ->
+        Stdlib.max (loose_bound_range uconv ty)
+          (Stdlib.max 0 (loose_bound_range uconv body - 1))
+      | Proj (_, _, term) -> loose_bound_range uconv term
+    in
+    ExpressionCache.add uconv.loose_bound_ranges expr range;
+    range
+
+let rec context_free_translation uconv expr =
+  match ExpressionCache.find_opt uconv.context_free_expressions expr with
+  | Some context_free -> context_free
+  | None ->
+    let context_free =
+      match expr with
+      | Bound _ | Sort _ | Const _ | Nat _ | String _ -> true
+      | App (function_, argument) ->
+        let head, _ = decompose_lean_app [] expr in
+        let ordinary_application =
+          match head with
+          | Const (name, _) ->
+            not (N.Map.mem name !projection_aliases)
+            && Option.is_empty (find_mutual_nested_rec_info name)
+          | _ -> true
+        in
+        ordinary_application
+        && context_free_translation uconv function_
+        && context_free_translation uconv argument
+      | Let _ | Lam _ | Pi _ | Proj _ -> false
+    in
+    ExpressionCache.add uconv.context_free_expressions expr context_free;
+    context_free
+
+let rec to_constr env expr uconv =
+  let context = translation_context uconv env in
+  to_constr_in_context env context expr uconv
+
+(* Keep the canonical context alongside the local environment. Recovering it
+   through a physical-key hash table made repeated binder contexts expensive:
+   structurally identical environments necessarily collide in that table. *)
+and to_constr_in_context env context expr uconv =
+  if Option.has_some
+       (Sys.getenv_opt "LEAN_IMPORT_DISABLE_TRANSLATION_CACHE")
+  then to_constr_uncached env context expr uconv
+  else to_constr_cached env context expr uconv
+
+and to_constr_cached env full_context expr uconv =
+  incr uconv.translation_calls;
+  let () =
+    if Option.has_some (Sys.getenv_opt "LEAN_IMPORT_TRANSLATION_TRACE") &&
+       !(uconv.translation_calls) mod 1_000 = 0
+    then
+      let kind =
+        match expr with
+        | Bound _ -> "bound" | Sort _ -> "sort" | Const _ -> "const"
+        | App _ -> "app" | Let _ -> "let" | Lam _ -> "lam" | Pi _ -> "pi"
+        | Proj _ -> "proj" | Nat _ -> "nat" | String _ -> "string"
+      in
+      Printf.eprintf
+        "[translation] cpu=%.3f calls=%d hits=%d misses=%d contexts=%d exact=%d free=%d kind=%s\n%!"
+        (Sys.time ()) !(uconv.translation_calls) !(uconv.translation_hits)
+        !(uconv.translation_misses) !(uconv.next_context)
+        (TranslationCache.length uconv.translations)
+        (ExpressionCache.length uconv.context_free_translations) kind
+  in
+  let () =
+    if Option.has_some (Sys.getenv_opt "LEAN_IMPORT_TRANSLATION_BUCKETS")
+       && !(uconv.translation_calls) mod 32_768 = 0
+    then begin
+      let report name stats =
+        Printf.eprintf
+          "[translation buckets] cpu=%.3f calls=%d %s bindings=%d buckets=%d max_bucket=%d\n%!"
+          (Sys.time ()) !(uconv.translation_calls) name
+          stats.Hashtbl.num_bindings stats.Hashtbl.num_buckets
+          stats.Hashtbl.max_bucket_length
+      in
+      report "exact" (TranslationCache.stats uconv.translations);
+      report "free" (ExpressionCache.stats uconv.context_free_translations);
+      report "loose" (ExpressionCache.stats uconv.loose_bound_ranges);
+      report "context-free" (ExpressionCache.stats uconv.context_free_expressions);
+      report "contexts" (ContextCache.stats uconv.contexts)
+    end
+  in
+  let required_context = loose_bound_range uconv expr in
+  let context_free =
+    Int.equal required_context 0
+    || context_free_translation uconv expr
+  in
+  let context_depth = if context_free then 0 else List.length full_context in
+  let context =
+    if context_free then [] else CList.firstn required_context full_context
+  in
+  let cached =
+    if context_free then
+      ExpressionCache.find_opt uconv.context_free_translations expr
+    else
+      TranslationCache.find_opt uconv.translations
+        (expr, context_depth, context)
+  in
+  match cached with
+  | Some term ->
+    incr uconv.translation_hits;
+    if Option.has_some
+         (Sys.getenv_opt "LEAN_IMPORT_VALIDATE_TRANSLATION_CACHE")
+    then
+      let uconv, fresh = to_constr_uncached env full_context expr uconv in
+      if Constr.equal term fresh then (uconv, term)
+      else
+        let kind =
+          match expr with
+          | Bound _ -> "bound" | Sort _ -> "sort" | Const _ -> "constant"
+          | App _ -> "application" | Let _ -> "let" | Lam _ -> "lambda"
+          | Pi _ -> "product" | Proj _ -> "projection" | Nat _ -> "nat"
+          | String _ -> "string"
+        in
+        let cached_pp, fresh_pp =
+          with_env_evm env uconv
+            (fun env evd () ->
+              ( Printer.pr_constr_env env evd term,
+                Printer.pr_constr_env env evd fresh ))
+            ()
+        in
+        CErrors.user_err
+          Pp.(str "Translation cache mismatch for " ++ str kind
+              ++ str " with required context " ++ int required_context
+              ++ str ", depth " ++ int context_depth
+              ++ str " and key ["
+              ++ prlist_with_sep (fun () -> str "; ") int context
+              ++ str "]" ++ fnl () ++ str "Cached: "
+              ++ cached_pp
+              ++ fnl () ++ str "Fresh: "
+              ++ fresh_pp
+              ++ fnl () ++ str "Cached (raw): "
+              ++ Constr.debug_print term
+              ++ fnl () ++ str "Fresh (raw): "
+              ++ Constr.debug_print fresh)
+    else (uconv, term)
+  | None ->
+    incr uconv.translation_misses;
+    let call = !(uconv.translation_calls) in
+    let deep_trace =
+      Option.has_some (Sys.getenv_opt "LEAN_IMPORT_TRANSLATION_DEEP_TRACE")
+    in
+    let label =
+      if not deep_trace then ""
+      else
+        match expr with
+        | App _ ->
+          (match fst (decompose_lean_app [] expr) with
+          | Const (name, _) -> N.to_lean_string name
+          | _ -> "<application>")
+        | Const (name, _) -> N.to_lean_string name
+        | Bound _ -> "<bound>" | Sort _ -> "<sort>" | Let _ -> "<let>"
+        | Lam _ -> "<lambda>" | Pi _ -> "<product>" | Proj _ -> "<projection>"
+        | Nat _ -> "<nat>" | String _ -> "<string>"
+    in
+    let () =
+      if deep_trace then
+        Printf.eprintf "[translation start] call=%d %s\n%!"
+          call label
+    in
+    let uconv, term = to_constr_uncached env full_context expr uconv in
+    let () =
+      if deep_trace then
+        Printf.eprintf "[translation done] call=%d %s\n%!"
+          call label
+    in
+    let trace_root_cache = deep_trace && Int.equal call 256 in
+    let () =
+      if trace_root_cache then begin
+        let stat = Gc.quick_stat () in
+        Printf.eprintf
+          "[root cache hash start] free=%d exact=%d heap_words=%d live_words=%d\n%!"
+          (ExpressionCache.length uconv.context_free_translations)
+          (TranslationCache.length uconv.translations)
+          stat.Gc.heap_words stat.Gc.live_words;
+        let hash =
+          if context_free then expression_hash expr
+          else translation_hash (expr, context_depth, context)
+        in
+        Printf.eprintf "[root cache hash done] hash=%d\n%!" hash
+      end
+    in
+    if context_free then
+      ExpressionCache.add uconv.context_free_translations expr term
+    else
+      TranslationCache.add uconv.translations
+        (expr, context_depth, context) term;
+    let () =
+      if trace_root_cache then
+        Printf.eprintf "[root cache insertion done]\n%!"
+    in
+    (uconv, term)
+
+and to_constr_uncached =
+  let open Constr in
+  let ( >>= ) x f uconv =
+    let uconv, x = x uconv in
+    f x uconv
+  in
+  let get_uconv uconv = (uconv, uconv) in
+  let ret x uconv = (uconv, x) in
+  let to_annot env n t u = (u, to_annot env n t u) in
+  let under_binder env context declaration expr uconv =
+    let context =
+      intern_translation_declaration uconv context declaration :: context
+    in
+    let env = Environ.push_rel_context_val declaration env in
+    to_constr_in_context env context expr uconv
+  in
+  fun env context expr ->
+    let translate expr = to_constr_in_context env context expr in
+    match expr with
+    | Bound i -> ret (mkRel (i + 1))
+    | Sort univ ->
+      to_univ_level' univ >>= fun u -> ret (mkSort (sort_of_level u))
+    | Const (n, univs) -> instantiate n univs
+    | (App _ as app_expr) -> (
+      let head, args = decompose_lean_app [] app_expr in
+      let translate_plain () =
+        let a, b_expr =
+          match app_expr with App (a, b) -> a, b | _ -> assert false
+        in
+        translate a >>= fun a ->
+        translate b_expr >>= fun b ->
+        ret (mkApp (a, [| b |]))
+      in
+      match head with
+      | Const (n, univs) when N.Map.mem n !projection_aliases ->
+        fun uconv ->
+          let alias = find_projection_alias_for_universes uconv n univs in
+          let uconv, translated_args =
+            CList.fold_left_map
+              (fun uconv arg -> translate arg uconv)
+              uconv args
+          in
+          let apply_arguments function_ arguments =
+            List.fold_left
+              (fun function_ argument ->
+                Constr.mkApp (function_, [| argument |]))
+              function_ arguments
+          in
+          (match alias with
+          | Some alias ->
+            let mib = Global.lookup_mind (fst alias.projection_ind) in
+            let nparams = mib.mind_nparams in
+            if List.length translated_args <= nparams then
+              let uconv, function_ = instantiate n univs uconv in
+              uconv, apply_arguments function_ translated_args
+            else
+              let _, target_and_extra =
+                CList.chop nparams translated_args
+              in
+              let target, extra =
+                match target_and_extra with
+                | target :: extra -> (target, extra)
+                | [] -> assert false
+              in
+              let projection, relevance =
+                Declareops.inductive_make_projection alias.projection_ind mib
+                  ~proj_arg:alias.projection_field
+              in
+              let projected =
+                Constr.mkProj
+                  (Projection.make projection false, relevance, target)
+              in
+              uconv, apply_arguments projected extra
+          | None ->
+            let uconv, function_ = instantiate n univs uconv in
+            uconv, apply_arguments function_ translated_args)
+      | Const (n, univs) -> (
+        match find_mutual_nested_rec_info n with
+        | None -> translate_plain ()
+        | Some info ->
+          fun uconv ->
+            let uconv, recursors =
+              CList.fold_left_map
+                (fun uconv base_rec -> instantiate base_rec univs uconv)
+                uconv info.base_recs
+            in
+            let uconv, args =
+              CList.fold_left_map
+                (fun uconv arg -> translate arg uconv)
+                uconv args
+            in
+            let adapted =
+              with_env_evm env uconv
+                (fun env evd () ->
+                  adapt_mutual_nested_recursor env evd info recursors args)
+                ()
+            in
+            match adapted with
+            | Some term -> uconv, term
+            | None ->
+              let recursor_index =
+                match info.focus with
+                | MutualMain index -> index
+                | MutualAux _ -> 0
+              in
+              let term =
+                List.fold_left
+                  (fun f x -> Constr.mkApp (f, [| x |]))
+                  (List.nth recursors recursor_index) args
+              in
+              uconv, term)
+      | _ -> translate_plain ())
+    | Let { name; ty; v; rest } ->
+      translate ty >>= fun ty ->
+      to_annot env name ty >>= fun name ->
+      translate v >>= fun v ->
+      under_binder env context (LocalDef (name, v, ty)) rest >>= fun rest ->
+      ret (mkLetIn (name, v, ty, rest))
+    | Lam (_bk, n, a, b) ->
+      translate a >>= fun a ->
+      to_annot env n a >>= fun n ->
+      under_binder env context (LocalAssum (n, a)) b >>= fun b ->
+      ret (mkLambda (n, a, b))
+    | Pi (_bk, n, a, b) ->
+      translate a >>= fun a ->
+      to_annot env n a >>= fun n ->
+      under_binder env context (LocalAssum (n, a)) b >>= fun b ->
+      ret (mkProd (n, a, b))
+    | Proj (lean_ind, field, c) ->
+      translate c >>= fun c ->
+      get_uconv >>= fun uconv ->
+      (* we retype to get the ind, because otherwise we need the lean
+       univs for instantiation
+       This means we ignore the lean_ind in the Proj data. *)
+      let c =
+        with_env_evm env uconv
+          (fun env evd () ->
+            let tc =
+              time_translation_operation "projection type" (fun () ->
+                Retyping.get_type_of env evd (EConstr.of_constr c))
+            in
+            let tc =
+              time_translation_operation "projection reduction" (fun () ->
+                Reductionops.whd_all env evd tc)
+            in
+            let tc_head, args = EConstr.decompose_app evd tc in
+            match EConstr.kind evd tc_head with
+            | Constr.Ind _ ->
+              (* Standard inductive: use normal projection *)
+              let ((ind, _) as indu) =
+                Constr.destInd (EConstr.Unsafe.to_constr tc_head)
+              in
+              let mib, mip = Inductive.lookup_mind_specif (Global.env()) ind in
+              begin
+                match mip.mind_record with
+                | PrimRecord infos ->
+                  let p, r =
+                    Declareops.inductive_make_projection ind mib ~proj_arg:field
+                  in
+                  (* unfolded?? *)
+                  mkProj (Projection.make p false, r, c)
+                | NotRecord | FakeRecord ->
+                  unfold_proj_case env evd ~field ~indu ~mib ~mip ~args c
+              end
+            | _ ->
+              (* Type is not an inductive (e.g., transparent cumulative ULift).
+                 Projection is the identity. *)
+              c)
+          ()
+      in
+      ret c
+    | Nat i ->
+      instantiate (N.append N.anon "Nat") [] >>= fun _ ->
+      get_uconv >>= fun uconv ->
+      let nat_of_n =
+        with_env_evm env uconv
+          (fun env evd () ->
+            let _, p =
+              Evd.fresh_global env evd (Rocqlib.lib_ref "lean.Nat_of_N")
+            in
+            EConstr.to_constr evd p)
+          ()
+      in
+      let eager_nat_of_n =
+        with_env_evm env uconv
+          (fun env evd () ->
+            let _, term =
+              Evd.fresh_global env evd
+                (Rocqlib.lib_ref "lean.Nat_of_N.eager")
+            in
+            EConstr.to_constr evd term)
+          ()
+      in
+      ret (nat_int nat_of_n eager_nat_of_n i)
+    | String s ->
+      (* instantiate (N.append N.anon "Char") [] >>= fun char -> *)
+      (* let (_, charu) = Constr.destInd char in *)
+      instantiate (N.append N.anon "String") [] >>= fun _string ->
+      let string_mk = N.append (N.append N.anon "String") "mk" in
+      let string_of_list = N.append (N.append N.anon "String") "ofList" in
+      let string_of_chars =
+        if N.Map.mem string_mk !entries || not (N.Map.mem string_of_list !entries)
+        then string_mk
+        else string_of_list
+      in
+      instantiate string_of_chars [] >>= fun string_of_chars ->
+      get_uconv >>= fun uconv ->
+      let list, char =
+        with_env_evm env uconv
+          (fun env evd () ->
+            let ty =
+              Retyping.get_type_of env evd (EConstr.of_constr string_of_chars)
+            in
+            let _, list_char, _ = EConstr.destProd evd ty in
+            let list, char =
+              match EConstr.destApp evd list_char with
+              | list, [| char |] -> (list, char)
+              | _ ->
+                CErrors.user_err
+                  Pp.(
+                    str "Invalid type for string constructor: "
+                    ++ Printer.pr_type_env env evd (EConstr.to_constr evd ty)
+                    ++ str " ("
+                    ++ Printer.pr_type_env env evd
+                         (EConstr.to_constr evd list_char)
+                    ++ str " should be an application of list to char)")
+            in
+            (EConstr.to_constr evd list, EConstr.to_constr evd char))
+          ()
+      in
+      (* instantiate (N.append N.anon "List") [] >>= fun list -> *)
+      let list, _ = Constr.destInd list in
+      get_uconv >>= fun uconv ->
+      let mkChar =
+        with_env_evm env uconv
+          (fun env evd () ->
+            let _, mkChar =
+              Evd.fresh_global env evd
+                (Rocqlib.lib_ref ("lean." ^ mk_char_prim))
+            in
+            EConstr.to_constr evd mkChar)
+          ()
+      in
+      ret (mk_string char list UVars.Instance.empty mkChar string_of_chars s)
+
+and instantiate n univs uconv =
+  assert (List.length univs < Sys.int_size);
+  (* TODO what happens when is_large_elim and the motive is instantiated with Prop? *)
+  let univs = List.map (to_universe uconv.map) univs in
+  let i, univs = int_of_univs univs in
+  let inst = ensure_exists n i in
+  let subst l =
+    let u =
+      match Level.var_index l with
+      | None -> Universe.make l
+      | Some n -> List.nth univs n
+    in
+    Some u
+  in
+  let univs =
+    List.map
+      (fun alg -> simplify_universe (UnivSubst.subst_univs_universe subst alg))
+      inst.algs
+  in
+  let uconv, univs =
+    CList.fold_left_map (fun uconv u -> to_univ_level u uconv) uconv univs
+  in
+  let u = Instance.of_array ([||], Array.of_list univs) in
+  (uconv, Constr.mkRef (inst.ref, u))
+
+and ensure_exists n i =
+  try !declared |> N.Map.find n |> Int.Map.find i
+  with Not_found ->
+    (match N.Map.find_opt n !constructor_owners with
+    | Some owner ->
+      ignore (ensure_exists owner i);
+      !declared |> N.Map.find n |> Int.Map.find i
+    | None -> match N.Map.find_opt n !mutual_entries with
+    | Some inds ->
+      declare_mutual_inductive_instance inds i;
+      !declared |> N.Map.find n |> Int.Map.find i
+    | None ->
+      (match N.Map.find n !entries with
+      | Def def -> declare_def def i
+      | Ax ax -> declare_ax ax i
+      | Ind ind -> declare_ind ind i
+      | Quot _ -> CErrors.user_err Pp.(str "quot must be predeclared")
+      | exception Not_found -> CErrors.user_err Pp.(str "missing " ++ N.pp n)))
+
+and declare_def { name = n; ty; body; univs; hint; kernel_opaque } i =
+  let diagnostic_selected key =
+    match Sys.getenv_opt key with
+    | Some selector ->
+      String.equal selector (string_of_int !lcnt)
+      || String.equal selector (N.to_lean_string n)
+    | None -> false
+  in
+  let trace_declaration event =
+    match Sys.getenv_opt "LEAN_IMPORT_DECLARE_TRACE_LINE" with
+    | Some line when Int.equal !lcnt (int_of_string line) ->
+      let gc = Gc.quick_stat () in
+      Printf.eprintf
+        "[declare %s] %s instance %d cpu=%.3f heap_words=%d major=%d\n%!"
+        event (N.to_lean_string n) i (Sys.time ())
+        gc.Gc.heap_words gc.Gc.major_collections
+    | Some _ | None -> ()
+  in
+  let () = trace_declaration "start" in
+  let predeclared = get_predeclared_def_some n i in
+  let ref, algs, delay_power_unfolding =
+    match predeclared with
+    | Some
+        ( (( UInt32_size
+           | Add
+           | Mult
+           | Pow
+           | Pred
+           | Sub
+           | Nat_isValidChar
+           | UInt32_toNat
+           | UInt32_isValidChar ) as predeclared),
+          _,
+          (def_name, c) ) ->
+      (* Hack to let the user predeclare some constants
+         TODO make a more general Register-like API? *)
+      Feedback.msg_info Pp.(Id.print def_name ++ str " is predeclared");
+      (GlobRef.ConstRef c, [], predeclared = Pow)
+    | None | Some ((Beq | Ble | Blt | Nat_decEq), _, _) ->
+      (* Boolean primitives and their strict-comparison/decision wrappers
+         retain their exported bodies. A direct fixpoint
+         replacement need not be definitionally equal to a source recursor
+         with recursive history, even when both compute the same Boolean.
+         Register the checked body below instead of replacing it. *)
+      let uconv = start_uconv univs i in
+      let () = trace_declaration "before type" in
+      let uconv, ty = to_constr empty_env ty uconv in
+      let () = trace_declaration "after type" in
+      let () =
+        if diagnostic_selected "LEAN_IMPORT_DUMP_LEAN_AST"
+        then
+          let module ExprTable = Hashtbl.Make (struct
+            type t = LeanExpr.expr
+            let equal = ( == )
+            let hash expr = Hashtbl.hash_param 1 1 expr
+          end) in
+          let nodes = ref 0 in
+          let max_depth = ref 0 in
+          let constants = Hashtbl.create 97 in
+          let visited = ExprTable.create 9973 in
+          let add_constant name =
+            let name = N.to_lean_string name in
+            let count = Option.default 0 (Hashtbl.find_opt constants name) in
+            Hashtbl.replace constants name (count + 1)
+          in
+          let rec visit depth expr =
+            if not (ExprTable.mem visited expr) then begin
+              ExprTable.add visited expr ();
+              incr nodes;
+              max_depth := Stdlib.max !max_depth depth;
+              match expr with
+              | Bound _ | Sort _ | Nat _ | String _ -> ()
+              | Const (name, _) -> add_constant name
+              | App (f, x) -> visit (depth + 1) f; visit (depth + 1) x
+              | Let { ty; v; rest; _ } ->
+                visit (depth + 1) ty;
+                visit (depth + 1) v;
+                visit (depth + 1) rest
+              | Lam (_, _, ty, body) | Pi (_, _, ty, body) ->
+                visit (depth + 1) ty;
+                visit (depth + 1) body
+              | Proj (_, _, term) -> visit (depth + 1) term
+            end
+          in
+          visit 0 body;
+          let constants =
+            Hashtbl.to_seq constants |> List.of_seq
+            |> List.sort (fun (name1, count1) (name2, count2) ->
+                 let order = Int.compare count2 count1 in
+                 if Int.equal order 0 then String.compare name1 name2
+                 else order)
+            |> fun constants ->
+               CList.firstn (min 100 (List.length constants)) constants
+          in
+          let aliases =
+            match N.Map.find_opt n !projection_aliases with
+            | None -> "none"
+            | Some aliases ->
+              Int.Map.bindings aliases
+              |> List.map (fun (instance, _) -> string_of_int instance)
+              |> String.concat ","
+          in
+          CErrors.user_err
+            Pp.(
+              str (Printf.sprintf
+                     "Lean AST for %s (instance %d; projection aliases %s): %d nodes, maximum depth %d"
+                     (N.to_lean_string n) i aliases !nodes !max_depth)
+              ++ fnl ()
+              ++ v 0
+                   (prlist_with_sep fnl
+                      (fun (name, count) ->
+                        str (Printf.sprintf "%7d  %s" count name))
+                      constants))
+      in
+      let () = trace_declaration "before body" in
+      let uconv, body = to_constr empty_env body uconv in
+      let () = trace_declaration "after body" in
+      let () =
+        if diagnostic_selected "LEAN_IMPORT_DUMP_ROCQ_AST"
+        then begin
+          let depths = PhysicalConstrCache.create 4093 in
+          let pending = ref [ body, 0 ] in
+          let nodes = ref 0 in
+          let max_depth = ref 0 in
+          let has_pending () = match !pending with [] -> false | _ -> true in
+          while has_pending () do
+            match !pending with
+            | [] -> assert false
+            | (term, depth) :: rest ->
+              pending := rest;
+              let previous = PhysicalConstrCache.find_opt depths term in
+              if match previous with None -> true | Some old -> depth > old
+              then begin
+                if Option.is_empty previous then incr nodes;
+                PhysicalConstrCache.replace depths term depth;
+                max_depth := max !max_depth depth;
+                Constr.iter
+                  (fun child -> pending := (child, depth + 1) :: !pending)
+                  term
+              end
+          done;
+          CErrors.user_err
+            Pp.(str (Printf.sprintf "Rocq AST: %d nodes, maximum depth %d"
+                       !nodes !max_depth))
+        end
+      in
+      let trace_declaration_stage = trace_declaration in
+      let () = trace_declaration_stage "before universes" in
+      let univs, algs = univ_entry uconv univs in
+      let () = trace_declaration_stage "after universes" in
+      let () =
+        if Option.has_some (Sys.getenv_opt "LEAN_IMPORT_DUMP_INFERRED_TYPE") &&
+           Int.equal !lcnt 4381114
+        then
+          let env = Global.env () in
+          let evd = Evd.from_env env in
+          let inferred =
+            Retyping.get_type_of env evd (EConstr.of_constr body)
+            |> EConstr.Unsafe.to_constr
+          in
+          CErrors.user_err
+            Pp.(str "Inferred body type:" ++ fnl () ++
+                Printer.pr_constr_env env evd inferred ++
+                fnl () ++ str "Expected type:" ++ fnl () ++
+                Printer.pr_constr_env env evd ty)
+      in
+      let () =
+        if diagnostic_selected "LEAN_IMPORT_DUMP_CURRENT_DEF"
+        then
+          CErrors.user_err
+            Pp.(str "Translated body:" ++ fnl () ++
+                Printer.pr_constr_env (Global.env ())
+                  (Evd.from_env (Global.env ())) body ++
+                fnl () ++ str "Translated type:" ++ fnl () ++
+                Printer.pr_constr_env (Global.env ())
+                  (Evd.from_env (Global.env ())) ty)
+      in
+      let ref =
+        try
+          let () = trace_declaration_stage "before quickdef" in
+          let name = name_for n i in
+          let () = trace_declaration_stage "after name" in
+          let ref =
+            quickdef ~opaque:kernel_opaque ~name
+              ~types:(Some ty) ~univs body
+          in
+          let () =
+            match Sys.getenv_opt "LEAN_IMPORT_RELEVANCE_TRACE_LINE", ref with
+            | Some line, GlobRef.ConstRef constant
+              when Int.equal !lcnt (int_of_string line) ->
+              let relevance =
+                (Global.lookup_constant constant).Declarations.const_relevance
+              in
+              let relevance = match relevance with
+                | Sorts.Relevant -> "relevant"
+                | Sorts.Irrelevant -> "irrelevant"
+                | Sorts.RelevanceVar _ -> "variable"
+              in
+              Printf.eprintf "[declared relevance] line=%d %s\n%!" !lcnt relevance
+            | Some _, (GlobRef.ConstRef _ | GlobRef.VarRef _ | GlobRef.IndRef _
+                      | GlobRef.ConstructRef _)
+            | None, _ -> ()
+          in
+          let () = trace_declaration_stage "after quickdef" in
+          ref
+        with e ->
+          let e = Exninfo.capture e in
+          (* Rendering the entire failed term can exhaust memory while
+             reporting an error or timeout. Keep this diagnostic opt-in. *)
+          (if diagnostic_selected "LEAN_IMPORT_DUMP_FAILED_DEF" then
+             Feedback.msg_info
+               Pp.(
+                 str "Failed with" ++ fnl ()
+                 ++ Printer.pr_constr_env (Global.env ())
+                      (Evd.from_env (Global.env ()))
+                      body
+                 ++ fnl () ++ str ": "
+                 ++ Printer.pr_constr_env (Global.env ())
+                      (Evd.from_env (Global.env ()))
+                      ty));
+          Exninfo.iraise e
+      in
+      (ref, algs, false)
+  in
+  let inst =
+    match find_projection_alias n i with
+    | Some alias ->
+      if is_projection_wrapper alias.projection_record alias.projection_field body
+      then alias.projection_inst
+      else
+        CErrors.user_err
+          Pp.(
+            str "Generated field " ++ N.pp n
+            ++ str " is not the expected primitive-record projection")
+    | None -> { ref; algs }
+  in
+  let () =
+    let c = match inst.ref with ConstRef c -> c | _ -> assert false in
+    let evaluables =
+      Evaluable.EvalConstRef c ::
+      match Structures.PrimitiveProjections.find_opt c with
+      | None -> []
+      | Some projection -> [ Evaluable.EvalProjectionRef projection ]
+    in
+    let set_strategy level =
+      Redexpr.set_strategy false
+        [ (Level level, evaluables) ]
+    in
+    let set_expand () =
+      Redexpr.set_strategy false
+        [ (Conv_oracle.Expand, evaluables) ]
+    in
+    let set_regular height =
+      height_cache := N.Map.add n height !height_cache;
+      if expands_at_head body then begin
+        set_expand ();
+        expand_head_cache := N.Set.add n !expand_head_cache
+      end
+      else
+        let level = if delay_power_unfolding then max 1 (-height) else -height in
+        set_strategy level
+    in
+    if kernel_opaque then ()
+    else match hint with
+    | OpaqueHint -> set_strategy 1
+    | AbbrevHint -> set_expand ()
+    | RegularHint height -> set_regular height
+    | LegacyHint ->
+      if expands_at_head body then begin
+        set_expand ();
+        expand_head_cache := N.Set.add n !expand_head_cache
+      end
+      else set_regular (height n body)
+  in
+  let () = add_declared n i inst in
+  let () =
+    match predeclared, inst.ref with
+    | Some (Beq, _, _), GlobRef.ConstRef c ->
+      Global.register_peano_nat_beq c
+    | Some (Ble, _, _), GlobRef.ConstRef c ->
+      Global.register_peano_nat_ble c
+    | _ -> ()
+  in
+  let () =
+    if Int.equal i 0 &&
+       N.equal n (N.append_list N.anon [ "Nat"; "div"; "go" ])
+    then match inst.ref with
+    | GlobRef.ConstRef worker ->
+      Global.register_peano_nat_div_go worker
+    | _ -> assert false
+  in
+  let () =
+    if Int.equal i 0 &&
+       N.equal n
+         (N.append_list N.anon [ "Nat"; "modCore"; "go" ])
+    then match inst.ref with
+    | GlobRef.ConstRef worker ->
+      Global.register_peano_nat_mod_go worker
+    | _ -> assert false
+  in
+  let () = trace_declaration "done" in
+  inst
+
+and declare_ax { name = n; ty; univs } i =
+  let uconv = start_uconv univs i in
+  let uconv, ty = to_constr empty_env ty uconv in
+  let univs, algs = univ_entry uconv univs in
+  let entry = Declare.(ParameterEntry (parameter_entry ~univs ty)) in
+  let c =
+    Declare.declare_constant ~name:(name_for n i)
+      ~kind:Decls.(IsAssumption Definitional)
+      entry
+  in
+  let inst = { ref = GlobRef.ConstRef c; algs } in
+  let () = add_declared n i inst in
+  inst
+
+and to_params uconv params =
+  let acc, params =
+    CList.fold_left_map
+      (fun (env, uconv) (_bk, p, ty) ->
+        let uconv, ty = to_constr env ty uconv in
+        let d = RelDecl.LocalAssum (to_annot env p ty uconv, ty) in
+        let env = Environ.push_rel_context_val d env in
+        ((env, uconv), d))
+      (empty_env, uconv) params
+  in
+  (acc, List.rev params)
+
+and register_unit_like_if_applicable ind =
+  let mib, mip = Inductive.lookup_mind_specif (Global.env ()) ind in
+  let constructor_fields_are_irrelevant () =
+    let constructor_context, _ = mip.Declarations.mind_nf_lc.(0) in
+    let fields, _ =
+      CList.chop mip.Declarations.mind_consnrealdecls.(0) constructor_context
+    in
+    List.for_all
+      (function
+        | RelDecl.LocalAssum (annot, _) ->
+          not (Sorts.is_relevant annot.Context.binder_relevance)
+        | RelDecl.LocalDef _ -> true)
+      fields
+  in
+  if
+    Int.equal (Array.length mib.Declarations.mind_packets) 1
+    && Int.equal mip.Declarations.mind_nrealargs 0
+    && Int.equal (Array.length mip.Declarations.mind_user_lc) 1
+    && constructor_fields_are_irrelevant ()
+  then Global.register_unit_like ind
+
+and declare_ind { name = n; params; ty; ctors; univs } i =
+  (* Handle inductives predeclared as definitions (e.g., ULift with cumulativity).
+     We check if there's a cumul registration for this specific instance. *)
+  match get_predeclared_ind_as_def_some n i with
+  | Some (ULift_cumul, _, _) ->
+    let def_name = name_for_core n i in
+    let cumul_reg nm = "lean." ^ Id.to_string (name_for_core nm i) ^ ".cumul" in
+    Feedback.msg_info Pp.(Id.print def_name ++ str " is predeclared (cumulative)");
+    (* The Rocq cumul definitions take four universes [r s s1 rs1] where
+       [s1] stands for Lean's [s+1] and [rs1] for Lean's [max(r+1, s+1)].
+       Lean provides two universes [r; s], so the Rocq instance is represented
+       by four algebraic universes over the Lean instance.  For [ULift.rec] at
+       scheme j = 2*i (motive non-SProp), Lean also provides [motive] as the
+       first universe, shifting [r] and [s] to positions 1 and 2 in [Level.var].
+       For [ULift.rec] at j = 2*i+1 (motive SProp), [motive] is filtered out by
+       [int_of_univs] so the indices match the non-rec case. *)
+    let algs_of r_idx s_idx =
+      let r = Universe.make (Level.var r_idx) in
+      let s = Universe.make (Level.var s_idx) in
+      [
+        r;
+        s;
+        Universe.super s;
+        Universe.sup (Universe.super r) (Universe.super s);
+      ]
+    in
+    let algs_2 = algs_of 0 1 in
+    let algs_rec = universe_var 0 :: algs_of 1 2 in
+    let ulift_ref = Rocqlib.lib_ref (cumul_reg n) in
+    let inst = { ref = ulift_ref; algs = algs_2 } in
+    add_declared n i inst;
+    (* Register ULift.up constructor *)
+    let cname = N.append n "up" in
+    add_declared cname i { ref = Rocqlib.lib_ref (cumul_reg cname); algs = algs_2 };
+    (* Register ULift.down *)
+    let dname = N.append n "down" in
+    add_declared dname i { ref = Rocqlib.lib_ref (cumul_reg dname); algs = algs_2 };
+    (* Register eliminator (Type scheme at j=2*i, SProp scheme at j=2*i+1) *)
+    let nrec = N.append n "rec" in
+    let rec_base = cumul_reg nrec in
+    add_declared nrec (2 * i) { ref = Rocqlib.lib_ref rec_base; algs = algs_rec };
+    add_declared nrec ((2 * i) + 1) { ref = Rocqlib.lib_ref (rec_base ^ ".ind"); algs = algs_2 };
+    inst
+  | None ->
+  let mind, algs, ind_name, cnames, univs, squashy, projection_aliases =
+    match get_predeclared_ind_some n i with
+    | Some (Eq, _, (ind_name, mind)) ->
+      (* Hack to let the user predeclare eq and quot before running Lean Import
+         TODO make a more general Register-like API? *)
+      Feedback.msg_info Pp.(Id.print ind_name ++ str " is predeclared");
+      let cname = N.append n "refl" in
+      let squashy =
+        { maybe_prop = true; always_prop = true; lean_squashes = false }
+      in
+      let univs =
+        match i with
+        | 0 ->
+          UContext.make
+            { quals = [||]; univs =  [| Name (Id.of_string "u") |]}
+            ( Instance.of_array ([||], [| univ_of_name (N.append N.anon "u") |]),
+              PConstraints.empty )
+        | 1 -> UContext.empty
+        | _ -> assert false
+      in
+      ( mind,
+        identity_algs (non_sprop_univ_count 1 i),
+        ind_name,
+        [ cname ],
+        univs,
+        squashy,
+        [] )
+    | Some
+        ( ( ( False
+            | Decidable
+            | Bool
+            | Nat
+            | Nat_le
+            | Or
+            | And
+            | Fin
+            | UInt32
+            | BitVec
+            | Char ) as k ),
+          _,
+          (ind_name, mind) ) ->
+      (* Hack to let the user predeclare various types before running Lean Import
+         TODO make a more general Register-like API? *)
+      (* this case is for the ones without universes*)
+      Feedback.msg_info Pp.(Id.print ind_name ++ str " is predeclared");
+      let cnames = get_predeclared_cnames k n in
+      let squashy = N.Map.get n !squash_info in
+      (mind, [], ind_name, cnames, UContext.empty, squashy, [])
+    | None ->
+      let uconv = start_uconv univs i in
+      let (env_params, uconv), params = to_params uconv params in
+      let uconv, ty = to_constr env_params ty uconv in
+      let indices, sort =
+        let env_params =
+          Environ.set_rel_context_val env_params
+            (Environ.set_universes uconv.graph (Global.env ()))
+        in
+        Reduction.dest_arity env_params ty
+      in
+      let env_ind =
+        Environ.push_rel_context_val
+          (LocalAssum
+             ( Context.make_annot (N.to_name n) (Sorts.relevance_of_sort sort),
+               Term.it_mkProd_or_LetIn ty params ))
+          empty_env
+      in
+      let env_ind_params =
+        Context.Rel.fold_outside Environ.push_rel_context_val params
+          ~init:env_ind
+      in
+      let uconv, ctors =
+        CList.fold_left_map
+          (fun uconv (n, ty) ->
+            let uconv, ty = to_constr env_ind_params ty uconv in
+            (uconv, (n, ty)))
+          uconv ctors
+      in
+      let cnames, ctys = List.split ctors in
+      let graph = uconv.graph in
+      let drop_global_lower_bounds =
+        N.equal n list_name || N.equal n array_name
+      in
+      let univs, algs =
+        univ_entry_gen ~drop_global_lower_bounds uconv univs
+      in
+      let ind_name = name_for n i in
+      let record, fields, ctys, field_names =
+        match (indices, ctys) with
+        | [], [ cty ] ->
+          cty
+          |> with_env_evm env_ind_params uconv (fun env evm cty ->
+                 let fields, codom =
+                   Reductionops.whd_decompose_prod env evm
+                     (EConstr.of_constr cty)
+                 in
+                 let field_names =
+                   List.rev_map
+                     (fun (annot, _) ->
+                       match annot.Context.binder_name with
+                       | Names.Anonymous -> None
+                       | Names.Name id ->
+                         Some (N.append n (Names.Id.to_string id)))
+                     fields
+                 in
+                 let _, fields =
+                   CList.fold_left_map
+                     (fun ids (na, t) ->
+                       match na.Context.binder_name with
+                       | Names.Anonymous -> (ids, (na, t))
+                       | Names.Name id ->
+                         let id = Namegen.next_global_ident_away (Global.safe_env ()) id ids in
+                         let ids = Id.Set.add id ids in
+                         line_msg
+                           (N.of_list
+                              [
+                                Names.Id.to_string id;
+                                "(field)";
+                                Names.Id.to_string ind_name;
+                              ]);
+                         (ids, ({ na with binder_name = Names.Name id }, t)))
+                     (Id.Set.add ind_name Id.Set.empty)
+                     fields
+                 in
+                 let cty' = EConstr.it_mkProd codom fields in
+                 let cty' = EConstr.Unsafe.to_constr cty' in
+                 (* A recursive single-constructor inductive cannot admit
+                    eta, so the kernel rejects the primitive-record
+                    encoding. Fall through to plain Inductive in that case. *)
+                 let npars = List.length params in
+                 let is_recursive =
+                   let rec walk k c =
+                     match Constr.kind c with
+                     | Constr.Prod (_, t, body) ->
+                       (not (Vars.noccurn k t)) || walk (k + 1) body
+                     | _ -> false
+                   in
+                   walk (npars + 1) cty'
+                 in
+                 match (fields, Sorts.is_sprop sort, is_recursive) with
+                 | [], true, _ -> (None, [], ctys, [])
+                 | _ :: _, false, false ->
+                   (* A [Type]-valued Lean structure may contain only proof
+                      fields.  Rocq still supports primitive projections for
+                      it, but deliberately gives it no record eta rule. *)
+                   ( Some (Some [| default_proj_id |]),
+                     fields,
+                     [ cty' ],
+                     field_names )
+                 | [], false, _ -> (None, [], ctys, [])
+                 | _ :: _, true, false ->
+                   if
+                     List.for_all
+                       (fun (na, _) ->
+                         na.Context.binder_relevance
+                         == EConstr.ERelevance.irrelevant)
+                       fields
+                   then
+                     ( Some (Some [| default_proj_id |]),
+                       fields,
+                       [ cty' ],
+                       field_names )
+                   else (None, [], ctys, [])
+                 | _ :: _, _, true -> (None, [], ctys, []))
+        | _ -> (None, [], ctys, [])
+      in
+      let entry finite =
+        {
+          Entries.mind_entry_params = params;
+          mind_entry_record = record;
+          mind_entry_finite = finite;
+          mind_entry_inds =
+            [
+              {
+                mind_entry_typename = ind_name;
+                mind_entry_arity = ty;
+                mind_entry_consnames = List.map (fun n -> name_for n i) cnames;
+                mind_entry_lc = ctys;
+              };
+            ];
+          mind_entry_private = None;
+          mind_entry_universes = Polymorphic_ind_entry univs;
+          mind_entry_variance = None;
+        }
+      in
+      let squashy = N.Map.get n !squash_info in
+      let coq_squashes =
+        if squashy.maybe_prop then coq_squashes graph (entry Finite) else false
+      in
+      let mind =
+        let act finite =
+          let all_depth =
+            if N.equal n list_name || N.equal n option_name then Some 1
+            else None
+          in
+          let schemes =
+            if N.equal n list_name || N.equal n option_name then
+              DeclareInd.Default
+            else DeclareInd.None
+          in
+          DeclareInd.declare_mutual_inductive_with_eliminations ?all_depth
+            ~schemes (entry finite)
+            (* the ubinders API is kind of shit here *)
+            (UState.Polymorphic_entry UContext.empty, UnivNames.empty_binders)
+            []
+        in
+        let act () = try act BiFinite with e -> act Finite in
+        if squashy.lean_squashes || not coq_squashes then act ()
+        else with_unsafe_univs act ()
+      in
+      assert (
+        squashy.lean_squashes
+        || (Global.lookup_mind mind).mind_packets.(0).mind_squashed == None);
+      let () =
+        if N.equal n array_name then array_minds := mind :: !array_minds
+        else if N.equal n prod_name then prod_minds := mind :: !prod_minds
+        else if N.equal n list_name then list_minds := mind :: !list_minds
+        else if N.equal n option_name then option_minds := mind :: !option_minds
+      in
+      (* Declare projections if the inductive is a record *)
+      let projections =
+        match record with
+        | Some (Some _) ->
+          let inhabitant_id = ind_name in
+          let kind = Decls.StructureComponent in
+          let proj_flags =
+            List.map
+              (fun _ ->
+                {
+                  Record.Data.pf_coercion = None;
+                  pf_instance = None;
+                  pf_canonical = false;
+                })
+              fields
+          in
+          let implfs = List.map (fun _ -> []) fields in
+          Record.Internal.declare_projections (mind, 0) ~kind ~inhabitant_id
+            proj_flags implfs
+        | _ -> []
+      in
+      let projection_aliases =
+        collect_projection_aliases ~record_name:n ~record_ind:(mind, 0) ~algs
+          projections field_names
+      in
+      let () =
+        if N.equal n array_name then
+          declare_array_all_scheme mind ind_name univs fields projections
+        else if N.equal n prod_name then
+          declare_prod_second_all_scheme mind ind_name univs projections
+        else if
+          last_projection_is_only_parameter_use mind univs projections
+        then declare_last_field_all_scheme mind ind_name univs projections
+      in
+      (mind, algs, ind_name, cnames, univs, squashy, projection_aliases)
+  in
+
+  (* add ind and ctors to [declared] *)
+  let inst = { ref = GlobRef.IndRef (mind, 0); algs } in
+  let () = add_declared n i inst in
+  let () =
+    CList.iteri
+      (fun cnum cname ->
+        add_declared cname i
+          { ref = GlobRef.ConstructRef ((mind, 0), cnum + 1); algs })
+      cnames
+  in
+  let () =
+    List.iter
+      (fun (name, alias) ->
+        add_declared name i alias.projection_inst;
+        add_projection_alias name i alias)
+      projection_aliases
+  in
+
+  register_unit_like_if_applicable (mind, 0);
+
+  declare_lean_schemes ~mind ~ind_index:0 ~n ~ind_name ~i ~univs ~algs
+    ~squashy;
+  let env = Environ.push_context ~strict:true univs (Global.env ()) in
+  let packet = (Global.lookup_mind mind).mind_packets.(0) in
+  let nested_recursive =
+    Array.exists
+      (fun (ctor_args, _) ->
+        List.exists
+          (fun arg ->
+            let arg_ty = RelDecl.get_type arg in
+            if not (contains_mind mind arg_ty) then false
+            else
+              let _, head = Reduction.whd_decompose_prod_decls env arg_ty in
+              let head, _ = Constr.decompose_app head in
+              match Constr.kind head with
+              | Constr.Ind ((arg_mind, _), _) ->
+                not (MutInd.UserOrd.equal mind arg_mind)
+              | _ -> true)
+          ctor_args)
+      packet.mind_nf_lc
+  in
+  if nested_recursive then
+    register_mutual_nested_recursors ~mind ~nparams:(List.length params) [ n ];
+  inst
+
+and declare_mutual_inductive_instance inds i =
+  match inds with
+  | [] | [ _ ] -> assert false
+  | first :: _ ->
+    let ntypes = List.length inds in
+    let nparams = List.length first.params in
+    if
+      List.exists
+        (fun ind -> ind.params <> first.params || ind.univs <> first.univs)
+        inds
+    then
+      CErrors.user_err
+        Pp.(str "Mutual inductives have different parameters or universes");
+    let group_names = List.map (fun ind -> ind.name) inds in
+    let uconv = start_uconv first.univs i in
+    let (env_params, uconv), params = to_params uconv first.params in
+    let uconv, arities =
+      CList.fold_left_map
+        (fun uconv ind ->
+          let uconv, ty = to_constr env_params ind.ty uconv in
+          let _indices, sort =
+            let env =
+              Environ.set_rel_context_val env_params
+                (Environ.set_universes uconv.graph (Global.env ()))
+            in
+            Reduction.dest_arity env ty
+          in
+          uconv, (ind, ty, sort))
+        uconv inds
+    in
+    let env_inds =
+      List.fold_left
+        (fun env (ind, ty, sort) ->
+          Environ.push_rel_context_val
+            (LocalAssum
+               ( Context.make_annot
+                   (N.to_name ind.name)
+                   (Sorts.relevance_of_sort sort),
+                 Term.it_mkProd_or_LetIn ty params ))
+            env)
+        empty_env arities
+    in
+    let env_ind_params =
+      Context.Rel.fold_outside Environ.push_rel_context_val params
+        ~init:env_inds
+    in
+    let (_current, uconv), packets =
+      CList.fold_left_map
+        (fun (current, uconv) (ind, ty, _sort) ->
+          let uconv, ctors =
+            CList.fold_left_map
+              (fun uconv (ctor_name, ctor_ty) ->
+                let ctor_ty =
+                  remap_mutual_constructor ~nparams ~ntypes ~group_names
+                    ~current ctor_ty
+                in
+                let uconv, ctor_ty = to_constr env_ind_params ctor_ty uconv in
+                uconv, (ctor_name, ctor_ty))
+              uconv ind.ctors
+          in
+          let ctor_names, ctor_types = List.split ctors in
+          ( (current + 1, uconv),
+            {
+              source_inductive = ind;
+              translated_arity = ty;
+              constructor_names = ctor_names;
+              constructor_types = ctor_types;
+            } ))
+        (0, uconv) arities
+    in
+    let univs, algs = univ_entry_gen uconv first.univs in
+    let entry finite =
+      {
+        Entries.mind_entry_params = params;
+        mind_entry_record = None;
+        mind_entry_finite = finite;
+        mind_entry_inds =
+          List.map
+            (fun packet ->
+              {
+                Entries.mind_entry_typename =
+                  name_for packet.source_inductive.name i;
+                mind_entry_arity = packet.translated_arity;
+                mind_entry_consnames =
+                  List.map
+                    (fun name -> name_for name i)
+                    packet.constructor_names;
+                mind_entry_lc = packet.constructor_types;
+              })
+            packets;
+        mind_entry_private = None;
+        mind_entry_universes = Entries.Polymorphic_ind_entry univs;
+        mind_entry_variance = None;
+      }
+    in
+    let mind =
+      let act finite =
+        DeclareInd.declare_mutual_inductive_with_eliminations
+          ~schemes:DeclareInd.None (entry finite)
+          (UState.Polymorphic_entry UContext.empty, UnivNames.empty_binders)
+          []
+      in
+      try act Declarations.BiFinite with _ -> act Declarations.Finite
+    in
+    List.iteri
+      (fun ind_index packet ->
+        add_declared packet.source_inductive.name i
+          { ref = GlobRef.IndRef (mind, ind_index); algs };
+        List.iteri
+          (fun ctor_index ctor_name ->
+            add_declared ctor_name i
+              {
+                ref =
+                  GlobRef.ConstructRef
+                    ((mind, ind_index), ctor_index + 1);
+                algs;
+              })
+          packet.constructor_names)
+      packets;
+    List.iteri
+      (fun ind_index packet ->
+        let ind = packet.source_inductive in
+        declare_lean_schemes ~mind ~ind_index ~n:ind.name
+          ~ind_name:(name_for ind.name i) ~i ~univs ~algs
+          ~squashy:(N.Map.get ind.name !squash_info))
+      packets;
+    register_mutual_nested_recursors ~mind ~nparams
+      (List.map
+         (fun packet -> packet.source_inductive.name)
+         packets)
+
+and declare_lean_schemes ~mind ~ind_index ~n ~ind_name ~i ~univs ~algs
+    ~squashy =
+  let make_scheme fam =
+    let u =
+      if fam = SchemeSProp then LSProp
+      else
+        let u =
+          if lean_fancy_univs () then
+            let u = DirPath.make [ Id.of_string "motive"; lean_id ] in
+            Level.(make (UGlobal.make u "" 0))
+          else UnivGen.fresh_level ()
+        in
+        Level u
+    in
+    let env = Environ.push_context ~strict:true univs (Global.env ()) in
+    let env =
+      match u with
+      | LSProp -> env
+      | Level u ->
+        Environ.push_context_set ~strict:false
+          (Univ.ContextSet.singleton u) env
+    in
+    let inst = UContext.instance univs in
+    let csts = UContext.constraints univs in
+    let { quals = qnames; univs = unames } = UContext.names univs in
+    let uentry =
+      match u with
+      | LSProp -> UState.Polymorphic_entry univs
+      | Level u ->
+        UState.Polymorphic_entry
+          (UContext.make
+             {
+               quals = qnames;
+               univs =
+                 Array.append [| Name (Id.of_string "motive") |] unames;
+             }
+             ( Instance.of_array
+                 ([||], Array.append [| u |] (snd (Instance.to_array inst))),
+               csts ))
+    in
+    lean_scheme env ~dep:true (mind, ind_index) inst u, uentry
+  in
+  let declare_one_scheme (suffix, sort) =
+    let id = Id.of_string (Id.to_string ind_name ^ suffix) in
+    let body, uentry = make_scheme sort in
+    let elim =
+      quickdef ~name:id ~types:None
+        ~univs:(uentry, UnivNames.empty_binders) body
+    in
+    let liftu level =
+      let u =
+        match Level.var_index level with
+        | None -> Universe.make level
+        | Some index -> Universe.make (Level.var (index + 1))
+      in
+      Some u
+    in
+    let scheme_algs =
+      if sort = SchemeSProp then algs
+      else
+        universe_var 0
+        :: List.map (UnivSubst.subst_univs_universe liftu) algs
+    in
+    let scheme_index =
+      if squashy.lean_squashes then i
+      else if sort = SchemeType then 2 * i
+      else (2 * i) + 1
+    in
+    let recursor = N.append n "rec" in
+    (match (Global.lookup_mind mind).mind_packets.(ind_index).mind_record, elim
+     with
+    | Declarations.PrimRecord _, GlobRef.ConstRef constant ->
+      Redexpr.set_strategy false
+        [ (Conv_oracle.Expand, [ Evaluable.EvalConstRef constant ]) ];
+      expand_head_cache := N.Set.add recursor !expand_head_cache
+    | _ -> ());
+    add_declared recursor scheme_index { ref = elim; algs = scheme_algs }
+  in
+  let elims =
+    if squashy.lean_squashes then [ "_indl", SchemeSProp ]
+    else [ "_recl", SchemeType; "_indl", SchemeSProp ]
+  in
+  List.iter
+    (fun elim ->
+      try declare_one_scheme elim
+      with e when CErrors.noncritical e && error_mode e = Skip ->
+        Feedback.msg_info Pp.(str "Skipping scheme"))
+    elims
+
+(** Generate and add the squashy info *)
+let squashify { name = n; params; ty; ctors; univs } =
+  let uconvP =
+    (* NB: if univs = [] this is just instantiation 0 *)
+    start_uconv univs ((1 lsl List.length univs) - 1)
+  in
+  let (env_paramsP, uconvP), paramsP = to_params uconvP params in
+  let uconvP, tyP = to_constr env_paramsP ty uconvP in
+  let envP =
+    Environ.push_rel_context paramsP
+      (Environ.set_universes uconvP.graph (Global.env ()))
+  in
+  let _, sortP = Reduction.dest_arity envP tyP in
+  if not (Sorts.is_sprop sortP) then noprop
+  else
+    let uconvT = start_uconv univs 0 in
+    let (env_paramsT, uconvT), paramsT = to_params uconvT params in
+    let uconvT, tyT = to_constr env_paramsT ty uconvT in
+    let envT =
+      Environ.set_rel_context_val env_paramsT
+        (Environ.set_universes uconvT.graph (Global.env ()))
+    in
+    let _, sortT = Reduction.dest_arity envT tyT in
+    let always_prop = Sorts.is_sprop sortT in
+    match ctors with
+    | [] -> { maybe_prop = true; always_prop; lean_squashes = false }
+    | _ :: _ :: _ -> { maybe_prop = true; always_prop; lean_squashes = true }
+    | [ (_, ctor) ] ->
+      let envT =
+        Context.Rel.fold_outside Environ.push_rel_context_val paramsT
+          ~init:
+            (Environ.push_rel_context_val
+               (LocalAssum
+                  ( Context.make_annot (N.to_name n)
+                      (Sorts.relevance_of_sort sortT),
+                    Term.it_mkProd_or_LetIn tyT paramsT ))
+               empty_env)
+      in
+      let uconvT, ctorT = to_constr envT ctor uconvT in
+      let envT =
+        Environ.set_rel_context_val envT
+          (Environ.set_universes uconvT.graph (Global.env ()))
+      in
+      let args, out = Reduction.whd_decompose_prod envT ctorT in
+      let forced =
+        (* NB dest_prod returns [out] in whnf *)
+        let _, outargs = Constr.decompose_app out in
+        Array.fold_left
+          (fun forced arg ->
+            match Constr.kind arg with
+            | Rel i -> Int.Set.add i forced
+            | _ -> forced)
+          Int.Set.empty outargs
+      in
+      let sigma = Evd.from_env envT in
+      let npars = List.length params in
+      let nargs = List.length args in
+      let lean_squashes, _, _ =
+        Context.Rel.fold_outside
+          (fun d (squashed, i, envT) ->
+            let squashed =
+              if squashed then true
+              else if Int.Set.mem (nargs - i) forced then false
+              else
+                let t = RelDecl.get_type d in
+                if not (Vars.noccurn (npars + i + 1) t) then
+                  (* recursive argument *)
+                  false
+                else
+                  not
+                    (EConstr.ESorts.is_sprop sigma
+                       (Retyping.get_sort_of envT sigma (EConstr.of_constr t)))
+            in
+
+            (squashed, i + 1, Environ.push_rel d envT))
+          args ~init:(false, 0, envT)
+      in
+      (* TODO translate to use non recursively uniform params (fix extraction)*)
+      { maybe_prop = true; always_prop; lean_squashes }
+
+let squashify ind =
+  let s = squashify ind in
+  squash_info := N.Map.add ind.name s !squash_info
+
+let squashify_mutual inds =
+  match inds with
+  | [] | [ _ ] -> assert false
+  | first :: _ ->
+    let ntypes = List.length inds in
+    let nparams = List.length first.params in
+    let group_names = List.map (fun ind -> ind.name) inds in
+    let context_for_instance i =
+      let uconv = start_uconv first.univs i in
+      let (env_params, uconv), params = to_params uconv first.params in
+      let uconv, arities =
+        CList.fold_left_map
+          (fun uconv ind ->
+            let uconv, ty = to_constr env_params ind.ty uconv in
+            let env =
+              Environ.set_rel_context_val env_params
+                (Environ.set_universes uconv.graph (Global.env ()))
+            in
+            let _, sort = Reduction.dest_arity env ty in
+            uconv, (ind, ty, sort))
+          uconv inds
+      in
+      let env_inds =
+        List.fold_left
+          (fun env (ind, ty, sort) ->
+            Environ.push_rel_context_val
+              (LocalAssum
+                 ( Context.make_annot (N.to_name ind.name)
+                     (Sorts.relevance_of_sort sort),
+                   Term.it_mkProd_or_LetIn ty params ))
+              env)
+          empty_env arities
+      in
+      let env_ind_params =
+        Context.Rel.fold_outside Environ.push_rel_context_val params
+          ~init:env_inds
+      in
+      (uconv, params, arities, env_ind_params)
+    in
+    let uconvP, _, aritiesP, _ =
+      context_for_instance ((1 lsl List.length first.univs) - 1)
+    in
+    let uconvT, paramsT, aritiesT, envT = context_for_instance 0 in
+    let _ = uconvP in
+    CList.iteri
+      (fun current ((ind, _, sortP), (_, _, sortT)) ->
+        let info =
+          if not (Sorts.is_sprop sortP) then noprop
+          else
+            let always_prop = Sorts.is_sprop sortT in
+            if always_prop then
+              { maybe_prop = true; always_prop; lean_squashes = true }
+            else match ind.ctors with
+            | [] -> { maybe_prop = true; always_prop; lean_squashes = false }
+            | _ :: _ :: _ ->
+              { maybe_prop = true; always_prop; lean_squashes = true }
+            | [ (_, ctor) ] ->
+              let ctor =
+                remap_mutual_constructor ~nparams ~ntypes ~group_names
+                  ~current ctor
+              in
+              let uconvT, ctorT = to_constr envT ctor uconvT in
+              let envT =
+                Environ.set_rel_context_val envT
+                  (Environ.set_universes uconvT.graph (Global.env ()))
+              in
+              let args, out = Reduction.whd_decompose_prod envT ctorT in
+              let _, outargs = Constr.decompose_app out in
+              let forced =
+                Array.fold_left
+                  (fun forced arg ->
+                    match Constr.kind arg with
+                    | Rel i -> Int.Set.add i forced
+                    | _ -> forced)
+                  Int.Set.empty outargs
+              in
+              let sigma = Evd.from_env envT in
+              let nargs = List.length args in
+              let lean_squashes, _, _ =
+                Context.Rel.fold_outside
+                  (fun d (squashed, i, env) ->
+                    let recursive =
+                      let first_mutual = nparams + i + 1 in
+                      let rec occurs offset =
+                        offset < ntypes
+                        &&
+                        (not
+                           (Vars.noccurn (first_mutual + offset)
+                              (RelDecl.get_type d))
+                        || occurs (offset + 1))
+                      in
+                      occurs 0
+                    in
+                    let squashed =
+                      squashed
+                      ||
+                      (not (Int.Set.mem (nargs - i) forced)
+                      && not recursive
+                      && not
+                           (EConstr.ESorts.is_sprop sigma
+                              (Retyping.get_sort_of env sigma
+                                 (EConstr.of_constr (RelDecl.get_type d)))))
+                    in
+                    (squashed, i + 1, Environ.push_rel d env))
+                  args ~init:(false, 0, envT)
+              in
+              { maybe_prop = true; always_prop; lean_squashes }
+        in
+        squash_info := N.Map.add ind.name info !squash_info)
+      (List.combine aritiesP aritiesT)
+
+(* pairs of (name * number of univs) *)
+let quots = [ ("", 1); ("mk", 1); ("lift", 2); ("ind", 1) ]
+
+let declare_quot quot_name =
+  let () =
+    List.iter
+      (fun (n, nunivs) ->
+        let rec loop i =
+          if i = 1 lsl nunivs then ()
+          else
+            let lean =
+              if CString.is_empty n then quot_name else N.append quot_name n
+            in
+            let reg =
+              "lean." ^ N.to_lean_string lean
+              ^ if i = 0 then "" else "_inst" ^ string_of_int i
+            in
+            let ref = Rocqlib.lib_ref reg in
+            let algs = identity_algs (non_sprop_univ_count nunivs i) in
+            let () = add_declared lean i { ref; algs } in
+            loop (i + 1)
+        in
+        loop 0)
+      quots
+  in
+  Feedback.msg_info Pp.(str "quot registered")
+
+let declare_quot quot_name =
+  if Rocqlib.has_ref "lean.Quot" then declare_quot quot_name else raise MissingQuot
+
+let { Goptions.get = just_parse } =
+  Goptions.declare_bool_option_and_ref
+    ~key:[ "Lean"; "Just"; "Parsing" ]
+    ~value:false ()
+
+(* with this off: best line 23000 in stdlib
+   stack overflow
+
+   update: got fixed by e9e637de26 (distinguish names foo.bar and foo_bar)
+*)
+let { Goptions.get = upfront_instances } =
+  Goptions.declare_bool_option_and_ref
+    ~key:[ "Lean"; "Upfront"; "Instantiation" ]
+    ~value:false ()
+
+let { Goptions.get = lazy_instances } =
+  Goptions.declare_bool_option_and_ref
+    ~key:[ "Lean"; "Lazy"; "Instantiation" ]
+    ~value:false ()
+
+let declare_instances act univs =
+  let stop = if upfront_instances () then 1 lsl List.length univs else 1 in
+  let rec loop i =
+    if i = stop then ()
+    else
+      let () = act i in
+      loop (i + 1)
+  in
+  if not (lazy_instances ()) then loop 0
+
+let declare_def def =
+  declare_instances (fun i -> ignore (declare_def def i)) def.univs
+
+let declare_ax ax =
+  declare_instances (fun i -> ignore (declare_ax ax i)) ax.univs
+
+let declare_ind ind =
+  let () = squashify ind in
+  declare_instances (fun i -> ignore (declare_ind ind i)) ind.univs
+
+let declare_mutual_inductive_group inds =
+  squashify_mutual inds;
+  match inds with
+  | [] -> assert false
+  | first :: _ ->
+    declare_instances
+      (fun i -> declare_mutual_inductive_instance inds i)
+      first.univs
+
+let entry_name = function
+| Quot name | Def { name } | Ax { name } | Ind { name } -> name
+
+let add_entry entry =
+  let () =
+    match entry with
+    | Quot quot_name -> declare_quot quot_name
+    | Def def -> declare_def def
+    | Ax ax -> declare_ax ax
+    | Ind ind -> declare_ind ind
+  in
+  entries := N.Map.add (entry_name entry) entry !entries;
+  (match entry with
+  | Ind ind -> constructor_owners := index_constructors ind !constructor_owners
+  | Def _ | Ax _ | Quot _ -> ())
+
+let add_mutual_entries inds =
+  List.iter
+    (fun ind ->
+      entries := N.Map.add ind.name (Ind ind) !entries;
+      constructor_owners := index_constructors ind !constructor_owners;
+      mutual_entries := N.Map.add ind.name inds !mutual_entries)
+    inds;
+  declare_mutual_inductive_group inds
+
+let rec is_arity = function
+  | Sort _ -> true
+  | Pi (_, _, _, b) -> is_arity b
+  | _ -> false
+
+let { Goptions.get = print_squashes } =
+  Goptions.declare_bool_option_and_ref
+    ~key:[ "Lean"; "Print"; "Squash"; "Info" ]
+    ~value:false ()
+
+type input_state = {
+  pstate : LeanParse.parsing_state;
+  skips : int;
+}
+
+type pending_inductive_group = {
+  first_line : int;
+  first_raw : string;
+  members_rev : ind list;
+}
+
+let finish ?(completed = true) state =
+  let max_univs, cnt =
+    N.Map.fold
+      (fun _ entry (m, cnt) ->
+        match entry with
+        | Ax { univs } | Def { univs } | Ind { univs } ->
+          let l = List.length univs in
+          (max m l, cnt + (1 lsl l))
+        | Quot _ -> (max m 1, cnt + 2))
+      !entries (0, 0)
+  in
+  let nonarities =
+    N.Map.fold
+      (fun _ entry cnt ->
+        match entry with
+        | Ax _ | Def _ | Quot _ -> cnt
+        | Ind ind -> if is_arity ind.ty then cnt else cnt + 1)
+      !entries 0
+  in
+  let squashes =
+    if not (print_squashes ()) then Pp.mt ()
+    else
+      N.Map.fold
+        (fun n s pp -> Pp.(pp ++ fnl () ++ N.pp n ++ spc () ++ pp_squashy s))
+        !squash_info
+        Pp.(mt ())
+  in
+  Feedback.msg_info
+    Pp.(
+      fnl () ++ fnl ()
+      ++ str (if completed then "Done!" else "Stopped!")
+      ++ fnl () ++ str "- "
+      ++ int (N.Map.cardinal !entries)
+      ++ str " entries (" ++ int cnt ++ str " possible instances)"
+      ++ (if N.Map.exists (fun _ -> function Quot _ -> true | _ -> false) !entries then
+            str " (including quot)."
+          else str ".")
+      ++ fnl () ++
+      LeanParse.pp_state state.pstate ++
+      (if state.skips > 0 then str "Skipped " ++ int state.skips ++ fnl ()
+       else mt ())
+      ++ str "Max universe instance length "
+      ++ int max_univs ++ str "." ++ fnl () ++ int nonarities
+      ++ str " inductives have non syntactically arity types."
+      ++ squashes)
+
+let prtime t0 t1 =
+  let diff = System.time_difference t0 t1 in
+  if diff > 1.0 then
+    Feedback.msg_info
+      Pp.(
+        str "line " ++ int !lcnt ++ str " took "
+        ++ System.fmt_time_difference t0 t1)
+
+let timeout = ref None
+
+let () =
+  Goptions.declare_int_option
+    {
+      optdepr = None;
+      optstage = Interp;
+      optkey = [ "Lean"; "Line"; "Timeout" ];
+      optread = (fun () -> !timeout);
+      optwrite = (fun x -> timeout := x);
+    }
+
+exception TimedOut
+
+let () =
+  CErrors.register_handler (function
+    | TimedOut -> Some Pp.(str "Lean import line timed out.")
+    | _ -> None)
+
+let with_line_timeout act =
+  match !timeout with
+  | None -> act ()
+  | Some t ->
+    (match Control.timeout (float_of_int t) act () with
+    | Ok v -> v
+    | Error info -> Exninfo.iraise (TimedOut, info))
+
+let do_line state l =
+  with_line_timeout (fun () -> LeanParse.do_line state ~lcnt:!lcnt l)
+
+let do_line state l =
+  let t0 = System.get_time () in
+  match do_line state l with
+  | state ->
+    let t1 = System.get_time () in
+    prtime t0 t1;
+    state
+  | exception e ->
+    let e = Exninfo.capture e in
+    (if fst e <> TimedOut then
+       let t1 = System.get_time () in
+       prtime t0 t1);
+    Exninfo.iraise e
+
+let before_from = function None -> false | Some from -> !lcnt < from
+let freeze () = (Lib.Interp.freeze (), Summary.Interp.freeze_summaries ())
+
+let unfreeze (lib, sum) =
+  Lib.Interp.unfreeze lib;
+  Summary.Interp.unfreeze_summaries sum
+
+let process_effect state ch ~line_no ~raw ~name act =
+  let st = freeze () in
+  (* Parsing and declaration checking are separate for pending inductive
+     groups; both stages must obey the user's line timeout. *)
+  match with_line_timeout act with
+  | () -> Some state
+  | exception e ->
+    let () =
+      if Option.has_some (Sys.getenv_opt "LEAN_IMPORT_EXCEPTION_BACKTRACE") then
+        Printf.eprintf "[exception backtrace]\n%s\n%!" (Printexc.get_backtrace ())
+    in
+    let e = Exninfo.capture e in
+    let epp =
+      Pp.(
+        str "Error at line " ++ int line_no ++ str " (for " ++ N.pp name
+        ++ str ")" ++ str (": " ^ raw) ++ fnl () ++ CErrors.iprint e)
+    in
+    unfreeze st;
+    match error_mode (fst e) with
+    | Skip ->
+      Feedback.msg_info Pp.(str "Skipping: " ++ epp);
+      Some { state with skips = state.skips + 1 }
+    | Stop ->
+      close_in ch;
+      finish ~completed:false state;
+      Feedback.msg_info epp;
+      None
+    | Fail ->
+      close_in ch;
+      CErrors.user_err epp
+
+let process_pending state ch = function
+  | None -> Some state
+  | Some { first_line; first_raw; members_rev } ->
+    let inds = List.rev members_rev in
+    let first =
+      match inds with first :: _ -> first | [] -> assert false
+    in
+    process_effect state ch ~line_no:first_line ~raw:first_raw
+      ~name:first.name (fun () ->
+        match inds with
+        | [ ind ] -> add_entry (Ind ind)
+        | _ -> add_mutual_entries inds)
+
+let rec do_input_pending state ~from ~until ~pending ch =
+  if until = Some !lcnt then begin
+    match process_pending state ch pending with
+    | None -> state
+    | Some state ->
+      close_in ch;
+      finish state;
+      state
+  end
+  else
+    match input_line ch with
+    | exception End_of_file ->
+      (match process_pending state ch pending with
+      | None -> state
+      | Some state ->
+        close_in ch;
+        finish state;
+        if not (until = None) then
+          CErrors.user_err Pp.(str "unexpected EOF!");
+        state)
+    | _ when before_from from ->
+      incr lcnt;
+      do_input_pending state ~from ~until ~pending ch
+    | line ->
+      let pstate, oentry = do_line state.pstate line in
+      let state = { state with pstate } in
+      (match (just_parse (), oentry) with
+      | false, Some (Entry (Ind ind)) ->
+        let pending =
+          match pending with
+          | None ->
+            Some
+              {
+                first_line = !lcnt;
+                first_raw = line;
+                members_rev = [ ind ];
+              }
+          | Some pending ->
+            Some { pending with members_rev = ind :: pending.members_rev }
+        in
+        incr lcnt;
+        do_input_pending state ~from ~until ~pending ch
+      | _ ->
+        match process_pending state ch pending with
+        | None -> state
+        | Some state ->
+          let state_opt =
+            match (just_parse (), oentry) with
+            | true, _ | false, None | false, Some (Nota _) -> Some state
+            | false, Some (Entry entry) ->
+              process_effect state ch ~line_no:!lcnt ~raw:line
+                ~name:(entry_name entry) (fun () -> add_entry entry)
+          in
+          match state_opt with
+          | None -> state
+          | Some state ->
+            incr lcnt;
+            do_input_pending state ~from ~until ~pending:None ch)
+
+let do_input state ~from ~until ch =
+  do_input_pending state ~from ~until ~pending:None ch
+
+let pstate = Summary.ref ~name:"lean-parse-state" LeanParse.empty_state
+
+type packed_lean_state = {
+  state_format : int;
+  state_digest : string;
+  state_blob : string;
+}
+
+let packed_state_format = 3
+
+let pending_packed_state =
+  Summary.ref ~name:"lean-pending-packed-state" None
+
+type lean_state_v1 =
+  LeanParse.legacy_parsing_state
+  * Level.t Int.Map.t
+  * instantiation Int.Map.t N.Map.t
+  * entry N.Map.t
+  * ind list N.Map.t
+  * squashy N.Map.t
+  * int N.Map.t
+
+type ('parser, 'entry, 'ind) lean_state_payload =
+  'parser
+  * Level.t Int.Map.t
+  * instantiation Int.Map.t N.Map.t
+  * 'entry N.Map.t
+  * 'ind list N.Map.t
+  * squashy N.Map.t
+  * int N.Map.t
+  * N.Set.t
+  * projection_alias Int.Map.t N.Map.t
+  * MutInd.t list
+  * MutInd.t list
+  * MutInd.t list
+  * MutInd.t list
+  * mutual_nested_rec_info N.Map.t
+
+type lean_state = (LeanParse.parsing_state, entry, ind) lean_state_payload
+type legacy_lean_state = (LeanParse.legacy_parsing_state, entry, ind) lean_state_payload
+type indexed_lean_state =
+  (LeanParse.Checkpoint.t, LeanParse.Checkpoint.saved_entry,
+   LeanParse.Checkpoint.saved_ind) lean_state_payload
+
+let encode_indexed_lean_state
+    ( parser, sets, declared, entries, mutual_entries, squash_info, heights,
+      expand_head, projection_aliases, arrays, prods, lists, options,
+      mutual_nested_rec_info : lean_state ) : indexed_lean_state =
+  let module C = LeanParse.Checkpoint in
+  let parser, (entries, mutual_entries) = C.pack parser (fun save ->
+    N.Map.map (C.save_entry save) entries,
+    N.Map.map (List.map (C.save_ind save)) mutual_entries)
+  in
+  ( parser, sets, declared, entries, mutual_entries, squash_info, heights,
+    expand_head, projection_aliases, arrays, prods, lists, options,
+    mutual_nested_rec_info )
+
+let decode_indexed_lean_state
+    ( parser, sets, declared, entries, mutual_entries, squash_info, heights,
+      expand_head, projection_aliases, arrays, prods, lists, options,
+      mutual_nested_rec_info : indexed_lean_state ) : lean_state =
+  let module C = LeanParse.Checkpoint in
+  let parser, load = C.unpack parser in
+  ( parser, sets, declared, N.Map.map (C.load_entry load) entries,
+    N.Map.map (List.map (C.load_ind load)) mutual_entries, squash_info, heights,
+    expand_head, projection_aliases, arrays, prods, lists, options,
+    mutual_nested_rec_info )
+
+let migrate_legacy_lean_state
+    ( parser, sets, declared, entries, mutual_entries, squash_info, heights,
+      expand_head, projection_aliases, arrays, prods, lists, options,
+      mutual_nested_rec_info : legacy_lean_state ) : lean_state =
+  ( LeanParse.migrate_legacy_state parser,
+    sets, declared, entries, mutual_entries, squash_info, heights,
+    expand_head, projection_aliases, arrays, prods, lists, options,
+    mutual_nested_rec_info )
+
+let cache_lean_state
+    ( pstatev,
+      setsv,
+      declaredv,
+      entriesv,
+      mutual_entriesv,
+      squash_infov,
+      heightv,
+      expand_headv,
+      projection_aliasesv,
+      array_mindsv,
+      prod_mindsv,
+      list_mindsv,
+      option_mindsv,
+      mutual_nested_rec_infov : lean_state ) =
+  pstate := pstatev;
+  sets := setsv;
+  declared := declaredv;
+  entries := entriesv;
+  constructor_owners := N.Map.fold
+    (fun _ entry owners -> match entry with
+      | Ind ind -> index_constructors ind owners
+      | Def _ | Ax _ | Quot _ -> owners)
+    entriesv N.Map.empty;
+  mutual_entries := mutual_entriesv;
+  squash_info := squash_infov;
+  height_cache := heightv;
+  expand_head_cache := expand_headv;
+  projection_aliases := projection_aliasesv;
+  array_minds := array_mindsv;
+  prod_minds := prod_mindsv;
+  list_minds := list_mindsv;
+  option_minds := option_mindsv;
+  mutual_nested_rec_info := mutual_nested_rec_infov;
+  pending_packed_state := None
+
+let invalid_legacy_lean_state () =
+  CErrors.user_err Pp.(str "Unsupported legacy Lean importer state.")
+
+(* The original object tag was not versioned.  Accept the two schemas that
+   were written before V2, but inspect the tuple representation before casting
+   it: destructuring a payload with the wrong arity is unsafe. *)
+let cache_legacy_lean_state (raw : Obj.t) =
+  if Obj.is_int raw || not (Int.equal (Obj.tag raw) 0) then
+    invalid_legacy_lean_state ();
+  match Obj.size raw with
+  | 7 ->
+    let ( pstatev,
+          setsv,
+          declaredv,
+          entriesv,
+          mutual_entriesv,
+          squash_infov,
+          heightv ) : lean_state_v1 = Obj.obj raw
+    in
+    cache_lean_state @@ migrate_legacy_lean_state
+      ( pstatev,
+        setsv,
+        declaredv,
+        entriesv,
+        mutual_entriesv,
+        squash_infov,
+        heightv,
+        N.Set.empty,
+        N.Map.empty,
+        [],
+        [],
+        [],
+        [],
+        N.Map.empty )
+  | 14 ->
+    cache_lean_state (migrate_legacy_lean_state (Obj.obj raw : legacy_lean_state))
+  | _ -> invalid_legacy_lean_state ()
+
+(* Keep the original object declaration as a narrow migration bridge.  New
+   checkpoints use the packed object below and retain only a marshalled byte
+   string for each ancestor, instead of retaining every ancestor's expanded
+   parser graph. *)
+let _legacy_lean_obj =
+  let open Libobject in
+  declare_object
+    {
+      (default_object "LEAN-IMPORT-STATE") with
+      cache_function = cache_legacy_lean_state;
+      load_function = (fun _ v -> cache_legacy_lean_state v);
+      classify_function = (fun _ -> Keep);
+    }
+
+let queue_packed_state state = pending_packed_state := Some state
+
+let packed_lean_obj =
+  let open Libobject in
+  declare_object
+    {
+      (default_object "LEAN-IMPORT-STATE-V2") with
+      (* [import] has already installed this state before [Lib.add_leaf].
+         Queue it only when Rocq loads or re-caches the persistent object. *)
+      cache_function = (fun _ -> ());
+      load_function = (fun _ state -> queue_packed_state state);
+      classify_function = (fun _ -> Keep);
+    }
+
+let trace_checkpoint stage =
+  if Option.has_some (Sys.getenv_opt "LEAN_IMPORT_CHECKPOINT_STATS") then
+    let gc = Gc.quick_stat () in
+    Printf.eprintf
+      "[lean checkpoint] %s cpu=%.3f heap_words=%d major_collections=%d\n%!"
+      stage (Sys.time ()) gc.Gc.heap_words gc.Gc.major_collections
+
+let pack_lean_state state =
+  (* Conversion can leave transient closures and a fragmented heap. Reclaim them
+     at the checkpoint boundary before Marshal allocates its sharing table
+     and output buffers alongside the persistent importer state. *)
+  trace_checkpoint "before checkpoint GC";
+  Gc.compact ();
+  trace_checkpoint "before indexed encoding";
+  let state = encode_indexed_lean_state state in
+  trace_checkpoint "after indexed encoding";
+  (* Drop the temporary reverse indices before Marshal builds its own table. *)
+  Gc.compact ();
+  trace_checkpoint "before pack";
+  (* Marshal buffers its output even for channels. Writing it out first avoids
+     keeping those buffers alongside the final OCaml string. The on-disk bytes
+     and sharing flags remain identical to [Marshal.to_string state []]. *)
+  let temp_dir = Sys.getenv_opt "LEAN_IMPORT_CHECKPOINT_TMP_DIR" in
+  let path, output =
+    Filename.open_temp_file ?temp_dir ~mode:[Open_binary]
+      "lean-import-state-" ".marshal"
+  in
+  let state_blob =
+    Fun.protect
+      ~finally:(fun () ->
+        close_out_noerr output;
+        try Sys.remove path with Sys_error _ -> ())
+      (fun () ->
+        Marshal.to_channel output state [];
+        close_out output;
+        trace_checkpoint "after checkpoint file write";
+        let input = open_in_bin path in
+        Fun.protect ~finally:(fun () -> close_in_noerr input)
+          (fun () -> really_input_string input (in_channel_length input)))
+  in
+  trace_checkpoint "after pack";
+  {
+    state_format = packed_state_format;
+    state_digest = Digest.to_hex (Digest.string state_blob);
+    state_blob;
+  }
+
+let force_packed_state () =
+  match !pending_packed_state with
+  | None -> ()
+  | Some { state_format; state_digest; state_blob } ->
+    if state_format < 1 || state_format > packed_state_format then
+      CErrors.user_err
+        Pp.(str "Unsupported packed Lean importer state format "
+            ++ int state_format ++ str ".");
+    let actual_digest = Digest.to_hex (Digest.string state_blob) in
+    if not (String.equal state_digest actual_digest) then
+      CErrors.user_err Pp.(str "Corrupted packed Lean importer state.");
+    trace_checkpoint "before unpack";
+    let state =
+      try
+        match state_format with
+        | 1 ->
+          migrate_legacy_lean_state
+            (Marshal.from_string state_blob 0 : legacy_lean_state)
+        | 2 -> (Marshal.from_string state_blob 0 : lean_state)
+        | 3 -> decode_indexed_lean_state
+            (Marshal.from_string state_blob 0 : indexed_lean_state)
+        | _ -> assert false
+      with (Failure _ | Invalid_argument _) ->
+        CErrors.user_err Pp.(str "Invalid packed Lean importer state.")
+    in
+    cache_lean_state state;
+    trace_checkpoint "after unpack"
+
+let register_existing_unit_like () =
+  let inductives =
+    N.Map.fold
+      (fun _ instances inductives ->
+        Int.Map.fold
+          (fun _ instance inductives ->
+            match instance.ref with
+            | GlobRef.IndRef ind -> Indset_env.add ind inductives
+            | GlobRef.VarRef _ | GlobRef.ConstRef _ | GlobRef.ConstructRef _ ->
+              inductives)
+          instances inductives)
+      !declared Indset_env.empty
+  in
+  Indset_env.iter register_unit_like_if_applicable inductives
+
+let import ~from ~until f =
+  let () =
+    if Option.has_some (Sys.getenv_opt "LEAN_IMPORT_EXCEPTION_BACKTRACE") then
+      Printexc.record_backtrace true
+  in
+  force_packed_state ();
+  lcnt := 1;
+  (* Checkpoint files can have been produced by an older importer.  Revisit
+     already declared inductives so newly supported unit-like encodings are
+     available before conversion resumes. *)
+  register_existing_unit_like ();
+  (* silence the definition messages from Coq *)
+  let { pstate = pstatev } =
+    Flags.silently (fun () ->
+        do_input { pstate = !pstate; skips = 0 } ~from ~until (open_in f)) ()
+  in
+  let state =
+    ( pstatev,
+      !sets,
+      !declared,
+      !entries,
+      !mutual_entries,
+      !squash_info,
+      !height_cache,
+      !expand_head_cache,
+      !projection_aliases,
+      !array_minds,
+      !prod_minds,
+      !list_minds,
+      !option_minds,
+      !mutual_nested_rec_info )
+  in
+  cache_lean_state state;
+  Lib.add_leaf (packed_lean_obj (pack_lean_state state))

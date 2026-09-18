@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 10.173529507999774,
+  "module": "SimplexTarget",
+  "worker_sha256": "ed7e25350e150a2d2eca568d98975473e091930e9c053ae23dcd99c70eeab1d3",
+  "vo_sha256": "d2f64b3b4153faa876499bf303b74d69f47b04c2c220b7f7d483af62d644ce36"
+}

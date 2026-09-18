@@ -1,0 +1,33 @@
+{
+  "fix": "7bb973660d9906af3d76b612a83217e100636fd6",
+  "restacked_branches": {
+    "refs/heads/docs/cslib-patches": "914c1f6f2b485d9137db6e286af168db8159ef72",
+    "refs/heads/integration/importer-review-experimental": "c8c5f2f6eadb7064c9c00acee651a7281ed9522f",
+    "refs/heads/integration/importer-review-stock": "bb86991589cd15cbfa5c8fae04cc633d6bd8fa52",
+    "refs/heads/submit/compact-arithmetic": "3b75b6e00edcfc361038c861163f4e91c5562973",
+    "refs/heads/submit/constructor-owners": "bea3b49b6e5065e4c553610636728abbf9054006",
+    "refs/heads/submit/indexed-checkpoints": "4d38c43c1abc4dd9d7d16cf59df376ea2da82772",
+    "refs/heads/submit/nested-recursors": "e0dae008411c95e8832b68f54dfad4e68b25ecac",
+    "refs/heads/submit/primitive-record-eliminators": "a242f15b752ec3f274118ddff6a78cfc5182d4f0",
+    "refs/heads/submit/translation-sharing": "da1ca85131db297b107807cc28d10ed33dac7488",
+    "refs/heads/submit/unit-like-eliminators": "94440531411ccf87e70adf550458fac4bfa36444"
+  },
+  "commits": {
+    "a22637a37789cbfaedb6b78e2fa0c733eef1306e": "7bb973660d9906af3d76b612a83217e100636fd6",
+    "8d011c7944046753305fd24b2397d59622fef743": "e0dae008411c95e8832b68f54dfad4e68b25ecac",
+    "66a8e731ca8037dedcaee369dfb96a07fff80dcc": "a242f15b752ec3f274118ddff6a78cfc5182d4f0",
+    "2797627e7ac62fe9fc5208b99987c5ecbec67b31": "bea3b49b6e5065e4c553610636728abbf9054006",
+    "5e5d19f9238e98af45079cd12c6cc7c930439f0c": "bb86991589cd15cbfa5c8fae04cc633d6bd8fa52",
+    "f6c7c97e3ca7ba837da25d93f730cfe05a51b30b": "3b75b6e00edcfc361038c861163f4e91c5562973",
+    "b0e2d30cba969e9a3b004d3a57f458d9325e372e": "94440531411ccf87e70adf550458fac4bfa36444",
+    "c7746f4019559cabc118fd7150dfd45be434ebfd": "da1ca85131db297b107807cc28d10ed33dac7488",
+    "f26735f418705e36b0f1fcf9d510cacb9d5b4572": "4d38c43c1abc4dd9d7d16cf59df376ea2da82772",
+    "848c7b40562d5530fa525115d06fab6d3e9f2f3a": "c8c5f2f6eadb7064c9c00acee651a7281ed9522f",
+    "ea78bd5d257590fb3a7ff4ba42a8cadca24c735b": "3d5a8556badea5c322a39d5cbbfc26ee8cfe6f47",
+    "72fc316999aab21c108a103d6cb52eaea61684d7": "914c1f6f2b485d9137db6e286af168db8159ef72"
+  },
+  "unrelated_refs_unchanged": true,
+  "dirty_files_preserved": true,
+  "published": false,
+  "archive_prefix": "refs/archive/function-params-20260909/"
+}

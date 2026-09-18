@@ -1,0 +1,575 @@
+[
+  {
+    "label": "diamond_serial",
+    "exit_status": 0,
+    "receipt": {
+      "accepted": true,
+      "run": "7d05d8a89455926b4f6cef26652ad17e656799585f545f884c7f422b2db971c2",
+      "entries": 5,
+      "batches": 6,
+      "attempts": 6,
+      "workers": 1,
+      "max_live_workers": 1,
+      "join_seconds": 0.16937309899367392,
+      "batch_and_join_seconds": 2.51122571201995,
+      "artifact_sha256": "e723215baf6e8f11d007dce57b3da29e039289be120e23f9b03ce1df42c1890c",
+      "events": [
+        {
+          "job": "Universes000003",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.3521075290045701,
+          "report": {
+            "run": "7d05d8a89455926b4f6cef26652ad17e656799585f545f884c7f422b2db971c2",
+            "batch": "Universes000003",
+            "kind": "checked",
+            "entries": [],
+            "seconds": 0.188173
+          }
+        },
+        {
+          "job": "Batch000000",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.35197231100755744,
+          "report": {
+            "run": "7d05d8a89455926b4f6cef26652ad17e656799585f545f884c7f422b2db971c2",
+            "batch": "Batch000000",
+            "kind": "checked",
+            "entries": [
+              1
+            ],
+            "seconds": 0.201351
+          }
+        },
+        {
+          "job": "Batch000001",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.4019508110068273,
+          "report": {
+            "run": "7d05d8a89455926b4f6cef26652ad17e656799585f545f884c7f422b2db971c2",
+            "batch": "Batch000001",
+            "kind": "checked",
+            "entries": [
+              2
+            ],
+            "seconds": 0.206982
+          }
+        },
+        {
+          "job": "Batch000002",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.3518758050049655,
+          "report": {
+            "run": "7d05d8a89455926b4f6cef26652ad17e656799585f545f884c7f422b2db971c2",
+            "batch": "Batch000002",
+            "kind": "checked",
+            "entries": [
+              3
+            ],
+            "seconds": 0.182745
+          }
+        },
+        {
+          "job": "Batch000003",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.40211351300240494,
+          "report": {
+            "run": "7d05d8a89455926b4f6cef26652ad17e656799585f545f884c7f422b2db971c2",
+            "batch": "Batch000003",
+            "kind": "checked",
+            "entries": [
+              4
+            ],
+            "seconds": 0.21744
+          }
+        },
+        {
+          "job": "Batch000004",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.4021806090022437,
+          "report": {
+            "run": "7d05d8a89455926b4f6cef26652ad17e656799585f545f884c7f422b2db971c2",
+            "batch": "Batch000004",
+            "kind": "checked",
+            "entries": [
+              6
+            ],
+            "seconds": 0.194589
+          }
+        }
+      ],
+      "total_seconds": 2.815169451991096,
+      "foundation_seconds": 0.19319319500937127,
+      "index_seconds": 0.0043879269796889275,
+      "plan_seconds": 0.00035958399530500174,
+      "cpu_seconds": {
+        "coordinator": 0.27675299999999997,
+        "compilers": 2.468045
+      }
+    }
+  },
+  {
+    "label": "diamond_parallel",
+    "exit_status": 0,
+    "receipt": {
+      "accepted": true,
+      "run": "49e59e5d7b1128d0b40965150e2718f3bf4c1c9782b9a5298bd3e740ac16c978",
+      "entries": 5,
+      "batches": 6,
+      "attempts": 6,
+      "workers": 2,
+      "max_live_workers": 2,
+      "join_seconds": 0.1895129480108153,
+      "batch_and_join_seconds": 2.2889005900069606,
+      "artifact_sha256": "79cde35493de74ed14e69b3cfc2d01dd32f576337973b574ff1fd1bb5b8101d0",
+      "events": [
+        {
+          "job": "Universes000003",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.5040593059966341,
+          "report": {
+            "run": "49e59e5d7b1128d0b40965150e2718f3bf4c1c9782b9a5298bd3e740ac16c978",
+            "batch": "Universes000003",
+            "kind": "checked",
+            "entries": [],
+            "seconds": 0.261366
+          }
+        },
+        {
+          "job": "Batch000000",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.40283798199379817,
+          "report": {
+            "run": "49e59e5d7b1128d0b40965150e2718f3bf4c1c9782b9a5298bd3e740ac16c978",
+            "batch": "Batch000000",
+            "kind": "checked",
+            "entries": [
+              1
+            ],
+            "seconds": 0.231377
+          }
+        },
+        {
+          "job": "Batch000001",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.4020764169981703,
+          "report": {
+            "run": "49e59e5d7b1128d0b40965150e2718f3bf4c1c9782b9a5298bd3e740ac16c978",
+            "batch": "Batch000001",
+            "kind": "checked",
+            "entries": [
+              2
+            ],
+            "seconds": 0.214177
+          }
+        },
+        {
+          "job": "Batch000002",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.3573514290037565,
+          "report": {
+            "run": "49e59e5d7b1128d0b40965150e2718f3bf4c1c9782b9a5298bd3e740ac16c978",
+            "batch": "Batch000002",
+            "kind": "checked",
+            "entries": [
+              3
+            ],
+            "seconds": 0.198359
+          }
+        },
+        {
+          "job": "Batch000003",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.36557150099542923,
+          "report": {
+            "run": "49e59e5d7b1128d0b40965150e2718f3bf4c1c9782b9a5298bd3e740ac16c978",
+            "batch": "Batch000003",
+            "kind": "checked",
+            "entries": [
+              4
+            ],
+            "seconds": 0.198949
+          }
+        },
+        {
+          "job": "Batch000004",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.35164448601426557,
+          "report": {
+            "run": "49e59e5d7b1128d0b40965150e2718f3bf4c1c9782b9a5298bd3e740ac16c978",
+            "batch": "Batch000004",
+            "kind": "checked",
+            "entries": [
+              6
+            ],
+            "seconds": 0.18145
+          }
+        }
+      ],
+      "total_seconds": 2.6861087159777526,
+      "foundation_seconds": 0.2548339219938498,
+      "index_seconds": 0.009606300009181723,
+      "plan_seconds": 0.00055614800658077,
+      "cpu_seconds": {
+        "coordinator": 0.375874,
+        "compilers": 2.697581
+      }
+    }
+  },
+  {
+    "label": "shared_instance_parallel",
+    "exit_status": 0,
+    "receipt": {
+      "accepted": true,
+      "run": "c03237c42f97a512a46805e85d43507a6795bc6b0f2460574d059484e04dd875",
+      "entries": 5,
+      "batches": 7,
+      "attempts": 9,
+      "workers": 2,
+      "max_live_workers": 2,
+      "join_seconds": 0.150165087019559,
+      "batch_and_join_seconds": 2.203054300014628,
+      "artifact_sha256": "801e4833d83bc7fdee965a798b49a2e21b4d375b75bdf9aaeabe23adac9ab87c",
+      "events": [
+        {
+          "job": "Universes000002",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.35162459101411514,
+          "report": {
+            "run": "c03237c42f97a512a46805e85d43507a6795bc6b0f2460574d059484e04dd875",
+            "batch": "Universes000002",
+            "kind": "checked",
+            "entries": [],
+            "seconds": 0.179618
+          }
+        },
+        {
+          "job": "Batch000001",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.3549736829882022,
+          "report": {
+            "run": "c03237c42f97a512a46805e85d43507a6795bc6b0f2460574d059484e04dd875",
+            "batch": "Batch000001",
+            "kind": "checked",
+            "entries": [
+              5
+            ],
+            "seconds": 0.193136
+          }
+        },
+        {
+          "job": "Batch000000",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.41739382399828173,
+          "report": {
+            "run": "c03237c42f97a512a46805e85d43507a6795bc6b0f2460574d059484e04dd875",
+            "batch": "Batch000000",
+            "kind": "checked",
+            "entries": [
+              4
+            ],
+            "seconds": 0.229227
+          }
+        },
+        {
+          "job": "Batch000002",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.3539364949974697,
+          "report": {
+            "run": "c03237c42f97a512a46805e85d43507a6795bc6b0f2460574d059484e04dd875",
+            "batch": "Batch000002",
+            "kind": "checked",
+            "entries": [
+              6
+            ],
+            "seconds": 0.17197
+          }
+        },
+        {
+          "job": "Batch000003",
+          "attempt": 1,
+          "outcome": "need_instance",
+          "wall_seconds": 0.154375802987488,
+          "report": {
+            "run": "c03237c42f97a512a46805e85d43507a6795bc6b0f2460574d059484e04dd875",
+            "batch": "Batch000003",
+            "kind": "need_instance",
+            "source": 4,
+            "mask": 1
+          }
+        },
+        {
+          "job": "Batch000004",
+          "attempt": 1,
+          "outcome": "need_instance",
+          "wall_seconds": 0.20475100801559165,
+          "report": {
+            "run": "c03237c42f97a512a46805e85d43507a6795bc6b0f2460574d059484e04dd875",
+            "batch": "Batch000004",
+            "kind": "need_instance",
+            "source": 4,
+            "mask": 1
+          }
+        },
+        {
+          "job": "Instance4_1",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.35243645298760384,
+          "report": {
+            "run": "c03237c42f97a512a46805e85d43507a6795bc6b0f2460574d059484e04dd875",
+            "batch": "Instance4_1",
+            "kind": "checked",
+            "entries": [],
+            "seconds": 0.193019
+          }
+        },
+        {
+          "job": "Batch000003",
+          "attempt": 2,
+          "outcome": "checked",
+          "wall_seconds": 0.3571610700164456,
+          "report": {
+            "run": "c03237c42f97a512a46805e85d43507a6795bc6b0f2460574d059484e04dd875",
+            "batch": "Batch000003",
+            "kind": "checked",
+            "entries": [
+              7
+            ],
+            "seconds": 0.192064
+          }
+        },
+        {
+          "job": "Batch000004",
+          "attempt": 2,
+          "outcome": "checked",
+          "wall_seconds": 0.4146423800266348,
+          "report": {
+            "run": "c03237c42f97a512a46805e85d43507a6795bc6b0f2460574d059484e04dd875",
+            "batch": "Batch000004",
+            "kind": "checked",
+            "entries": [
+              8
+            ],
+            "seconds": 0.195378
+          }
+        }
+      ],
+      "total_seconds": 2.469065277982736,
+      "foundation_seconds": 0.16085883497726172,
+      "index_seconds": 0.004453320987522602,
+      "plan_seconds": 0.00040860698209144175,
+      "cpu_seconds": {
+        "coordinator": 0.263994,
+        "compilers": 3.01063
+      }
+    }
+  },
+  {
+    "label": "ordinary_rec_named_parallel",
+    "exit_status": 0,
+    "receipt": {
+      "accepted": true,
+      "run": "ab319d467959c80e31f93e8ee6042f42158201fc32c732c46dc187dd1ebe7229",
+      "entries": 7,
+      "batches": 9,
+      "attempts": 11,
+      "workers": 2,
+      "max_live_workers": 2,
+      "join_seconds": 0.14880518001154996,
+      "batch_and_join_seconds": 2.5274310350068845,
+      "artifact_sha256": "d88d69811aac38fa6c8931d3cdc4a6da32e3ef662826ab34e2574a0347c09e9e",
+      "events": [
+        {
+          "job": "Universes000003",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.35185481898952276,
+          "report": {
+            "run": "ab319d467959c80e31f93e8ee6042f42158201fc32c732c46dc187dd1ebe7229",
+            "batch": "Universes000003",
+            "kind": "checked",
+            "entries": [],
+            "seconds": 0.184707
+          }
+        },
+        {
+          "job": "Batch000000",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.3567457640019711,
+          "report": {
+            "run": "ab319d467959c80e31f93e8ee6042f42158201fc32c732c46dc187dd1ebe7229",
+            "batch": "Batch000000",
+            "kind": "checked",
+            "entries": [
+              1
+            ],
+            "seconds": 0.18195
+          }
+        },
+        {
+          "job": "Batch000001",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.36498216798645444,
+          "report": {
+            "run": "ab319d467959c80e31f93e8ee6042f42158201fc32c732c46dc187dd1ebe7229",
+            "batch": "Batch000001",
+            "kind": "checked",
+            "entries": [
+              8
+            ],
+            "seconds": 0.198518
+          }
+        },
+        {
+          "job": "Batch000002",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.3551589389971923,
+          "report": {
+            "run": "ab319d467959c80e31f93e8ee6042f42158201fc32c732c46dc187dd1ebe7229",
+            "batch": "Batch000002",
+            "kind": "checked",
+            "entries": [
+              6
+            ],
+            "seconds": 0.17763
+          }
+        },
+        {
+          "job": "Batch000003",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.3640923779748846,
+          "report": {
+            "run": "ab319d467959c80e31f93e8ee6042f42158201fc32c732c46dc187dd1ebe7229",
+            "batch": "Batch000003",
+            "kind": "checked",
+            "entries": [
+              7
+            ],
+            "seconds": 0.187755
+          }
+        },
+        {
+          "job": "Batch000004",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.3522197020065505,
+          "report": {
+            "run": "ab319d467959c80e31f93e8ee6042f42158201fc32c732c46dc187dd1ebe7229",
+            "batch": "Batch000004",
+            "kind": "checked",
+            "entries": [
+              9
+            ],
+            "seconds": 0.186821
+          }
+        },
+        {
+          "job": "Batch000005",
+          "attempt": 1,
+          "outcome": "need_instance",
+          "wall_seconds": 0.15484203901723959,
+          "report": {
+            "run": "ab319d467959c80e31f93e8ee6042f42158201fc32c732c46dc187dd1ebe7229",
+            "batch": "Batch000005",
+            "kind": "need_instance",
+            "source": 6,
+            "mask": 1
+          }
+        },
+        {
+          "job": "Batch000006",
+          "attempt": 1,
+          "outcome": "need_instance",
+          "wall_seconds": 0.15175721800187603,
+          "report": {
+            "run": "ab319d467959c80e31f93e8ee6042f42158201fc32c732c46dc187dd1ebe7229",
+            "batch": "Batch000006",
+            "kind": "need_instance",
+            "source": 6,
+            "mask": 1
+          }
+        },
+        {
+          "job": "Instance6_1",
+          "attempt": 1,
+          "outcome": "checked",
+          "wall_seconds": 0.35175268299644813,
+          "report": {
+            "run": "ab319d467959c80e31f93e8ee6042f42158201fc32c732c46dc187dd1ebe7229",
+            "batch": "Instance6_1",
+            "kind": "checked",
+            "entries": [],
+            "seconds": 0.182011
+          }
+        },
+        {
+          "job": "Batch000005",
+          "attempt": 2,
+          "outcome": "checked",
+          "wall_seconds": 0.3554980859917123,
+          "report": {
+            "run": "ab319d467959c80e31f93e8ee6042f42158201fc32c732c46dc187dd1ebe7229",
+            "batch": "Batch000005",
+            "kind": "checked",
+            "entries": [
+              10
+            ],
+            "seconds": 0.185949
+          }
+        },
+        {
+          "job": "Batch000006",
+          "attempt": 2,
+          "outcome": "checked",
+          "wall_seconds": 0.3639384029957,
+          "report": {
+            "run": "ab319d467959c80e31f93e8ee6042f42158201fc32c732c46dc187dd1ebe7229",
+            "batch": "Batch000006",
+            "kind": "checked",
+            "entries": [
+              11
+            ],
+            "seconds": 0.183779
+          }
+        }
+      ],
+      "total_seconds": 2.9119663070014212,
+      "foundation_seconds": 0.207366387010552,
+      "index_seconds": 0.012006730015855283,
+      "plan_seconds": 0.0007466220122296363,
+      "cpu_seconds": {
+        "coordinator": 0.341159,
+        "compilers": 3.5713239999999997
+      }
+    }
+  },
+  {
+    "label": "invalid_body",
+    "exit_status": 1,
+    "receipt": {
+      "accepted": false,
+      "exit_status": 1,
+      "error": "Batch000002: kernel rejected a declaration"
+    }
+  }
+]

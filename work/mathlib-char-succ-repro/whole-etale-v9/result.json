@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 100.1951372299809,
+  "module": "CharWhole",
+  "worker_sha256": "a363c589e05023fecfe27114ef587aeeb88715717929eafedbd3dece21c00b36",
+  "vo_sha256": "f8b35f35dcbb8c98d8e2eb2cc044a282e73a8216cb5c086c08934f76b7c1a088"
+}

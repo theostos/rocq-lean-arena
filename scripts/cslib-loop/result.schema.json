@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "properties": {
+    "status": {"type": "string", "enum": ["ready", "blocked"]},
+    "summary": {"type": "string"},
+    "tests": {"type": "array", "items": {"type": "string"}},
+    "checkpoint_action": {"type": "string", "enum": ["reuse", "restart"]},
+    "foundation": {"type": "string", "description": "Absolute path to the tested Lean.vo for restart; empty to keep the current foundation."}
+  },
+  "required": ["status", "summary", "tests", "checkpoint_action", "foundation"],
+  "additionalProperties": false
+}

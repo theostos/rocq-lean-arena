@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 0.7714523449540138,
+  "module": "unit_like_function_transport",
+  "worker_sha256": "27e6a824c34bf8256a73e778023f78ed2061b573a51afc6653151cf59f800bc8",
+  "vo_sha256": "f0d2629307b0c72b4fac1a73481652b296645da34a653049abbf092db05f498c"
+}

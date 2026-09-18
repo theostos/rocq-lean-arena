@@ -1,0 +1,91 @@
+{
+  "status": "failed",
+  "runtime": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default",
+  "stdlib": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+  "topics": [
+    {
+      "topic": "dependent-projections",
+      "revision": "199a787fb0c01d07c7dae9f013282a47b83dac72",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-fixed-20260908/dependent-projections/result.json"
+    },
+    {
+      "topic": "mutual-inductives",
+      "revision": "24f7c7ebc0b31e2112d4f52aa08ae3521bbccd9c",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-fixed-20260908/mutual-inductives/result.json"
+    },
+    {
+      "topic": "nested-recursors",
+      "revision": "fc37bea050e8b2f158cf9ba98ca61dd131090489",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-fixed-20260908/nested-recursors/result.json"
+    },
+    {
+      "topic": "primitive-record-eliminators",
+      "revision": "de7f6bc2b981249ea6e472830f0b3126a335e6fd",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-fixed-20260908/primitive-record-eliminators/result.json"
+    },
+    {
+      "topic": "constructor-owners",
+      "revision": "b8865306d568a450b29a26b107e40d73d42410bb",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-fixed-20260908/constructor-owners/result.json"
+    },
+    {
+      "topic": "strict-import-errors",
+      "revision": "38847aaec035b71a7cc0a959b7596013104dbde6",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-fixed-20260908/strict-import-errors/result.json"
+    },
+    {
+      "topic": "reducibility-hints",
+      "revision": "06e957b101ea039687ecc8d90cbd12aa27ec6212",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-fixed-20260908/reducibility-hints/result.json"
+    },
+    {
+      "topic": "parser-sharing",
+      "revision": "bafd3d76478e457e98297b9d8d87d7e4a5690f4a",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-fixed-20260908/parser-sharing/result.json"
+    },
+    {
+      "topic": "stock-integration",
+      "revision": "cec59893caed9f0d2a9a013fb50dc125433ffb0e",
+      "exit_code": 1,
+      "status": "failed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-fixed-20260908/stock-integration/result.json"
+    },
+    {
+      "topic": "uint32-constructor",
+      "revision": "692555579c46db8aed42f90fc338e0ad4ec09949",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-fixed-20260908/uint32-constructor/result.json"
+    },
+    {
+      "topic": "string-of-list",
+      "revision": "ea536805c0b480a7848a2ed88f5598fd20e79541",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-fixed-20260908/string-of-list/result.json"
+    },
+    {
+      "topic": "indexed-checkpoints",
+      "revision": "c5b8b214de8874d5d32a37aeb9a95744bb02199b",
+      "exit_code": 1,
+      "status": "failed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-fixed-20260908/indexed-checkpoints/result.json"
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "worktree": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-fix-translation-cache-20260908",
+  "revision": "3928cf9b19768b99b9ca3018d8e84a65b69bff78",
+  "tracked_changes": "",
+  "runtime": "experimental",
+  "runtime_prefix": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default",
+  "runtime_revision": "22cc1ac2301bc2089732b7ab9dde6288d9d2af3e",
+  "stdlib": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+  "guard": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/arena-loop-20260908/checkers/rocq-lean-import/scripts/run-memory-guarded.sh",
+  "output": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/cache-revision-3928cf9-20260908/validation",
+  "environment": {
+    "PATH": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/home/theo/.elan/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/home/theo/.codex/tmp/arg0/codex-arg0iVtBmQ:/home/theo/.local/bin:/home/theo/.elan/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/home/theo/.nvm/versions/node/v22.16.0/bin:/home/theo/miniconda3/bin:/home/theo/miniconda3/condabin:/home/theo/.cargo/bin:/home/theo/.local/bin:/home/theo/.elan/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/theo/.vscode/extensions/openai.chatgpt-26.901.22334-linux-x64/bin/linux-x86_64",
+    "OCAMLPATH": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/lib",
+    "COQBIN": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/",
+    "COQLIB": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/lib/coq",
+    "ROCQLIB": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/lib/coq",
+    "ROCQ_MAX_RSS_KIB": "3145728",
+    "ROCQ_MEMORY_MAX_KIB": "3145728",
+    "ROCQ_MEMORY_HIGH_KIB": "3145728",
+    "ROCQ_MEMORY_SWAP_MAX_KIB": "0",
+    "ROCQ_MIN_AVAILABLE_KIB": "6291456",
+    "ROCQ_ALLOW_EXTERNAL_ROCQ": "0",
+    "ROCQ_STACK_KIB": "262144",
+    "ROCQ_MEMORY_STATUS_SECONDS": "60",
+    "OCAMLRUNPARAM": "b",
+    "MAKEFLAGS": "",
+    "MFLAGS": ""
+  },
+  "stages": [
+    {
+      "name": "configure",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-fix-translation-cache-20260908",
+      "timeout": 60,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "makefile",
+        "-f",
+        "_CoqProject",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-o",
+        "Makefile.review"
+      ]
+    },
+    {
+      "name": "build",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-fix-translation-cache-20260908",
+      "timeout": 600,
+      "command": [
+        "make",
+        "-f",
+        "Makefile.review",
+        "-j1",
+        "COQC=timeout --signal=TERM --kill-after=5s 180 /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq c -q -bytecode-compiler no",
+        "all"
+      ]
+    },
+    {
+      "name": "test-01-translation_cache_dispatch",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-fix-translation-cache-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-fix-translation-cache-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-fix-translation-cache-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-fix-translation-cache-20260908/tests/translation_cache_dispatch.v"
+      ]
+    },
+    {
+      "name": "test-02-nat_boolean_adjacent",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-fix-translation-cache-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-fix-translation-cache-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-fix-translation-cache-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-fix-translation-cache-20260908/tests/nat_boolean_adjacent.v"
+      ]
+    }
+  ],
+  "compatibility_blocker": null,
+  "status": "passed",
+  "results": [
+    {
+      "stage": "configure",
+      "exit_code": 0,
+      "seconds": 0.01
+    },
+    {
+      "stage": "build",
+      "exit_code": 0,
+      "seconds": 5.19
+    },
+    {
+      "stage": "test-01-translation_cache_dispatch",
+      "exit_code": 0,
+      "seconds": 1.48
+    },
+    {
+      "stage": "test-02-nat_boolean_adjacent",
+      "exit_code": 0,
+      "seconds": 3.07
+    }
+  ],
+  "guard_exit_code": 0
+}

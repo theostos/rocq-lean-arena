@@ -1,0 +1,9 @@
+{
+  "exit_code": 0,
+  "process_exit_code": 0,
+  "completed_checking": true,
+  "wall_seconds": 146.7136258630053,
+  "worker_sha256": "80c4781a4738d0509f88630d70583415a93b8d88a1f15306561fd88c70e70940",
+  "artifact_produced": false,
+  "scope": "Diagnostic, stopped before saving importer state"
+}

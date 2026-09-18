@@ -1,0 +1,6 @@
+{
+  "exit_code": 1,
+  "wall_seconds": 666.2652059120592,
+  "module": "RiemannianWholeFrom25M",
+  "worker_sha256": "7ce6e569024b1756c9576773b77fca5a21d91ce919a189bd363e29b90e62fcad"
+}

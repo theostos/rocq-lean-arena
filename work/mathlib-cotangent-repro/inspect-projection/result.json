@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 10.292341373999989,
+  "module": "InspectProjection",
+  "worker_sha256": "9685f52c1152ff6f7a054a7d654f58b7176b0e593c7477eda608b5f8047b359a",
+  "vo_sha256": "90ee294a393499d94413f3ce021c4d6a9c889c5e47217e081b2a507fae006c3e"
+}

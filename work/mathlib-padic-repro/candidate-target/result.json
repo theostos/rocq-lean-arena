@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 80.68100885800231,
+  "module": "PadicTarget",
+  "worker_sha256": "484cb306cb0f5d114071d601202a45c93de9c7ee803bbcd5c455553a6863649a",
+  "vo_sha256": "e21b9ba6fa2ac38c0a65e4e3453d38c742029a2cc0f2846abaab4f32ef4ab4dc"
+}

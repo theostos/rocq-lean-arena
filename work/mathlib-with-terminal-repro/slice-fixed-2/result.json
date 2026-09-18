@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 10.99475643900223,
+  "module": "Slice",
+  "worker_sha256": "938cf20b10fc8ebcde26d325e797057e79d59e42b1a2078613ff7f53222fe5ac",
+  "vo_sha256": "60e8f2488551d139c8561dbd44daa4890a49938f580ddba024ae5a3d0aa31377"
+}

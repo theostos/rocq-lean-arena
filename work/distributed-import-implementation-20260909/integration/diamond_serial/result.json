@@ -1,0 +1,5 @@
+{
+  "accepted": false,
+  "exit_status": 3,
+  "error": "final join did not save its checked artifact (exit 1); see All.log"
+}

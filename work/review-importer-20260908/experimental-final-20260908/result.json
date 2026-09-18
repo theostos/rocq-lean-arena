@@ -1,0 +1,64 @@
+{
+  "status": "failed",
+  "runtime_revision": "22cc1ac2301bc2089732b7ab9dde6288d9d2af3e",
+  "topics": [
+    {
+      "topic": "compact-arithmetic",
+      "branch": "submit/compact-arithmetic",
+      "revision": "11a0eeb883d77310d77d866cf53dc831216dfe0a",
+      "status": "failed",
+      "exit_code": 1,
+      "cache_switches": {},
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/experimental-final-20260908/compact-arithmetic/result.json"
+    },
+    {
+      "topic": "unit-like-eliminators",
+      "branch": "submit/unit-like-eliminators",
+      "revision": "7e16c32e837047335fe73b69c7cdb4fab9569297",
+      "status": "failed",
+      "exit_code": 1,
+      "cache_switches": {},
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/experimental-final-20260908/unit-like-eliminators/result.json"
+    },
+    {
+      "topic": "translation-sharing",
+      "branch": "submit/translation-sharing",
+      "revision": "065ac2b3ae22c824274c520f61d7f993c2860428",
+      "status": "passed",
+      "exit_code": 0,
+      "cache_switches": {},
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/experimental-final-20260908/translation-sharing/result.json"
+    },
+    {
+      "topic": "cache-validation",
+      "branch": "submit/translation-sharing",
+      "revision": "065ac2b3ae22c824274c520f61d7f993c2860428",
+      "status": "failed",
+      "exit_code": 1,
+      "cache_switches": {
+        "LEAN_IMPORT_VALIDATE_TRANSLATION_CACHE": "1"
+      },
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/experimental-final-20260908/cache-validation/result.json"
+    },
+    {
+      "topic": "cache-disabled",
+      "branch": "submit/translation-sharing",
+      "revision": "065ac2b3ae22c824274c520f61d7f993c2860428",
+      "status": "passed",
+      "exit_code": 0,
+      "cache_switches": {
+        "LEAN_IMPORT_DISABLE_TRANSLATION_CACHE": "1"
+      },
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/experimental-final-20260908/cache-disabled/result.json"
+    },
+    {
+      "topic": "experimental-integration",
+      "branch": "integration/importer-review-experimental",
+      "revision": "f527ee0796d00bd5a1dfc5a6391ee7ae53a8eb09",
+      "status": "failed",
+      "exit_code": 1,
+      "cache_switches": {},
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/experimental-final-20260908/experimental-integration/result.json"
+    }
+  ]
+}

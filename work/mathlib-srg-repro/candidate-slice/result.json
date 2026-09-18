@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 35.17012715799501,
+  "module": "SrgWhole",
+  "worker_sha256": "a363c589e05023fecfe27114ef587aeeb88715717929eafedbd3dece21c00b36",
+  "vo_sha256": "39ca4d8f0205d572e2e385c4ca810873909bb017b5bbe21588fb4c5edf7f4deb"
+}

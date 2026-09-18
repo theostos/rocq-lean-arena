@@ -1,0 +1,87 @@
+[
+  {
+    "name": "Reverse",
+    "exit_status": 0,
+    "expected_error": null
+  },
+  {
+    "name": "Twin",
+    "exit_status": 0,
+    "expected_error": null
+  },
+  {
+    "name": "Overlap",
+    "exit_status": 1,
+    "expected_error": "conflicting source entry ownership"
+  },
+  {
+    "name": "TwinIdentity",
+    "exit_status": 0,
+    "expected_error": null
+  },
+  {
+    "name": "IdentityConflict",
+    "exit_status": 1,
+    "expected_error": "conflicting batch identities"
+  },
+  {
+    "name": "U",
+    "exit_status": 0,
+    "expected_error": null
+  },
+  {
+    "name": "Up",
+    "exit_status": 0,
+    "expected_error": null
+  },
+  {
+    "name": "Down",
+    "exit_status": 0,
+    "expected_error": null
+  },
+  {
+    "name": "UniverseConflict",
+    "exit_status": 1,
+    "expected_error": "Universe inconsistency"
+  },
+  {
+    "name": "universe_instances",
+    "exit_status": 0,
+    "expected_error": null
+  },
+  {
+    "name": "mutual_inductives",
+    "exit_status": 0,
+    "expected_error": null
+  },
+  {
+    "name": "mutual_instances",
+    "exit_status": 0,
+    "expected_error": null
+  },
+  {
+    "name": "mutual_nested_recursor",
+    "exit_status": 0,
+    "expected_error": null
+  },
+  {
+    "name": "nested_record_containers",
+    "exit_status": 0,
+    "expected_error": null
+  },
+  {
+    "name": "projection_relevance",
+    "exit_status": 0,
+    "expected_error": null
+  },
+  {
+    "name": "nullary_unit_scheme",
+    "exit_status": 0,
+    "expected_error": null
+  },
+  {
+    "name": "string_of_list",
+    "exit_status": 0,
+    "expected_error": null
+  }
+]

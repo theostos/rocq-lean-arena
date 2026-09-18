@@ -1,0 +1,34 @@
+[
+  {
+    "check": "reload9m",
+    "exit_code": 0,
+    "command": [
+      "bash",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/run-memory-guarded.sh",
+      "timeout",
+      "180s",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/default/topbin/rocqworker.exe",
+      "--kind=compile",
+      "-coqlib",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq",
+      "-q",
+      "-bytecode-compiler",
+      "no",
+      "-R",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories",
+      "Stdlib",
+      "-Q",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-ndjson/checkpoints",
+      "",
+      "-Q",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-ndjson/foundation",
+      "LeanImport",
+      "-I",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/cslib-ndjson/src",
+      "-Q",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-original-dependency-cache/checks-vdludtxh",
+      "CacheRestore",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-original-dependency-cache/checks-vdludtxh/Reload9M.v"
+    ]
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 63.05178486299701,
+  "module": "ProofTarget",
+  "worker_sha256": "c1738c330c3d3577b049c572171418fec1b68f53493d3535582f15db7e172f0d",
+  "vo_sha256": "c630cc5c318e29089c1cbb5b6bfd5a0fe625d5c5352c3e51dd54e20826a643ff"
+}

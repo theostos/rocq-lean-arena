@@ -1,0 +1,52 @@
+[
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/AliasedUnitProjection.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-jchze3zx/0/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/ArrowAlias.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-jchze3zx/1/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/AliasControls.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-jchze3zx/2/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/PrefixDirect.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-jchze3zx/3/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/PrefixMinimal.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-jchze3zx/4/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/test-suite/success/unit_like_projection.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-jchze3zx/5/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/test-suite/success/compact_peano.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-jchze3zx/6/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/test-suite/success/bounded_congruence.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-jchze3zx/7/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/test-suite/success/congruence_probe_scope.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-jchze3zx/8/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/test-suite/success/direct_unfolding_dependency.v",
+    "exit_code": 1,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-jchze3zx/9/run.log"
+  }
+]

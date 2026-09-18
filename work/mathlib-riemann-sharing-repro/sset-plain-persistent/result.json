@@ -1,0 +1,6 @@
+{
+  "exit_code": 1,
+  "wall_seconds": 125.22526396298781,
+  "module": "SSetNoSharing",
+  "worker_sha256": "e963faf6d76675756a84e6befc84847a66afc195e68c8452ae9e054ddf47704e"
+}

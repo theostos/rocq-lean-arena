@@ -1,4 +1,15 @@
-# `rocq-lean-import` review-ready PR stack
+# Earlier `rocq-lean-import` PR stack
+
+**Superseded:** use [the current compatibility list and cleanup](docs/importer-patches.md).
+The branch names below are historical archive entries, not the active PR queue.
+For current copy-ready titles and bodies, use
+[PR_BODIES.md](https://github.com/theostos/rocq-lean-import/blob/docs/cslib-patches/PR_BODIES.md),
+not the archived templates below. #70 is no longer a dependency of other topics.
+
+Historical handoff: the experiment has since changed, especially nested
+recursors and arithmetic. For current branches, bases and validation limits,
+use the [cslib review map](docs/review-map.md). The results below describe the
+earlier stack, not the current full-library frontier.
 
 This is the current handoff for the branches in
 [`theostos/rocq-lean-import`](https://github.com/theostos/rocq-lean-import).
@@ -224,9 +235,10 @@ Before, original parameters and synthesized `max`/`succ` parameters were
 tracked separately. This could misalign a reference's universe instance with
 its declaration and omit required constraints.
 
-In cslib, this caused `Int64.toInt_minValue` to fail with missing constraints
-for `eq_ind_r` and `eq_sind_r`. With this change, the declaration imports
-successfully.
+Correction (2026-09-08): the historical `Int64.toInt_minValue` constraints
+were fixed by `4de13e2` in the retired proof-reconstruction path, not by #70.
+The #70 fixture already imports on its parent; its new Rocq assertion checks
+a smaller exposed universe instance. See [the reproduction](docs/pr70-universe-reproduction.md).
 
 ### Why it matters
 

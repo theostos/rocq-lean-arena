@@ -1,0 +1,102 @@
+[
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/AliasedUnitProjection.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/0/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/ArrowAlias.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/1/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/AliasControls.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/2/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/PrefixDirect.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/3/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/PrefixMinimal.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/4/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/test-suite/success/unit_like_projection.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/5/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/test-suite/success/compact_peano.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/6/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/test-suite/success/bounded_congruence.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/7/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/test-suite/success/congruence_probe_scope.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/8/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/test-suite/success/direct_unfolding_dependency.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/9/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/test-suite/success/eta_before_computation.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/10/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/test-suite/success/opaque_unit_record_eta.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/11/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/test-suite/success/projection_aliases.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/12/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/test-suite/success/projection_before_eta.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/13/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/int8-conversion-repro/OpaqueUnitRecord.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/14/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/int8-conversion-repro/ProjectionBeforeEta.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/15/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/int8-conversion-repro/ProjectionWrappers.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/16/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/unit-projection-repro/ModifyEq.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/17/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/unit-projection-repro/LinearMap.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/18/run.log"
+  },
+  {
+    "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/int32-tdiv-repro/FinalBoundedProbesArithmetic.v",
+    "exit_code": 0,
+    "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/structured-arrow-repro/patched-checks-90jlyla3/19/run.log"
+  }
+]

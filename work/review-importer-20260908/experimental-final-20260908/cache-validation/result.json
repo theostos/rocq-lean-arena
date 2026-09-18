@@ -1,0 +1,703 @@
+{
+  "worktree": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908",
+  "revision": "065ac2b3ae22c824274c520f61d7f993c2860428",
+  "tracked_changes": "",
+  "runtime": "experimental",
+  "runtime_prefix": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default",
+  "runtime_revision": "22cc1ac2301bc2089732b7ab9dde6288d9d2af3e",
+  "stdlib": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+  "guard": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/arena-loop-20260908/checkers/rocq-lean-import/scripts/run-memory-guarded.sh",
+  "output": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/experimental-final-20260908/cache-validation",
+  "environment": {
+    "PATH": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/home/theo/.elan/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/home/theo/.codex/tmp/arg0/codex-arg0iVtBmQ:/home/theo/.local/bin:/home/theo/.elan/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/home/theo/.nvm/versions/node/v22.16.0/bin:/home/theo/miniconda3/bin:/home/theo/miniconda3/condabin:/home/theo/.cargo/bin:/home/theo/.local/bin:/home/theo/.elan/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/theo/.vscode/extensions/openai.chatgpt-26.901.22334-linux-x64/bin/linux-x86_64",
+    "OCAMLPATH": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/lib",
+    "COQBIN": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/",
+    "COQLIB": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/lib/coq",
+    "ROCQLIB": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/lib/coq",
+    "ROCQ_MAX_RSS_KIB": "3145728",
+    "ROCQ_MEMORY_MAX_KIB": "3145728",
+    "ROCQ_MEMORY_HIGH_KIB": "3145728",
+    "ROCQ_MEMORY_SWAP_MAX_KIB": "0",
+    "ROCQ_MIN_AVAILABLE_KIB": "6291456",
+    "ROCQ_ALLOW_EXTERNAL_ROCQ": "0",
+    "ROCQ_STACK_KIB": "262144",
+    "ROCQ_MEMORY_STATUS_SECONDS": "60",
+    "OCAMLRUNPARAM": "b",
+    "MAKEFLAGS": "",
+    "MFLAGS": ""
+  },
+  "stages": [
+    {
+      "name": "configure",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908",
+      "timeout": 60,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "makefile",
+        "-f",
+        "_CoqProject",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-o",
+        "Makefile.review"
+      ]
+    },
+    {
+      "name": "build",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908",
+      "timeout": 600,
+      "command": [
+        "make",
+        "-f",
+        "Makefile.review",
+        "-j1",
+        "COQC=timeout --signal=TERM --kill-after=5s 180 /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq c -q -bytecode-compiler no",
+        "all"
+      ]
+    },
+    {
+      "name": "test-01-dependent_sprop_projection",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/dependent_sprop_projection.v"
+      ]
+    },
+    {
+      "name": "test-02-projection_relevance",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/projection_relevance.v"
+      ]
+    },
+    {
+      "name": "test-03-mutual_instances",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/mutual_instances.v"
+      ]
+    },
+    {
+      "name": "test-04-nullary_unit_scheme",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/nullary_unit_scheme.v"
+      ]
+    },
+    {
+      "name": "test-05-nested_containers",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/nested_containers.v"
+      ]
+    },
+    {
+      "name": "test-06-nested_partial_application",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/nested_partial_application.v"
+      ]
+    },
+    {
+      "name": "test-07-mutual_nested_recursor",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/mutual_nested_recursor.v"
+      ]
+    },
+    {
+      "name": "test-08-nested_record_containers",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/nested_record_containers.v"
+      ]
+    },
+    {
+      "name": "test-09-nested_record_eligibility",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/nested_record_eligibility.v"
+      ]
+    },
+    {
+      "name": "test-10-sprop_record_scheme",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/sprop_record_scheme.v"
+      ]
+    },
+    {
+      "name": "test-11-nested_below",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/nested_below.v"
+      ]
+    },
+    {
+      "name": "test-12-nested_record_tree_cases",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/nested_record_tree_cases.v"
+      ]
+    },
+    {
+      "name": "test-13-nested_mixed_fields",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/nested_mixed_fields.v"
+      ]
+    },
+    {
+      "name": "test-14-nested_reload_prefix",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/nested_reload_prefix.v"
+      ]
+    },
+    {
+      "name": "test-15-nested_reload",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/nested_reload.v"
+      ]
+    },
+    {
+      "name": "test-16-nat_boolean_source",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/nat_boolean_source.v"
+      ]
+    },
+    {
+      "name": "test-17-nat_boolean_source_prefix",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/nat_boolean_source_prefix.v"
+      ]
+    },
+    {
+      "name": "test-18-nat_boolean_source_target",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/nat_boolean_source_target.v"
+      ]
+    },
+    {
+      "name": "test-19-nat_boolean_source_reload",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/nat_boolean_source_reload.v"
+      ]
+    },
+    {
+      "name": "test-20-nat_boolean_adjacent",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/nat_boolean_adjacent.v"
+      ]
+    },
+    {
+      "name": "test-21-nat_boolean_registration",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/nat_boolean_registration.v"
+      ]
+    },
+    {
+      "name": "test-22-nat_boolean_controls",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908/tests/nat_boolean_controls.v"
+      ]
+    }
+  ],
+  "compatibility_blocker": null,
+  "status": "failed",
+  "results": [
+    {
+      "stage": "configure",
+      "exit_code": 0,
+      "seconds": 0.02
+    },
+    {
+      "stage": "build",
+      "exit_code": 0,
+      "seconds": 2.14
+    },
+    {
+      "stage": "test-01-dependent_sprop_projection",
+      "exit_code": 0,
+      "seconds": 1.08
+    },
+    {
+      "stage": "test-02-projection_relevance",
+      "exit_code": 0,
+      "seconds": 1.09
+    },
+    {
+      "stage": "test-03-mutual_instances",
+      "exit_code": 0,
+      "seconds": 1.12
+    },
+    {
+      "stage": "test-04-nullary_unit_scheme",
+      "exit_code": 0,
+      "seconds": 2.24
+    },
+    {
+      "stage": "test-05-nested_containers",
+      "exit_code": 0,
+      "seconds": 1.85
+    },
+    {
+      "stage": "test-06-nested_partial_application",
+      "exit_code": 0,
+      "seconds": 1.61
+    },
+    {
+      "stage": "test-07-mutual_nested_recursor",
+      "exit_code": 0,
+      "seconds": 1.67
+    },
+    {
+      "stage": "test-08-nested_record_containers",
+      "exit_code": 0,
+      "seconds": 1.51
+    },
+    {
+      "stage": "test-09-nested_record_eligibility",
+      "exit_code": 0,
+      "seconds": 1.09
+    },
+    {
+      "stage": "test-10-sprop_record_scheme",
+      "exit_code": 0,
+      "seconds": 1.09
+    },
+    {
+      "stage": "test-11-nested_below",
+      "exit_code": 0,
+      "seconds": 1.33
+    },
+    {
+      "stage": "test-12-nested_record_tree_cases",
+      "exit_code": 0,
+      "seconds": 1.42
+    },
+    {
+      "stage": "test-13-nested_mixed_fields",
+      "exit_code": 0,
+      "seconds": 1.23
+    },
+    {
+      "stage": "test-14-nested_reload_prefix",
+      "exit_code": 0,
+      "seconds": 1.46
+    },
+    {
+      "stage": "test-15-nested_reload",
+      "exit_code": 0,
+      "seconds": 1.36
+    },
+    {
+      "stage": "test-16-nat_boolean_source",
+      "exit_code": 0,
+      "seconds": 1.56
+    },
+    {
+      "stage": "test-17-nat_boolean_source_prefix",
+      "exit_code": 0,
+      "seconds": 1.33
+    },
+    {
+      "stage": "test-18-nat_boolean_source_target",
+      "exit_code": 0,
+      "seconds": 1.11
+    },
+    {
+      "stage": "test-19-nat_boolean_source_reload",
+      "exit_code": 0,
+      "seconds": 0.93
+    },
+    {
+      "stage": "test-20-nat_boolean_adjacent",
+      "exit_code": 1,
+      "seconds": 1.58
+    }
+  ],
+  "guard_exit_code": 1
+}

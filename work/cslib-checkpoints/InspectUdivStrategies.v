@@ -1,0 +1,6 @@
+From LeanImport Require Import Lean.
+Require Import CslibCompactTo4000000.
+Print Strategy CslibCompactTo4000000.Std_Tactic_BVDecide_BVExpr_bitblast_blastUdiv_go.
+Print Strategy CslibCompactTo4000000.Std_Tactic_BVDecide_BVExpr_bitblast_blastUdiv_blastDivSubtractShift.
+Print Strategy CslibCompactTo4000000.Std_Tactic_BVDecide_BVExpr_bitblast_blastUdiv_blastShiftConcat.
+Print Strategy CslibCompactTo4000000.hle1.

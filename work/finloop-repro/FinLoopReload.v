@@ -1,0 +1,4 @@
+From LeanImport Require Import Lean.
+Require Import FinLoop.
+Check Cslib_Automata_NA_FinAcc_instTotalSumUnitFinLoopOfNonemptyElemStart.
+Print Assumptions Cslib_Automata_NA_FinAcc_instTotalSumUnitFinLoopOfNonemptyElemStart.

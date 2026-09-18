@@ -4,6 +4,13 @@ Small experiment: run Lean Kernel Arena exports through
 [`rocq-lean-import`](https://github.com/rocq-community/rocq-lean-import), then let
 Rocq check the result.
 
+For developers: the [cslib review map](docs/review-map.md) links each importer,
+kernel and runner change to its branch, topic diff and validation status.
+
+Current cslib workflow: [manual checking from line 1](docs/cslib-manual-method.md).
+Autonomous repair is disabled; new full runs do not reuse checkpoints.
+The user starts and monitors each run.
+
 Pipeline:
 
 ```text
@@ -58,6 +65,18 @@ incorrect:   4 / 133
 
 ## Mathlib
 
+For the Arena Lean 4.29 reference with the current experimental Rocq kernel:
+
+```sh
+python3 scripts/run_mathlib_from_start.py
+```
+
+This reuses the existing reference NDJSON, converts it with reducibility hints
+if needed, and checks from line 1 without checkpoints or automatic repairs.
+See the [manual Mathlib guide](docs/mathlib-manual-method.md) for logs and resource
+limits. The commands below describe the older Arena checker configuration,
+not the experimental kernel used for cslib.
+
 Build the full mathlib export:
 
 ```sh
@@ -102,7 +121,60 @@ The runner builds the selected importer worktree, verifies the importer commit
 and Rocq version, records time and memory, and writes the current frontier to
 `_build/frontier/state.json`.
 
+Each new history entry records its own freshly computed input SHA-256 and the
+selected Rocq command (`ROCQLKA_ROCQ`, or `rocq`) used for both the version probe
+and compilation. Separate runs keep separate logs. Command/version metadata
+does not identify a clean upstream kernel build or all loaded artifacts;
+reloading experimental checkpoints with a stock executable is not a fresh
+upstream-kernel verification.
+
 Use `--from-line` and `--until-line` together to check a bounded export range.
+The frontier runner forces fail-on-error checking and takes its range only from
+these command-line arguments. Missing quotients, reported errors, or skipped
+entries cannot produce a successful frontier result.
+
+The cslib experiment uses a **modified experimental kernel**, not the reference
+switch above. Its current workflow is [manual checking from line 1](docs/cslib-manual-method.md),
+without checkpoint reuse or model-driven retries. The former
+[cslib loop](scripts/cslib-loop/README.md) and
+[Mathlib queue](scripts/mathlib-loop/README.md) are disabled; their guides and
+[older notes](work/cslib-v2/README.md) are historical. This does not yet establish
+a successful full cslib or Mathlib check.
+
+## Resource safety
+
+The checker `build.sh` and `run.sh` entry points, and the frontier runner's
+build/version checks, use one user-wide memory guard. Run commands sequentially;
+parallel build jobs are rejected. A second guarded task or an existing unguarded
+Rocq worker prevents launch.
+
+This requires Linux, cgroup v2, and a working user systemd manager with delegated
+memory controls. If protection cannot be established, the command refuses to
+start. Defaults are a **3 GiB hard limit**, **no swap**, and a **15 GiB system
+reserve**. Admission requires the full budget plus the reserve to be available;
+the guard also stops the workload if available memory falls to the reserve.
+
+Limits are configurable in KiB, for example:
+
+```sh
+ROCQ_MAX_RSS_KIB=4194304 \
+ROCQ_MIN_AVAILABLE_KIB=14155776 \
+  scripts/run_rocq_frontier.py path/to/input.lean-export
+```
+
+This permits at most 4 GiB while reserving 13.5 GiB; it does not request that
+other applications release memory. Keep the reserve appropriate for your other
+work. Full settings are listed at the top of
+[run-memory-guarded.sh](checkers/rocq-lean-import/scripts/run-memory-guarded.sh).
+Do not invoke the `*-internal.sh` implementations directly. Setup, Lean export
+generation (`make build-test`), and manually launched tools are outside this
+guard; these limits apply to the Rocq checker workflow.
+
+Resource-safety dispatch and cancellation tests use mocks only:
+
+```sh
+python3 -m unittest discover -s scripts/tests -p 'test_rocq_resource_safety.py'
+```
 
 ## Variables
 

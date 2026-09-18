@@ -1,0 +1,2 @@
+Require Import Target.
+Check Std_Tactic_BVDecide_LRAT_Internal_DefaultFormula_restoreAssignments_performRupCheck_base_case.

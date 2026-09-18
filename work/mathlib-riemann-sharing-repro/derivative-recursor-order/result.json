@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 155.37765624804888,
+  "module": "DerivativeTarget",
+  "worker_sha256": "7ce6e569024b1756c9576773b77fca5a21d91ce919a189bd363e29b90e62fcad",
+  "vo_sha256": "f4bab963a559614112308bc42f724a5aeb4cd4f0f6a6a0cb0b53441e6d9b461a"
+}

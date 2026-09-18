@@ -1,0 +1,7 @@
+From LeanImport Require Import Lean.
+Require Import MathlibTo14000000.
+Set Printing Depth 24.
+Set Printing Width 140.
+Print MathlibTo1000000.algebraMap0.
+Print MathlibTo7000000.AlgebraicGeometry_instAlgebraObjOppositeOpensCarrierTopObjFunctorTypeIsSheafGrothendieckTopologyStructureSheafInType.
+Print MathlibTo1000000.RingHom_comp.

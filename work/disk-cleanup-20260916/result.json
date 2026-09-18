@@ -1,0 +1,9 @@
+{
+  "removed_files": 6708,
+  "allocated_bytes_reclaimed": 14002884608,
+  "free_bytes_after": 20250832896,
+  "recovery": "Rebuild test outputs from preserved sources; no trash copy.",
+  "checkpoints_deleted": 0,
+  "importers_deleted": 0,
+  "sources_logs_and_validation_records_preserved": true
+}

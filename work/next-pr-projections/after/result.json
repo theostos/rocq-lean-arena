@@ -1,0 +1,191 @@
+{
+  "worktree": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after",
+  "revision": "c8db0934f0718e44a66c598360ef9c55ff7d6810",
+  "tracked_changes": "M src/lean.ml\n M tests/_CoqProject",
+  "runtime": "stock",
+  "runtime_prefix": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default",
+  "runtime_revision": "56acfe11bcabfc81712ec0191bcbbd7c603e71e5",
+  "stdlib": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+  "guard": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/arena-loop-20260908/checkers/rocq-lean-import/scripts/run-memory-guarded.sh",
+  "output": "/home/theo/Documents/github/rocq-lean-typechecker/work/next-pr-projections/after",
+  "environment": {
+    "PATH": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/home/theo/.elan/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/home/theo/.codex/tmp/arg0/codex-arg0iVtBmQ:/home/theo/.local/bin:/home/theo/.elan/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/home/theo/.nvm/versions/node/v22.16.0/bin:/home/theo/miniconda3/bin:/home/theo/miniconda3/condabin:/home/theo/.cargo/bin:/home/theo/.local/bin:/home/theo/.elan/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/theo/.vscode/extensions/openai.chatgpt-26.901.22334-linux-x64/bin/linux-x86_64",
+    "OCAMLPATH": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/lib",
+    "COQBIN": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/",
+    "COQLIB": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/lib/coq",
+    "ROCQLIB": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/lib/coq",
+    "ROCQ_MAX_RSS_KIB": "3145728",
+    "ROCQ_MEMORY_MAX_KIB": "3145728",
+    "ROCQ_MEMORY_HIGH_KIB": "3145728",
+    "ROCQ_MEMORY_SWAP_MAX_KIB": "0",
+    "ROCQ_MIN_AVAILABLE_KIB": "6291456",
+    "ROCQ_ALLOW_EXTERNAL_ROCQ": "0",
+    "ROCQ_STACK_KIB": "262144",
+    "ROCQ_MEMORY_STATUS_SECONDS": "60",
+    "OCAMLRUNPARAM": "b",
+    "MAKEFLAGS": "",
+    "MFLAGS": ""
+  },
+  "stages": [
+    {
+      "name": "configure",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after",
+      "timeout": 60,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/rocq",
+        "makefile",
+        "-f",
+        "_CoqProject",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+        "Stdlib",
+        "-o",
+        "Makefile.review"
+      ]
+    },
+    {
+      "name": "build",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after",
+      "timeout": 600,
+      "command": [
+        "make",
+        "-f",
+        "Makefile.review",
+        "-j1",
+        "COQC=timeout --signal=TERM --kill-after=5s 180 /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/rocq c -q -bytecode-compiler no",
+        "all"
+      ]
+    },
+    {
+      "name": "test-01-projection_relevance",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after/tests/projection_relevance.v"
+      ]
+    },
+    {
+      "name": "test-02-dependent_sprop_projection",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after/tests/dependent_sprop_projection.v"
+      ]
+    },
+    {
+      "name": "test-03-rec_single_ctor",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after/tests/rec_single_ctor.v"
+      ]
+    },
+    {
+      "name": "test-04-ulift",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after/tests/ulift.v"
+      ]
+    }
+  ],
+  "compatibility_blocker": null,
+  "status": "passed",
+  "results": [
+    {
+      "stage": "configure",
+      "exit_code": 0,
+      "seconds": 0.01
+    },
+    {
+      "stage": "build",
+      "exit_code": 0,
+      "seconds": 4.62
+    },
+    {
+      "stage": "test-01-projection_relevance",
+      "exit_code": 0,
+      "seconds": 1.46
+    },
+    {
+      "stage": "test-02-dependent_sprop_projection",
+      "exit_code": 0,
+      "seconds": 1.37
+    },
+    {
+      "stage": "test-03-rec_single_ctor",
+      "exit_code": 0,
+      "seconds": 1.4
+    },
+    {
+      "stage": "test-04-ulift",
+      "exit_code": 0,
+      "seconds": 1.35
+    }
+  ],
+  "guard_exit_code": 0
+}

@@ -1,0 +1,63 @@
+[
+  {
+    "module": "Cslib.Computability.Automata.DA.Buchi",
+    "counts": {
+      "expression_nodes": 221768,
+      "entries": 3044,
+      "named_constants": 3464
+    },
+    "matches_prediction": true,
+    "elapsed_seconds": 12.482583906006766,
+    "command": [
+      "lake",
+      "env",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/lean4export/leanprover_lean4_v4.27.0-rc1/.lake/build/bin/lean4export",
+      "Cslib",
+      "--",
+      "Cslib.Automata.DA.buchi_eq_finAcc_omegaLim"
+    ]
+  },
+  {
+    "module": "Cslib.Foundations.Control.Monad.Free.Fold",
+    "counts": {
+      "expression_nodes": 4090,
+      "entries": 132,
+      "named_constants": 166
+    },
+    "matches_prediction": true,
+    "elapsed_seconds": 4.534857960999943,
+    "command": [
+      "lake",
+      "env",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/lean4export/leanprover_lean4_v4.27.0-rc1/.lake/build/bin/lean4export",
+      "Cslib",
+      "--",
+      "Cslib.FreeM.foldFreeM",
+      "Cslib.FreeM.foldFreeM.match_1",
+      "Cslib.FreeM.foldFreeM_liftBind",
+      "Cslib.FreeM.foldFreeM_pure",
+      "Cslib.FreeM.foldFreeM_unique",
+      "_private.Cslib.Foundations.Control.Monad.Free.Fold.0.Cslib.FreeM.foldFreeM_unique._proof_1_1"
+    ]
+  },
+  {
+    "module": "Cslib-selected-union",
+    "counts": {
+      "expression_nodes": 2974372,
+      "entries": 26088,
+      "named_constants": 28623
+    },
+    "matches_prediction": true,
+    "elapsed_seconds": 93.15184929798124,
+    "command": [
+      "lake",
+      "env",
+      "env",
+      "LEAN_PATH=/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/lean4export/leanprover_lean4_v4.27.0-rc1/.lake/build/lib/lean:/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src/.lake/packages/Cli/.lake/build/lib/lean:/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src/.lake/packages/batteries/.lake/build/lib/lean:/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src/.lake/packages/Qq/.lake/build/lib/lean:/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src/.lake/packages/aesop/.lake/build/lib/lean:/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src/.lake/packages/proofwidgets/.lake/build/lib/lean:/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src/.lake/packages/importGraph/.lake/build/lib/lean:/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src/.lake/packages/plausible/.lake/build/lib/lean:/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src/.lake/packages/mathlib/.lake/build/lib/lean:/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src/.lake/build/lib/lean:/home/theo/.elan/toolchains/leanprover--lean4---v4.27.0-rc1/lib/lean",
+      "lean",
+      "--run",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/cslib-module-overlap-20260909/ExportSelected.lean",
+      "/home/theo/Documents/github/rocq-lean-typechecker/work/cslib-module-overlap-20260909/selected-name-keys.json"
+    ]
+  }
+]

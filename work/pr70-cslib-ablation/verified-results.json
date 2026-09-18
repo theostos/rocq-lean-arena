@@ -1,0 +1,228 @@
+{
+  "without-core-fixed": {
+    "status": "passed",
+    "revision": "68fe7e6589c9266941c99d5e9503e902f9f6e6fc",
+    "runtime_revision": "22cc1ac2301bc2089732b7ab9dde6288d9d2af3e",
+    "results": [
+      {
+        "stage": "configure",
+        "exit_code": 0,
+        "seconds": 0.01
+      },
+      {
+        "stage": "build",
+        "exit_code": 0,
+        "seconds": 4.44
+      },
+      {
+        "stage": "test-01-core",
+        "exit_code": 0,
+        "seconds": 113.84
+      },
+      {
+        "stage": "test-02-ablation_int64",
+        "exit_code": 0,
+        "seconds": 8.61
+      },
+      {
+        "stage": "test-03-ablation_finloop",
+        "exit_code": 0,
+        "seconds": 8.3
+      }
+    ]
+  },
+  "with-comparison-01": {
+    "status": "failed",
+    "revision": "68fe7e6589c9266941c99d5e9503e902f9f6e6fc",
+    "runtime_revision": "22cc1ac2301bc2089732b7ab9dde6288d9d2af3e",
+    "results": [
+      {
+        "stage": "configure",
+        "exit_code": 0,
+        "seconds": 0.02
+      },
+      {
+        "stage": "build",
+        "exit_code": 0,
+        "seconds": 5.86
+      },
+      {
+        "stage": "test-01-core",
+        "exit_code": 0,
+        "seconds": 112.13
+      },
+      {
+        "stage": "test-02-ablation_int64",
+        "exit_code": 0,
+        "seconds": 8.13
+      },
+      {
+        "stage": "test-03-ablation_finloop",
+        "exit_code": 0,
+        "seconds": 8.23
+      },
+      {
+        "stage": "test-04-ablation_cslib",
+        "exit_code": 1,
+        "seconds": 251.05
+      }
+    ]
+  },
+  "without-comparison-01": {
+    "status": "failed",
+    "revision": "68fe7e6589c9266941c99d5e9503e902f9f6e6fc",
+    "runtime_revision": "22cc1ac2301bc2089732b7ab9dde6288d9d2af3e",
+    "results": [
+      {
+        "stage": "configure",
+        "exit_code": 0,
+        "seconds": 0.02
+      },
+      {
+        "stage": "build",
+        "exit_code": 0,
+        "seconds": 2.04
+      },
+      {
+        "stage": "test-01-ablation_cslib",
+        "exit_code": 1,
+        "seconds": 251.58
+      }
+    ]
+  },
+  "without-targets-01": {
+    "status": "passed",
+    "revision": "68fe7e6589c9266941c99d5e9503e902f9f6e6fc",
+    "runtime_revision": "22cc1ac2301bc2089732b7ab9dde6288d9d2af3e",
+    "results": [
+      {
+        "stage": "configure",
+        "exit_code": 0,
+        "seconds": 0.03
+      },
+      {
+        "stage": "build",
+        "exit_code": 0,
+        "seconds": 2.58
+      },
+      {
+        "stage": "test-01-ablation_freem427",
+        "exit_code": 0,
+        "seconds": 6.41
+      },
+      {
+        "stage": "test-02-ablation_discrtree427",
+        "exit_code": 0,
+        "seconds": 16.05
+      },
+      {
+        "stage": "test-03-mutual_instances",
+        "exit_code": 0,
+        "seconds": 2.66
+      },
+      {
+        "stage": "test-04-nested_containers",
+        "exit_code": 0,
+        "seconds": 3.65
+      },
+      {
+        "stage": "test-05-mutual_nested_recursor",
+        "exit_code": 0,
+        "seconds": 3.33
+      }
+    ]
+  },
+  "with-targets-01": {
+    "status": "passed",
+    "revision": "68fe7e6589c9266941c99d5e9503e902f9f6e6fc",
+    "runtime_revision": "22cc1ac2301bc2089732b7ab9dde6288d9d2af3e",
+    "results": [
+      {
+        "stage": "configure",
+        "exit_code": 0,
+        "seconds": 0.02
+      },
+      {
+        "stage": "build",
+        "exit_code": 0,
+        "seconds": 2.25
+      },
+      {
+        "stage": "test-01-ablation_freem427",
+        "exit_code": 0,
+        "seconds": 6.51
+      },
+      {
+        "stage": "test-02-ablation_discrtree427",
+        "exit_code": 0,
+        "seconds": 15.88
+      },
+      {
+        "stage": "test-03-mutual_instances",
+        "exit_code": 0,
+        "seconds": 2.71
+      },
+      {
+        "stage": "test-04-nested_containers",
+        "exit_code": 0,
+        "seconds": 3.68
+      },
+      {
+        "stage": "test-05-mutual_nested_recursor",
+        "exit_code": 0,
+        "seconds": 3.36
+      }
+    ]
+  },
+  "without-interface-control": {
+    "status": "failed",
+    "revision": "68fe7e6589c9266941c99d5e9503e902f9f6e6fc",
+    "runtime_revision": "22cc1ac2301bc2089732b7ab9dde6288d9d2af3e",
+    "results": [
+      {
+        "stage": "configure",
+        "exit_code": 0,
+        "seconds": 0.02
+      },
+      {
+        "stage": "build",
+        "exit_code": 0,
+        "seconds": 2.56
+      },
+      {
+        "stage": "test-01-universe_instances",
+        "exit_code": 1,
+        "seconds": 2.61
+      }
+    ]
+  },
+  "with-interface-control": {
+    "status": "passed",
+    "revision": "68fe7e6589c9266941c99d5e9503e902f9f6e6fc",
+    "runtime_revision": "22cc1ac2301bc2089732b7ab9dde6288d9d2af3e",
+    "results": [
+      {
+        "stage": "configure",
+        "exit_code": 0,
+        "seconds": 0.02
+      },
+      {
+        "stage": "build",
+        "exit_code": 0,
+        "seconds": 2.35
+      },
+      {
+        "stage": "test-01-universe_instances",
+        "exit_code": 0,
+        "seconds": 2.7
+      }
+    ]
+  },
+  "with_source_sha256": "d4917b7b06b7e7c326f804143052a2fb4aa3b040ff3b3be4fca6796122cc5e6a",
+  "with_plugin_sha256": "5b0b8d381855a0da13bad8a9950ca09dc268c0cbac25351e2972e5a9cf90f3c3",
+  "with_foundation_sha256": "5765c91025ef865b164aa9e606875bde2bfe259c5076db31f128b2c51e5f6057",
+  "without_source_sha256": "c82c8a9800146ef324371303d7eeb3f2d6fbf40f397d5caaea629bc507b88b35",
+  "without_plugin_sha256": "14f284989ad2a8a904d95b7286cf0f158b962dbe788b46822143f59156de34a3",
+  "without_foundation_sha256": "7e0c8c5e50e5ca9b789bf33a470f3a9395542bc552a00afad6dbee60176b09f1",
+  "conclusion": "No import regression found after removing PR70 universe-instance behavior in the tested CSLib prefix and selected original dependency exports. Full CSLib remains unverified."
+}

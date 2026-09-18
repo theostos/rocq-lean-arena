@@ -1,0 +1,12 @@
+{
+  "status": "ready",
+  "summary": "Fixed String.utf8EncodeChar.eq_def generically through bounded substitution-aware dependency probing in kernel conversion. Worker digest updated after testing. Evidence: work/utf8-encode-eq-def-repro/README.md. Full-library success and soundness are not claimed.",
+  "tests": [
+    "Guarded kernel rebuild passed.",
+    "Six focused fixtures passed: original proof, adjacent UTF-8 theorems, save/reload, and three negative controls.",
+    "Broader gate passed 58 compiler stages; 169 unit tests completed successfully with two existing skips.",
+    "Importer and foundation hashes unchanged; worker pin verified."
+  ],
+  "checkpoint_action": "reuse",
+  "foundation": ""
+}

@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 106.86535078997258,
+  "module": "DiagnosticPrefix",
+  "worker_sha256": "11acf90892e197e1f4a61ac756906b59225e35189d837c223786266bb400f15c",
+  "vo_sha256": "5112c55098b150c1d4a12e6cc261426e7a761a62bee4a0a83fdcbd280fd599fb"
+}

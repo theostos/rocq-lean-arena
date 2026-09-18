@@ -1,0 +1,915 @@
+[
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker",
+    "head": "b7febb4cd2968812d8b5185b1d8d10b7f49bcfaf",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/README.md": "f7dca377054e2652aef8853d6198c62041c7148026395c030e073ef400ba6f1c",
+      "/home/theo/Documents/github/rocq-lean-typechecker/scripts/run_rocq_frontier.py": "e5c519dc625d17b7cad69bb4735ae64bbdbcf8a0391a5764fff89441e3ffdfab",
+      "/home/theo/Documents/github/rocq-lean-typechecker/checkers/rocq-lean-import/scripts/run.sh": "4d1dfe6615ad04be34e0c14178fd3821818eb25ff28ba3d606ce47a784b9bf61",
+      "/home/theo/Documents/github/rocq-lean-typechecker/rocq-lean-import-pr-stack.md": "ea72cc5d83a6eeafd5d66a3e74a1f5631fb45e6d17c86fce5a5c7f279e46d8c7",
+      "/home/theo/Documents/github/rocq-lean-typechecker/checkers/rocq-lean-import/scripts/build.sh": "5ed126587271ff4b8453ccb4772f71ac4c1b42c23a42526cba318a58f95e7449"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena",
+    "head": "4ce4d513d6f38614d801ab95e4ac069fb3740b0d",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/tests/cedar.yaml": "55edf3c2eef7e8265c5a968ed88119da24a37516f1647014085629b2bde9655b"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/lean4export/leanprover_lean4_v4.26.0",
+    "head": "3de59f10bc4b4a0f2de698597aeb1246caa0df0a",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/lean4export/leanprover_lean4_v4.26.0/lean-toolchain": "e8173aad377a6d70041e5f7a5d8895ed587628f5cab243c53a18c40a1b7b6bf8"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/lean4export/leanprover_lean4_v4.27.0-rc1",
+    "head": "3de59f10bc4b4a0f2de698597aeb1246caa0df0a",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/lean4export/leanprover_lean4_v4.27.0-rc1/lean-toolchain": "194fcae7a59d3268baa175bd3e352dafab6954fe08a5b7caec13bedf36f80315"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/lean4export/leanprover_lean4_v4.29.0",
+    "head": "3de59f10bc4b4a0f2de698597aeb1246caa0df0a",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/lean4export/leanprover_lean4_v4.29.0/lean-toolchain": "651c8accb402b0c071cd336e9d3dc0a55516b1bfb434ddc4801f14936785b1d2"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cedar/src/.lake/packages/batteries",
+    "head": "24241822ef9d3e7f6a3bcc53ad136e12663db8f3",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src",
+    "head": "02e2a23eef42925cc87a5ce2ec76e9d07fdee267",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src/.lake/packages/Cli",
+    "head": "726b98c53e2da249c1de768fbbbb5e67bc9cef60",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src/.lake/packages/LeanSearchClient",
+    "head": "19e5f5cc9c21199be466ef99489e3acab370f079",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src/.lake/packages/Qq",
+    "head": "523ec6fc8062d2f470fdc8de6f822fe89552b5e6",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src/.lake/packages/aesop",
+    "head": "fb12f5535c80e40119286d9575c9393562252d21",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src/.lake/packages/batteries",
+    "head": "6254bed25866358ce4f841fa5a13b77de04ffbc8",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src/.lake/packages/importGraph",
+    "head": "4eb26e1a4806b200ddfe5179d0c2a0fae56c54a7",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src/.lake/packages/mathlib",
+    "head": "32d24245c7a12ded17325299fd41d412022cd3fe",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src/.lake/packages/plausible",
+    "head": "8d3713f36dda48467eb61f8c1c4db89c49a6251a",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/cslib/src/.lake/packages/proofwidgets",
+    "head": "ef8377f31b5535430b6753a974d685b0019d0681",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/mathlib/src",
+    "head": "8a178386ffc0f5fef0b77738bb5449d50efeea95",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/mathlib/src/.lake/packages/Cli",
+    "head": "7802da01beb530bf051ab657443f9cd9bc3e1a29",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/mathlib/src/.lake/packages/LeanSearchClient",
+    "head": "c5d5b8fe6e5158def25cd28eb94e4141ad97c843",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/mathlib/src/.lake/packages/Qq",
+    "head": "707efb56d0696634e9e965523a1bbe9ac6ce141d",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/mathlib/src/.lake/packages/aesop",
+    "head": "7152850e7b216a0d409701617721b6e469d34bf6",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/mathlib/src/.lake/packages/batteries",
+    "head": "756e3321fd3b02a85ffda19fef789916223e578c",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/mathlib/src/.lake/packages/importGraph",
+    "head": "48d5698bc464786347c1b0d859b18f938420f060",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/mathlib/src/.lake/packages/plausible",
+    "head": "83e90935a17ca19ebe4b7893c7f7066e266f50d3",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/mathlib/src/.lake/packages/proofwidgets",
+    "head": "3c52dee17f0cd89c1ec14de78920d1bdaa3d26b3",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/work/tutorial/src/.lake/packages/Lean4Export",
+    "head": "777c921eba89aac5f14cc388717935b5fa2cb739",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/tutorial/.lake/packages/Lean4Export",
+    "head": "777c921eba89aac5f14cc388717935b5fa2cb739",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean4-src",
+    "head": "85e60ac6d27bd44a415bf3cb42fb1cbeb6d9da63",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean4-src-4.27",
+    "head": "2fcce7258eeb6e324366bc25f9058293b04b7547",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/rocq-lean-import",
+    "head": "3b1c7709c7ef5ba58b8b1e2e2e16dc83286ec5ea",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_deps/rocq-lean-import/src/Lean.v": "cd5f070c76de387a2445734f1060dbe42929316c1ddf76a05c465d4873bc6b76",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_deps/rocq-lean-import/src/lean.ml": "fbe8e5e0de9e515630c04cb57a3cb43f02576f6131085f6c9b348626624004e7",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_deps/rocq-lean-import/tests/_CoqProject": "1ee98c4cc9a4becbb56dd5fe92955e7ae9778b8572b21f6217c42ee3edbf1fff"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_deps/rocq-lean-import-fc148df",
+    "head": "fc148dfa2e8f27e1a9753e9403d26f0d16440279",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/lean4/eager-marker-disabled",
+    "head": "85e60ac6d27bd44a415bf3cb42fb1cbeb6d9da63",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/lean4/eager-marker-disabled/src/kernel/type_checker.cpp": "45d656edf8495f5e398ea9d188bb1f3cef85948db79333fc17f21aea83490c28"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/lean4/eager-marker-disabled/build/release/cadical/src/cadical",
+    "head": "3ff42f04384489916f017acd6d5e7cbfa7257be7",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/lean4/eager-marker-disabled/build/release/mimalloc/src/mimalloc",
+    "head": "94036de6fe20bfd8a73d4a6d142fcf532ea604d9",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/arena-loop-20260908",
+    "head": "f58809c33b4a686a943271013b0fb096011a44eb",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-constructor-owners-20260908",
+    "head": "b8865306d568a450b29a26b107e40d73d42410bb",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-dependent-projections-20260908",
+    "head": "199a787fb0c01d07c7dae9f013282a47b83dac72",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908",
+    "head": "c04270df4a3bdc85c7b1cf4d54bebd1873801663",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-mutual-inductives-20260908",
+    "head": "24f7c7ebc0b31e2112d4f52aa08ae3521bbccd9c",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-nested-recursors-20260908",
+    "head": "fc37bea050e8b2f158cf9ba98ca61dd131090489",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-parser-sharing-20260908",
+    "head": "bafd3d76478e457e98297b9d8d87d7e4a5690f4a",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-primitive-record-eliminators-20260908",
+    "head": "de7f6bc2b981249ea6e472830f0b3126a335e6fd",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-reducibility-hints-20260908",
+    "head": "06e957b101ea039687ecc8d90cbd12aa27ec6212",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-stock-integration-20260908",
+    "head": "2dd60b986f359c29dd537b0e5b6fea8b19250b96",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-strict-import-errors-20260908",
+    "head": "38847aaec035b71a7cc0a959b7596013104dbde6",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-string-of-list-20260908",
+    "head": "ea536805c0b480a7848a2ed88f5598fd20e79541",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-uint32-constructor-20260908",
+    "head": "692555579c46db8aed42f90fc338e0ad4ec09949",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-universe-instances-20260908",
+    "head": "24693944afcc7d9079eece9b5dd89e615626c158",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-cleanup-20260908",
+    "head": "5d5eef0b3ce6129c7cf8aec0acca36be7535628f",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-comment-trim-20260908",
+    "head": "09dc457069ec9d1615944c91d6ec755bf6421d18",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-comment-trim-universes-20260908",
+    "head": "4cfef1a1f2d7442195768768070b8e201cbbdb91",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-controls-regressions-20260908",
+    "head": "212338be8bb1f2c8f56639b543d32e9f5f31b333",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-11a0eeb8-20260908",
+    "head": "11a0eeb883d77310d77d866cf53dc831216dfe0a",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908",
+    "head": "3e826ab2bb30ef3bcd6a23a88c70e7e65dd1998d",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-importer-review-experimental-68fe7e65-20260908",
+    "head": "68fe7e6589c9266941c99d5e9503e902f9f6e6fc",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-importer-review-experimental-f527ee07-20260908",
+    "head": "f527ee0796d00bd5a1dfc5a6391ee7ae53a8eb09",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-065ac2b3-20260908",
+    "head": "065ac2b3ae22c824274c520f61d7f993c2860428",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-translation-sharing-5faa8483-20260908",
+    "head": "5faa8483b8c6b2d336a2cc059e0b7631e2f1695e",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-unit-like-eliminators-7e16c32e-20260908",
+    "head": "7e16c32e837047335fe73b69c7cdb4fab9569297",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-unit-like-eliminators-839561a8-20260908",
+    "head": "839561a87d4dafad6be0ff811da5f63af894dd9e",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-fix-compact-review-20260908",
+    "head": "3e826ab2bb30ef3bcd6a23a88c70e7e65dd1998d",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-fix-dependent-scheme-20260908",
+    "head": "44adadc3aedeee06ea495dfa02c56ff5bc705b91",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-fix-translation-cache-20260908",
+    "head": "3928cf9b19768b99b9ca3018d8e84a65b69bff78",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-fix-unit-restack-20260908",
+    "head": "839561a87d4dafad6be0ff811da5f63af894dd9e",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-nat-source-20260908",
+    "head": "c9f96650a91ab5c60ff5458e647df5a31e43bfdd",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-ndjson-20260909",
+    "head": "43ae336109614c2904e172662015cc7da65bd7f2",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-submission-guide-20260908",
+    "head": "914c1f6f2b485d9137db6e286af168db8159ef72",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-submission-guide-20260908/PR_BODIES.md": "e0ac53664c6eafadbd6f552f2d0a7b17979f1c032e580b0a2254466742f1ba28"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-submit-checkpoints-20260908",
+    "head": "4d38c43c1abc4dd9d7d16cf59df376ea2da82772",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-submit-controls-20260908",
+    "head": "71e4b60851d2ff1847bae55f62be2182271bff27",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-submit-experimental-20260908",
+    "head": "da1ca85131db297b107807cc28d10ed33dac7488",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-submit-experimental-integration-20260908",
+    "head": "c8c5f2f6eadb7064c9c00acee651a7281ed9522f",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-submit-foundations-20260908",
+    "head": "7bb973660d9906af3d76b612a83217e100636fd6",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-submit-hints-20260908",
+    "head": "787f1ea814256ecfae0e0670c49971c2c1c66805",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-submit-integration-20260908",
+    "head": "bb86991589cd15cbfa5c8fae04cc633d6bd8fa52",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-submit-modern-20260908",
+    "head": "48c82a5261161827b363fa6e59a4d10a3fc2b5a2",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-submit-nested-20260908",
+    "head": "e0dae008411c95e8832b68f54dfad4e68b25ecac",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-submit-owners-20260908",
+    "head": "bea3b49b6e5065e4c553610636728abbf9054006",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-submit-records-20260908",
+    "head": "a242f15b752ec3f274118ddff6a78cfc5182d4f0",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-submit-strict-20260908",
+    "head": "a45a5dbb47e203f9c716782e7987a58b505d659b",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-without70-experimental-20260908",
+    "head": "09dc457069ec9d1615944c91d6ec755bf6421d18",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-without70-stock-20260908",
+    "head": "1baf2aa5886fd88c1ec431d8c0d0b32590b18318",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/kernel-clean-20260909",
+    "head": "f911b15599a80422a0f768b749c530e6ebcabbf9",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/kernel-diagnostics-20260908",
+    "head": "6b3b044c7027f19060863162a9ecfa2b8ccbea46",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-after",
+    "head": "953bcccedcb36c3c2e83fd8f450d01c8a961a0c4",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/next-pr-projections-before",
+    "head": "c8db0934f0718e44a66c598360ef9c55ff7d6810",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-with",
+    "head": "68fe7e6589c9266941c99d5e9503e902f9f6e6fc",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-without",
+    "head": "68fe7e6589c9266941c99d5e9503e902f9f6e6fc",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/pr70-cslib-without/src/lean.ml": "c82c8a9800146ef324371303d7eeb3f2d6fbf40f397d5caaea629bc507b88b35"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908",
+    "head": "22cc1ac2301bc2089732b7ab9dde6288d9d2af3e",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908",
+    "head": "56acfe11bcabfc81712ec0191bcbbd7c603e71e5",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908",
+    "head": "3e47b26f345f36e375d81ade399eed0e310984b3",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908",
+    "head": "3e47b26f345f36e375d81ade399eed0e310984b3",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/submit-clarity-experimental-final-20260908",
+    "head": "ebdc4bf7747a91bddb18e3ef172918c2ecfd2dce",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/submit-clarity-stock-final-20260908",
+    "head": "9b9710087bceb55f502f578551415c7caf29ade2",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/binary-peano-review",
+    "head": "46278e56310129fd03271e84aa8481fa0e0ace09",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/bounded-congruence-review",
+    "head": "1ff9ec82b3485fb29a7103f26076087464fd6ca8",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-fueled-arguments-review",
+    "head": "b4db6046c3eeddb3ddb5cc513040a40586a3903b",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view",
+    "head": "f756383de2e66f63c95815c73838596d7d97c1c2",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/vernac/vernacentries.ml": "45bfec5dcbfda849e9fa9bc46b51ea198945667aabc3a4a2977828f48558d5ec",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/primred.mli": "d1ac0d2a5842c7d2c361c87f6c6e2bc099b047c2575bf73c750afa97a38cb11d",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/retroknowledge.ml": "1b1914a5c17e51d5ebe0d3f04b2b7159b04d536a6f54371d6bd0b45c7c54da69",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/vars.ml": "4cd73dd2edc989d437de7c677c296d671642f15b62ddaf1fbd97040606fdf2f3",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/cClosure.ml": "ced67d0f6464925cd29094ee11c4d604ba0e096f3782745d73f6de4bd74d81c4",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/esubst.ml": "202d98b35b0871678b63589841ea2ae7e78bf9ef840e67d382912f8ac06c618a",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/typeops.ml": "c5d481c188c5d8e84003d8c9e561705c303c0e17a0e51ff9bcc5e553b3cf50c3",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/vernac/himsg.ml": "23e54bed3f68b40f41c37961410c4dc5a56c13f1073680c88e0ad0120d339400",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/checker/coqchk_main.ml": "f81dba555617072a16870754efaf4a18c5163a62fb2497b802c88b4d2fc84c5f",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/checker/checkFlags.mli": "00a6f7c3f96f66b1304abb54898a2b3176ce0d4a56d08502947989489b6a9aa9",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/environ.mli": "41e40ed362496446e56eebec7ab825096e38922a444a00c12cfc8334cae86f1b",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/lib/objFile.ml": "18536b2c83638acc908c655f883bbf4bc132ce62f398151cc73e51278e90e8ce",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/modops.ml": "4d1771ee99a779d1cecff7cd00368fd6cd7a68852f87d68593f8ac3c2daaf35e",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/pretyping/inductiveops.ml": "3a38a4302cfedd4887fe116c4435382f8ff501610e43bc806f3378feddedbcba",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/safe_typing.ml": "282d2aadbfe61eb7517a8e7309dfb31cde7d47827bf48a9ebfaeb4f51473e52b",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/tactics/indrec.ml": "449d6566d1b40c3dbf7ebc1da9b0cfe6c88edef267f3f9a2295433ab02b410cd",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/checker/values.ml": "ad63472645fef0c7948837c4e5e309e437eee23185d92a85e8df07b4b4f96b7f",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/conversion.ml": "94dac57b228a15c15c0849de16403492d2cc8f13f13e607b4fda085064ba8f52",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/mod_subst.ml": "e2949409c94b80a19c213ecf0a4fa6bad381060a1f0b7717f8159b16bacec976",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/checker/checkFlags.ml": "59b2916899396d0ab7a4dbe718ff0167de8880cab166ac00692c9b160612089d",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/library/global.mli": "294d23b4f98d6073d1f2738aedd49ca0d898da1c3aa6c1bc5b5c255ae11519f6",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/environ.ml": "1743a08aedc78b0c58479e56408a46da0a1a14e8591a9ca23f237c77351ae89f",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/retroknowledge.mli": "d045901684a8ee61d090422a35c3afbefde41baa2e27e26f35c040c0b41da80d",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/library/global.ml": "ba0c9c8b64211c1dc90f96af19ce99591bc766169fd57ddc3b3424585b565e57",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/hConstr.ml": "356f503712059fdfa5fbee33bc0352e01552ebf3393d4bf3c0b4f88236d91a7f",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/cClosure.mli": "b7c2fdd4d632cc4ecd966d21a140fd4c68b5e02366359feeb7fffbee48156019",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/primred.ml": "b925e967d2285fbb966bf557d4c64656a2e682fbf1dda5befa6c16b2ddbb0820",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/checker/mod_checking.ml": "bd32be27b5f5a57f87de5aeedcaabc8685b1a43628e968379b53177295636f59",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/safe_typing.mli": "f44904100202d70ddb5552af5e9b6deaec722854dee64290f6d5f11bd6ecb519",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/constr.ml": "665d31f5b5ee08923853211e168401310e85035a7f4ad11172282ec3b9d515f4",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/inferCumulativity.ml": "8d8a11ac5a13b19e7ff6e672db9c04b281331e296a8adecd03713ddabec42de6",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/vernac/declare.ml": "39efaf7e4f5852f1ee80c722855adfd23670c41db13c6a1bd3ca26453e3ff651",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/constant_typing.ml": "c6bdde8bef77c65d9574a4a574ec562a4a3fac5010b76858c09b78b087049ae2",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/kernel/esubst.mli": "e23534e391f440591c6b0ac89d3314ecbfeea66536172366b379b82eb5f1af5c"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/congruence-probe-scope-review",
+    "head": "42bb6c4a0b6f06048773aaa7f9b8cd0b637e2873",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/constructor-wrapper-review",
+    "head": "33ee807ae0fc9fca1394b5938dec9e6abfd63261",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/direct-unfolding-dependency-review",
+    "head": "eb0b398bbf2dc9bfaee6df668094b1891772a0fa",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/eager-diagnostic-gates",
+    "head": "f756383de2e66f63c95815c73838596d7d97c1c2",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/eager-diagnostic-gates/kernel/cClosure.mli": "95ab1b910d6c39cc6f3c1e7ed6753172d65f5e4f724477ef719dcc3f07e9c89a",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/eager-diagnostic-gates/topbin/dune": "fde769fb124fa43c7fe4410527d3dda66b9fee8e39d73ab4b60475e1bae7b7ca",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/eager-diagnostic-gates/kernel/conversion.ml": "5045ac16c8bcab6db4227e993ac039cd7e07af8918a1ac0667f25cccc4e12cb1",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/eager-diagnostic-gates/kernel/cClosure.ml": "46eb822dba4d478b570d52a8d3030349b2c7ea199618bbab7741c622962703af",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/eager-diagnostic-gates/kernel/typeops.ml": "a785208e6b1bd72bc6acd5c63b0377c94486f70a5454c6a9f006be33e079e4ea",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/eager-diagnostic-gates/kernel/environ.ml": "f397d54ff98593749db7e522c9b4eb1e6533affc29abeb0cd3604de1c0c1872a"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/kernel-hconstr-physical-only",
+    "head": "f756383de2e66f63c95815c73838596d7d97c1c2",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/kernel-hconstr-physical-only/kernel/hConstr.ml": "2fa33633976a16dc45f71545d5805fcbe21f18a0aad548e72d2c1f25b25475f8"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/kernel-lazy-flex-rigid",
+    "head": "f756383de2e66f63c95815c73838596d7d97c1c2",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/kernel-lazy-flex-rigid/kernel/conversion.ml": "631d2888c198c6ac8facb079f029691c3362a4d7bf79075f64664eaaf16ff7c9",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/kernel-lazy-flex-rigid/kernel/typeops.ml": "4fab115ddc7b647928b89e4bab1d0665dae76ac68a00ece400fa5c1368664229",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/kernel-lazy-flex-rigid/kernel/hConstr.ml": "02f3a091c8e7fa0c05fc739f557c73906465a3869b2bcb79a1c5af79b8f9a39f"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/kernel-lazy-flex-rigid-minimal",
+    "head": "f756383de2e66f63c95815c73838596d7d97c1c2",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/kernel-lazy-flex-rigid-minimal/kernel/conversion.ml": "efeacd796082f6fa5348314176bee0f7d316e6b72a401ae160e5158d25a0ae67"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/kernel-physical-hconstr",
+    "head": "f756383de2e66f63c95815c73838596d7d97c1c2",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/kernel-physical-hconstr/kernel/conversion.ml": "4b14715a7e2a6d82fb4542028552feb2e388f1864bcfed7a8e0dc8248226ed07",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/kernel-physical-hconstr/kernel/typeops.ml": "b4843e9ef16f47a4afd39d4fa12a3d2425843c5292bab2633d51278df350013a",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/kernel-physical-hconstr/kernel/hConstr.ml": "ef95728153930ec745794084ee1fcced71e77bf61e28030246aa8a84c6c69c55"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro",
+    "head": "3e47b26f345f36e375d81ade399eed0e310984b3",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-physical-hconstr",
+    "head": "3e47b26f345f36e375d81ade399eed0e310984b3",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stuck-record-eta-review",
+    "head": "066b95cc9b1e55fd772e280fc25e1b242d9a3510",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias",
+    "head": "f756383de2e66f63c95815c73838596d7d97c1c2",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/vernac/vernacentries.ml": "45bfec5dcbfda849e9fa9bc46b51ea198945667aabc3a4a2977828f48558d5ec",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/kernel/primred.mli": "d1ac0d2a5842c7d2c361c87f6c6e2bc099b047c2575bf73c750afa97a38cb11d",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/kernel/retroknowledge.ml": "1b1914a5c17e51d5ebe0d3f04b2b7159b04d536a6f54371d6bd0b45c7c54da69",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/kernel/vars.ml": "b15426b6714fb8a73d578fab671827f9c0c582ce9defaf797391e177ed3c6173",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/kernel/cClosure.ml": "af5ac98d63ba263e0a4f5c48c93606cce2dcf35a7f69a7dfa21161f3a964650e",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/kernel/typeops.ml": "c5d481c188c5d8e84003d8c9e561705c303c0e17a0e51ff9bcc5e553b3cf50c3",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/vernac/himsg.ml": "23e54bed3f68b40f41c37961410c4dc5a56c13f1073680c88e0ad0120d339400",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/lib/objFile.ml": "18536b2c83638acc908c655f883bbf4bc132ce62f398151cc73e51278e90e8ce",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/pretyping/inductiveops.ml": "3a38a4302cfedd4887fe116c4435382f8ff501610e43bc806f3378feddedbcba",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/kernel/safe_typing.ml": "731e017cbeb271da59ffe96a34e9790c2a0af5438c8172341afb851fac62e58d",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/tactics/indrec.ml": "449d6566d1b40c3dbf7ebc1da9b0cfe6c88edef267f3f9a2295433ab02b410cd",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/checker/values.ml": "ad63472645fef0c7948837c4e5e309e437eee23185d92a85e8df07b4b4f96b7f",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/kernel/conversion.ml": "d9ddfcfe603ded77e6b4cfd5fb3b202538e1cc66b2dff27ef83b53288577f328",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/kernel/mod_subst.ml": "e91f85d0fcd4b2f4253ecf4c06d201830cc7966ed665f64068134b3445ba6dad",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/vernac/library.ml": "6b354ce8240d4de4eba9a448e1f999cb93b3efa87c901579c2cf41c96ccd12e9",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/library/global.mli": "294d23b4f98d6073d1f2738aedd49ca0d898da1c3aa6c1bc5b5c255ae11519f6",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/kernel/retroknowledge.mli": "d045901684a8ee61d090422a35c3afbefde41baa2e27e26f35c040c0b41da80d",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/kernel/environ.ml": "53b3e691aaf8134c8f415d4d58c3cd8ebdd8a14cc07ea56e3c0b6a82fad779b1",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/library/global.ml": "ba0c9c8b64211c1dc90f96af19ce99591bc766169fd57ddc3b3424585b565e57",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/kernel/hConstr.ml": "356f503712059fdfa5fbee33bc0352e01552ebf3393d4bf3c0b4f88236d91a7f",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/kernel/cClosure.mli": "4fecaf31e4736538489f176c4cf6d4a85641d64b241e6ba66e9d284a9c9ac2ae",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/kernel/primred.ml": "2b19293ca4ed93c26025eaada8a7cf33d5677e535ca0cba1cb7cd080f5a16068",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/checker/mod_checking.ml": "bd32be27b5f5a57f87de5aeedcaabc8685b1a43628e968379b53177295636f59",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/kernel/safe_typing.mli": "f44904100202d70ddb5552af5e9b6deaec722854dee64290f6d5f11bd6ecb519",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/kernel/inferCumulativity.ml": "8d8a11ac5a13b19e7ff6e672db9c04b281331e296a8adecd03713ddabec42de6",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/vernac/declare.ml": "39efaf7e4f5852f1ee80c722855adfd23670c41db13c6a1bd3ca26453e3ff651",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/unit-type-alias/kernel/constant_typing.ml": "c6bdde8bef77c65d9574a4a574ec562a4a3fac5010b76858c09b78b087049ae2"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/arithmetic-base",
+    "head": "b53e59c313e04ad0b4b1ebbb8e08932c5a31d4cd",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/char-generic-audit",
+    "head": "f3ebe51d10a8629dce17418ac7ee599cf8902172",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/char-of-nat",
+    "head": "1f8dd90feca9563406fc88d226e53778b785aa0d",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/clean-kernel-validation",
+    "head": "01d916cd50679a75f1cca3c38cbdfde16b90126e",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/compact-certificates-v2",
+    "head": "bc4a674394f2e67ae48134ce29f75f68fa315e28",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/compact-certificates-v2/src/Lean.v": "b3de5e00fb2f521d4a90c9622f86477ec222e58d88ba46c5fe516a2acaf9ea3f",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/compact-certificates-v2/src/lean.ml": "224519d587d0af3229c99baa3dc0db9a93bc97bf9d74003fc40fda719f7d6fdd",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/compact-certificates-v2/tests/compact_certificates_v2.v": "a85fb6f39c6354233ad64e6353650c15db079e708c72a73037a0ab7a2d3eb081"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/compact-peano-importer",
+    "head": "6d75d52226bf28e779c36bba6e06cdb277a6a94d",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/compact-peano-importer/src/Lean.v": "0207bb5e4e1014c6f11712873ba7112263db3b802b1befd6b2210be67b1ed257"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/compact-peano-importer-current",
+    "head": "2fe11f4c304e13a854f855de0ad45311b6eca718",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/compact-peano-importer-current/src/leanParse.mli": "669389d419e36a1975ef2d9caa2d11dbda6a8ed1bc93f7a2c64d0f033061f9a8",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/compact-peano-importer-current/src/leanParse.ml": "4589fe0bdf05730aa127d45a46c208bcec814dfcd9d439d8baf5834f4b78ba06",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/compact-peano-importer-current/README.md": "2789024631de8901a0dd1547f6a68de37a83dde4faac1478b7fbf806c37b8eb6",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/compact-peano-importer-current/tests/_CoqProject": "70df892004090815f5c2acba64b96f27aed4ee1554bb6d8c3fbb8f24cece43fe",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/compact-peano-importer-current/src/leanExpr.mli": "2b1b7b0acfedbe1df4d310a8a57ed873ab0699a36aca04b69db5d9c6c9120da7",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/compact-peano-importer-current/tests/compact_nat.v": "39c56d1666e02c6c4a0052f9602bd0bd6756f4c189b2b3aa5efac00591537d1a",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/compact-peano-importer-current/src/lean.ml": "08c88b4d9683d595bb678112a7a7c82b7e7318ac73a870bfec2f77a0fee5f9ee",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/compact-peano-importer-current/src/Lean.v": "a7b5dbd48fee5c55bd57fed60d4fc78602d8dd73786efbb97ea34a2c60e985bf",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/compact-peano-importer-current/tests/core.v": "8d17b44edac321a9a1bb2adbf0e0deb54f155df2d52aaae1ce25247ea59f86ba"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/cslib-import-stack",
+    "head": "6d75d52226bf28e779c36bba6e06cdb277a6a94d",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/cslib-ndjson",
+    "head": "d3e25df20a47bcc23fe539335e0b21652a59baca",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/cslib-ndjson/src/lean.ml": "665383b4f65435ede188cc237eb3a07dc92700e3fe0917d7cd0efe60d622c7d2"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/distributed-import",
+    "head": "98fcc0dfd361ea291fb36c282717506d6554d967",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/eager-diagnostic-gates",
+    "head": "6a2a7b99bde41f4228ab40835b7a9597c2c28495",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/eager-diagnostic-gates/src/Lean.v": "9833158db75f0dd4a68c5037fe91216cccbaa40fc87e217bb86f6f9e8650fce7",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/eager-diagnostic-gates/src/lean.ml": "fd07f448514335604f7bcc00f49b10ca6bf2b82286213e712365fbef15de76da"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/eager-diagnostic-trace",
+    "head": "2dbec710bbefe8f58f40b458612fd7f5af35428b",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/eager-diagnostic-trace/src/lean.ml": "31623af93c5ff438769d6bc4a811f53bff91aef1a433b9e2d40ae49c0f974707"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/eager-dirty-clean",
+    "head": "2dbec710bbefe8f58f40b458612fd7f5af35428b",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/eager-dirty-clean/src/lean.ml": "a7e4452deacb651109b2787c7aeb57f8b876ce580824c9162742b786abb79239"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/eager-preoptimized-check",
+    "head": "6a2a7b99bde41f4228ab40835b7a9597c2c28495",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/eager-proof-current",
+    "head": "6a2a7b99bde41f4228ab40835b7a9597c2c28495",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/eager-proof-current/src/Lean.v": "9833158db75f0dd4a68c5037fe91216cccbaa40fc87e217bb86f6f9e8650fce7",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/eager-proof-current/src/lean.ml": "373621d6e219b8361689b6a952796d2d59b741cffb725ab2cee3b677e635b0da"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/eager-reduce-certificates",
+    "head": "2fe11f4c304e13a854f855de0ad45311b6eca718",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/eager-reduce-certificates/src/lean.ml": "3100c26a926f1db62966bd08d53d5853b6adf45b305d252ecb08bbf3b14211c4"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/eager-wip-dev",
+    "head": "40c6b95d22006c1c678060bd0a72bb2f480d2685",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/eager-wip-oracle",
+    "head": "40c6b95d22006c1c678060bd0a72bb2f480d2685",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/eta-long-record-definitions",
+    "head": "374d5953b68f381a539e82ad6eb81477286acb40",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/generic-cslib-current",
+    "head": "2fe11f4c304e13a854f855de0ad45311b6eca718",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/hex-parser",
+    "head": "967a4c6746d59557ee00810fa839f8c66f72fe3e",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/mutual-nested-recursor",
+    "head": "fa21b66cb099868f66e6a2718b4ee8178ccc9298",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/name-escaping",
+    "head": "766255af1b81acfa36a16138e934837a01dc13e6",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/nat-comparisons",
+    "head": "d3bb9f809d5e3128cd056274d779f03e4b5c4708",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/nat-comparisons-before-reflection",
+    "head": "58ba934ef5bef67884d089e18a60db676c7ca7ce",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/nat-rewrite",
+    "head": "6557e8d43d21e33ecb5e81a0666fbcb2ca1834e4",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/nat-rewrite/tests/_CoqProject": "8038f2cc41ed57e4f8f3596cfade289ed9484aa7994852408a5e8c9133b0caf5",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/nat-rewrite/src/lean.ml": "31f301325e5ed98a577e4a0193256d5ce3e2d4a9654a18808695f6894cc51d8b",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/nat-rewrite/_CoqProject": "9b0842d33dc5e417f1601e576cb6496fe75a0d631048742f05567c1fee3504b4",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/nat-rewrite/src/Lean.v": "1fc0a747fffeb5c3aab69db67cac7606a50310e9707c0ade478ec01818865318"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/nat-rewrite-fast",
+    "head": "6557e8d43d21e33ecb5e81a0666fbcb2ca1834e4",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/nat-rewrite-fast/src/Lean.v": "148fdb0590d975cb5288eaa8733aab6b992e73f344cafc73cf40cd81d64ef332",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/nat-rewrite-fast/tests/_CoqProject": "8038f2cc41ed57e4f8f3596cfade289ed9484aa7994852408a5e8c9133b0caf5",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/nat-rewrite-fast/_CoqProject": "9b0842d33dc5e417f1601e576cb6496fe75a0d631048742f05567c1fee3504b4"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/nat-sub",
+    "head": "0b05bdeafecd471f2ff5fa6b50ff9c66d01df779",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/nested-containers",
+    "head": "27d874edecae333ef5a7707b3ccfd17bce44efb1",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/nested-mutual-core",
+    "head": "077617bcfc30344f1500d4f8889b6e9ceabad74e",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/nested-record-containers",
+    "head": "c14620987fb6cb9da4c57a6489c3db940955c696",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/pr-compact-nat",
+    "head": "48ba27153222f4554c311dad1ee32b10aaceee85",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/pr-nat-deceq",
+    "head": "b43b35f0c54360e5f71e6be08336410cf1930e1b",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/pr70-after",
+    "head": "2dc7529e2c9a9f999d944ae8495474a6503246df",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/pr70-before",
+    "head": "38fb4791bc7a3bc49995526448778c6e5555aaf1",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/pr70-historical-after",
+    "head": "4de13e203338e424980d055f8a6d38dcd57eeb41",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/pr70-historical-before",
+    "head": "ba22a2d21f89d57d6d02e062d5d2f026fb7d337d",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/primitive-record-eliminators",
+    "head": "ef61de62064d2f3a151c1a327810ed1bff347dbb",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/projection-relevance",
+    "head": "644cbc0119c0537136563fc3854950d11aacb307",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/proof-producing-arithmetic",
+    "head": "40c6b95d22006c1c678060bd0a72bb2f480d2685",
+    "dirty_tracked_sha256": {
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/proof-producing-arithmetic/src/Lean.v": "bc1d7dbc9d4f09299a1918db0200c26693ae00cf97e0588adafc9ff97d550ac4",
+      "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/proof-producing-arithmetic/src/lean.ml": "aba3e2e1d7b181179e1fd83af11519a69d14a5ab0ff4f6563c4b63c622c590a9"
+    }
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/sprop-scheme-relevance",
+    "head": "a45bf12e82aa42c162eb0e01778c860bce8253a2",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/string-of-list",
+    "head": "e0219e195111e0a8cc9586101d887eed0585e5f4",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/uint32-base",
+    "head": "1d28c211173afdeccaff3bbf4cd984ea106b9b59",
+    "dirty_tracked_sha256": {}
+  },
+  {
+    "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq-lean-import/universe-instances",
+    "head": "a8e4215dcdf5fbd9f51311ba2a4102476fb3269a",
+    "dirty_tracked_sha256": {}
+  }
+]

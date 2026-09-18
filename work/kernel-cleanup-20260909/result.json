@@ -1,0 +1,96 @@
+{
+  "topics": [
+    {
+      "branch": "review/dependency-cache",
+      "head": "e7c70622d1de0eb9925d78e8eee0578903c05af3",
+      "base": "f756383de2e66f63c95815c73838596d7d97c1c2",
+      "old_head": "9e03f679fc93c3b3a434dd777ef8e10521757641",
+      "title": "Bound dependency-query storage",
+      "stat": "kernel/environ.ml | 85 +++++++++++++++++++++++++++++++++++++++++++++----------\n 1 file changed, 70 insertions(+), 15 deletions(-)"
+    },
+    {
+      "branch": "review/term-sharing",
+      "head": "a1aefbacbea28b738fefec77bade9cebcb0505ab",
+      "base": "e7c70622d1de0eb9925d78e8eee0578903c05af3",
+      "old_head": "86cc3df709f15a371463b6fb121bd7e6ec83da11",
+      "title": "Preserve DAG sharing during kernel term traversals",
+      "stat": "kernel/hConstr.ml | 22 ++++++++++++++++++++++\n kernel/vars.ml    | 24 ++++++++++++++++++++++--\n 2 files changed, 44 insertions(+), 2 deletions(-)"
+    },
+    {
+      "branch": "review/reduction-registrations",
+      "head": "4defdefa8cd84b3c134d008baf4c926847eb91fd",
+      "base": "a1aefbacbea28b738fefec77bade9cebcb0505ab",
+      "old_head": "10ae699a327b3848fb029e6a209fde7fd166a464",
+      "title": "Validate and persist reduction registrations",
+      "stat": "checker/mod_checking.ml   | 105 ++++-\n checker/values.ml         |  12 +\n kernel/mod_subst.ml       |  65 ++++\n kernel/primred.ml         | 205 ++++++++++\n kernel/primred.mli        |   2 +\n kernel/retroknowledge.ml  |  49 +++\n kernel/retroknowledge.mli |  43 ++\n kernel/safe_typing.ml     | 969 ++++++++++++++++++++++++++++++++++++++++++++++\n kernel/safe_typing.mli    |  15 +\n library/global.ml         |  23 ++\n library/global.mli        |  12 +\n vernac/vernacentries.ml   |  64 ++-\n 12 files changed, 1537 insertions(+), 27 deletions(-)"
+    },
+    {
+      "branch": "review/compact-peano",
+      "head": "18420a2660adb453ead1825c780aed73a4be07d8",
+      "base": "4defdefa8cd84b3c134d008baf4c926847eb91fd",
+      "old_head": "f0e7266ac7f13efcefb51e9438479bb9d297685c",
+      "title": "Evaluate registered Peano arithmetic using compact closures",
+      "stat": "kernel/cClosure.ml          | 1211 +++++++++++++++++++++++++++++++++++++++----\n kernel/cClosure.mli         |   30 ++\n kernel/conversion.ml        |   26 +-\n kernel/inferCumulativity.ml |    1 +\n 4 files changed, 1151 insertions(+), 117 deletions(-)"
+    },
+    {
+      "branch": "review/unit-eta",
+      "head": "784b9a8321be505814749b6c6e004e477c6b6c09",
+      "base": "18420a2660adb453ead1825c780aed73a4be07d8",
+      "old_head": "d97781f8b297902f61259921be93ccaeb85429ec",
+      "title": "Support conversion for registered unit-like inductives",
+      "stat": "kernel/conversion.ml      | 570 ++++++++++++++++++++++++++++++++++++++++++----\n pretyping/inductiveops.ml |   7 +-\n tactics/indrec.ml         |   8 +-\n 3 files changed, 543 insertions(+), 42 deletions(-)"
+    },
+    {
+      "branch": "review/conversion-strategies",
+      "head": "f911b15599a80422a0f768b749c530e6ebcabbf9",
+      "base": "784b9a8321be505814749b6c6e004e477c6b6c09",
+      "old_head": "9d4289d1b2580c7f5d285967a946a9f1ee89a548",
+      "title": "Guide conversion through dependencies and projections",
+      "stat": "kernel/conversion.ml | 1151 ++++++++++++++++++++++++++++++++++++++++++++++----\n 1 file changed, 1078 insertions(+), 73 deletions(-)"
+    }
+  ],
+  "draft": {
+    "branch": "draft/binary-peano-zarith",
+    "head": "02fc2135819a7843d16cce44492ad272a85504f2",
+    "base": "4defdefa8cd84b3c134d008baf4c926847eb91fd",
+    "old_head": "46278e56310129fd03271e84aa8481fa0e0ace09",
+    "status": "Untested; not used for the cslib import"
+  },
+  "docs": {
+    "branch": "docs/kernel-patches",
+    "head": "1f3b2c605a3930ba84e8f93be65598aba1af05b5",
+    "base": "f911b15599a80422a0f768b749c530e6ebcabbf9"
+  },
+  "removed_local_branches": [
+    "refs/heads/diagnostic/eager-gates",
+    "refs/heads/experiment/hconstr-physical-cache",
+    "refs/heads/experiment/hconstr-physical-only",
+    "refs/heads/experiment/lazy-flex-rigid",
+    "refs/heads/experiment/lazy-flex-rigid-minimal",
+    "refs/heads/fix/bounded-congruence",
+    "refs/heads/fix/compact-fueled-arguments",
+    "refs/heads/fix/congruence-probe-scope",
+    "refs/heads/fix/constructor-wrapper-conversion",
+    "refs/heads/fix/direct-unfolding-dependency",
+    "refs/heads/fix/stuck-record-eta",
+    "refs/heads/review/kernel-diagnostics",
+    "refs/heads/review/kernel-diagnostics-current",
+    "refs/heads/review/binary-peano"
+  ],
+  "detached_preserved_worktrees": [
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/kernel-diagnostics-20260908",
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/binary-peano-review",
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/bounded-congruence-review",
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-fueled-arguments-review",
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/congruence-probe-scope-review",
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/constructor-wrapper-review",
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/direct-unfolding-dependency-review",
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/eager-diagnostic-gates",
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/kernel-hconstr-physical-only",
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/kernel-lazy-flex-rigid",
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/kernel-lazy-flex-rigid-minimal",
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/kernel-physical-hconstr",
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stuck-record-eta-review"
+  ],
+  "pushed": true
+}

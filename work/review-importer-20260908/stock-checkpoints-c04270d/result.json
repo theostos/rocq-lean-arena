@@ -1,0 +1,422 @@
+{
+  "worktree": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908",
+  "revision": "c04270df4a3bdc85c7b1cf4d54bebd1873801663",
+  "tracked_changes": "",
+  "runtime": "stock",
+  "runtime_prefix": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default",
+  "runtime_revision": "56acfe11bcabfc81712ec0191bcbbd7c603e71e5",
+  "stdlib": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+  "guard": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/arena-loop-20260908/checkers/rocq-lean-import/scripts/run-memory-guarded.sh",
+  "output": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-checkpoints-c04270d",
+  "environment": {
+    "PATH": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/home/theo/.elan/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/home/theo/.codex/tmp/arg0/codex-arg0iVtBmQ:/home/theo/.local/bin:/home/theo/.elan/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/home/theo/.nvm/versions/node/v22.16.0/bin:/home/theo/miniconda3/bin:/home/theo/miniconda3/condabin:/home/theo/.cargo/bin:/home/theo/.local/bin:/home/theo/.elan/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/theo/.vscode/extensions/openai.chatgpt-26.901.22334-linux-x64/bin/linux-x86_64",
+    "OCAMLPATH": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/lib",
+    "COQBIN": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/",
+    "COQLIB": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/lib/coq",
+    "ROCQLIB": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/lib/coq",
+    "ROCQ_MAX_RSS_KIB": "3145728",
+    "ROCQ_MEMORY_MAX_KIB": "3145728",
+    "ROCQ_MEMORY_HIGH_KIB": "3145728",
+    "ROCQ_MEMORY_SWAP_MAX_KIB": "0",
+    "ROCQ_MIN_AVAILABLE_KIB": "6291456",
+    "ROCQ_ALLOW_EXTERNAL_ROCQ": "0",
+    "ROCQ_STACK_KIB": "262144",
+    "ROCQ_MEMORY_STATUS_SECONDS": "60",
+    "OCAMLRUNPARAM": "b",
+    "MAKEFLAGS": "",
+    "MFLAGS": ""
+  },
+  "stages": [
+    {
+      "name": "configure",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908",
+      "timeout": 60,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/rocq",
+        "makefile",
+        "-f",
+        "_CoqProject",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+        "Stdlib",
+        "-o",
+        "Makefile.review"
+      ]
+    },
+    {
+      "name": "build",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908",
+      "timeout": 600,
+      "command": [
+        "make",
+        "-f",
+        "Makefile.review",
+        "-j1",
+        "COQC=timeout --signal=TERM --kill-after=5s 180 /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/rocq c -q -bytecode-compiler no",
+        "all"
+      ]
+    },
+    {
+      "name": "test-01-checkpoint_prefix",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests/checkpoint_prefix.v"
+      ]
+    },
+    {
+      "name": "test-02-checkpoint_middle",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests/checkpoint_middle.v"
+      ]
+    },
+    {
+      "name": "test-03-checkpoint_end",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests/checkpoint_end.v"
+      ]
+    },
+    {
+      "name": "test-04-checkpoint_reload",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests/checkpoint_reload.v"
+      ]
+    },
+    {
+      "name": "test-05-nested_reload_prefix",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests/nested_reload_prefix.v"
+      ]
+    },
+    {
+      "name": "test-06-nested_reload",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests/nested_reload.v"
+      ]
+    },
+    {
+      "name": "test-07-primitive_record_reload_prefix",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests/primitive_record_reload_prefix.v"
+      ]
+    },
+    {
+      "name": "test-08-primitive_record_reload",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests/primitive_record_reload.v"
+      ]
+    },
+    {
+      "name": "test-09-reducibility_controls",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests/reducibility_controls.v"
+      ]
+    },
+    {
+      "name": "test-10-reducibility_controls_reload",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests/reducibility_controls_reload.v"
+      ]
+    },
+    {
+      "name": "test-11-strict_import_errors",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests/strict_import_errors.v"
+      ]
+    },
+    {
+      "name": "parser-unit-tests",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908",
+      "timeout": 180,
+      "command": [
+        "bash",
+        "tests/unit/run.sh"
+      ]
+    },
+    {
+      "name": "check-01-check_strict_import_errors",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908",
+      "timeout": 180,
+      "command": [
+        "bash",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-check-indexed-checkpoints-20260908/tests/check_strict_import_errors.sh"
+      ]
+    }
+  ],
+  "compatibility_blocker": null,
+  "status": "passed",
+  "results": [
+    {
+      "stage": "configure",
+      "exit_code": 0,
+      "seconds": 0.02
+    },
+    {
+      "stage": "build",
+      "exit_code": 0,
+      "seconds": 4.1
+    },
+    {
+      "stage": "test-01-checkpoint_prefix",
+      "exit_code": 0,
+      "seconds": 3.11
+    },
+    {
+      "stage": "test-02-checkpoint_middle",
+      "exit_code": 0,
+      "seconds": 3.11
+    },
+    {
+      "stage": "test-03-checkpoint_end",
+      "exit_code": 0,
+      "seconds": 3.18
+    },
+    {
+      "stage": "test-04-checkpoint_reload",
+      "exit_code": 0,
+      "seconds": 3.06
+    },
+    {
+      "stage": "test-05-nested_reload_prefix",
+      "exit_code": 0,
+      "seconds": 3.91
+    },
+    {
+      "stage": "test-06-nested_reload",
+      "exit_code": 0,
+      "seconds": 3.77
+    },
+    {
+      "stage": "test-07-primitive_record_reload_prefix",
+      "exit_code": 0,
+      "seconds": 4.25
+    },
+    {
+      "stage": "test-08-primitive_record_reload",
+      "exit_code": 0,
+      "seconds": 3.7
+    },
+    {
+      "stage": "test-09-reducibility_controls",
+      "exit_code": 0,
+      "seconds": 3.36
+    },
+    {
+      "stage": "test-10-reducibility_controls_reload",
+      "exit_code": 0,
+      "seconds": 3.44
+    },
+    {
+      "stage": "test-11-strict_import_errors",
+      "exit_code": 0,
+      "seconds": 5.14
+    },
+    {
+      "stage": "parser-unit-tests",
+      "exit_code": 0,
+      "seconds": 2.02
+    },
+    {
+      "stage": "check-01-check_strict_import_errors",
+      "exit_code": 0,
+      "seconds": 0.02
+    }
+  ],
+  "guard_exit_code": 0
+}

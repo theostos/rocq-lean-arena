@@ -1,0 +1,510 @@
+{
+  "worktree": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908",
+  "revision": "3e826ab2bb30ef3bcd6a23a88c70e7e65dd1998d",
+  "tracked_changes": "",
+  "runtime": "experimental",
+  "runtime_prefix": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default",
+  "runtime_revision": "22cc1ac2301bc2089732b7ab9dde6288d9d2af3e",
+  "stdlib": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+  "guard": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/arena-loop-20260908/checkers/rocq-lean-import/scripts/run-memory-guarded.sh",
+  "output": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/experimental-topics-clean-20260908/compact-arithmetic",
+  "environment": {
+    "PATH": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/home/theo/.elan/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/home/theo/.codex/tmp/arg0/codex-arg0iVtBmQ:/home/theo/.local/bin:/home/theo/.elan/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/home/theo/.nvm/versions/node/v22.16.0/bin:/home/theo/miniconda3/bin:/home/theo/miniconda3/condabin:/home/theo/.cargo/bin:/home/theo/.local/bin:/home/theo/.elan/bin:/home/theo/.opam/rocq93_native/bin:/home/theo/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/theo/.vscode/extensions/openai.chatgpt-26.901.22334-linux-x64/bin/linux-x86_64",
+    "OCAMLPATH": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/lib",
+    "COQBIN": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/",
+    "COQLIB": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/lib/coq",
+    "ROCQLIB": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/lib/coq",
+    "ROCQ_MAX_RSS_KIB": "3145728",
+    "ROCQ_MEMORY_MAX_KIB": "3145728",
+    "ROCQ_MEMORY_HIGH_KIB": "3145728",
+    "ROCQ_MEMORY_SWAP_MAX_KIB": "0",
+    "ROCQ_MIN_AVAILABLE_KIB": "6291456",
+    "ROCQ_ALLOW_EXTERNAL_ROCQ": "0",
+    "ROCQ_STACK_KIB": "262144",
+    "ROCQ_MEMORY_STATUS_SECONDS": "60",
+    "OCAMLRUNPARAM": "b",
+    "MAKEFLAGS": "",
+    "MFLAGS": ""
+  },
+  "stages": [
+    {
+      "name": "configure",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908",
+      "timeout": 60,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "makefile",
+        "-f",
+        "_CoqProject",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-o",
+        "Makefile.review"
+      ]
+    },
+    {
+      "name": "build",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908",
+      "timeout": 600,
+      "command": [
+        "make",
+        "-f",
+        "Makefile.review",
+        "-j1",
+        "COQC=timeout --signal=TERM --kill-after=5s 180 /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq c -q -bytecode-compiler no",
+        "all"
+      ]
+    },
+    {
+      "name": "test-01-compact_nat",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests/compact_nat.v"
+      ]
+    },
+    {
+      "name": "test-02-nat_boolean_fallback",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests/nat_boolean_fallback.v"
+      ]
+    },
+    {
+      "name": "test-03-char_of_nat",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests/char_of_nat.v"
+      ]
+    },
+    {
+      "name": "test-04-nat_deceq",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests/nat_deceq.v"
+      ]
+    },
+    {
+      "name": "test-05-nat_boolean_source",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests/nat_boolean_source.v"
+      ]
+    },
+    {
+      "name": "test-06-nat_boolean_source_prefix",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests/nat_boolean_source_prefix.v"
+      ]
+    },
+    {
+      "name": "test-07-nat_boolean_source_target",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests/nat_boolean_source_target.v"
+      ]
+    },
+    {
+      "name": "test-08-nat_boolean_source_reload",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests/nat_boolean_source_reload.v"
+      ]
+    },
+    {
+      "name": "test-09-nat_boolean_adjacent",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests/nat_boolean_adjacent.v"
+      ]
+    },
+    {
+      "name": "test-10-nat_boolean_registration",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests/nat_boolean_registration.v"
+      ]
+    },
+    {
+      "name": "test-11-nat_boolean_controls",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests/nat_boolean_controls.v"
+      ]
+    },
+    {
+      "name": "test-12-lowercase_hex",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests/lowercase_hex.v"
+      ]
+    },
+    {
+      "name": "test-13-uint32_dispatch",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests/uint32_dispatch.v"
+      ]
+    },
+    {
+      "name": "test-14-string_of_list",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests/string_of_list.v"
+      ]
+    },
+    {
+      "name": "test-15-core",
+      "cwd": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests",
+      "timeout": 180,
+      "command": [
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-experimental-runtime-20260908/_build/install/default/bin/rocq",
+        "c",
+        "-q",
+        "-bytecode-compiler",
+        "no",
+        "-R",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-experimental-20260908/theories",
+        "Stdlib",
+        "-Q",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "LeanImport",
+        "-I",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/src",
+        "-R",
+        ".",
+        "Test",
+        "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/importer-exp-check-compact-arithmetic-3e826ab2-20260908/tests/core.v"
+      ]
+    }
+  ],
+  "compatibility_blocker": null,
+  "status": "passed",
+  "results": [
+    {
+      "stage": "configure",
+      "exit_code": 0,
+      "seconds": 0.01
+    },
+    {
+      "stage": "build",
+      "exit_code": 0,
+      "seconds": 5.01
+    },
+    {
+      "stage": "test-01-compact_nat",
+      "exit_code": 0,
+      "seconds": 0.94
+    },
+    {
+      "stage": "test-02-nat_boolean_fallback",
+      "exit_code": 0,
+      "seconds": 2.91
+    },
+    {
+      "stage": "test-03-char_of_nat",
+      "exit_code": 0,
+      "seconds": 3.81
+    },
+    {
+      "stage": "test-04-nat_deceq",
+      "exit_code": 0,
+      "seconds": 0.93
+    },
+    {
+      "stage": "test-05-nat_boolean_source",
+      "exit_code": 0,
+      "seconds": 1.44
+    },
+    {
+      "stage": "test-06-nat_boolean_source_prefix",
+      "exit_code": 0,
+      "seconds": 1.29
+    },
+    {
+      "stage": "test-07-nat_boolean_source_target",
+      "exit_code": 0,
+      "seconds": 1.11
+    },
+    {
+      "stage": "test-08-nat_boolean_source_reload",
+      "exit_code": 0,
+      "seconds": 1.02
+    },
+    {
+      "stage": "test-09-nat_boolean_adjacent",
+      "exit_code": 0,
+      "seconds": 3.03
+    },
+    {
+      "stage": "test-10-nat_boolean_registration",
+      "exit_code": 0,
+      "seconds": 0.94
+    },
+    {
+      "stage": "test-11-nat_boolean_controls",
+      "exit_code": 0,
+      "seconds": 0.95
+    },
+    {
+      "stage": "test-12-lowercase_hex",
+      "exit_code": 0,
+      "seconds": 0.98
+    },
+    {
+      "stage": "test-13-uint32_dispatch",
+      "exit_code": 0,
+      "seconds": 1.07
+    },
+    {
+      "stage": "test-14-string_of_list",
+      "exit_code": 0,
+      "seconds": 1.04
+    },
+    {
+      "stage": "test-15-core",
+      "exit_code": 0,
+      "seconds": 101.33
+    }
+  ],
+  "guard_exit_code": 0
+}

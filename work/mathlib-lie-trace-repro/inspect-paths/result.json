@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 5.568319070036523,
+  "module": "InspectPaths",
+  "worker_sha256": "4bb7da6ff6d5674c1e84334f9b9f688c03d38cbedd4ddf9b480d41f7afefda5d",
+  "vo_sha256": "c3112011e437ec488f36a1da2afb21c1f5870f6ec475a377a3559c307f2256f4"
+}

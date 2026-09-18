@@ -1,0 +1,91 @@
+{
+  "status": "failed",
+  "runtime": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/rocq-upstream-runtime-20260908/_build/install/default",
+  "stdlib": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/review/stdlib-upstream-20260908/theories",
+  "topics": [
+    {
+      "topic": "universe-instances",
+      "revision": "24693944afcc7d9079eece9b5dd89e615626c158",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-batch-20260908/universe-instances/result.json"
+    },
+    {
+      "topic": "dependent-projections",
+      "revision": "0ade8a5a0c1dfd5a1a75afaa63a9fdd8b6235bca",
+      "exit_code": 1,
+      "status": "failed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-batch-20260908/dependent-projections/result.json"
+    },
+    {
+      "topic": "mutual-inductives",
+      "revision": "6fe33f11fa33a8c126f6405e560ede4d2c5449bd",
+      "exit_code": 1,
+      "status": "failed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-batch-20260908/mutual-inductives/result.json"
+    },
+    {
+      "topic": "nested-recursors",
+      "revision": "12e2aabee58ed07706187c30bfddddb161d48671",
+      "exit_code": 1,
+      "status": "failed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-batch-20260908/nested-recursors/result.json"
+    },
+    {
+      "topic": "primitive-record-eliminators",
+      "revision": "71dd0df660791fa991b0eb612fe0b5add8bc8889",
+      "exit_code": 1,
+      "status": "failed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-batch-20260908/primitive-record-eliminators/result.json"
+    },
+    {
+      "topic": "constructor-owners",
+      "revision": "4596dabf127b8c9b6444afae2b6826e228126d6a",
+      "exit_code": 1,
+      "status": "failed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-batch-20260908/constructor-owners/result.json"
+    },
+    {
+      "topic": "uint32-constructor",
+      "revision": "692555579c46db8aed42f90fc338e0ad4ec09949",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-batch-20260908/uint32-constructor/result.json"
+    },
+    {
+      "topic": "string-of-list",
+      "revision": "ea536805c0b480a7848a2ed88f5598fd20e79541",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-batch-20260908/string-of-list/result.json"
+    },
+    {
+      "topic": "strict-import-errors",
+      "revision": "8c3787e09a391aac161f4f0ac2974dc74aaac772",
+      "exit_code": 0,
+      "status": "passed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-batch-20260908/strict-import-errors/result.json"
+    },
+    {
+      "topic": "reducibility-hints",
+      "revision": "3016a6aa295d2e780ef9ed0ddfad3e298bd9690e",
+      "exit_code": 1,
+      "status": "failed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-batch-20260908/reducibility-hints/result.json"
+    },
+    {
+      "topic": "parser-sharing",
+      "revision": "8ee178a8a91f944290ebb8624697e93061bb9853",
+      "exit_code": 1,
+      "status": "failed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-batch-20260908/parser-sharing/result.json"
+    },
+    {
+      "topic": "stock-integration",
+      "revision": "34d0da8797da69c1ee6c6613a48a8ffcb8484407",
+      "exit_code": 1,
+      "status": "failed",
+      "result": "/home/theo/Documents/github/rocq-lean-typechecker/work/review-importer-20260908/stock-batch-20260908/stock-integration/result.json"
+    }
+  ]
+}

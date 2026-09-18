@@ -1,0 +1,110 @@
+{
+  "accepted": true,
+  "run": "89a313c5a14fa94c493a33488c5b4a11cfd15b21874c98283f53f81d0517020f",
+  "entries": 5,
+  "batches": 6,
+  "attempts": 6,
+  "workers": 1,
+  "max_live_workers": 1,
+  "join_seconds": 0.15655534499092028,
+  "batch_and_join_seconds": 2.4454348529980052,
+  "artifact_sha256": "a15da7b3ebbaf8cb1e6e18fba768504009bb20b5cbcd9a0e88ad1a2774057f2f",
+  "events": [
+    {
+      "job": "Universes000003",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 0.3525671780225821,
+      "report": {
+        "run": "89a313c5a14fa94c493a33488c5b4a11cfd15b21874c98283f53f81d0517020f",
+        "batch": "Universes000003",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 0.181127
+      }
+    },
+    {
+      "job": "Batch000000",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 0.45649011997738853,
+      "report": {
+        "run": "89a313c5a14fa94c493a33488c5b4a11cfd15b21874c98283f53f81d0517020f",
+        "batch": "Batch000000",
+        "kind": "checked",
+        "entries": [
+          1
+        ],
+        "seconds": 0.241854
+      }
+    },
+    {
+      "job": "Batch000001",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 0.3520144769863691,
+      "report": {
+        "run": "89a313c5a14fa94c493a33488c5b4a11cfd15b21874c98283f53f81d0517020f",
+        "batch": "Batch000001",
+        "kind": "checked",
+        "entries": [
+          2
+        ],
+        "seconds": 0.177441
+      }
+    },
+    {
+      "job": "Batch000002",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 0.35201923100976273,
+      "report": {
+        "run": "89a313c5a14fa94c493a33488c5b4a11cfd15b21874c98283f53f81d0517020f",
+        "batch": "Batch000002",
+        "kind": "checked",
+        "entries": [
+          3
+        ],
+        "seconds": 0.171029
+      }
+    },
+    {
+      "job": "Batch000003",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 0.351790640008403,
+      "report": {
+        "run": "89a313c5a14fa94c493a33488c5b4a11cfd15b21874c98283f53f81d0517020f",
+        "batch": "Batch000003",
+        "kind": "checked",
+        "entries": [
+          4
+        ],
+        "seconds": 0.172318
+      }
+    },
+    {
+      "job": "Batch000004",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 0.3517905010085087,
+      "report": {
+        "run": "89a313c5a14fa94c493a33488c5b4a11cfd15b21874c98283f53f81d0517020f",
+        "batch": "Batch000004",
+        "kind": "checked",
+        "entries": [
+          6
+        ],
+        "seconds": 0.182761
+      }
+    }
+  ],
+  "total_seconds": 2.7204262369778007,
+  "foundation_seconds": 0.18506766197970137,
+  "index_seconds": 0.003095342981396243,
+  "plan_seconds": 0.0003717479994520545,
+  "cpu_seconds": {
+    "coordinator": 0.240817,
+    "compilers": 2.31876
+  }
+}

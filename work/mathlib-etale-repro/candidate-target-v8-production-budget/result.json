@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 80.51110137300566,
+  "module": "EtaleTargetProductionBudget",
+  "worker_sha256": "523eb3c32d0b1ff809022d6df6b26ae05fc754cefadc3e065255abb126e97e58",
+  "vo_sha256": "0bf8578da8b82e97e2f74d9398cd601f7e25d994e2443a1b47680f20400f343d"
+}

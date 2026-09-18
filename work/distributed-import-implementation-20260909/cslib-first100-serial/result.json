@@ -1,0 +1,1325 @@
+{
+  "accepted": true,
+  "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+  "entries": 97,
+  "batches": 53,
+  "attempts": 91,
+  "workers": 1,
+  "max_live_workers": 1,
+  "join_seconds": 0.6823295360081829,
+  "batch_and_join_seconds": 170.9009212120145,
+  "artifact_sha256": "9bee7fa3b982dba0081f1890fdcf951e10ae680cb7e0c948638a8b1bc2961ac2",
+  "events": [
+    {
+      "job": "Universes000004",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.869738044013502,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Universes000004",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 2.168393
+      }
+    },
+    {
+      "job": "Batch000000",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.9217521430109628,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000000",
+        "kind": "checked",
+        "entries": [
+          1,
+          20,
+          28,
+          58,
+          68,
+          93,
+          97,
+          213
+        ],
+        "seconds": 2.183364
+      }
+    },
+    {
+      "job": "Batch000001",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.5635175610077567,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000001",
+        "kind": "checked",
+        "entries": [
+          217,
+          270,
+          349,
+          352,
+          357,
+          409,
+          433,
+          437
+        ],
+        "seconds": 1.887711
+      }
+    },
+    {
+      "job": "Batch000002",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.7164884800149594,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000002",
+        "kind": "checked",
+        "entries": [
+          15,
+          37,
+          39,
+          59,
+          72,
+          84,
+          102,
+          107
+        ],
+        "seconds": 2.019496
+      }
+    },
+    {
+      "job": "Batch000003",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.9130672560131643,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000003",
+        "kind": "checked",
+        "entries": [
+          108,
+          122,
+          221,
+          235,
+          238,
+          265,
+          274,
+          360
+        ],
+        "seconds": 2.181275
+      }
+    },
+    {
+      "job": "Batch000004",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.8540364530053921,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000004",
+        "kind": "need_instance",
+        "source": 1,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance1_1",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.5160222580016125,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance1_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.787061
+      }
+    },
+    {
+      "job": "Batch000004",
+      "attempt": 2,
+      "outcome": "checked",
+      "wall_seconds": 2.56287982701906,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000004",
+        "kind": "checked",
+        "entries": [
+          365,
+          371,
+          435,
+          445,
+          449,
+          457
+        ],
+        "seconds": 1.8617
+      }
+    },
+    {
+      "job": "Batch000005",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.8042632699944079,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000005",
+        "kind": "need_instance",
+        "source": 108,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance108_1",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.4117965680197813,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance108_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.741617
+      }
+    },
+    {
+      "job": "Batch000005",
+      "attempt": 2,
+      "outcome": "checked",
+      "wall_seconds": 2.66359589601052,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000005",
+        "kind": "checked",
+        "entries": [
+          51,
+          67,
+          73,
+          87,
+          104,
+          120,
+          121,
+          123
+        ],
+        "seconds": 1.977334
+      }
+    },
+    {
+      "job": "Batch000006",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.6543779160128906,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000006",
+        "kind": "need_instance",
+        "source": 217,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance217_1",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.5153467490163166,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance217_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.795552
+      }
+    },
+    {
+      "job": "Batch000006",
+      "attempt": 2,
+      "outcome": "checked",
+      "wall_seconds": 2.917585097020492,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000006",
+        "kind": "checked",
+        "entries": [
+          169,
+          222,
+          237,
+          269,
+          275,
+          299,
+          364,
+          366
+        ],
+        "seconds": 2.072164
+      }
+    },
+    {
+      "job": "Batch000007",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.562972357001854,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000007",
+        "kind": "checked",
+        "entries": [
+          372,
+          436,
+          454,
+          495
+        ],
+        "seconds": 1.916842
+      }
+    },
+    {
+      "job": "Batch000008",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.653391505999025,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000008",
+        "kind": "need_instance",
+        "source": 28,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance28_1",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.515068965003593,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance28_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.872086
+      }
+    },
+    {
+      "job": "Batch000008",
+      "attempt": 2,
+      "outcome": "need_instance",
+      "wall_seconds": 0.7037836499803234,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000008",
+        "kind": "need_instance",
+        "source": 68,
+        "mask": 2
+      }
+    },
+    {
+      "job": "Instance68_2",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.6119790890079457,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance68_2",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.859664
+      }
+    },
+    {
+      "job": "Batch000008",
+      "attempt": 3,
+      "outcome": "need_instance",
+      "wall_seconds": 0.9051450539845973,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000008",
+        "kind": "need_instance",
+        "source": 122,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance122_1",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.411790915997699,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance122_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.805649
+      }
+    },
+    {
+      "job": "Batch000008",
+      "attempt": 4,
+      "outcome": "checked",
+      "wall_seconds": 2.8177666140254587,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000008",
+        "kind": "checked",
+        "entries": [
+          52,
+          88,
+          103,
+          125,
+          145,
+          236,
+          240,
+          328
+        ],
+        "seconds": 2.103512
+      }
+    },
+    {
+      "job": "Batch000009",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.7045242199965287,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000009",
+        "kind": "need_instance",
+        "source": 349,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance349_1",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.866860197013011,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance349_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.998045
+      }
+    },
+    {
+      "job": "Batch000009",
+      "attempt": 2,
+      "outcome": "need_instance",
+      "wall_seconds": 0.7036022469983436,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000009",
+        "kind": "need_instance",
+        "source": 352,
+        "mask": 3
+      }
+    },
+    {
+      "job": "Instance352_3",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.767215389001649,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance352_3",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 2.118795
+      }
+    },
+    {
+      "job": "Batch000009",
+      "attempt": 3,
+      "outcome": "need_instance",
+      "wall_seconds": 0.9100185440038331,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000009",
+        "kind": "need_instance",
+        "source": 238,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance238_1",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.461416896985611,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance238_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.778718
+      }
+    },
+    {
+      "job": "Batch000009",
+      "attempt": 4,
+      "outcome": "checked",
+      "wall_seconds": 2.7629714199865703,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000009",
+        "kind": "checked",
+        "entries": [
+          346,
+          379,
+          416,
+          455,
+          475
+        ],
+        "seconds": 2.058055
+      }
+    },
+    {
+      "job": "Batch000010",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.6532101840130053,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000010",
+        "kind": "need_instance",
+        "source": 103,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance103_1",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.65313140800572,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance103_1",
+        "kind": "need_instance",
+        "source": 102,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance102_1",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.6535302360134665,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance102_1",
+        "kind": "need_instance",
+        "source": 97,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance97_1",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.512989822018426,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance97_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.857294
+      }
+    },
+    {
+      "job": "Instance102_1",
+      "attempt": 2,
+      "outcome": "checked",
+      "wall_seconds": 2.4628773880249355,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance102_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.815798
+      }
+    },
+    {
+      "job": "Instance103_1",
+      "attempt": 2,
+      "outcome": "need_instance",
+      "wall_seconds": 0.7567683850065805,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance103_1",
+        "kind": "need_instance",
+        "source": 104,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance104_1",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.8047451970051043,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance104_1",
+        "kind": "need_instance",
+        "source": 102,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance104_1",
+      "attempt": 2,
+      "outcome": "checked",
+      "wall_seconds": 2.764548758015735,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance104_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.968904
+      }
+    },
+    {
+      "job": "Instance103_1",
+      "attempt": 3,
+      "outcome": "checked",
+      "wall_seconds": 2.9135616420244332,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance103_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 2.130953
+      }
+    },
+    {
+      "job": "Batch000010",
+      "attempt": 2,
+      "outcome": "need_instance",
+      "wall_seconds": 0.7540929229871836,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000010",
+        "kind": "need_instance",
+        "source": 236,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance236_1",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.9062697789922822,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance236_1",
+        "kind": "need_instance",
+        "source": 235,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance235_1",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.6533652759972028,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance235_1",
+        "kind": "need_instance",
+        "source": 97,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance235_1",
+      "attempt": 2,
+      "outcome": "checked",
+      "wall_seconds": 2.4614597109903116,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance235_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.774272
+      }
+    },
+    {
+      "job": "Instance236_1",
+      "attempt": 2,
+      "outcome": "need_instance",
+      "wall_seconds": 0.6533118430234026,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance236_1",
+        "kind": "need_instance",
+        "source": 237,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance237_1",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.7579152040125336,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance237_1",
+        "kind": "need_instance",
+        "source": 235,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance237_1",
+      "attempt": 2,
+      "outcome": "checked",
+      "wall_seconds": 2.6122761849837843,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance237_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.865923
+      }
+    },
+    {
+      "job": "Instance236_1",
+      "attempt": 3,
+      "outcome": "checked",
+      "wall_seconds": 2.5122067620104644,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance236_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.841487
+      }
+    },
+    {
+      "job": "Batch000010",
+      "attempt": 3,
+      "outcome": "checked",
+      "wall_seconds": 2.71518748201197,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000010",
+        "kind": "checked",
+        "entries": [
+          53,
+          168,
+          338,
+          396,
+          490
+        ],
+        "seconds": 2.015603
+      }
+    },
+    {
+      "job": "Batch000011",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.7034026500186883,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000011",
+        "kind": "need_instance",
+        "source": 270,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance270_1",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 3.1289508779882453,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance270_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 2.330011
+      }
+    },
+    {
+      "job": "Batch000011",
+      "attempt": 2,
+      "outcome": "checked",
+      "wall_seconds": 3.023839500005124,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000011",
+        "kind": "checked",
+        "entries": [
+          144,
+          280,
+          397,
+          562
+        ],
+        "seconds": 2.222941
+      }
+    },
+    {
+      "job": "Batch000012",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.7540655469929334,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000012",
+        "kind": "need_instance",
+        "source": 275,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance275_1",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.7537597519985866,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance275_1",
+        "kind": "need_instance",
+        "source": 270,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance275_1",
+      "attempt": 2,
+      "outcome": "need_instance",
+      "wall_seconds": 0.6535112129931804,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance275_1",
+        "kind": "need_instance",
+        "source": 265,
+        "mask": 7
+      }
+    },
+    {
+      "job": "Instance265_7",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.6621489219833165,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance265_7",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.906022
+      }
+    },
+    {
+      "job": "Instance275_1",
+      "attempt": 3,
+      "outcome": "checked",
+      "wall_seconds": 2.9683220890001394,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance275_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 2.259879
+      }
+    },
+    {
+      "job": "Batch000012",
+      "attempt": 2,
+      "outcome": "checked",
+      "wall_seconds": 2.8173291840066668,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000012",
+        "kind": "checked",
+        "entries": [
+          124,
+          281,
+          432,
+          582
+        ],
+        "seconds": 2.095599
+      }
+    },
+    {
+      "job": "Batch000013",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.8542974570009392,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000013",
+        "kind": "need_instance",
+        "source": 84,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance84_1",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.7265824459900614,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance84_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.904307
+      }
+    },
+    {
+      "job": "Batch000013",
+      "attempt": 2,
+      "outcome": "checked",
+      "wall_seconds": 2.611894907982787,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000013",
+        "kind": "checked",
+        "entries": [
+          197,
+          300
+        ],
+        "seconds": 1.981973
+      }
+    },
+    {
+      "job": "Batch000014",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.7149232829979155,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000014",
+        "kind": "checked",
+        "entries": [
+          198
+        ],
+        "seconds": 1.867806
+      }
+    },
+    {
+      "job": "Batch000015",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.6343836129817646,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000015",
+        "kind": "checked",
+        "entries": [
+          203
+        ],
+        "seconds": 1.964349
+      }
+    },
+    {
+      "job": "Batch000016",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.7551440850074869,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000016",
+        "kind": "need_instance",
+        "source": 15,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance15_1",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.7098622949852142,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance15_1",
+        "kind": "need_instance",
+        "source": 1,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance15_1",
+      "attempt": 2,
+      "outcome": "checked",
+      "wall_seconds": 2.616406570014078,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance15_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.714404
+      }
+    },
+    {
+      "job": "Batch000016",
+      "attempt": 2,
+      "outcome": "checked",
+      "wall_seconds": 2.410516378993634,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000016",
+        "kind": "checked",
+        "entries": [
+          208
+        ],
+        "seconds": 1.754569
+      }
+    },
+    {
+      "job": "Batch000017",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.5129537800094113,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000017",
+        "kind": "checked",
+        "entries": [
+          223
+        ],
+        "seconds": 1.868518
+      }
+    },
+    {
+      "job": "Batch000018",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.614606062998064,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000018",
+        "kind": "checked",
+        "entries": [
+          225
+        ],
+        "seconds": 1.977003
+      }
+    },
+    {
+      "job": "Batch000019",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.703227097983472,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000019",
+        "kind": "need_instance",
+        "source": 300,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance300_1",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.8038343419902958,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance300_1",
+        "kind": "need_instance",
+        "source": 15,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance300_1",
+      "attempt": 2,
+      "outcome": "need_instance",
+      "wall_seconds": 0.7034297950158361,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance300_1",
+        "kind": "need_instance",
+        "source": 281,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance281_1",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.7050496189913247,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance281_1",
+        "kind": "need_instance",
+        "source": 236,
+        "mask": 2
+      }
+    },
+    {
+      "job": "Instance236_2",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.6032900450227316,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance236_2",
+        "kind": "need_instance",
+        "source": 235,
+        "mask": 2
+      }
+    },
+    {
+      "job": "Instance235_2",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.6530337829899509,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance235_2",
+        "kind": "need_instance",
+        "source": 1,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance235_2",
+      "attempt": 2,
+      "outcome": "checked",
+      "wall_seconds": 2.361303270998178,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance235_2",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.747764
+      }
+    },
+    {
+      "job": "Instance236_2",
+      "attempt": 2,
+      "outcome": "need_instance",
+      "wall_seconds": 0.653082953998819,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance236_2",
+        "kind": "need_instance",
+        "source": 237,
+        "mask": 2
+      }
+    },
+    {
+      "job": "Instance237_2",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.7036360579950269,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance237_2",
+        "kind": "need_instance",
+        "source": 235,
+        "mask": 2
+      }
+    },
+    {
+      "job": "Instance237_2",
+      "attempt": 2,
+      "outcome": "checked",
+      "wall_seconds": 2.4140655839873943,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance237_2",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.761235
+      }
+    },
+    {
+      "job": "Instance236_2",
+      "attempt": 3,
+      "outcome": "checked",
+      "wall_seconds": 2.919458956021117,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance236_2",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.964601
+      }
+    },
+    {
+      "job": "Instance281_1",
+      "attempt": 2,
+      "outcome": "need_instance",
+      "wall_seconds": 0.6533452630101237,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance281_1",
+        "kind": "need_instance",
+        "source": 240,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance240_1",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.6536012289870996,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance240_1",
+        "kind": "need_instance",
+        "source": 238,
+        "mask": 2
+      }
+    },
+    {
+      "job": "Instance238_2",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.6029037530242931,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance238_2",
+        "kind": "need_instance",
+        "source": 1,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance238_2",
+      "attempt": 2,
+      "outcome": "checked",
+      "wall_seconds": 2.511496280989377,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance238_2",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.868694
+      }
+    },
+    {
+      "job": "Instance240_1",
+      "attempt": 2,
+      "outcome": "checked",
+      "wall_seconds": 2.615789973991923,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance240_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.882505
+      }
+    },
+    {
+      "job": "Instance281_1",
+      "attempt": 3,
+      "outcome": "checked",
+      "wall_seconds": 2.6617372350010555,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance281_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.947964
+      }
+    },
+    {
+      "job": "Instance300_1",
+      "attempt": 3,
+      "outcome": "checked",
+      "wall_seconds": 2.510698035999667,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance300_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 1.842162
+      }
+    },
+    {
+      "job": "Batch000019",
+      "attempt": 2,
+      "outcome": "checked",
+      "wall_seconds": 2.6733844700211193,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000019",
+        "kind": "checked",
+        "entries": [
+          224
+        ],
+        "seconds": 1.96145
+      }
+    },
+    {
+      "job": "Batch000020",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.5611997059895657,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000020",
+        "kind": "checked",
+        "entries": [
+          305,
+          344,
+          347
+        ],
+        "seconds": 1.893944
+      }
+    },
+    {
+      "job": "Batch000021",
+      "attempt": 1,
+      "outcome": "need_instance",
+      "wall_seconds": 0.6529131149873137,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000021",
+        "kind": "need_instance",
+        "source": 213,
+        "mask": 1
+      }
+    },
+    {
+      "job": "Instance213_1",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.7164712480152957,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Instance213_1",
+        "kind": "checked",
+        "entries": [],
+        "seconds": 2.007651
+      }
+    },
+    {
+      "job": "Batch000021",
+      "attempt": 2,
+      "outcome": "checked",
+      "wall_seconds": 2.8675073240010533,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000021",
+        "kind": "checked",
+        "entries": [
+          322
+        ],
+        "seconds": 1.922406
+      }
+    },
+    {
+      "job": "Batch000022",
+      "attempt": 1,
+      "outcome": "checked",
+      "wall_seconds": 2.9250434870191384,
+      "report": {
+        "run": "1ae832c4375910fd0ea6623122362ea0355da63cd5c3b8b82d361595eb0cdedd",
+        "batch": "Batch000022",
+        "kind": "checked",
+        "entries": [
+          348
+        ],
+        "seconds": 2.079803
+      }
+    }
+  ],
+  "total_seconds": 172.98349609499564,
+  "foundation_seconds": 1.8389388119976502,
+  "index_seconds": 0.14720333699369803,
+  "plan_seconds": 0.007032172987237573,
+  "cpu_seconds": {
+    "coordinator": 1.4107919999999998,
+    "compilers": 168.34848
+  }
+}

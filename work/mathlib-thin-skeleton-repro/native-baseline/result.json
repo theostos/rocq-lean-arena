@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 0.6653415419859812,
+  "module": "Native",
+  "worker_sha256": "938cf20b10fc8ebcde26d325e797057e79d59e42b1a2078613ff7f53222fe5ac",
+  "vo_sha256": "f0e48d8e38bf96eb1683ac20c40e96756691253882dea7f9baa8ddb39c07df30"
+}
