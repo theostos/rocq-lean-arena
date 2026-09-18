@@ -1,0 +1,482 @@
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+unit comparison at incompatible types accepted: false
+record eta at incompatible field types accepted: false
+record eta at incompatible field types accepted: false
+unit type witness: PASS
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+same-type stuck case/unit constructor accepted: true
+same-type stuck case/unit constructor accepted: true
+case result witnesses: PASS (constant and indexed predicates, both APIs)
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+opaque projection/unit constructor incompatible types accepted: false
+partial unit constructor accepted as inhabitant: false
+projection unit type witness: PASS
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+projection conversion cache: PASS (keys, context variants, 4096-entry bound)
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+Expanded quotation budgets passed (prefix=12287 nodes).
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+unfolding order: PASS (direct witnesses, hints skip graph search, tied probe order, both sides on an unpreferred tie)
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+deferred eligibility witness: PASS
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+unit type shifts: PASS (meaning, DAG bounds, exhausted quotation, inversion)
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+unit type shifts: PASS (meaning, DAG bounds, exhausted quotation, inversion)
+type queries: PASS (unused environments 1/256/8192/32768: 2456/2456/2456/2456 bytes)
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+application caches: PASS (identity, lifts, contexts, problems, bounds, exceptions)
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+physical conversion: PASS (shared DAG, relocation, bounded stack reflexivity)
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+eliminator head: PASS (local aliases, offsets, binders, bounds, no mutation)
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+projected major: checked fixture Payload
+projected major: checked fixture Holder
+projected major: checked fixture FunHolder
+projected major: checked fixture record_source
+projected major: checked fixture select_left
+projected major: checked fixture boolean_not
+projected major: PASS checked primitive projection returns both constructor fields
+projected major: PASS shared source remains valid for subsequent reductions
+projected major: PASS FProj and FApp projected-function views
+projected major: PASS relative constructor fields
+projected major: PASS LocalDef source beneath another binder
+projected major: PASS substituted source with lifted binder
+projected major: PASS FLIFT preserves open fields
+projected major: PASS transparent record constant
+projected major: PASS blocked projection
+projected major: PASS blocked transparent record source
+projected major: PASS oracle-opaque record source with oracle transparency mask
+projected major: PASS kernel-opaque source has no reducible body
+projected major: PASS neutral record source
+projected major: PASS neutral projected field
+projected major: PASS stuck demand preserves the original symbolic root
+projected major: PASS successful demand preserves the source expression
+demanded sharing allocation: depth8=10080 depth16=18912
+projected major: PASS demand preserves sharing of repeated let computations
+projected major: PASS already-visible constructors need no field normalization
+projected major: PASS beta demand returns a constructor with fields
+projected major: PASS let/beta demand preserves substitution
+projected major: PASS computed Boolean demand, not just projections
+projected major: PASS computed Boolean neutral and blocked function decline
+projected major: PASS demanded reduction has no shallow head-step cutoff
+projected major: PASS large unused substitution is not copied or forced
+projected major: PASS expose replaces major in copied frame and agrees with ordinary iota
+projected major: PASS expose computed Boolean into another checked Boolean case
+projected major: PASS split frames preserve prefix/suffix, shifts and update targets
+projected major: PASS application length does not impose a demand cutoff
+projected major: PASS frame traversal does not impose a demand cutoff
+projected major: PASS unsupported frame before major and missing major decline
+projected major: PASS neutral or blocked major preserves original stack
+projected major: PASS untyped, disabled heuristic and blocked eliminator decline
+projected major: 32/32 tests passed
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+projected major: checked fixture Payload
+projected major: checked fixture Holder
+projected major: checked fixture FunHolder
+projected major: checked fixture record_source
+projected major: checked fixture select_left
+projected major: checked fixture boolean_not
+projected major: PASS checked primitive projection returns both constructor fields
+projected major: PASS shared source remains valid for subsequent reductions
+projected major: PASS FProj and FApp projected-function views
+projected major: PASS relative constructor fields
+projected major: PASS LocalDef source beneath another binder
+projected major: PASS substituted source with lifted binder
+projected major: PASS FLIFT preserves open fields
+projected major: PASS transparent record constant
+projected major: PASS blocked projection
+projected major: PASS blocked transparent record source
+projected major: PASS oracle-opaque record source with oracle transparency mask
+projected major: PASS kernel-opaque source has no reducible body
+projected major: PASS neutral record source
+projected major: PASS neutral projected field
+projected major: PASS stuck demand preserves the original symbolic root
+projected major: PASS successful demand preserves the source expression
+demanded sharing allocation: depth8=10080 depth16=18912
+projected major: PASS demand preserves sharing of repeated let computations
+projected major: PASS already-visible constructors need no field normalization
+projected major: PASS beta demand returns a constructor with fields
+projected major: PASS let/beta demand preserves substitution
+projected major: PASS computed Boolean demand, not just projections
+projected major: PASS computed Boolean neutral and blocked function decline
+projected major: PASS demanded reduction has no shallow head-step cutoff
+projected major: PASS large unused substitution is not copied or forced
+projected major: PASS expose replaces major in copied frame and agrees with ordinary iota
+projected major: PASS expose computed Boolean into another checked Boolean case
+projected major: PASS split frames preserve prefix/suffix, shifts and update targets
+projected major: PASS application length does not impose a demand cutoff
+projected major: PASS frame traversal does not impose a demand cutoff
+projected major: PASS unsupported frame before major and missing major decline
+projected major: PASS neutral or blocked major preserves original stack
+projected major: PASS untyped, disabled heuristic and blocked eliminator decline
+projected major: 32/32 tests passed
+projected major: checked fixture suspended_identity
+suspended cache: PASS reconstructed cells, captures, universes, fresh calls, contexts, lifts, ordered problem, disabled path, shared retention bound
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+projected major: checked fixture Payload
+projected major: checked fixture Holder
+projected major: checked fixture FunHolder
+projected major: checked fixture record_source
+projected major: checked fixture select_left
+projected major: checked fixture boolean_not
+projected major: PASS checked primitive projection returns both constructor fields
+projected major: PASS shared source remains valid for subsequent reductions
+projected major: PASS FProj and FApp projected-function views
+projected major: PASS relative constructor fields
+projected major: PASS LocalDef source beneath another binder
+projected major: PASS substituted source with lifted binder
+projected major: PASS FLIFT preserves open fields
+projected major: PASS transparent record constant
+projected major: PASS blocked projection
+projected major: PASS blocked transparent record source
+projected major: PASS oracle-opaque record source with oracle transparency mask
+projected major: PASS kernel-opaque source has no reducible body
+projected major: PASS neutral record source
+projected major: PASS neutral projected field
+projected major: PASS stuck demand preserves the original symbolic root
+projected major: PASS successful demand preserves the source expression
+demanded sharing allocation: depth8=10080 depth16=18912
+projected major: PASS demand preserves sharing of repeated let computations
+projected major: PASS already-visible constructors need no field normalization
+projected major: PASS beta demand returns a constructor with fields
+projected major: PASS let/beta demand preserves substitution
+projected major: PASS computed Boolean demand, not just projections
+projected major: PASS computed Boolean neutral and blocked function decline
+projected major: PASS demanded reduction has no shallow head-step cutoff
+projected major: PASS large unused substitution is not copied or forced
+projected major: PASS expose replaces major in copied frame and agrees with ordinary iota
+projected major: PASS expose computed Boolean into another checked Boolean case
+projected major: PASS split frames preserve prefix/suffix, shifts and update targets
+projected major: PASS application length does not impose a demand cutoff
+projected major: PASS frame traversal does not impose a demand cutoff
+projected major: PASS unsupported frame before major and missing major decline
+projected major: PASS neutral or blocked major preserves original stack
+projected major: PASS untyped, disabled heuristic and blocked eliminator decline
+projected major: 32/32 tests passed
+projected major: checked fixture wide_wrapper
+symbolic lookup: PASS original checked expression before 1200-field expansion; ordinary bounded probe unchanged
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+projected major: checked fixture Payload
+projected major: checked fixture Holder
+projected major: checked fixture FunHolder
+projected major: checked fixture record_source
+projected major: checked fixture select_left
+projected major: checked fixture boolean_not
+projected major: PASS checked primitive projection returns both constructor fields
+projected major: PASS shared source remains valid for subsequent reductions
+projected major: PASS FProj and FApp projected-function views
+projected major: PASS relative constructor fields
+projected major: PASS LocalDef source beneath another binder
+projected major: PASS substituted source with lifted binder
+projected major: PASS FLIFT preserves open fields
+projected major: PASS transparent record constant
+projected major: PASS blocked projection
+projected major: PASS blocked transparent record source
+projected major: PASS oracle-opaque record source with oracle transparency mask
+projected major: PASS kernel-opaque source has no reducible body
+projected major: PASS neutral record source
+projected major: PASS neutral projected field
+projected major: PASS stuck demand preserves the original symbolic root
+projected major: PASS successful demand preserves the source expression
+demanded sharing allocation: depth8=10080 depth16=18912
+projected major: PASS demand preserves sharing of repeated let computations
+projected major: PASS already-visible constructors need no field normalization
+projected major: PASS beta demand returns a constructor with fields
+projected major: PASS let/beta demand preserves substitution
+projected major: PASS computed Boolean demand, not just projections
+projected major: PASS computed Boolean neutral and blocked function decline
+projected major: PASS demanded reduction has no shallow head-step cutoff
+projected major: PASS large unused substitution is not copied or forced
+projected major: PASS expose replaces major in copied frame and agrees with ordinary iota
+projected major: PASS expose computed Boolean into another checked Boolean case
+projected major: PASS split frames preserve prefix/suffix, shifts and update targets
+projected major: PASS application length does not impose a demand cutoff
+projected major: PASS frame traversal does not impose a demand cutoff
+projected major: PASS unsupported frame before major and missing major decline
+projected major: PASS neutral or blocked major preserves original stack
+projected major: PASS untyped, disabled heuristic and blocked eliminator decline
+projected major: 32/32 tests passed
+projected major: checked fixture exposed_identity
+PASS: exposed lambda cache, captured values, negative conversion, contexts, lifts, direction
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+projected major: checked fixture Payload
+projected major: checked fixture Holder
+projected major: checked fixture FunHolder
+projected major: checked fixture record_source
+projected major: checked fixture select_left
+projected major: checked fixture boolean_not
+projected major: PASS checked primitive projection returns both constructor fields
+projected major: PASS shared source remains valid for subsequent reductions
+projected major: PASS FProj and FApp projected-function views
+projected major: PASS relative constructor fields
+projected major: PASS LocalDef source beneath another binder
+projected major: PASS substituted source with lifted binder
+projected major: PASS FLIFT preserves open fields
+projected major: PASS transparent record constant
+projected major: PASS blocked projection
+projected major: PASS blocked transparent record source
+projected major: PASS oracle-opaque record source with oracle transparency mask
+projected major: PASS kernel-opaque source has no reducible body
+projected major: PASS neutral record source
+projected major: PASS neutral projected field
+projected major: PASS stuck demand preserves the original symbolic root
+projected major: PASS successful demand preserves the source expression
+demanded sharing allocation: depth8=10080 depth16=18912
+projected major: PASS demand preserves sharing of repeated let computations
+projected major: PASS already-visible constructors need no field normalization
+projected major: PASS beta demand returns a constructor with fields
+projected major: PASS let/beta demand preserves substitution
+projected major: PASS computed Boolean demand, not just projections
+projected major: PASS computed Boolean neutral and blocked function decline
+projected major: PASS demanded reduction has no shallow head-step cutoff
+projected major: PASS large unused substitution is not copied or forced
+projected major: PASS expose replaces major in copied frame and agrees with ordinary iota
+projected major: PASS expose computed Boolean into another checked Boolean case
+projected major: PASS split frames preserve prefix/suffix, shifts and update targets
+projected major: PASS application length does not impose a demand cutoff
+projected major: PASS frame traversal does not impose a demand cutoff
+projected major: PASS unsupported frame before major and missing major decline
+projected major: PASS neutral or blocked major preserves original stack
+projected major: PASS untyped, disabled heuristic and blocked eliminator decline
+projected major: 32/32 tests passed
+projected major: checked fixture dag_choose
+PASS syntax DAG: depth=40 visits=122 allowance=1024
+PASS syntax DAG: no reduction, unequal leaves/captures/lifts rejected, width remains bounded
+PASS syntax DAG: successful memo entries do not leak across universe instances or lifts
+PASS syntax DAG: linear closure visits; 200 differential checks (61 positive), read-only
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+projected major: checked fixture Payload
+projected major: checked fixture Holder
+projected major: checked fixture FunHolder
+projected major: checked fixture record_source
+projected major: checked fixture select_left
+projected major: checked fixture boolean_not
+projected major: PASS checked primitive projection returns both constructor fields
+projected major: PASS shared source remains valid for subsequent reductions
+projected major: PASS FProj and FApp projected-function views
+projected major: PASS relative constructor fields
+projected major: PASS LocalDef source beneath another binder
+projected major: PASS substituted source with lifted binder
+projected major: PASS FLIFT preserves open fields
+projected major: PASS transparent record constant
+projected major: PASS blocked projection
+projected major: PASS blocked transparent record source
+projected major: PASS oracle-opaque record source with oracle transparency mask
+projected major: PASS kernel-opaque source has no reducible body
+projected major: PASS neutral record source
+projected major: PASS neutral projected field
+projected major: PASS stuck demand preserves the original symbolic root
+projected major: PASS successful demand preserves the source expression
+demanded sharing allocation: depth8=10080 depth16=18912
+projected major: PASS demand preserves sharing of repeated let computations
+projected major: PASS already-visible constructors need no field normalization
+projected major: PASS beta demand returns a constructor with fields
+projected major: PASS let/beta demand preserves substitution
+projected major: PASS computed Boolean demand, not just projections
+projected major: PASS computed Boolean neutral and blocked function decline
+projected major: PASS demanded reduction has no shallow head-step cutoff
+projected major: PASS large unused substitution is not copied or forced
+projected major: PASS expose replaces major in copied frame and agrees with ordinary iota
+projected major: PASS expose computed Boolean into another checked Boolean case
+projected major: PASS split frames preserve prefix/suffix, shifts and update targets
+projected major: PASS application length does not impose a demand cutoff
+projected major: PASS frame traversal does not impose a demand cutoff
+projected major: PASS unsupported frame before major and missing major decline
+projected major: PASS neutral or blocked major preserves original stack
+projected major: PASS untyped, disabled heuristic and blocked eliminator decline
+projected major: 32/32 tests passed
+projected major: checked fixture conversion_dag_choose
+BEGIN public conversion on independently allocated depth40 DAGs
+PASS public conversion: shared DAG equality and unequal leaves
+public DAG conversion depth=8 cpu_seconds=0.000038
+public DAG conversion depth=16 cpu_seconds=0.000069
+public DAG conversion depth=32 cpu_seconds=0.000166
+public DAG conversion depth=64 cpu_seconds=0.000467
+public DAG conversion depth=128 cpu_seconds=0.001729
+public DAG conversion depth=256 cpu_seconds=0.004886
+PASS alpha probe: 288 differential checks; cumulativity remains directional
+PASS alpha probe: 32 independent-allocation checked-body comparisons (including cases)
+PASS alpha probe: exhausted shortcut falls back; unequal final field rejected
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+projection segments: PASS (prefixes, continuations, masks, failure, field identity, bare versus applied fields)
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+projected major: checked fixture Payload
+projected major: checked fixture Holder
+projected major: checked fixture FunHolder
+projected major: checked fixture record_source
+projected major: checked fixture select_left
+projected major: checked fixture boolean_not
+projected major: PASS checked primitive projection returns both constructor fields
+projected major: PASS shared source remains valid for subsequent reductions
+projected major: PASS FProj and FApp projected-function views
+projected major: PASS relative constructor fields
+projected major: PASS LocalDef source beneath another binder
+projected major: PASS substituted source with lifted binder
+projected major: PASS FLIFT preserves open fields
+projected major: PASS transparent record constant
+projected major: PASS blocked projection
+projected major: PASS blocked transparent record source
+projected major: PASS oracle-opaque record source with oracle transparency mask
+projected major: PASS kernel-opaque source has no reducible body
+projected major: PASS neutral record source
+projected major: PASS neutral projected field
+projected major: PASS stuck demand preserves the original symbolic root
+projected major: PASS successful demand preserves the source expression
+demanded sharing allocation: depth8=10080 depth16=18912
+projected major: PASS demand preserves sharing of repeated let computations
+projected major: PASS already-visible constructors need no field normalization
+projected major: PASS beta demand returns a constructor with fields
+projected major: PASS let/beta demand preserves substitution
+projected major: PASS computed Boolean demand, not just projections
+projected major: PASS computed Boolean neutral and blocked function decline
+projected major: PASS demanded reduction has no shallow head-step cutoff
+projected major: PASS large unused substitution is not copied or forced
+projected major: PASS expose replaces major in copied frame and agrees with ordinary iota
+projected major: PASS expose computed Boolean into another checked Boolean case
+projected major: PASS split frames preserve prefix/suffix, shifts and update targets
+projected major: PASS application length does not impose a demand cutoff
+projected major: PASS frame traversal does not impose a demand cutoff
+projected major: PASS unsupported frame before major and missing major decline
+projected major: PASS neutral or blocked major preserves original stack
+projected major: PASS untyped, disabled heuristic and blocked eliminator decline
+projected major: 32/32 tests passed
+projected major: checked fixture OrderOps
+projected major: checked fixture computed_method
+projected major: checked fixture computed_wrapper
+projected major: checked fixture computed_identity_method
+projected major: checked fixture computed_identity_wrapper
+projection order: depth=0 allocated=101312 cpu=0.000233
+projection order: depth=64 allocated=149272 cpu=0.000169
+projection order: depth=1024 allocated=286936 cpu=0.000370
+projection order: PASS open ignored argument under binder (both directions)
+projection order: PASS used method arguments are not discarded (both directions)
+projection order: PASS different selected methods remain different (both directions)
+projection order: PASS matching symbolic source still checks continuation (both directions)
+projection order: PASS different source with convertible selected method (both directions)
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+projected major: checked fixture Payload
+projected major: checked fixture Holder
+projected major: checked fixture FunHolder
+projected major: checked fixture record_source
+projected major: checked fixture select_left
+projected major: checked fixture boolean_not
+projected major: PASS checked primitive projection returns both constructor fields
+projected major: PASS shared source remains valid for subsequent reductions
+projected major: PASS FProj and FApp projected-function views
+projected major: PASS relative constructor fields
+projected major: PASS LocalDef source beneath another binder
+projected major: PASS substituted source with lifted binder
+projected major: PASS FLIFT preserves open fields
+projected major: PASS transparent record constant
+projected major: PASS blocked projection
+projected major: PASS blocked transparent record source
+projected major: PASS oracle-opaque record source with oracle transparency mask
+projected major: PASS kernel-opaque source has no reducible body
+projected major: PASS neutral record source
+projected major: PASS neutral projected field
+projected major: PASS stuck demand preserves the original symbolic root
+projected major: PASS successful demand preserves the source expression
+demanded sharing allocation: depth8=10080 depth16=18912
+projected major: PASS demand preserves sharing of repeated let computations
+projected major: PASS already-visible constructors need no field normalization
+projected major: PASS beta demand returns a constructor with fields
+projected major: PASS let/beta demand preserves substitution
+projected major: PASS computed Boolean demand, not just projections
+projected major: PASS computed Boolean neutral and blocked function decline
+projected major: PASS demanded reduction has no shallow head-step cutoff
+projected major: PASS large unused substitution is not copied or forced
+projected major: PASS expose replaces major in copied frame and agrees with ordinary iota
+projected major: PASS expose computed Boolean into another checked Boolean case
+projected major: PASS split frames preserve prefix/suffix, shifts and update targets
+projected major: PASS application length does not impose a demand cutoff
+projected major: PASS frame traversal does not impose a demand cutoff
+projected major: PASS unsupported frame before major and missing major decline
+projected major: PASS neutral or blocked major preserves original stack
+projected major: PASS untyped, disabled heuristic and blocked eliminator decline
+projected major: 32/32 tests passed
+projected major: checked fixture computed_method_for_fields
+projected major: checked fixture TwoMethods
+projected major: checked fixture NestedMethods
+projected major: checked fixture nested_methods_wrapper
+projection mismatch: allocated=327456 cpu=0.000477
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+projected major: checked fixture Payload
+projected major: checked fixture Holder
+projected major: checked fixture FunHolder
+projected major: checked fixture record_source
+projected major: checked fixture select_left
+projected major: checked fixture boolean_not
+projected major: PASS checked primitive projection returns both constructor fields
+projected major: PASS shared source remains valid for subsequent reductions
+projected major: PASS FProj and FApp projected-function views
+projected major: PASS relative constructor fields
+projected major: PASS LocalDef source beneath another binder
+projected major: PASS substituted source with lifted binder
+projected major: PASS FLIFT preserves open fields
+projected major: PASS transparent record constant
+projected major: PASS blocked projection
+projected major: PASS blocked transparent record source
+projected major: PASS oracle-opaque record source with oracle transparency mask
+projected major: PASS kernel-opaque source has no reducible body
+projected major: PASS neutral record source
+projected major: PASS neutral projected field
+projected major: PASS stuck demand preserves the original symbolic root
+projected major: PASS successful demand preserves the source expression
+demanded sharing allocation: depth8=10080 depth16=18912
+projected major: PASS demand preserves sharing of repeated let computations
+projected major: PASS already-visible constructors need no field normalization
+projected major: PASS beta demand returns a constructor with fields
+projected major: PASS let/beta demand preserves substitution
+projected major: PASS computed Boolean demand, not just projections
+projected major: PASS computed Boolean neutral and blocked function decline
+projected major: PASS demanded reduction has no shallow head-step cutoff
+projected major: PASS large unused substitution is not copied or forced
+projected major: PASS expose replaces major in copied frame and agrees with ordinary iota
+projected major: PASS expose computed Boolean into another checked Boolean case
+projected major: PASS split frames preserve prefix/suffix, shifts and update targets
+projected major: PASS application length does not impose a demand cutoff
+projected major: PASS frame traversal does not impose a demand cutoff
+projected major: PASS unsupported frame before major and missing major decline
+projected major: PASS neutral or blocked major preserves original stack
+projected major: PASS untyped, disabled heuristic and blocked eliminator decline
+projected major: 32/32 tests passed
+projected major: checked fixture LazyProjectionRecord
+projected major: checked fixture lazy_source_left
+projected major: checked fixture lazy_source_right
+projected major: checked fixture lazy_source_wrong
+projected major: checked fixture lazy_forwarding_source
+lazy forwarding source: typed=false allocated=111480
+lazy forwarding source: typed=false allocated=111480
+lazy forwarding source: typed=true allocated=111480
+lazy forwarding source: typed=true allocated=111480
+lazy projection: allocated=117464
+lazy projection: allocated=117464
+lazy projection: allocated=24952
+lazy projection: allocated=24952
+lazy projection: PASS selected/unused fields, binders, transparency, negative cases

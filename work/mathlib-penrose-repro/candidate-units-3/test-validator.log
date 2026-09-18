@@ -1,0 +1,9 @@
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+memory guard: admitted with MemAvailable=26797940 KiB, reserve=6291456 KiB, RSS limit=3670016 KiB, cgroup high/max/swap=4194304/4194304/0 KiB, stack=262144 KiB
+PASS 272 validator acceptance/error-context differential cases, shared validators and cycles
+memory guard: status 2026-09-18T15:46:10+02:00: session=2764040 members(session/scope)=2/2 Rocq workers=0 scope RSS=37284 KiB; cgroup=36340/4194304 KiB; MemAvailable=26788916 KiB
+PASS depth-3000000 standalone value validation, CPU 3.765
+memory guard: finished with status 0; cgroup peak=927836 KiB (hard limit 4194304 KiB)

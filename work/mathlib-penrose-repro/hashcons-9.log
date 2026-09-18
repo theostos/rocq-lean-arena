@@ -1,0 +1,13 @@
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+PASS colliding identities, contexts, compaction, depth-partitioned retention
+PASS depth-60 DAG sharing and binder-context separation
+PASS 4000 exact-syntax differential checks
+baseline collision memo n=5000 cpu=0.155962
+candidate collision memo n=5000 cpu=0.004944 retained=5000
+baseline collision memo n=10000 cpu=0.522157
+candidate collision memo n=10000 cpu=0.015337 retained=10000
+baseline collision memo n=20000 cpu=1.736703
+candidate collision memo n=20000 cpu=0.029268 retained=20000

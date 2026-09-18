@@ -1,0 +1,7 @@
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+memory guard: admitted with MemAvailable=26916768 KiB, reserve=6291456 KiB, RSS limit=3670016 KiB, cgroup high/max/swap=4194304/4194304/0 KiB, stack=262144 KiB
+memory guard: status 2026-09-18T13:48:11+02:00: session=2468321 members(session/scope)=2/2 Rocq workers=0 scope RSS=21420 KiB; cgroup=18008/4194304 KiB; MemAvailable=26905956 KiB
+memory guard: status 2026-09-18T13:48:26+02:00: session=2468321 members(session/scope)=2/2 Rocq workers=0 scope RSS=1108968 KiB; cgroup=1107072/4194304 KiB; MemAvailable=25808492 KiB
+PASS deep hashcons: 3000000 nodes in 23.966 CPU seconds
+memory guard: finished with status 0; cgroup peak=1274772 KiB (hard limit 4194304 KiB)

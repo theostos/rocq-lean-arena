@@ -1,0 +1,9 @@
+memory guard: admitted with MemAvailable=26668532 KiB, reserve=6291456 KiB, RSS limit=2621440 KiB, cgroup high/max/swap=3145728/3145728/0 KiB, stack=262144 KiB
+memory guard: status 2026-09-18T15:22:06+02:00: session=2698003 members(session/scope)=2/2 Rocq workers=0 scope RSS=28676 KiB; cgroup=16556/3145728 KiB; MemAvailable=26657896 KiB
+Entering directory '/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view'
+File "checker/mod_checking.ml", line 4, characters 0-15:
+4 | open Conversion
+    ^^^^^^^^^^^^^^^
+Error (warning 33 [unused-open]): unused open Conversion.
+Leaving directory '/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view'
+memory guard: finished with status 1; cgroup peak=131060 KiB (hard limit 3145728 KiB)

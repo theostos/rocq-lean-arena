@@ -1,0 +1,8 @@
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+File "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/validator_test.ml", line 46, characters 35-40:
+46 |     let next = if i = depth-1 then Int 0 else Ptr (i+1) in
+                                        ^^^^^
+Error: The constructor Int expects 0 argument(s),
+       but is applied here to 1 argument(s)

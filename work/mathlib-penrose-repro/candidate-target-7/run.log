@@ -1,0 +1,334 @@
+memory guard: admitted with MemAvailable=26966760 KiB, reserve=3145728 KiB, RSS limit=15728640 KiB, cgroup high/max/swap=16777216/16777216/0 KiB, stack=262144 KiB
+memory guard: status 2026-09-18T15:33:28+02:00: session=2726604 members(session/scope)=2/2 Rocq workers=0 scope RSS=29256 KiB; cgroup=10280/16777216 KiB; MemAvailable=26968060 KiB
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.ubuntu.com>
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[lean checkpoint] before unpack cpu=0.849 heap_words=13895680 major_collections=1
+[lean checkpoint] after unpack cpu=0.859 heap_words=15980032 major_collections=1
+line 9939: _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1
+[declare start] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=0.892 heap_words=18377216 major=1
+[declare before type] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=0.892 heap_words=18377216 major=1
+[declare after type] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=6.610 heap_words=64651776 major=7
+[declare before body] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=6.610 heap_words=64651776 major=7
+[declare after body] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=6.626 heap_words=64651776 major=7
+[declare before universes] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=6.626 heap_words=64651776 major=7
+[declare after universes] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=6.863 heap_words=64651776 major=7
+[declare before quickdef] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=6.863 heap_words=64651776 major=7
+[declare after name] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=6.863 heap_words=64651776 major=7
+memory guard: status 2026-09-18T15:33:43+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=990068 KiB; cgroup=944536/16777216 KiB; MemAvailable=26002372 KiB
+memory guard: status 2026-09-18T15:33:58+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=1285848 KiB; cgroup=1240908/16777216 KiB; MemAvailable=25709668 KiB
+memory guard: status 2026-09-18T15:34:13+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=2048304 KiB; cgroup=2004940/16777216 KiB; MemAvailable=24914424 KiB
+memory guard: status 2026-09-18T15:34:28+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=2276828 KiB; cgroup=2233984/16777216 KiB; MemAvailable=24651552 KiB
+
+Program received signal SIGUSR1, User defined signal 1.
+0x00005c1773be8b56 in caml_alloc_shr_aux (profinfo=0, track=0, tag=0, wosize=5) at memory.c:489
+warning: 489	memory.c: No such file or directory
+
+[diagnostic stack] SIGUSR1 time=1789738473.021
+
+Thread 1 (Thread 0x7595e7e9ab80 (LWP 2726658) "rocqworker.exe"):
+#0  0x00005c1773be8b56 in caml_alloc_shr_aux (profinfo=0, track=0, tag=0, wosize=5) at memory.c:489
+#1  caml_alloc_shr_for_minor_gc (wosize=wosize@entry=5, tag=0, old_hd=old_hd@entry=5120) at memory.c:532
+#2  0x00005c1773be711a in caml_oldify_one (v=129286667271128, p=p@entry=0x75955ffce008) at minor_gc.c:209
+#3  0x00005c1773be7438 in caml_oldify_mopup () at minor_gc.c:314
+#4  0x00005c1773be7555 in caml_empty_minor_heap () at minor_gc.c:377
+#5  0x00005c1773be7a70 in caml_gc_dispatch () at minor_gc.c:492
+#6  0x00005c1773be7ba5 in caml_alloc_small_dispatch (wosize=5, flags=3, nallocs=1, encoded_alloc_lens=0x5c177445de8d <camlStdlib__Map__frametable+4357> "\004") at minor_gc.c:539
+#7  0x00005c1773c04836 in caml_call_gc ()
+#8  0x00005c1773b7b125 in camlStdlib__Map__bal_398 () at map.ml:115
+#9  0x00005c1773b7bede in camlStdlib__Map__update_572 () at map.ml:288
+#10 0x00005c1773b7bf24 in camlStdlib__Map__update_572 () at map.ml:291
+#11 0x00005c1773b7bede in camlStdlib__Map__update_572 () at map.ml:288
+#12 0x00005c1773b7bede in camlStdlib__Map__update_572 () at map.ml:288
+#13 0x00005c1773b7bede in camlStdlib__Map__update_572 () at map.ml:288
+#14 0x00005c1773b7bf24 in camlStdlib__Map__update_572 () at map.ml:291
+#15 0x00005c1773a0876b in camlHConstr__add_740 () at kernel/hConstr.ml:127
+#16 0x00005c1773a0ab2a in camlHConstr__finish_2045 () at kernel/hConstr.ml:394
+#17 0x00005c1773a0b0fb in camlHConstr__return_2062 () at kernel/hConstr.ml:431
+#18 0x00005c1773a0c416 in camlHConstr__of_constr_2405 () at kernel/hConstr.ml:550
+#19 0x00005c1773a39b6b in camlConstant_typing__infer_definition_1845 () at kernel/constant_typing.ml:226
+#20 0x00005c1773a513c0 in camlSafe_typing__add_constant_3915 () at kernel/safe_typing.ml:1187
+#21 0x00005c1773917d30 in camlGlobal__fun_2342 () at library/global.ml:65
+#22 0x00005c1773569658 in camlDeclare__declare_constant_inner_10093 () at vernac/declare.ml:687
+#23 0x00005c177356b73c in camlDeclare__declare_entry_inner_10181 () at vernac/declare.ml:944
+#24 0x00007595de9dfdb1 in camlLean_import__Lean__quickdef_inner_10503 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#25 0x00007595de9f94c0 in camlLean_import__Lean__declare_def_6894 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#26 0x00007595dea002f1 in camlLean_import__Lean__fun_15027 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#27 0x00007595dea0025e in camlLean_import__Lean__loop_7963 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#28 0x00007595dea00518 in camlLean_import__Lean__add_entry_7986 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#29 0x00005c1773ae7a9e in camlControl__fun_854 () at lib/control.ml:53
+#30 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#31 0x00007595dea01375 in camlLean_import__Lean__with_line_timeout_8109 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#32 0x00007595dea016ed in camlLean_import__Lean__process_effect_8215 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#33 0x00007595dea0207b in camlLean_import__Lean__do_input_pending_8273 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#34 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#35 0x00007595dea0396b in camlLean_import__Lean__import_8707 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#36 0x00005c17735817e2 in camlVernactypes__fun_1447 () at vernac/vernactypes.ml:199
+#37 0x00005c17735816ed in camlVernactypes__fun_1443 () at vernac/vernactypes.ml:196
+#38 0x00005c1773581668 in camlVernactypes__fun_1435 () at vernac/vernactypes.ml:190
+#39 0x00005c1773581363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#40 0x00005c177358110a in camlVernactypes__fun_1403 () at vernac/vernactypes.ml:140
+#41 0x00005c17735812d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#42 0x00005c1773581363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#43 0x00005c1773580d02 in camlVernactypes__fun_1399 () at vernac/vernactypes.ml:93
+#44 0x00005c17735812d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#45 0x00005c1773580606 in camlVernactypes__fun_1390 () at vernac/vernactypes.ml:27
+#46 0x00005c177358121f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#47 0x00005c177358121f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#48 0x00005c17735815e4 in camlVernactypes__run_1126 () at vernac/vernactypes.ml:189
+#49 0x00005c177360fcff in camlVernacinterp__interp_expr_core_514 () at vernac/vernacinterp.ml:80
+#50 0x00005c177360f8a2 in camlVernacinterp__interp_expr_513 () at vernac/vernacinterp.ml:49
+#51 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#52 0x00005c17735be50a in camlVernacControl__under_control_1954 () at vernac/vernacControl.ml:244
+#53 0x00005c177360f7aa in camlVernacinterp__interp_control_gen_474 () at vernac/vernacinterp.ml:36
+#54 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#55 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#56 0x00005c1773610446 in camlVernacinterp__interp_gen_1193 () at vernac/vernacinterp.ml:157
+#57 0x00005c177361062f in camlVernacinterp__interp_inner_1540 () at vernac/vernacinterp.ml:171
+#58 0x00005c17734c27d4 in camlStm__step_8350 () at stm/stm.ml:2035
+#59 0x00005c17734bb7a9 in camlStm__define_inner_9646 () at stm/stm.ml:963
+#60 0x00005c17734c1ee1 in camlStm__reach_inner_10580 () at stm/stm.ml:2204
+#61 0x00005c17734c44c1 in camlStm__observe_6834 () at stm/stm.ml:2296
+#62 0x00005c17734a4831 in camlVernac__interp_vernac_1328 () at toplevel/vernac.ml:87
+#63 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#64 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#65 0x00005c17734a4dbd in camlVernac__loop_1481 () at toplevel/vernac.ml:135
+#66 0x00005c17734a4ad5 in camlVernac__load_vernac_core_1387 () at toplevel/vernac.ml:158
+#67 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#68 0x00005c17734abc54 in camlCcompile__compile_408 () at toplevel/ccompile.ml:64
+#69 0x00005c17734abfed in camlCcompile__compile_941 () at toplevel/ccompile.ml:98
+#70 0x00005c17734ac1e7 in camlCoqc__coqc_main_369 () at toplevel/coqc.ml:38
+#71 0x00005c17734ac312 in camlCoqc__coqc_run_1054 () at toplevel/coqc.ml:54
+#72 0x00005c17734a2e2b in camlDune__exe__Rocqworker__entry () at topbin/rocqworker.ml:45
+#73 0x00005c17734993d9 in caml_program ()
+#74 0x00005c1773c0496d in caml_start_program ()
+#75 0x00005c1773be276c in caml_startup_common (argv=0x7ffd4c3a1bb8, pooling=<optimized out>, pooling@entry=0) at startup_nat.c:160
+#76 0x00005c1773be27ef in caml_startup_exn (argv=<optimized out>) at startup_nat.c:167
+#77 caml_startup (argv=<optimized out>) at startup_nat.c:172
+#78 caml_main (argv=<optimized out>) at startup_nat.c:179
+#79 0x00005c1773497222 in main (argc=<optimized out>, argv=<optimized out>) at main.c:37
+memory guard: status 2026-09-18T15:34:43+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=2841252 KiB; cgroup=2796040/16777216 KiB; MemAvailable=24129448 KiB
+memory guard: status 2026-09-18T15:34:58+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=2907768 KiB; cgroup=2862844/16777216 KiB; MemAvailable=24077716 KiB
+memory guard: status 2026-09-18T15:35:13+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=2907772 KiB; cgroup=2863156/16777216 KiB; MemAvailable=24092256 KiB
+memory guard: status 2026-09-18T15:35:28+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=2907772 KiB; cgroup=2863088/16777216 KiB; MemAvailable=24084968 KiB
+
+Program received signal SIGUSR1, User defined signal 1.
+caml_hash (count=<optimized out>, limit=<optimized out>, seed=<optimized out>, obj=<optimized out>) at hash.c:50
+warning: 50	hash.c: No such file or directory
+
+[diagnostic stack] SIGUSR1 time=1789738533.033
+
+Thread 1 (Thread 0x7595e7e9ab80 (LWP 2726658) "rocqworker.exe"):
+#0  caml_hash (count=<optimized out>, limit=<optimized out>, seed=<optimized out>, obj=<optimized out>) at hash.c:50
+#1  0x00005c1773a28ad9 in camlTypeops__visit_1285 () at hashtbl.ml:499
+#2  0x00005c1773a28b6c in camlTypeops__fun_4382 () at kernel/typeops.ml:79
+#3  0x00005c1773b6da69 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#4  0x00005c1773a28a16 in camlTypeops__syntax_hash_1281 () at kernel/typeops.ml:82
+#5  0x00005c1773a28be9 in camlTypeops__convert_1340 () at kernel/typeops.ml:89
+#6  0x00005c1773a2a630 in camlTypeops__apply_rec_2221 () at kernel/typeops.ml:347
+#7  0x00005c1773a2de7a in camlTypeops__apply_3355 () at kernel/typeops.ml:812
+#8  0x00005c1773a2e18a in camlTypeops__return_3364 () at kernel/typeops.ml:832
+#9  0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#10 0x00005c1773a3047d in camlTypeops__infer_hconstr_3734 () at kernel/typeops.ml:1090
+#11 0x00005c1773a39b94 in camlConstant_typing__infer_definition_1845 () at kernel/constant_typing.ml:228
+#12 0x00005c1773a513c0 in camlSafe_typing__add_constant_3915 () at kernel/safe_typing.ml:1187
+#13 0x00005c1773917d30 in camlGlobal__fun_2342 () at library/global.ml:65
+#14 0x00005c1773569658 in camlDeclare__declare_constant_inner_10093 () at vernac/declare.ml:687
+#15 0x00005c177356b73c in camlDeclare__declare_entry_inner_10181 () at vernac/declare.ml:944
+#16 0x00007595de9dfdb1 in camlLean_import__Lean__quickdef_inner_10503 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#17 0x00007595de9f94c0 in camlLean_import__Lean__declare_def_6894 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#18 0x00007595dea002f1 in camlLean_import__Lean__fun_15027 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#19 0x00007595dea0025e in camlLean_import__Lean__loop_7963 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#20 0x00007595dea00518 in camlLean_import__Lean__add_entry_7986 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#21 0x00005c1773ae7a9e in camlControl__fun_854 () at lib/control.ml:53
+#22 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#23 0x00007595dea01375 in camlLean_import__Lean__with_line_timeout_8109 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#24 0x00007595dea016ed in camlLean_import__Lean__process_effect_8215 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#25 0x00007595dea0207b in camlLean_import__Lean__do_input_pending_8273 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#26 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#27 0x00007595dea0396b in camlLean_import__Lean__import_8707 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#28 0x00005c17735817e2 in camlVernactypes__fun_1447 () at vernac/vernactypes.ml:199
+#29 0x00005c17735816ed in camlVernactypes__fun_1443 () at vernac/vernactypes.ml:196
+#30 0x00005c1773581668 in camlVernactypes__fun_1435 () at vernac/vernactypes.ml:190
+#31 0x00005c1773581363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#32 0x00005c177358110a in camlVernactypes__fun_1403 () at vernac/vernactypes.ml:140
+#33 0x00005c17735812d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#34 0x00005c1773581363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#35 0x00005c1773580d02 in camlVernactypes__fun_1399 () at vernac/vernactypes.ml:93
+#36 0x00005c17735812d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#37 0x00005c1773580606 in camlVernactypes__fun_1390 () at vernac/vernactypes.ml:27
+#38 0x00005c177358121f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#39 0x00005c177358121f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#40 0x00005c17735815e4 in camlVernactypes__run_1126 () at vernac/vernactypes.ml:189
+#41 0x00005c177360fcff in camlVernacinterp__interp_expr_core_514 () at vernac/vernacinterp.ml:80
+#42 0x00005c177360f8a2 in camlVernacinterp__interp_expr_513 () at vernac/vernacinterp.ml:49
+#43 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#44 0x00005c17735be50a in camlVernacControl__under_control_1954 () at vernac/vernacControl.ml:244
+#45 0x00005c177360f7aa in camlVernacinterp__interp_control_gen_474 () at vernac/vernacinterp.ml:36
+#46 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#47 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#48 0x00005c1773610446 in camlVernacinterp__interp_gen_1193 () at vernac/vernacinterp.ml:157
+#49 0x00005c177361062f in camlVernacinterp__interp_inner_1540 () at vernac/vernacinterp.ml:171
+#50 0x00005c17734c27d4 in camlStm__step_8350 () at stm/stm.ml:2035
+#51 0x00005c17734bb7a9 in camlStm__define_inner_9646 () at stm/stm.ml:963
+#52 0x00005c17734c1ee1 in camlStm__reach_inner_10580 () at stm/stm.ml:2204
+#53 0x00005c17734c44c1 in camlStm__observe_6834 () at stm/stm.ml:2296
+#54 0x00005c17734a4831 in camlVernac__interp_vernac_1328 () at toplevel/vernac.ml:87
+#55 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#56 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#57 0x00005c17734a4dbd in camlVernac__loop_1481 () at toplevel/vernac.ml:135
+#58 0x00005c17734a4ad5 in camlVernac__load_vernac_core_1387 () at toplevel/vernac.ml:158
+#59 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#60 0x00005c17734abc54 in camlCcompile__compile_408 () at toplevel/ccompile.ml:64
+#61 0x00005c17734abfed in camlCcompile__compile_941 () at toplevel/ccompile.ml:98
+#62 0x00005c17734ac1e7 in camlCoqc__coqc_main_369 () at toplevel/coqc.ml:38
+#63 0x00005c17734ac312 in camlCoqc__coqc_run_1054 () at toplevel/coqc.ml:54
+#64 0x00005c17734a2e2b in camlDune__exe__Rocqworker__entry () at topbin/rocqworker.ml:45
+#65 0x00005c17734993d9 in caml_program ()
+#66 0x00005c1773c0496d in caml_start_program ()
+#67 0x00005c1773be276c in caml_startup_common (argv=0x7ffd4c3a1bb8, pooling=<optimized out>, pooling@entry=0) at startup_nat.c:160
+#68 0x00005c1773be27ef in caml_startup_exn (argv=<optimized out>) at startup_nat.c:167
+#69 caml_startup (argv=<optimized out>) at startup_nat.c:172
+#70 caml_main (argv=<optimized out>) at startup_nat.c:179
+#71 0x00005c1773497222 in main (argc=<optimized out>, argv=<optimized out>) at main.c:37
+memory guard: status 2026-09-18T15:35:43+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=2907900 KiB; cgroup=2862348/16777216 KiB; MemAvailable=23905600 KiB
+memory guard: status 2026-09-18T15:35:58+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=2907900 KiB; cgroup=2862104/16777216 KiB; MemAvailable=24035796 KiB
+memory guard: status 2026-09-18T15:36:13+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=2907900 KiB; cgroup=2862812/16777216 KiB; MemAvailable=24090180 KiB
+memory guard: status 2026-09-18T15:36:28+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=2907900 KiB; cgroup=2862908/16777216 KiB; MemAvailable=24115068 KiB
+
+Program received signal SIGUSR1, User defined signal 1.
+0x00005c1773bf4a03 in caml_hash (count=<optimized out>, limit=<optimized out>, seed=<optimized out>, obj=<optimized out>) at hash.c:302
+302	in hash.c
+
+[diagnostic stack] SIGUSR1 time=1789738593.078
+
+Thread 1 (Thread 0x7595e7e9ab80 (LWP 2726658) "rocqworker.exe"):
+#0  0x00005c1773bf4a03 in caml_hash (count=<optimized out>, limit=<optimized out>, seed=<optimized out>, obj=<optimized out>) at hash.c:302
+#1  0x00005c17739a18ae in camlCClosure__hash_3119 () at hashtbl.ml:498
+#2  0x00005c1773b9be6d in camlStdlib__Hashtbl__key_index_1028 () at hashtbl.ml:355
+#3  0x00005c1773b9bea0 in camlStdlib__Hashtbl__add_1032 () at hashtbl.ml:358
+#4  0x00005c17739a1bb2 in camlCClosure__visit_3160 () at kernel/cClosure.ml:872
+#5  0x00005c17739a1fee in camlCClosure__transform_3161 () at kernel/cClosure.ml:889
+#6  0x00005c17739a1b69 in camlCClosure__visit_3160 () at kernel/cClosure.ml:871
+#7  0x00005c17739a261a in camlCClosure__to_constr_3269 () at kernel/cClosure.ml:954
+#8  0x00005c1773a2a390 in camlTypeops__apply_rec_2221 () at kernel/typeops.ml:328
+#9  0x00005c1773a2de7a in camlTypeops__apply_3355 () at kernel/typeops.ml:812
+#10 0x00005c1773a2e18a in camlTypeops__return_3364 () at kernel/typeops.ml:832
+#11 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#12 0x00005c1773a3047d in camlTypeops__infer_hconstr_3734 () at kernel/typeops.ml:1090
+#13 0x00005c1773a39b94 in camlConstant_typing__infer_definition_1845 () at kernel/constant_typing.ml:228
+#14 0x00005c1773a513c0 in camlSafe_typing__add_constant_3915 () at kernel/safe_typing.ml:1187
+#15 0x00005c1773917d30 in camlGlobal__fun_2342 () at library/global.ml:65
+#16 0x00005c1773569658 in camlDeclare__declare_constant_inner_10093 () at vernac/declare.ml:687
+#17 0x00005c177356b73c in camlDeclare__declare_entry_inner_10181 () at vernac/declare.ml:944
+#18 0x00007595de9dfdb1 in camlLean_import__Lean__quickdef_inner_10503 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#19 0x00007595de9f94c0 in camlLean_import__Lean__declare_def_6894 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#20 0x00007595dea002f1 in camlLean_import__Lean__fun_15027 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#21 0x00007595dea0025e in camlLean_import__Lean__loop_7963 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#22 0x00007595dea00518 in camlLean_import__Lean__add_entry_7986 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#23 0x00005c1773ae7a9e in camlControl__fun_854 () at lib/control.ml:53
+#24 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#25 0x00007595dea01375 in camlLean_import__Lean__with_line_timeout_8109 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#26 0x00007595dea016ed in camlLean_import__Lean__process_effect_8215 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#27 0x00007595dea0207b in camlLean_import__Lean__do_input_pending_8273 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#28 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#29 0x00007595dea0396b in camlLean_import__Lean__import_8707 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#30 0x00005c17735817e2 in camlVernactypes__fun_1447 () at vernac/vernactypes.ml:199
+#31 0x00005c17735816ed in camlVernactypes__fun_1443 () at vernac/vernactypes.ml:196
+#32 0x00005c1773581668 in camlVernactypes__fun_1435 () at vernac/vernactypes.ml:190
+#33 0x00005c1773581363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#34 0x00005c177358110a in camlVernactypes__fun_1403 () at vernac/vernactypes.ml:140
+#35 0x00005c17735812d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#36 0x00005c1773581363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#37 0x00005c1773580d02 in camlVernactypes__fun_1399 () at vernac/vernactypes.ml:93
+#38 0x00005c17735812d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#39 0x00005c1773580606 in camlVernactypes__fun_1390 () at vernac/vernactypes.ml:27
+#40 0x00005c177358121f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#41 0x00005c177358121f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#42 0x00005c17735815e4 in camlVernactypes__run_1126 () at vernac/vernactypes.ml:189
+#43 0x00005c177360fcff in camlVernacinterp__interp_expr_core_514 () at vernac/vernacinterp.ml:80
+#44 0x00005c177360f8a2 in camlVernacinterp__interp_expr_513 () at vernac/vernacinterp.ml:49
+#45 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#46 0x00005c17735be50a in camlVernacControl__under_control_1954 () at vernac/vernacControl.ml:244
+#47 0x00005c177360f7aa in camlVernacinterp__interp_control_gen_474 () at vernac/vernacinterp.ml:36
+#48 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#49 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#50 0x00005c1773610446 in camlVernacinterp__interp_gen_1193 () at vernac/vernacinterp.ml:157
+#51 0x00005c177361062f in camlVernacinterp__interp_inner_1540 () at vernac/vernacinterp.ml:171
+#52 0x00005c17734c27d4 in camlStm__step_8350 () at stm/stm.ml:2035
+#53 0x00005c17734bb7a9 in camlStm__define_inner_9646 () at stm/stm.ml:963
+#54 0x00005c17734c1ee1 in camlStm__reach_inner_10580 () at stm/stm.ml:2204
+#55 0x00005c17734c44c1 in camlStm__observe_6834 () at stm/stm.ml:2296
+#56 0x00005c17734a4831 in camlVernac__interp_vernac_1328 () at toplevel/vernac.ml:87
+#57 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#58 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#59 0x00005c17734a4dbd in camlVernac__loop_1481 () at toplevel/vernac.ml:135
+#60 0x00005c17734a4ad5 in camlVernac__load_vernac_core_1387 () at toplevel/vernac.ml:158
+#61 0x00005c1773b985a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#62 0x00005c17734abc54 in camlCcompile__compile_408 () at toplevel/ccompile.ml:64
+#63 0x00005c17734abfed in camlCcompile__compile_941 () at toplevel/ccompile.ml:98
+#64 0x00005c17734ac1e7 in camlCoqc__coqc_main_369 () at toplevel/coqc.ml:38
+#65 0x00005c17734ac312 in camlCoqc__coqc_run_1054 () at toplevel/coqc.ml:54
+#66 0x00005c17734a2e2b in camlDune__exe__Rocqworker__entry () at topbin/rocqworker.ml:45
+#67 0x00005c17734993d9 in caml_program ()
+#68 0x00005c1773c0496d in caml_start_program ()
+#69 0x00005c1773be276c in caml_startup_common (argv=0x7ffd4c3a1bb8, pooling=<optimized out>, pooling@entry=0) at startup_nat.c:160
+#70 0x00005c1773be27ef in caml_startup_exn (argv=<optimized out>) at startup_nat.c:167
+#71 caml_startup (argv=<optimized out>) at startup_nat.c:172
+#72 caml_main (argv=<optimized out>) at startup_nat.c:179
+#73 0x00005c1773497222 in main (argc=<optimized out>, argv=<optimized out>) at main.c:37
+memory guard: status 2026-09-18T15:36:43+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=2907900 KiB; cgroup=2862920/16777216 KiB; MemAvailable=24100160 KiB
+memory guard: status 2026-09-18T15:36:58+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=2907900 KiB; cgroup=2863076/16777216 KiB; MemAvailable=24041868 KiB
+memory guard: status 2026-09-18T15:37:13+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=2907900 KiB; cgroup=2862436/16777216 KiB; MemAvailable=24142444 KiB
+memory guard: status 2026-09-18T15:37:28+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=2907972 KiB; cgroup=2863132/16777216 KiB; MemAvailable=24154924 KiB
+memory guard: status 2026-09-18T15:37:43+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=2907972 KiB; cgroup=2862912/16777216 KiB; MemAvailable=24033708 KiB
+memory guard: status 2026-09-18T15:37:58+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=2907972 KiB; cgroup=2862920/16777216 KiB; MemAvailable=23980348 KiB
+memory guard: status 2026-09-18T15:38:13+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=2907972 KiB; cgroup=2862912/16777216 KiB; MemAvailable=24117992 KiB
+memory guard: status 2026-09-18T15:38:28+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=2907972 KiB; cgroup=2863120/16777216 KiB; MemAvailable=24129784 KiB
+memory guard: status 2026-09-18T15:38:43+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=2907972 KiB; cgroup=2862636/16777216 KiB; MemAvailable=24145740 KiB
+memory guard: status 2026-09-18T15:38:58+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3329756 KiB; cgroup=3285832/16777216 KiB; MemAvailable=23393928 KiB
+memory guard: status 2026-09-18T15:39:13+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3329756 KiB; cgroup=3285600/16777216 KiB; MemAvailable=23719048 KiB
+memory guard: status 2026-09-18T15:39:28+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3329756 KiB; cgroup=3285992/16777216 KiB; MemAvailable=23746600 KiB
+memory guard: status 2026-09-18T15:39:43+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3329756 KiB; cgroup=3285488/16777216 KiB; MemAvailable=23742476 KiB
+memory guard: status 2026-09-18T15:39:58+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3329756 KiB; cgroup=3285404/16777216 KiB; MemAvailable=23655620 KiB
+memory guard: status 2026-09-18T15:40:13+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3329756 KiB; cgroup=3285704/16777216 KiB; MemAvailable=23728696 KiB
+memory guard: status 2026-09-18T15:40:28+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3329756 KiB; cgroup=3285612/16777216 KiB; MemAvailable=23730860 KiB
+memory guard: status 2026-09-18T15:40:43+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3329756 KiB; cgroup=3285660/16777216 KiB; MemAvailable=23726872 KiB
+memory guard: status 2026-09-18T15:40:58+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3329756 KiB; cgroup=3285872/16777216 KiB; MemAvailable=23513344 KiB
+memory guard: status 2026-09-18T15:41:13+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3329756 KiB; cgroup=3285264/16777216 KiB; MemAvailable=23679692 KiB
+memory guard: status 2026-09-18T15:41:28+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3388008 KiB; cgroup=3343892/16777216 KiB; MemAvailable=23629504 KiB
+memory guard: status 2026-09-18T15:41:43+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3388008 KiB; cgroup=3343880/16777216 KiB; MemAvailable=23651020 KiB
+memory guard: status 2026-09-18T15:41:58+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3440156 KiB; cgroup=3396408/16777216 KiB; MemAvailable=23414400 KiB
+memory guard: status 2026-09-18T15:42:13+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3440156 KiB; cgroup=3396724/16777216 KiB; MemAvailable=23509680 KiB
+memory guard: status 2026-09-18T15:42:28+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3606952 KiB; cgroup=3563696/16777216 KiB; MemAvailable=23374808 KiB
+memory guard: status 2026-09-18T15:42:43+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3742832 KiB; cgroup=3699364/16777216 KiB; MemAvailable=23246436 KiB
+memory guard: status 2026-09-18T15:42:58+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3742832 KiB; cgroup=3700044/16777216 KiB; MemAvailable=23254152 KiB
+memory guard: status 2026-09-18T15:43:13+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3746148 KiB; cgroup=3703220/16777216 KiB; MemAvailable=23212968 KiB
+memory guard: status 2026-09-18T15:43:28+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3747508 KiB; cgroup=3704156/16777216 KiB; MemAvailable=23223432 KiB
+memory guard: status 2026-09-18T15:43:43+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3748960 KiB; cgroup=3705636/16777216 KiB; MemAvailable=23258684 KiB
+memory guard: status 2026-09-18T15:43:58+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3748960 KiB; cgroup=3704916/16777216 KiB; MemAvailable=23023540 KiB
+[declare after quickdef] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=635.666 heap_words=457468416 major=27
+[declare done] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=635.666 heap_words=457468416 major=27
+
+
+Done!
+- 261 entries (472 possible instances).
+- 25 universe expressions
+- 1727 names
+- 7928 expression nodes
+Max universe instance length 3.
+0 inductives have non syntactically arity types.
+[lean checkpoint] before checkpoint GC cpu=635.666 heap_words=457468416 major_collections=27
+memory guard: status 2026-09-18T15:44:13+02:00: session=2726604 members(session/scope)=3/3 Rocq workers=1 scope RSS=3748964 KiB; cgroup=3704884/16777216 KiB; MemAvailable=23215920 KiB
+[lean checkpoint] before indexed encoding cpu=646.434 heap_words=111557120 major_collections=29
+[lean indexed checkpoint] expressions=7928 probes=45709 max_probe=16
+[lean checkpoint] after indexed encoding cpu=646.520 heap_words=111557120 major_collections=29
+[lean checkpoint] before pack cpu=654.138 heap_words=111557120 major_collections=31
+[lean checkpoint] after checkpoint file write cpu=654.141 heap_words=111557120 major_collections=31
+[lean checkpoint] after pack cpu=654.143 heap_words=111557120 major_collections=31
+[Inferior 1 (process 2726658) exited normally]
+memory guard: finished with status 0; cgroup peak=3893420 KiB (hard limit 16777216 KiB)

@@ -1,0 +1,3 @@
+memory guard: admitted with MemAvailable=27467696 KiB, reserve=6291456 KiB, RSS limit=2621440 KiB, cgroup high/max/swap=3145728/3145728/0 KiB, stack=262144 KiB
+memory guard: status 2026-09-18T14:30:38+02:00: session=2582042 members(session/scope)=2/2 Rocq workers=0 scope RSS=29116 KiB; cgroup=16956/3145728 KiB; MemAvailable=27449164 KiB
+memory guard: finished with status 0; cgroup peak=315064 KiB (hard limit 3145728 KiB)

@@ -1,0 +1,15 @@
+{
+  "inputs": {
+    "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/Penrose.ndjson": "e60b2ece574b2d1eb2982c31d8e592be1884029159a22f83a3692c20c531e79a",
+    "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/slice.json": "11e403b6f51cb2520fbb1f899cd56fad3ebd62bf4f27950483be74beeb8fedc4",
+    "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/checkers/rocq-lean-import/scripts/ndjson_to_lean_export.py": "fff4aa5d44ed71a69019be02ae5eddfcc226308ca057788b30ad81d9df89e0e0",
+    "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/convert.py": "bcaff82b3c6a5de1280e95b3ed06a33f799802f711630bbd011e5761f85729f1"
+  },
+  "outputs": {
+    "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/Penrose.lean-export": "b60482379b619412a59c4036771675f87edb65e5c5f862fce8ed460446806e4a"
+  },
+  "range": {
+    "start": 9939,
+    "end": 9940
+  }
+}

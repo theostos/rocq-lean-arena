@@ -1,0 +1,496 @@
+memory guard: admitted with MemAvailable=27518820 KiB, reserve=3145728 KiB, RSS limit=15728640 KiB, cgroup high/max/swap=16777216/16777216/0 KiB, stack=262144 KiB
+memory guard: status 2026-09-18T14:16:14+02:00: session=2537893 members(session/scope)=2/2 Rocq workers=0 scope RSS=29268 KiB; cgroup=10068/16777216 KiB; MemAvailable=27515232 KiB
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.ubuntu.com>
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[lean checkpoint] before unpack cpu=0.810 heap_words=13895680 major_collections=1
+[lean checkpoint] after unpack cpu=0.820 heap_words=15980032 major_collections=1
+line 9939: _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1
+[declare start] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=0.855 heap_words=18377216 major=1
+[declare before type] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=0.855 heap_words=18377216 major=1
+[declare after type] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=5.857 heap_words=64651776 major=7
+[declare before body] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=5.857 heap_words=64651776 major=7
+[declare after body] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=5.870 heap_words=64651776 major=7
+[declare before universes] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=5.870 heap_words=64651776 major=7
+[declare after universes] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=6.077 heap_words=64651776 major=7
+[declare before quickdef] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=6.077 heap_words=64651776 major=7
+[declare after name] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=6.077 heap_words=64651776 major=7
+memory guard: status 2026-09-18T14:16:29+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=1035548 KiB; cgroup=990100/16777216 KiB; MemAvailable=26536888 KiB
+memory guard: status 2026-09-18T14:16:44+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=1672164 KiB; cgroup=1627988/16777216 KiB; MemAvailable=25904816 KiB
+memory guard: status 2026-09-18T14:16:59+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2085264 KiB; cgroup=2041872/16777216 KiB; MemAvailable=25372020 KiB
+memory guard: status 2026-09-18T14:17:14+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2316272 KiB; cgroup=2273552/16777216 KiB; MemAvailable=24814604 KiB
+
+Program received signal SIGUSR1, User defined signal 1.
+camlTypeops__visit_1284 () at kernel/typeops.ml:73
+warning: 73	kernel/typeops.ml: No such file or directory
+
+[diagnostic stack] SIGUSR1 time=1789733839.136
+
+Thread 1 (Thread 0x7695750d2b80 (LWP 2537939) "rocqworker.exe"):
+#0  camlTypeops__visit_1284 () at kernel/typeops.ml:73
+#1  0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#2  0x00005e3fb9361afd in camlConstr__fold_1301 () at kernel/constr.ml:496
+#3  0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#4  0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#5  0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#6  0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#7  0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#8  0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#9  0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#10 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#11 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#12 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#13 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#14 0x00005e3fb9361bb2 in camlConstr__fold_1301 () at kernel/constr.ml:500
+#15 0x00005e3fb942d706 in camlTypeops__syntax_hash_1280 () at kernel/typeops.ml:79
+#16 0x00005e3fb942d8d9 in camlTypeops__convert_1339 () at kernel/typeops.ml:86
+#17 0x00005e3fb942f170 in camlTypeops__apply_rec_2199 () at kernel/typeops.ml:321
+#18 0x00005e3fb94329fa in camlTypeops__apply_3341 () at kernel/typeops.ml:786
+#19 0x00005e3fb9432d0a in camlTypeops__return_3350 () at kernel/typeops.ml:806
+#20 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#21 0x00005e3fb943500d in camlTypeops__infer_hconstr_3720 () at kernel/typeops.ml:1064
+#22 0x00005e3fb943e6c4 in camlConstant_typing__infer_definition_1845 () at kernel/constant_typing.ml:228
+#23 0x00005e3fb9455ef0 in camlSafe_typing__add_constant_3915 () at kernel/safe_typing.ml:1187
+#24 0x00005e3fb931cd30 in camlGlobal__fun_2342 () at library/global.ml:65
+#25 0x00005e3fb8f6e658 in camlDeclare__declare_constant_inner_10093 () at vernac/declare.ml:687
+#26 0x00005e3fb8f7073c in camlDeclare__declare_entry_inner_10181 () at vernac/declare.ml:944
+#27 0x000076956bc22db1 in camlLean_import__Lean__quickdef_inner_10503 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#28 0x000076956bc3c4c0 in camlLean_import__Lean__declare_def_6894 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#29 0x000076956bc432f1 in camlLean_import__Lean__fun_15027 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#30 0x000076956bc4325e in camlLean_import__Lean__loop_7963 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#31 0x000076956bc43518 in camlLean_import__Lean__add_entry_7986 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#32 0x00005e3fb94ec5ce in camlControl__fun_854 () at lib/control.ml:53
+#33 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#34 0x000076956bc44375 in camlLean_import__Lean__with_line_timeout_8109 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#35 0x000076956bc446ed in camlLean_import__Lean__process_effect_8215 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#36 0x000076956bc4507b in camlLean_import__Lean__do_input_pending_8273 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#37 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#38 0x000076956bc4696b in camlLean_import__Lean__import_8707 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#39 0x00005e3fb8f867e2 in camlVernactypes__fun_1447 () at vernac/vernactypes.ml:199
+#40 0x00005e3fb8f866ed in camlVernactypes__fun_1443 () at vernac/vernactypes.ml:196
+#41 0x00005e3fb8f86668 in camlVernactypes__fun_1435 () at vernac/vernactypes.ml:190
+#42 0x00005e3fb8f86363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#43 0x00005e3fb8f8610a in camlVernactypes__fun_1403 () at vernac/vernactypes.ml:140
+#44 0x00005e3fb8f862d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#45 0x00005e3fb8f86363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#46 0x00005e3fb8f85d02 in camlVernactypes__fun_1399 () at vernac/vernactypes.ml:93
+#47 0x00005e3fb8f862d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#48 0x00005e3fb8f85606 in camlVernactypes__fun_1390 () at vernac/vernactypes.ml:27
+#49 0x00005e3fb8f8621f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#50 0x00005e3fb8f8621f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#51 0x00005e3fb8f865e4 in camlVernactypes__run_1126 () at vernac/vernactypes.ml:189
+#52 0x00005e3fb9014cff in camlVernacinterp__interp_expr_core_514 () at vernac/vernacinterp.ml:80
+#53 0x00005e3fb90148a2 in camlVernacinterp__interp_expr_513 () at vernac/vernacinterp.ml:49
+#54 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#55 0x00005e3fb8fc350a in camlVernacControl__under_control_1954 () at vernac/vernacControl.ml:244
+#56 0x00005e3fb90147aa in camlVernacinterp__interp_control_gen_474 () at vernac/vernacinterp.ml:36
+#57 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#58 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#59 0x00005e3fb9015446 in camlVernacinterp__interp_gen_1193 () at vernac/vernacinterp.ml:157
+#60 0x00005e3fb901562f in camlVernacinterp__interp_inner_1540 () at vernac/vernacinterp.ml:171
+#61 0x00005e3fb8ec77d4 in camlStm__step_8350 () at stm/stm.ml:2035
+#62 0x00005e3fb8ec07a9 in camlStm__define_inner_9646 () at stm/stm.ml:963
+#63 0x00005e3fb8ec6ee1 in camlStm__reach_inner_10580 () at stm/stm.ml:2204
+#64 0x00005e3fb8ec94c1 in camlStm__observe_6834 () at stm/stm.ml:2296
+#65 0x00005e3fb8ea9831 in camlVernac__interp_vernac_1328 () at toplevel/vernac.ml:87
+#66 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#67 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#68 0x00005e3fb8ea9dbd in camlVernac__loop_1481 () at toplevel/vernac.ml:135
+#69 0x00005e3fb8ea9ad5 in camlVernac__load_vernac_core_1387 () at toplevel/vernac.ml:158
+#70 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#71 0x00005e3fb8eb0c54 in camlCcompile__compile_408 () at toplevel/ccompile.ml:64
+#72 0x00005e3fb8eb0fed in camlCcompile__compile_941 () at toplevel/ccompile.ml:98
+#73 0x00005e3fb8eb11e7 in camlCoqc__coqc_main_369 () at toplevel/coqc.ml:38
+#74 0x00005e3fb8eb1312 in camlCoqc__coqc_run_1054 () at toplevel/coqc.ml:54
+#75 0x00005e3fb8ea7e2b in camlDune__exe__Rocqworker__entry () at topbin/rocqworker.ml:45
+#76 0x00005e3fb8e9e3d9 in caml_program ()
+#77 0x00005e3fb960949d in caml_start_program ()
+#78 0x00005e3fb95e729c in caml_startup_common (argv=0x7ffda19a3838, pooling=<optimized out>, pooling@entry=0) at startup_nat.c:160
+#79 0x00005e3fb95e731f in caml_startup_exn (argv=<optimized out>) at startup_nat.c:167
+memory guard: status 2026-09-18T14:17:29+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2326780 KiB; cgroup=2280548/16777216 KiB; MemAvailable=24856232 KiB
+memory guard: status 2026-09-18T14:17:44+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2326780 KiB; cgroup=2280904/16777216 KiB; MemAvailable=24961992 KiB
+memory guard: status 2026-09-18T14:17:59+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2326780 KiB; cgroup=2281328/16777216 KiB; MemAvailable=24888704 KiB
+memory guard: status 2026-09-18T14:18:14+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2326780 KiB; cgroup=2281360/16777216 KiB; MemAvailable=24948000 KiB
+
+Program received signal SIGUSR1, User defined signal 1.
+caml_page_table_lookup (addr=addr@entry=0x769570746120) at memory.c:97
+warning: 97	memory.c: No such file or directory
+
+[diagnostic stack] SIGUSR1 time=1789733899.145
+
+Thread 1 (Thread 0x7695750d2b80 (LWP 2537939) "rocqworker.exe"):
+#0  caml_page_table_lookup (addr=addr@entry=0x769570746120) at memory.c:97
+#1  0x00005e3fb95f9460 in caml_hash (count=<optimized out>, limit=<optimized out>, seed=<optimized out>, obj=<optimized out>) at hash.c:208
+#2  0x00005e3fb942d7c9 in camlTypeops__visit_1284 () at hashtbl.ml:499
+#3  0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#4  0x00005e3fb9361afd in camlConstr__fold_1301 () at kernel/constr.ml:496
+#5  0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#6  0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#7  0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#8  0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#9  0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#10 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#11 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#12 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#13 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#14 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#15 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#16 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#17 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#18 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#19 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#20 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#21 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#22 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#23 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#24 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#25 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#26 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#27 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#28 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#29 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#30 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#31 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#32 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#33 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#34 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#35 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#36 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#37 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#38 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#39 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#40 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#41 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#42 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#43 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#44 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#45 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#46 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#47 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#48 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#49 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#50 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#51 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#52 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#53 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#54 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#55 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#56 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#57 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#58 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#59 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#60 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#61 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#62 0x00005e3fb9572599 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#63 0x00005e3fb942d85c in camlTypeops__fun_4363 () at kernel/typeops.ml:76
+#64 0x00005e3fb9361bb2 in camlConstr__fold_1301 () at kernel/constr.ml:500
+#65 0x00005e3fb942d706 in camlTypeops__syntax_hash_1280 () at kernel/typeops.ml:79
+#66 0x00005e3fb942d8d9 in camlTypeops__convert_1339 () at kernel/typeops.ml:86
+#67 0x00005e3fb942f170 in camlTypeops__apply_rec_2199 () at kernel/typeops.ml:321
+#68 0x00005e3fb94329fa in camlTypeops__apply_3341 () at kernel/typeops.ml:786
+#69 0x00005e3fb9432d0a in camlTypeops__return_3350 () at kernel/typeops.ml:806
+#70 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#71 0x00005e3fb943500d in camlTypeops__infer_hconstr_3720 () at kernel/typeops.ml:1064
+#72 0x00005e3fb943e6c4 in camlConstant_typing__infer_definition_1845 () at kernel/constant_typing.ml:228
+#73 0x00005e3fb9455ef0 in camlSafe_typing__add_constant_3915 () at kernel/safe_typing.ml:1187
+#74 0x00005e3fb931cd30 in camlGlobal__fun_2342 () at library/global.ml:65
+#75 0x00005e3fb8f6e658 in camlDeclare__declare_constant_inner_10093 () at vernac/declare.ml:687
+#76 0x00005e3fb8f7073c in camlDeclare__declare_entry_inner_10181 () at vernac/declare.ml:944
+#77 0x000076956bc22db1 in camlLean_import__Lean__quickdef_inner_10503 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#78 0x000076956bc3c4c0 in camlLean_import__Lean__declare_def_6894 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#79 0x000076956bc432f1 in camlLean_import__Lean__fun_15027 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+memory guard: status 2026-09-18T14:18:29+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2327044 KiB; cgroup=2280880/16777216 KiB; MemAvailable=24957100 KiB
+memory guard: status 2026-09-18T14:18:44+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2327044 KiB; cgroup=2280820/16777216 KiB; MemAvailable=25170828 KiB
+memory guard: status 2026-09-18T14:18:59+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2327044 KiB; cgroup=2280864/16777216 KiB; MemAvailable=25120944 KiB
+memory guard: status 2026-09-18T14:19:14+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2503856 KiB; cgroup=2458224/16777216 KiB; MemAvailable=25021276 KiB
+
+Program received signal SIGUSR1, User defined signal 1.
+0x00005e3fb8ea7a18 in caml_apply2 ()
+
+[diagnostic stack] SIGUSR1 time=1789733959.157
+
+Thread 1 (Thread 0x7695750d2b80 (LWP 2537939) "rocqworker.exe"):
+#0  0x00005e3fb8ea7a18 in caml_apply2 ()
+#1  0x00005e3fb957fcfe in camlStdlib__Map__add_428 () at map.ml:125
+#2  0x00005e3fb957fd8a in camlStdlib__Map__add_428 () at map.ml:129
+#3  0x00005e3fb957fdd0 in camlStdlib__Map__add_428 () at map.ml:132
+#4  0x00005e3fb957fd8a in camlStdlib__Map__add_428 () at map.ml:129
+#5  0x00005e3fb957fdd0 in camlStdlib__Map__add_428 () at map.ml:132
+#6  0x00005e3fb9374390 in camlVars__aux_2474 () at kernel/vars.ml:616
+#7  0x00005e3fb9434e9a in camlTypeops__check_wellformed_universes_3649 () at kernel/typeops.ml:1045
+#8  0x00005e3fb9435122 in camlTypeops__infer_type_3740 () at kernel/typeops.ml:1076
+#9  0x00005e3fb943e754 in camlConstant_typing__infer_definition_1845 () at kernel/constant_typing.ml:237
+#10 0x00005e3fb9455ef0 in camlSafe_typing__add_constant_3915 () at kernel/safe_typing.ml:1187
+#11 0x00005e3fb931cd30 in camlGlobal__fun_2342 () at library/global.ml:65
+#12 0x00005e3fb8f6e658 in camlDeclare__declare_constant_inner_10093 () at vernac/declare.ml:687
+#13 0x00005e3fb8f7073c in camlDeclare__declare_entry_inner_10181 () at vernac/declare.ml:944
+#14 0x000076956bc22db1 in camlLean_import__Lean__quickdef_inner_10503 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#15 0x000076956bc3c4c0 in camlLean_import__Lean__declare_def_6894 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#16 0x000076956bc432f1 in camlLean_import__Lean__fun_15027 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#17 0x000076956bc4325e in camlLean_import__Lean__loop_7963 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#18 0x000076956bc43518 in camlLean_import__Lean__add_entry_7986 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#19 0x00005e3fb94ec5ce in camlControl__fun_854 () at lib/control.ml:53
+#20 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#21 0x000076956bc44375 in camlLean_import__Lean__with_line_timeout_8109 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#22 0x000076956bc446ed in camlLean_import__Lean__process_effect_8215 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#23 0x000076956bc4507b in camlLean_import__Lean__do_input_pending_8273 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#24 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#25 0x000076956bc4696b in camlLean_import__Lean__import_8707 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.yzdlsoRR/src/././lean_import.cmxs
+#26 0x00005e3fb8f867e2 in camlVernactypes__fun_1447 () at vernac/vernactypes.ml:199
+#27 0x00005e3fb8f866ed in camlVernactypes__fun_1443 () at vernac/vernactypes.ml:196
+#28 0x00005e3fb8f86668 in camlVernactypes__fun_1435 () at vernac/vernactypes.ml:190
+#29 0x00005e3fb8f86363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#30 0x00005e3fb8f8610a in camlVernactypes__fun_1403 () at vernac/vernactypes.ml:140
+#31 0x00005e3fb8f862d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#32 0x00005e3fb8f86363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#33 0x00005e3fb8f85d02 in camlVernactypes__fun_1399 () at vernac/vernactypes.ml:93
+#34 0x00005e3fb8f862d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#35 0x00005e3fb8f85606 in camlVernactypes__fun_1390 () at vernac/vernactypes.ml:27
+#36 0x00005e3fb8f8621f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#37 0x00005e3fb8f8621f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#38 0x00005e3fb8f865e4 in camlVernactypes__run_1126 () at vernac/vernactypes.ml:189
+#39 0x00005e3fb9014cff in camlVernacinterp__interp_expr_core_514 () at vernac/vernacinterp.ml:80
+#40 0x00005e3fb90148a2 in camlVernacinterp__interp_expr_513 () at vernac/vernacinterp.ml:49
+#41 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#42 0x00005e3fb8fc350a in camlVernacControl__under_control_1954 () at vernac/vernacControl.ml:244
+#43 0x00005e3fb90147aa in camlVernacinterp__interp_control_gen_474 () at vernac/vernacinterp.ml:36
+#44 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#45 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#46 0x00005e3fb9015446 in camlVernacinterp__interp_gen_1193 () at vernac/vernacinterp.ml:157
+#47 0x00005e3fb901562f in camlVernacinterp__interp_inner_1540 () at vernac/vernacinterp.ml:171
+#48 0x00005e3fb8ec77d4 in camlStm__step_8350 () at stm/stm.ml:2035
+#49 0x00005e3fb8ec07a9 in camlStm__define_inner_9646 () at stm/stm.ml:963
+#50 0x00005e3fb8ec6ee1 in camlStm__reach_inner_10580 () at stm/stm.ml:2204
+#51 0x00005e3fb8ec94c1 in camlStm__observe_6834 () at stm/stm.ml:2296
+#52 0x00005e3fb8ea9831 in camlVernac__interp_vernac_1328 () at toplevel/vernac.ml:87
+#53 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#54 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#55 0x00005e3fb8ea9dbd in camlVernac__loop_1481 () at toplevel/vernac.ml:135
+#56 0x00005e3fb8ea9ad5 in camlVernac__load_vernac_core_1387 () at toplevel/vernac.ml:158
+#57 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#58 0x00005e3fb8eb0c54 in camlCcompile__compile_408 () at toplevel/ccompile.ml:64
+#59 0x00005e3fb8eb0fed in camlCcompile__compile_941 () at toplevel/ccompile.ml:98
+#60 0x00005e3fb8eb11e7 in camlCoqc__coqc_main_369 () at toplevel/coqc.ml:38
+#61 0x00005e3fb8eb1312 in camlCoqc__coqc_run_1054 () at toplevel/coqc.ml:54
+#62 0x00005e3fb8ea7e2b in camlDune__exe__Rocqworker__entry () at topbin/rocqworker.ml:45
+#63 0x00005e3fb8e9e3d9 in caml_program ()
+#64 0x00005e3fb960949d in caml_start_program ()
+#65 0x00005e3fb95e729c in caml_startup_common (argv=0x7ffda19a3838, pooling=<optimized out>, pooling@entry=0) at startup_nat.c:160
+#66 0x00005e3fb95e731f in caml_startup_exn (argv=<optimized out>) at startup_nat.c:167
+#67 caml_startup (argv=<optimized out>) at startup_nat.c:172
+#68 caml_main (argv=<optimized out>) at startup_nat.c:179
+#69 0x00005e3fb8e9c222 in main (argc=<optimized out>, argv=<optimized out>) at main.c:37
+memory guard: status 2026-09-18T14:19:29+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2503856 KiB; cgroup=2457984/16777216 KiB; MemAvailable=24985636 KiB
+memory guard: status 2026-09-18T14:19:44+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2660384 KiB; cgroup=2615316/16777216 KiB; MemAvailable=24777672 KiB
+memory guard: status 2026-09-18T14:19:59+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2738656 KiB; cgroup=2693384/16777216 KiB; MemAvailable=24726788 KiB
+memory guard: status 2026-09-18T14:20:14+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2738656 KiB; cgroup=2693356/16777216 KiB; MemAvailable=24717404 KiB
+memory guard: status 2026-09-18T14:20:29+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2738656 KiB; cgroup=2693596/16777216 KiB; MemAvailable=24728120 KiB
+memory guard: status 2026-09-18T14:20:44+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2738660 KiB; cgroup=2693160/16777216 KiB; MemAvailable=24742048 KiB
+memory guard: status 2026-09-18T14:20:59+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2738692 KiB; cgroup=2693612/16777216 KiB; MemAvailable=24670108 KiB
+memory guard: status 2026-09-18T14:21:14+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2738740 KiB; cgroup=2693308/16777216 KiB; MemAvailable=24683856 KiB
+memory guard: status 2026-09-18T14:21:29+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2738832 KiB; cgroup=2693228/16777216 KiB; MemAvailable=24722512 KiB
+memory guard: status 2026-09-18T14:21:44+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2738832 KiB; cgroup=2693476/16777216 KiB; MemAvailable=24746788 KiB
+memory guard: status 2026-09-18T14:21:59+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2738832 KiB; cgroup=2693208/16777216 KiB; MemAvailable=24685480 KiB
+memory guard: status 2026-09-18T14:22:14+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2874488 KiB; cgroup=2829140/16777216 KiB; MemAvailable=24542560 KiB
+memory guard: status 2026-09-18T14:22:29+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2874488 KiB; cgroup=2829864/16777216 KiB; MemAvailable=24563200 KiB
+memory guard: status 2026-09-18T14:22:44+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2874488 KiB; cgroup=2829424/16777216 KiB; MemAvailable=24576068 KiB
+
+Program received signal SIGUSR1, User defined signal 1.
+0x00005e3fb935bd14 in camlEsubst__expand_rel_496 () at kernel/esubst.ml:216
+warning: 216	kernel/esubst.ml: No such file or directory
+
+[diagnostic stack] SIGUSR1 time=1789734175.211
+
+Thread 1 (Thread 0x7695750d2b80 (LWP 2537939) "rocqworker.exe"):
+#0  0x00005e3fb935bd14 in camlEsubst__expand_rel_496 () at kernel/esubst.ml:216
+#1  0x00005e3fb93eac9a in camlConversion__compare_under_inner_9405 () at kernel/conversion.ml:1124
+#2  0x00005e3fb953f06c in camlCArray__aux_395 () at clib/cArray.ml:45
+#3  0x00005e3fb93eb4ab in camlConversion__compare_under_inner_9405 () at kernel/conversion.ml:1165
+#4  0x00005e3fb93ed714 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1247
+#5  0x00005e3fb953f06c in camlCArray__aux_395 () at clib/cArray.ml:45
+#6  0x00005e3fb93ecfd3 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1270
+#7  0x00005e3fb953f06c in camlCArray__aux_395 () at clib/cArray.ml:45
+#8  0x00005e3fb93ecfd3 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1270
+#9  0x00005e3fb953f06c in camlCArray__aux_395 () at clib/cArray.ml:45
+#10 0x00005e3fb93ecfd3 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1270
+#11 0x00005e3fb953f06c in camlCArray__aux_395 () at clib/cArray.ml:45
+#12 0x00005e3fb93ecfd3 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1270
+#13 0x00005e3fb953f06c in camlCArray__aux_395 () at clib/cArray.ml:45
+#14 0x00005e3fb93ecfd3 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1270
+#15 0x00005e3fb953f06c in camlCArray__aux_395 () at clib/cArray.ml:45
+#16 0x00005e3fb93ecfd3 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1270
+#17 0x00005e3fb953f06c in camlCArray__aux_395 () at clib/cArray.ml:45
+#18 0x00005e3fb93ecfd3 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1270
+#19 0x00005e3fb953f06c in camlCArray__aux_395 () at clib/cArray.ml:45
+#20 0x00005e3fb93ecfd3 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1270
+#21 0x00005e3fb953f06c in camlCArray__aux_395 () at clib/cArray.ml:45
+#22 0x00005e3fb93ecfd3 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1270
+#23 0x00005e3fb953f06c in camlCArray__aux_395 () at clib/cArray.ml:45
+#24 0x00005e3fb93ecfd3 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1270
+#25 0x00005e3fb93eade9 in camlConversion__compare_under_inner_9405 () at kernel/conversion.ml:1133
+#26 0x00005e3fb953f06c in camlCArray__aux_395 () at clib/cArray.ml:45
+#27 0x00005e3fb93eb4ab in camlConversion__compare_under_inner_9405 () at kernel/conversion.ml:1165
+#28 0x00005e3fb93eb1fd in camlConversion__compare_under_inner_9405 () at kernel/conversion.ml:1156
+#29 0x00005e3fb93ed714 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1247
+#30 0x00005e3fb93ef16f in camlConversion__compare_3977 () at kernel/conversion.ml:1440
+#31 0x00005e3fb93fa299 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:2767
+#32 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#33 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#34 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#35 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#36 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#37 0x00005e3fb93fc0aa in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3507
+#38 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#39 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#40 0x00005e3fb93fc0aa in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3507
+#41 0x00005e3fb93fc016 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3504
+#42 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#43 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#44 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#45 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#46 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#47 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#48 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#49 0x00005e3fb93fc0aa in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3507
+#50 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#51 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#52 0x00005e3fb93fc0aa in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3507
+#53 0x00005e3fb93fc016 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3504
+#54 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#55 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#56 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#57 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#58 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#59 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#60 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#61 0x00005e3fb93fc0aa in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3507
+#62 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#63 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#64 0x00005e3fb93fc0aa in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3507
+#65 0x00005e3fb93fc016 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3504
+#66 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#67 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#68 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#69 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#70 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#71 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#72 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#73 0x00005e3fb93fc0aa in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3507
+#74 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#75 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#76 0x00005e3fb93fc0aa in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3507
+#77 0x00005e3fb93fc016 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3504
+#78 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+#79 0x00005e3fb93fc196 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3515
+memory guard: status 2026-09-18T14:22:59+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2874620 KiB; cgroup=2829596/16777216 KiB; MemAvailable=24530420 KiB
+memory guard: status 2026-09-18T14:23:14+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2874620 KiB; cgroup=2828784/16777216 KiB; MemAvailable=24552224 KiB
+memory guard: status 2026-09-18T14:23:29+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2874620 KiB; cgroup=2829612/16777216 KiB; MemAvailable=24533932 KiB
+memory guard: status 2026-09-18T14:23:44+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2874620 KiB; cgroup=2829500/16777216 KiB; MemAvailable=24508116 KiB
+memory guard: status 2026-09-18T14:23:59+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2874620 KiB; cgroup=2829412/16777216 KiB; MemAvailable=24341772 KiB
+memory guard: status 2026-09-18T14:24:14+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2874620 KiB; cgroup=2829592/16777216 KiB; MemAvailable=24525796 KiB
+memory guard: status 2026-09-18T14:24:29+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2874620 KiB; cgroup=2829800/16777216 KiB; MemAvailable=24537020 KiB
+memory guard: status 2026-09-18T14:24:44+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2874620 KiB; cgroup=2829616/16777216 KiB; MemAvailable=24536524 KiB
+
+Program received signal SIGUSR1, User defined signal 1.
+camlInt__find_opt_943 () at clib/int.ml:52
+warning: 52	clib/int.ml: No such file or directory
+
+[diagnostic stack] SIGUSR1 time=1789734287.030
+
+Thread 1 (Thread 0x7695750d2b80 (LWP 2537939) "rocqworker.exe"):
+#0  camlInt__find_opt_943 () at clib/int.ml:52
+#1  0x00005e3fb95490a6 in camlHMap__find_opt_1329 () at clib/hMap.ml:363
+#2  0x00005e3fb93964ff in camlEnviron__constant_relevance_3202 () at kernel/environ.ml:956
+#3  0x00005e3fb93e7700 in camlConversion__constructor_eliminator_major_2768 () at kernel/conversion.ml:664
+#4  0x00005e3fb93e7a3e in camlConversion__constructor_eliminator_application_2812 () at kernel/conversion.ml:681
+#5  0x00005e3fb93fa795 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:2814
+#6  0x00005e3fb93f9294 in camlConversion__drive_5436 () at kernel/conversion.ml:2603
+#7  0x00005e3fb93fd5e9 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3641
+#8  0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#9  0x00005e3fb93f7cb0 in camlConversion__ccnv_5343 () at kernel/conversion.ml:2535
+#10 0x00005e3fb9405ba2 in camlConversion__loop_6190 () at kernel/conversion.ml:4123
+#11 0x00005e3fb93e6728 in camlConversion__try_congruence_2499 () at kernel/conversion.ml:499
+#12 0x00005e3fb93faaff in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:2846
+#13 0x00005e3fb93f9294 in camlConversion__drive_5436 () at kernel/conversion.ml:2603
+#14 0x00005e3fb93fd5e9 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3641
+#15 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#16 0x00005e3fb93f7cb0 in camlConversion__ccnv_5343 () at kernel/conversion.ml:2535
+#17 0x00005e3fb9405ba2 in camlConversion__loop_6190 () at kernel/conversion.ml:4123
+#18 0x00005e3fb93e6728 in camlConversion__try_congruence_2499 () at kernel/conversion.ml:499
+#19 0x00005e3fb93faaff in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:2846
+#20 0x00005e3fb93f9294 in camlConversion__drive_5436 () at kernel/conversion.ml:2603
+#21 0x00005e3fb93fd5e9 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3641
+#22 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#23 0x00005e3fb93f7cb0 in camlConversion__ccnv_5343 () at kernel/conversion.ml:2535
+#24 0x00005e3fb9405ba2 in camlConversion__loop_6190 () at kernel/conversion.ml:4123
+#25 0x00005e3fb93e6728 in camlConversion__try_congruence_2499 () at kernel/conversion.ml:499
+#26 0x00005e3fb93faaff in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:2846
+#27 0x00005e3fb93f9294 in camlConversion__drive_5436 () at kernel/conversion.ml:2603
+#28 0x00005e3fb93fd5e9 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3641
+#29 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#30 0x00005e3fb93f7cb0 in camlConversion__ccnv_5343 () at kernel/conversion.ml:2535
+#31 0x00005e3fb9405ba2 in camlConversion__loop_6190 () at kernel/conversion.ml:4123
+#32 0x00005e3fb93e6728 in camlConversion__try_congruence_2499 () at kernel/conversion.ml:499
+#33 0x00005e3fb93faaff in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:2846
+#34 0x00005e3fb93f9294 in camlConversion__drive_5436 () at kernel/conversion.ml:2603
+#35 0x00005e3fb93fd5e9 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3641
+#36 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#37 0x00005e3fb93f7cb0 in camlConversion__ccnv_5343 () at kernel/conversion.ml:2535
+#38 0x00005e3fb9405ba2 in camlConversion__loop_6190 () at kernel/conversion.ml:4123
+#39 0x00005e3fb93e6728 in camlConversion__try_congruence_2499 () at kernel/conversion.ml:499
+#40 0x00005e3fb93faaff in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:2846
+#41 0x00005e3fb93f9294 in camlConversion__drive_5436 () at kernel/conversion.ml:2603
+#42 0x00005e3fb93fd5e9 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3641
+#43 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#44 0x00005e3fb93f7cb0 in camlConversion__ccnv_5343 () at kernel/conversion.ml:2535
+#45 0x00005e3fb9405ba2 in camlConversion__loop_6190 () at kernel/conversion.ml:4123
+#46 0x00005e3fb93e6728 in camlConversion__try_congruence_2499 () at kernel/conversion.ml:499
+#47 0x00005e3fb93faaff in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:2846
+#48 0x00005e3fb93f9294 in camlConversion__drive_5436 () at kernel/conversion.ml:2603
+#49 0x00005e3fb93fd5e9 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3641
+#50 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#51 0x00005e3fb93f7cb0 in camlConversion__ccnv_5343 () at kernel/conversion.ml:2535
+#52 0x00005e3fb9405ba2 in camlConversion__loop_6190 () at kernel/conversion.ml:4123
+#53 0x00005e3fb93e6728 in camlConversion__try_congruence_2499 () at kernel/conversion.ml:499
+#54 0x00005e3fb93faaff in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:2846
+#55 0x00005e3fb93f9294 in camlConversion__drive_5436 () at kernel/conversion.ml:2603
+#56 0x00005e3fb93fd5e9 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3641
+#57 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#58 0x00005e3fb93f7cb0 in camlConversion__ccnv_5343 () at kernel/conversion.ml:2535
+#59 0x00005e3fb9405ba2 in camlConversion__loop_6190 () at kernel/conversion.ml:4123
+#60 0x00005e3fb93e6728 in camlConversion__try_congruence_2499 () at kernel/conversion.ml:499
+#61 0x00005e3fb93faaff in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:2846
+#62 0x00005e3fb93f9294 in camlConversion__drive_5436 () at kernel/conversion.ml:2603
+#63 0x00005e3fb93fd5e9 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3641
+#64 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#65 0x00005e3fb93f7cb0 in camlConversion__ccnv_5343 () at kernel/conversion.ml:2535
+#66 0x00005e3fb9405ba2 in camlConversion__loop_6190 () at kernel/conversion.ml:4123
+#67 0x00005e3fb93e6728 in camlConversion__try_congruence_2499 () at kernel/conversion.ml:499
+#68 0x00005e3fb93faaff in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:2846
+#69 0x00005e3fb93f9294 in camlConversion__drive_5436 () at kernel/conversion.ml:2603
+#70 0x00005e3fb93fd5e9 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3641
+#71 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#72 0x00005e3fb93f7cb0 in camlConversion__ccnv_5343 () at kernel/conversion.ml:2535
+#73 0x00005e3fb9405ba2 in camlConversion__loop_6190 () at kernel/conversion.ml:4123
+#74 0x00005e3fb93e6728 in camlConversion__try_congruence_2499 () at kernel/conversion.ml:499
+#75 0x00005e3fb93faaff in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:2846
+#76 0x00005e3fb93f9294 in camlConversion__drive_5436 () at kernel/conversion.ml:2603
+#77 0x00005e3fb93fd5e9 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3641
+#78 0x00005e3fb959d0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#79 0x00005e3fb93f7cb0 in camlConversion__ccnv_5343 () at kernel/conversion.ml:2535
+memory guard: status 2026-09-18T14:24:59+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2874684 KiB; cgroup=2829936/16777216 KiB; MemAvailable=24515360 KiB
+memory guard: status 2026-09-18T14:25:14+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2874684 KiB; cgroup=2829692/16777216 KiB; MemAvailable=24517360 KiB
+memory guard: status 2026-09-18T14:25:29+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2874684 KiB; cgroup=2829468/16777216 KiB; MemAvailable=24501864 KiB
+memory guard: status 2026-09-18T14:25:44+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2874684 KiB; cgroup=2829908/16777216 KiB; MemAvailable=24526064 KiB
+memory guard: status 2026-09-18T14:25:59+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2874684 KiB; cgroup=2829340/16777216 KiB; MemAvailable=24437812 KiB
+memory guard: status 2026-09-18T14:26:14+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2874684 KiB; cgroup=2829620/16777216 KiB; MemAvailable=24535620 KiB
+memory guard: status 2026-09-18T14:26:29+02:00: session=2537893 members(session/scope)=3/3 Rocq workers=1 scope RSS=2874684 KiB; cgroup=2829480/16777216 KiB; MemAvailable=24528332 KiB
+
+Program received signal SIGTERM, Terminated.
+0x00005e3fb93ec81f in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1223
+warning: 1223	kernel/conversion.ml: No such file or directory
+memory guard: finished with status 255; cgroup peak=2831892 KiB (hard limit 16777216 KiB)

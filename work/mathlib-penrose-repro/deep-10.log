@@ -1,0 +1,13 @@
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+memory guard: admitted with MemAvailable=27330300 KiB, reserve=6291456 KiB, RSS limit=3670016 KiB, cgroup high/max/swap=4194304/4194304/0 KiB, stack=262144 KiB
+memory guard: status 2026-09-18T14:44:14+02:00: session=2609704 members(session/scope)=2/2 Rocq workers=0 scope RSS=22784 KiB; cgroup=20884/4194304 KiB; MemAvailable=27306020 KiB
+memory guard: status 2026-09-18T14:44:29+02:00: session=2609704 members(session/scope)=2/2 Rocq workers=0 scope RSS=1132580 KiB; cgroup=1131580/4194304 KiB; MemAvailable=26237720 KiB
+memory guard: status 2026-09-18T14:44:44+02:00: session=2609704 members(session/scope)=2/2 Rocq workers=0 scope RSS=1450072 KiB; cgroup=1448796/4194304 KiB; MemAvailable=25925936 KiB
+PASS deep hashcons: 3000000 nodes in 39.177 CPU seconds
+memory guard: status 2026-09-18T14:44:59+02:00: session=2609704 members(session/scope)=2/2 Rocq workers=0 scope RSS=1786560 KiB; cgroup=1786384/4194304 KiB; MemAvailable=25570572 KiB
+PASS deep universe scan: 17.649 CPU seconds
+memory guard: status 2026-09-18T14:45:14+02:00: session=2609704 members(session/scope)=2/2 Rocq workers=0 scope RSS=1994356 KiB; cgroup=1994336/4194304 KiB; MemAvailable=25343164 KiB
+memory guard: status 2026-09-18T14:45:29+02:00: session=2609704 members(session/scope)=2/2 Rocq workers=0 scope RSS=2103372 KiB; cgroup=2103328/4194304 KiB; MemAvailable=25293076 KiB
+PASS deep canonical hashcons: 31.676 CPU seconds
+memory guard: finished with status 0; cgroup peak=2105440 KiB (hard limit 4194304 KiB)

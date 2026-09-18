@@ -1,0 +1,209 @@
+memory guard: admitted with MemAvailable=27344712 KiB, reserve=3145728 KiB, RSS limit=15728640 KiB, cgroup high/max/swap=16777216/16777216/0 KiB, stack=262144 KiB
+memory guard: status 2026-09-18T13:51:22+02:00: session=2472808 members(session/scope)=2/2 Rocq workers=0 scope RSS=31172 KiB; cgroup=10076/16777216 KiB; MemAvailable=27338620 KiB
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.ubuntu.com>
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[lean checkpoint] before unpack cpu=0.826 heap_words=13895680 major_collections=1
+[lean checkpoint] after unpack cpu=0.835 heap_words=15980032 major_collections=1
+line 9939: _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1
+[declare start] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=0.867 heap_words=18377216 major=1
+[declare before type] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=0.867 heap_words=18377216 major=1
+[declare after type] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=5.936 heap_words=64651776 major=7
+[declare before body] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=5.936 heap_words=64651776 major=7
+[declare after body] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=5.950 heap_words=64651776 major=7
+[declare before universes] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=5.950 heap_words=64651776 major=7
+[declare after universes] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=6.157 heap_words=64651776 major=7
+[declare before quickdef] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=6.157 heap_words=64651776 major=7
+[declare after name] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=6.157 heap_words=64651776 major=7
+memory guard: status 2026-09-18T13:51:37+02:00: session=2472808 members(session/scope)=3/3 Rocq workers=1 scope RSS=1033520 KiB; cgroup=987852/16777216 KiB; MemAvailable=26331168 KiB
+memory guard: status 2026-09-18T13:51:52+02:00: session=2472808 members(session/scope)=3/3 Rocq workers=1 scope RSS=1672244 KiB; cgroup=1628588/16777216 KiB; MemAvailable=25676436 KiB
+memory guard: status 2026-09-18T13:52:07+02:00: session=2472808 members(session/scope)=3/3 Rocq workers=1 scope RSS=1858752 KiB; cgroup=1815072/16777216 KiB; MemAvailable=25616760 KiB
+memory guard: status 2026-09-18T13:52:22+02:00: session=2472808 members(session/scope)=3/3 Rocq workers=1 scope RSS=1859264 KiB; cgroup=1815860/16777216 KiB; MemAvailable=25727800 KiB
+
+Program received signal SIGUSR1, User defined signal 1.
+0x0000626d0ed2ca10 in caml_apply2 ()
+
+[diagnostic stack] SIGUSR1 time=1789732346.828
+
+Thread 1 (Thread 0x72c13f11ab80 (LWP 2472860) "rocqworker.exe"):
+#0  0x0000626d0ed2ca10 in caml_apply2 ()
+#1  0x0000626d0f42533b in camlStdlib__Hashtbl__mem_in_bucket_1118 () at hashtbl.ml:453
+#2  0x0000626d0f1f8c26 in camlVars__aux_2426 () at kernel/vars.ml:610
+#3  0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#4  0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#5  0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#6  0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#7  0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#8  0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#9  0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#10 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#11 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#12 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#13 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#14 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#15 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#16 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#17 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#18 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#19 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#20 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#21 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#22 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#23 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#24 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#25 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#26 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#27 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#28 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#29 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#30 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#31 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#32 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#33 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#34 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#35 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#36 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#37 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#38 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#39 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#40 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#41 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#42 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#43 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#44 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#45 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#46 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#47 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#48 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#49 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#50 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#51 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#52 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#53 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#54 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#55 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#56 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#57 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#58 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#59 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#60 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#61 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#62 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#63 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#64 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#65 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#66 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#67 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#68 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#69 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#70 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#71 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#72 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#73 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#74 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#75 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#76 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#77 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#78 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#79 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+memory guard: status 2026-09-18T13:52:37+02:00: session=2472808 members(session/scope)=3/3 Rocq workers=1 scope RSS=1864236 KiB; cgroup=1818280/16777216 KiB; MemAvailable=25685116 KiB
+memory guard: status 2026-09-18T13:52:52+02:00: session=2472808 members(session/scope)=3/3 Rocq workers=1 scope RSS=1865260 KiB; cgroup=1819404/16777216 KiB; MemAvailable=25750568 KiB
+memory guard: status 2026-09-18T13:53:07+02:00: session=2472808 members(session/scope)=3/3 Rocq workers=1 scope RSS=1865260 KiB; cgroup=1819476/16777216 KiB; MemAvailable=25746068 KiB
+memory guard: status 2026-09-18T13:53:22+02:00: session=2472808 members(session/scope)=3/3 Rocq workers=1 scope RSS=1865260 KiB; cgroup=1819560/16777216 KiB; MemAvailable=25759548 KiB
+
+Program received signal SIGUSR1, User defined signal 1.
+camlStdlib__Hashtbl__mem_in_bucket_1118 () at hashtbl.ml:452
+warning: 452	hashtbl.ml: No such file or directory
+
+[diagnostic stack] SIGUSR1 time=1789732406.834
+
+Thread 1 (Thread 0x72c13f11ab80 (LWP 2472860) "rocqworker.exe"):
+#0  camlStdlib__Hashtbl__mem_in_bucket_1118 () at hashtbl.ml:452
+#1  0x0000626d0f1f8c26 in camlVars__aux_2426 () at kernel/vars.ml:610
+#2  0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#3  0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#4  0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#5  0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#6  0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#7  0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#8  0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#9  0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#10 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#11 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#12 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#13 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#14 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#15 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#16 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#17 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#18 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#19 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#20 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#21 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#22 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#23 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#24 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#25 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#26 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#27 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#28 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#29 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#30 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#31 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#32 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#33 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#34 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#35 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#36 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#37 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#38 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#39 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#40 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#41 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#42 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#43 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#44 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#45 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#46 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#47 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#48 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#49 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#50 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#51 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#52 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#53 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#54 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#55 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#56 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#57 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#58 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#59 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#60 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#61 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#62 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#63 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#64 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#65 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#66 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#67 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#68 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#69 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#70 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#71 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#72 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#73 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#74 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#75 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#76 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#77 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#78 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+#79 0x0000626d0f3f64c9 in camlStdlib__Array__fold_left_390 () at array.ml:163
+
+Program received signal SIGTERM, Terminated.
+camlStdlib__Hashtbl__mem_in_bucket_1118 () at hashtbl.ml:452
+452	in hashtbl.ml
+memory guard: finished with status 255; cgroup peak=1821900 KiB (hard limit 16777216 KiB)

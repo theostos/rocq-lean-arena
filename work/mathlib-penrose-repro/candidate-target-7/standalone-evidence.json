@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "mode": "fresh-check",
+  "evidence": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/candidate-target-7/independent.json",
+  "artifact_sha256": "904a750fd234fe6b5db9888a367b9bf1a999dea880a39fea526559f9c62ae00b",
+  "inputs": {
+    "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/final-validate.py": "1bd655cc5dbcd403839e82be2535e6ec62b4aadd54b5910c67a21d7b42dbd2cf",
+    "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/candidate-target-7/independent.json": "57f8dcd9359c93810c5d8d7676e00c7486eab6c5b1ab261b004b9ab3c6f16743",
+    "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/candidate-target-7/PenroseTargetLegacy.vo": "904a750fd234fe6b5db9888a367b9bf1a999dea880a39fea526559f9c62ae00b"
+  }
+}

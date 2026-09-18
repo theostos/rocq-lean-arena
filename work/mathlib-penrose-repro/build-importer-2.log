@@ -1,0 +1,68 @@
+Staged importer: /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.REC3PB47
+make: Entering directory '/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.REC3PB47'
+rocq makefile -f _CoqProject -o Makefile.rocq
+Warning: Omitting --rocq-package is deprecated.
+Warning: Use --rocq-package <package> to enable the Findlib-backed Rocq package installation scheme.
+Warning: Pass --no-rocq-package-warning to silence this warning.
+
+Warning: it is recommended you provide a META.package-name file
+Warning: since you build plugins. See also -generate-meta-for-package.
+make --no-builtin-rules -f Makefile.rocq CAMLPKGS="-package yojson" src/lean_import.cmxs
+make[1]: Entering directory '/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.REC3PB47'
+ROCQ DEP VFILES
+File "src/Lean.v", line 1, characters 20-27:
+Warning: library BinInt is required
+         from root Stdlib and has not been found in the loadpath!
+         [module-not-found,filesystem,default]
+File "src/Lean.v", line 1, characters 27-34:
+Warning: library BinNat is required
+         from root Stdlib and has not been found in the loadpath!
+         [module-not-found,filesystem,default]
+File "src/Lean.v", line 1, characters 34-39:
+Warning: library Nnat is required
+         from root Stdlib and has not been found in the loadpath!
+         [module-not-found,filesystem,default]
+File "src/Lean.v", line 1, characters 39-44:
+Warning: library Znat is required
+         from root Stdlib and has not been found in the loadpath!
+         [module-not-found,filesystem,default]
+File "src/Lean.v", line 1, characters 44-48:
+Warning: library Lia is required
+         from root Stdlib and has not been found in the loadpath!
+         [module-not-found,filesystem,default]
+File "src/Lean.v", line 1, characters 48-56:
+Warning: library ZifyBool is required
+         from root Stdlib and has not been found in the loadpath!
+         [module-not-found,filesystem,default]
+CAMLC -c src/leanName.mli
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+CAMLOPT -c -for-pack Lean_import src/leanName.ml
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+CAMLC -c src/leanExpr.mli
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+CAMLC -c src/leanParseShared.mli
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+CAMLOPT -c -for-pack Lean_import src/leanParseShared.ml
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+CAMLC -c src/leanParse.mli
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+CAMLOPT -c -for-pack Lean_import src/leanParse.ml
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+CAMLC -c src/leanParseNdjson.mli
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+CAMLOPT -c -for-pack Lean_import src/leanParseNdjson.ml
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+CAMLC -c src/lean.mli
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+CAMLOPT -c -for-pack Lean_import src/lean.ml
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+CAMLOPT -c -for-pack Lean_import src/g_lean.ml
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+CAMLOPT -pack -o src/lean_import.cmx
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+CAMLOPT -a -o src/lean_import.cmxa
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+CAMLOPT -shared -o src/lean_import.cmxs
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+make[1]: Leaving directory '/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.REC3PB47'
+make: Leaving directory '/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.REC3PB47'

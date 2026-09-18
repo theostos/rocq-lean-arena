@@ -1,0 +1,15 @@
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+crossed DAG depth=8 CPU=0.000093
+crossed DAG depth=12 CPU=0.000110
+crossed DAG depth=16 CPU=0.000138
+crossed DAG depth=20 CPU=0.000188
+crossed DAG depth=24 CPU=0.000233
+crossed DAG depth=64 CPU=0.000741
+crossed DAG depth=128 CPU=0.003832
+crossed DAG depth=256 CPU=0.005671
+multi-depth Fibonacci DAG depth=16 CPU=0.000209
+multi-depth Fibonacci DAG depth=32 CPU=0.000776
+multi-depth Fibonacci DAG depth=64 CPU=0.005021
+multi-depth Fibonacci DAG depth=128 CPU=0.026578
+multi-depth Fibonacci DAG depth=256 CPU=0.148033

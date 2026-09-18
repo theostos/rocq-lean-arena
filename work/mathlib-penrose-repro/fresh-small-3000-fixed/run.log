@@ -1,0 +1,51 @@
+memory guard: admitted with MemAvailable=27360832 KiB, reserve=3145728 KiB, RSS limit=15728640 KiB, cgroup high/max/swap=16777216/16777216/0 KiB, stack=262144 KiB
+memory guard: status 2026-09-18T14:31:40+02:00: session=2583396 members(session/scope)=2/2 Rocq workers=0 scope RSS=29376 KiB; cgroup=10336/16777216 KiB; MemAvailable=27356504 KiB
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.ubuntu.com>
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[lean checkpoint] before unpack cpu=0.822 heap_words=13895680 major_collections=1
+[lean checkpoint] after unpack cpu=0.831 heap_words=15980032 major_collections=1
+line 9944: _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1
+[declare] before name check
+[declare] after name check
+[declare] after entry conversion
+[declare] after universe context
+[safe-typing] after constant name
+[safe-typing] after section universes
+[definition] before universes
+[definition] before body universe substitution
+[definition] before hconstr
+[definition] before infer
+[infer-hconstr] before wellformed universes
+[infer-hconstr] before execute
+[typeops applications] cpu=0.451 calls=9084 hits=8999
+[infer-hconstr] after execute
+[definition] after infer
+[definition] before type universe substitution
+[definition] before declared type
+[typeops applications] cpu=0.471 calls=9085 hits=9000
+[definition] before cast
+[definition] after cast
+[declare] after kernel declaration
+
+
+Done!
+- 261 entries (472 possible instances).
+- 25 universe expressions
+- 1727 names
+- 7933 expression nodes
+Max universe instance length 3.
+0 inductives have non syntactically arity types.
+[lean checkpoint] before checkpoint GC cpu=1.896 heap_words=18377216 major_collections=3
+[lean checkpoint] before indexed encoding cpu=2.643 heap_words=18377216 major_collections=5
+[lean indexed checkpoint] expressions=7933 probes=46262 max_probe=23
+[lean checkpoint] after indexed encoding cpu=2.717 heap_words=18377216 major_collections=5
+[lean checkpoint] before pack cpu=3.622 heap_words=18377216 major_collections=7
+[lean checkpoint] after checkpoint file write cpu=3.629 heap_words=18377216 major_collections=7
+[lean checkpoint] after pack cpu=3.630 heap_words=18377216 major_collections=7
+[Inferior 1 (process 2583453) exited normally]
+memory guard: finished with status 0; cgroup peak=290840 KiB (hard limit 16777216 KiB)

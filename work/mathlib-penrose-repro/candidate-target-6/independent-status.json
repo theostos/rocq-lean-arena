@@ -1,0 +1,33 @@
+{
+  "phase": "failed",
+  "module": "PenroseTargetLegacy",
+  "declaration_timeout_seconds": 1800.0,
+  "elapsed_seconds": 16.17118490600842,
+  "seconds_without_new_declaration": 16.17118490600842,
+  "last_declaration": null,
+  "declarations_started": 0,
+  "longest_completed_interval_seconds": 0.0,
+  "longest_completed_interval_declaration": null,
+  "exit_code": 129,
+  "command": [
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/default/checker/rocqchk.exe",
+    "-coqlib",
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq",
+    "-R",
+    "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories",
+    "Stdlib",
+    "-Q",
+    "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/foundation",
+    "LeanImport",
+    "-Q",
+    "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/baseline-prefix-legacy",
+    "",
+    "-Q",
+    "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/candidate-target-6",
+    "",
+    "-o",
+    "-norec",
+    "PenroseTargetLegacy"
+  ],
+  "timeout_scope": "declaration-progress"
+}

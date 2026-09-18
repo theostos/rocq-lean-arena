@@ -1,0 +1,954 @@
+memory guard: admitted with MemAvailable=26624180 KiB, reserve=3145728 KiB, RSS limit=15728640 KiB, cgroup high/max/swap=16777216/16777216/0 KiB, stack=262144 KiB
+memory guard: status 2026-09-18T15:23:49+02:00: session=2699921 members(session/scope)=1/1 Rocq workers=0 scope RSS=10400 KiB; cgroup=8056/16777216 KiB; MemAvailable=26617860 KiB
+Welcome to Chicken theo-HP-EliteBook-840-G8-Notebook-PC:/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/default,prototype/compact-peano-view (f756383de2e66f63c95815c73838596d7d97c1c2)
+[intern /home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/candidate-target-6/PenroseTargetLegacy.vo ...
+memory guard: status 2026-09-18T15:24:04+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=1381892 KiB; cgroup=1373516/16777216 KiB; MemAvailable=25279768 KiB
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/baseline-prefix-legacy/PenrosePrefixLegacy.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/foundation/Lean.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Numbers/Cyclic/Int63/Uint63Axioms.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Numbers/Cyclic/Int63/PrimInt63.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Numbers/Cyclic/Int63/CarryType.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Init/Prelude.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Init/Sumbool.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Init/Specif.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Init/Datatypes.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Init/Logic.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Init/Ltac.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Init/Notations.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Init/Tauto.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Init/Tactics.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Init/Wf.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Init/Peano.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Init/Nat.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Init/Number.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Init/Hexadecimal.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Init/Decimal.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Init/Byte.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Init/Equality.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/BinNums/IntDef.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/BinNums/NatDef.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/BinNums/PosDef.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Numbers/BinNums.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/ZifyBool.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/Zify.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/ZifyInst.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/ZifyClasses.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/ZArith/Znat.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/NArith/Nnat.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/PArith/Pnat.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/PArith/BinPos.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/PArith/BinPosDef.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/BinNums/PosDef.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/BinNums.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Arith/PeanoNat.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NProperties.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NBits.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NLog.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NPow.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NParity.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NSub.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NMulOrder.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NAddOrder.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NOrder.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NAdd.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NBase.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NAxioms.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZBits.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZLog.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZPow.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZMulOrder.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZAddOrder.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZOrder.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Logic/Decidable.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZBase.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZAxioms.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Structures/GenericMinMax.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Structures/OrdersFacts.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Structures/OrdersTac.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Structures/Orders.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Structures/Equalities.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Setoids/Setoid.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Setoids/Setoid.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/ssr/ssrsetoid.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Classes/RelationClasses.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Relations/Relation_Definitions.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Program/Tactics.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Classes/Init.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Program/Basics.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/ssr/ssrunder.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/ssr/ssrclasses.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Classes/SetoidTactics.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Classes/Equivalence.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Classes/Morphisms.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Classes/Morphisms_Prop.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Classes/CMorphisms.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Classes/CRelationClasses.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Classes/Morphisms.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Bool/Bool.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Logic/HLevelsBase.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Classes/DecidableClass.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Classes/RelationClasses.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Relations/Relations.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Relations/Operators_Properties.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Relations/Relation_Operators.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Relations/Relation_Definitions.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Program/Basics.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NumPrelude.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Classes/Morphisms_Prop.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZMul.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZAdd.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZDiv.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZParity.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZGcd.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZSqrt.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NDiv.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NLcm0.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NLcm.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NGcd.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NDiv0.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NSqrt.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NMaxMin.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Logic/Eqdep_dec.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Logic/EqdepFacts.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/NArith/BinNat.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/NArith/BinNatDef.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/BinNums/NatDef.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/ZArith/BinInt.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/ZArith/BinIntDef.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/BinNums/IntDef.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZProperties.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZBits.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZDivFloor.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZSgnAbs.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZMulOrder.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZAddOrder.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZLt.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZMul.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZAdd.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZBase.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZAxioms.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZPow.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZParity.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZLcm.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZDivTrunc.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZGcd.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZMaxMin.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Arith/Arith_base.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Arith/Wf_nat.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Arith/Compare_dec.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Arith/EqNat.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Arith/Peano_dec.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Arith/Between.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Arith/Factorial.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/Lia.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/ZMicromega.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/VarMap.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Lists/List.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Lists/ListDef.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/coq/theories/Lists/ListDef.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/RingMicromega.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/Tauto.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/Refl.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/OrderedRing.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/setoid_ring/Ring.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/setoid_ring/Ring_base.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/setoid_ring/Ring_tac.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/setoid_ring/InitialRing.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/setoid_ring/Ring_polynom.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/setoid_ring/Ring_theory.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/setoid_ring/BinList.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Lists/ListTactics.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/EnvRing.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/Env.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/setoid_ring/NArithRing.vo ...
+ done]
+
+[intern /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/setoid_ring/ZArithRing.vo ...
+ done]
+
+
+Ordered list:
+  Corelib.Init.Ltac
+  Corelib.Init.Notations
+  Corelib.Init.Logic
+  Corelib.Init.Datatypes
+  Corelib.Init.Specif
+  Corelib.Init.Sumbool
+  Corelib.Init.Tauto
+  Corelib.Init.Tactics
+  Corelib.Init.Wf
+  Corelib.Init.Decimal
+  Corelib.Init.Hexadecimal
+  Corelib.Init.Number
+  Corelib.Init.Nat
+  Corelib.Init.Peano
+  Corelib.Init.Byte
+  Corelib.Init.Equality
+  Corelib.Init.Prelude
+  Corelib.Numbers.Cyclic.Int63.CarryType
+  Corelib.Numbers.Cyclic.Int63.PrimInt63
+  Corelib.Numbers.BinNums
+  Corelib.BinNums.PosDef
+  Corelib.BinNums.NatDef
+  Corelib.BinNums.IntDef
+  Corelib.Numbers.Cyclic.Int63.Uint63Axioms
+  Stdlib.micromega.ZifyClasses
+  Stdlib.BinNums.PosDef
+  Stdlib.Numbers.BinNums
+  Stdlib.PArith.BinPosDef
+  Stdlib.Logic.Decidable
+  Corelib.Relations.Relation_Definitions
+  Corelib.Program.Tactics
+  Corelib.Program.Basics
+  Corelib.Classes.Init
+  Corelib.Classes.RelationClasses
+  Corelib.ssr.ssrclasses
+  Corelib.ssr.ssrunder
+  Corelib.ssr.ssrsetoid
+  Corelib.Classes.Morphisms
+  Corelib.Classes.Equivalence
+  Corelib.Classes.Morphisms_Prop
+  Corelib.Classes.CRelationClasses
+  Corelib.Classes.CMorphisms
+  Corelib.Classes.SetoidTactics
+  Corelib.Setoids.Setoid
+  Stdlib.Setoids.Setoid
+  Stdlib.Classes.Morphisms
+  Stdlib.Logic.HLevelsBase
+  Stdlib.Classes.DecidableClass
+  Stdlib.Bool.Bool
+  Stdlib.Classes.RelationClasses
+  Stdlib.Structures.Equalities
+  Stdlib.Relations.Relation_Definitions
+  Stdlib.Relations.Relation_Operators
+  Stdlib.Relations.Operators_Properties
+  Stdlib.Relations.Relations
+  Stdlib.Structures.Orders
+  Stdlib.Program.Basics
+  Stdlib.Structures.OrdersTac
+  Stdlib.Structures.OrdersFacts
+  Stdlib.Structures.GenericMinMax
+  Stdlib.Classes.Morphisms_Prop
+  Stdlib.Numbers.NumPrelude
+  Stdlib.Numbers.NatInt.NZAxioms
+  Stdlib.Numbers.NatInt.NZBase
+  Stdlib.Numbers.NatInt.NZOrder
+  Stdlib.Numbers.NatInt.NZAdd
+  Stdlib.Numbers.NatInt.NZMul
+  Stdlib.Numbers.NatInt.NZAddOrder
+  Stdlib.Numbers.NatInt.NZMulOrder
+  Stdlib.Numbers.NatInt.NZPow
+  Stdlib.Numbers.NatInt.NZLog
+  Stdlib.Numbers.NatInt.NZDiv
+  Stdlib.Numbers.NatInt.NZParity
+  Stdlib.Numbers.NatInt.NZBits
+  Stdlib.Numbers.NatInt.NZGcd
+  Stdlib.Numbers.NatInt.NZSqrt
+  Stdlib.Numbers.Natural.Abstract.NAxioms
+  Stdlib.Numbers.Natural.Abstract.NBase
+  Stdlib.Numbers.Natural.Abstract.NAdd
+  Stdlib.Numbers.Natural.Abstract.NOrder
+  Stdlib.Numbers.Natural.Abstract.NAddOrder
+  Stdlib.Numbers.Natural.Abstract.NMulOrder
+  Stdlib.Numbers.Natural.Abstract.NSub
+  Stdlib.Numbers.Natural.Abstract.NParity
+  Stdlib.Numbers.Natural.Abstract.NPow
+  Stdlib.Numbers.Natural.Abstract.NLog
+  Stdlib.Numbers.Natural.Abstract.NDiv
+  Stdlib.Numbers.Natural.Abstract.NBits
+  Stdlib.Numbers.Natural.Abstract.NGcd
+  Stdlib.Numbers.Natural.Abstract.NLcm
+  Stdlib.Numbers.Natural.Abstract.NDiv0
+  Stdlib.Numbers.Natural.Abstract.NLcm0
+  Stdlib.Numbers.Natural.Abstract.NSqrt
+  Stdlib.Numbers.Natural.Abstract.NMaxMin
+  Stdlib.Numbers.Natural.Abstract.NProperties
+  Stdlib.Arith.PeanoNat
+  Stdlib.Logic.EqdepFacts
+  Stdlib.Logic.Eqdep_dec
+  Stdlib.PArith.BinPos
+  Stdlib.PArith.Pnat
+  Stdlib.BinNums.NatDef
+  Stdlib.NArith.BinNatDef
+  Stdlib.NArith.BinNat
+  Stdlib.NArith.Nnat
+  Stdlib.BinNums.IntDef
+  Stdlib.ZArith.BinIntDef
+  Stdlib.Numbers.Integer.Abstract.ZAxioms
+  Stdlib.Numbers.Integer.Abstract.ZBase
+  Stdlib.Numbers.Integer.Abstract.ZAdd
+  Stdlib.Numbers.Integer.Abstract.ZMul
+  Stdlib.Numbers.Integer.Abstract.ZLt
+  Stdlib.Numbers.Integer.Abstract.ZAddOrder
+  Stdlib.Numbers.Integer.Abstract.ZMulOrder
+  Stdlib.Numbers.Integer.Abstract.ZSgnAbs
+  Stdlib.Numbers.Integer.Abstract.ZDivFloor
+  Stdlib.Numbers.Integer.Abstract.ZParity
+  Stdlib.Numbers.Integer.Abstract.ZPow
+  Stdlib.Numbers.Integer.Abstract.ZBits
+  Stdlib.Numbers.Integer.Abstract.ZDivTrunc
+  Stdlib.Numbers.Integer.Abstract.ZGcd
+  Stdlib.Numbers.Integer.Abstract.ZLcm
+  Stdlib.Numbers.Integer.Abstract.ZMaxMin
+  Stdlib.Numbers.Integer.Abstract.ZProperties
+  Stdlib.ZArith.BinInt
+  Stdlib.Arith.Compare_dec
+  Stdlib.Arith.Wf_nat
+  Stdlib.Arith.EqNat
+  Stdlib.Arith.Peano_dec
+  Stdlib.Arith.Between
+  Stdlib.Arith.Factorial
+  Stdlib.Arith.Arith_base
+  Stdlib.ZArith.Znat
+  Stdlib.micromega.ZifyInst
+  Stdlib.micromega.Zify
+  Stdlib.micromega.ZifyBool
+  Corelib.Lists.ListDef
+  Stdlib.Lists.ListDef
+  Stdlib.Lists.List
+  Stdlib.micromega.VarMap
+  Stdlib.micromega.Refl
+  Stdlib.micromega.Tauto
+  Stdlib.setoid_ring.Ring_theory
+  Stdlib.setoid_ring.BinList
+  Stdlib.setoid_ring.Ring_polynom
+  Stdlib.setoid_ring.InitialRing
+  Stdlib.Lists.ListTactics
+  Stdlib.setoid_ring.Ring_tac
+  Stdlib.setoid_ring.Ring_base
+  Stdlib.setoid_ring.Ring
+  Stdlib.micromega.OrderedRing
+  Stdlib.micromega.Env
+  Stdlib.micromega.EnvRing
+  Stdlib.setoid_ring.NArithRing
+  Stdlib.micromega.RingMicromega
+  Stdlib.setoid_ring.ZArithRing
+  Stdlib.micromega.ZMicromega
+  Stdlib.micromega.Lia
+  LeanImport.Lean
+  PenrosePrefixLegacy
+  PenroseTargetLegacy
+  
+Admitting library: Corelib.Init.Ltac
+Admitting library: Corelib.Init.Notations
+Admitting library: Corelib.Init.Logic
+Admitting library: Corelib.Init.Datatypes
+Admitting library: Corelib.Init.Specif
+Admitting library: Corelib.Init.Sumbool
+Admitting library: Corelib.Init.Tauto
+Admitting library: Corelib.Init.Tactics
+Admitting library: Corelib.Init.Wf
+Admitting library: Corelib.Init.Decimal
+Admitting library: Corelib.Init.Hexadecimal
+Admitting library: Corelib.Init.Number
+Admitting library: Corelib.Init.Nat
+Admitting library: Corelib.Init.Peano
+Admitting library: Corelib.Init.Byte
+Admitting library: Corelib.Init.Equality
+Admitting library: Corelib.Init.Prelude
+Admitting library: Corelib.Numbers.Cyclic.Int63.CarryType
+Admitting library: Corelib.Numbers.Cyclic.Int63.PrimInt63
+Admitting library: Corelib.Numbers.BinNums
+Admitting library: Corelib.BinNums.PosDef
+Admitting library: Corelib.BinNums.NatDef
+Admitting library: Corelib.BinNums.IntDef
+Admitting library: Corelib.Numbers.Cyclic.Int63.Uint63Axioms
+Admitting library: Stdlib.micromega.ZifyClasses
+Admitting library: Stdlib.BinNums.PosDef
+Admitting library: Stdlib.Numbers.BinNums
+Admitting library: Stdlib.PArith.BinPosDef
+Admitting library: Stdlib.Logic.Decidable
+Admitting library: Corelib.Relations.Relation_Definitions
+Admitting library: Corelib.Program.Tactics
+Admitting library: Corelib.Program.Basics
+Admitting library: Corelib.Classes.Init
+Admitting library: Corelib.Classes.RelationClasses
+Admitting library: Corelib.ssr.ssrclasses
+Admitting library: Corelib.ssr.ssrunder
+Admitting library: Corelib.ssr.ssrsetoid
+Admitting library: Corelib.Classes.Morphisms
+Admitting library: Corelib.Classes.Equivalence
+Admitting library: Corelib.Classes.Morphisms_Prop
+Admitting library: Corelib.Classes.CRelationClasses
+Admitting library: Corelib.Classes.CMorphisms
+Admitting library: Corelib.Classes.SetoidTactics
+Admitting library: Corelib.Setoids.Setoid
+Admitting library: Stdlib.Setoids.Setoid
+Admitting library: Stdlib.Classes.Morphisms
+Admitting library: Stdlib.Logic.HLevelsBase
+Admitting library: Stdlib.Classes.DecidableClass
+Admitting library: Stdlib.Bool.Bool
+Admitting library: Stdlib.Classes.RelationClasses
+Admitting library: Stdlib.Structures.Equalities
+Admitting library: Stdlib.Relations.Relation_Definitions
+Admitting library: Stdlib.Relations.Relation_Operators
+Admitting library: Stdlib.Relations.Operators_Properties
+Admitting library: Stdlib.Relations.Relations
+Admitting library: Stdlib.Structures.Orders
+Admitting library: Stdlib.Program.Basics
+Admitting library: Stdlib.Structures.OrdersTac
+Admitting library: Stdlib.Structures.OrdersFacts
+Admitting library: Stdlib.Structures.GenericMinMax
+Admitting library: Stdlib.Classes.Morphisms_Prop
+Admitting library: Stdlib.Numbers.NumPrelude
+Admitting library: Stdlib.Numbers.NatInt.NZAxioms
+Admitting library: Stdlib.Numbers.NatInt.NZBase
+Admitting library: Stdlib.Numbers.NatInt.NZOrder
+Admitting library: Stdlib.Numbers.NatInt.NZAdd
+Admitting library: Stdlib.Numbers.NatInt.NZMul
+Admitting library: Stdlib.Numbers.NatInt.NZAddOrder
+Admitting library: Stdlib.Numbers.NatInt.NZMulOrder
+Admitting library: Stdlib.Numbers.NatInt.NZPow
+Admitting library: Stdlib.Numbers.NatInt.NZLog
+Admitting library: Stdlib.Numbers.NatInt.NZDiv
+Admitting library: Stdlib.Numbers.NatInt.NZParity
+Admitting library: Stdlib.Numbers.NatInt.NZBits
+Admitting library: Stdlib.Numbers.NatInt.NZGcd
+Admitting library: Stdlib.Numbers.NatInt.NZSqrt
+Admitting library: Stdlib.Numbers.Natural.Abstract.NAxioms
+Admitting library: Stdlib.Numbers.Natural.Abstract.NBase
+Admitting library: Stdlib.Numbers.Natural.Abstract.NAdd
+Admitting library: Stdlib.Numbers.Natural.Abstract.NOrder
+Admitting library: Stdlib.Numbers.Natural.Abstract.NAddOrder
+Admitting library: Stdlib.Numbers.Natural.Abstract.NMulOrder
+Admitting library: Stdlib.Numbers.Natural.Abstract.NSub
+Admitting library: Stdlib.Numbers.Natural.Abstract.NParity
+Admitting library: Stdlib.Numbers.Natural.Abstract.NPow
+Admitting library: Stdlib.Numbers.Natural.Abstract.NLog
+Admitting library: Stdlib.Numbers.Natural.Abstract.NDiv
+Admitting library: Stdlib.Numbers.Natural.Abstract.NBits
+Admitting library: Stdlib.Numbers.Natural.Abstract.NGcd
+Admitting library: Stdlib.Numbers.Natural.Abstract.NLcm
+Admitting library: Stdlib.Numbers.Natural.Abstract.NDiv0
+Admitting library: Stdlib.Numbers.Natural.Abstract.NLcm0
+Admitting library: Stdlib.Numbers.Natural.Abstract.NSqrt
+Admitting library: Stdlib.Numbers.Natural.Abstract.NMaxMin
+Admitting library: Stdlib.Numbers.Natural.Abstract.NProperties
+Admitting library: Stdlib.Arith.PeanoNat
+Admitting library: Stdlib.Logic.EqdepFacts
+Admitting library: Stdlib.Logic.Eqdep_dec
+Admitting library: Stdlib.PArith.BinPos
+Admitting library: Stdlib.PArith.Pnat
+Admitting library: Stdlib.BinNums.NatDef
+Admitting library: Stdlib.NArith.BinNatDef
+Admitting library: Stdlib.NArith.BinNat
+Admitting library: Stdlib.NArith.Nnat
+Admitting library: Stdlib.BinNums.IntDef
+Admitting library: Stdlib.ZArith.BinIntDef
+Admitting library: Stdlib.Numbers.Integer.Abstract.ZAxioms
+Admitting library: Stdlib.Numbers.Integer.Abstract.ZBase
+Admitting library: Stdlib.Numbers.Integer.Abstract.ZAdd
+Admitting library: Stdlib.Numbers.Integer.Abstract.ZMul
+Admitting library: Stdlib.Numbers.Integer.Abstract.ZLt
+Admitting library: Stdlib.Numbers.Integer.Abstract.ZAddOrder
+Admitting library: Stdlib.Numbers.Integer.Abstract.ZMulOrder
+Admitting library: Stdlib.Numbers.Integer.Abstract.ZSgnAbs
+Admitting library: Stdlib.Numbers.Integer.Abstract.ZDivFloor
+Admitting library: Stdlib.Numbers.Integer.Abstract.ZParity
+Admitting library: Stdlib.Numbers.Integer.Abstract.ZPow
+Admitting library: Stdlib.Numbers.Integer.Abstract.ZBits
+Admitting library: Stdlib.Numbers.Integer.Abstract.ZDivTrunc
+Admitting library: Stdlib.Numbers.Integer.Abstract.ZGcd
+Admitting library: Stdlib.Numbers.Integer.Abstract.ZLcm
+Admitting library: Stdlib.Numbers.Integer.Abstract.ZMaxMin
+Admitting library: Stdlib.Numbers.Integer.Abstract.ZProperties
+Admitting library: Stdlib.ZArith.BinInt
+Admitting library: Stdlib.Arith.Compare_dec
+Admitting library: Stdlib.Arith.Wf_nat
+Admitting library: Stdlib.Arith.EqNat
+Admitting library: Stdlib.Arith.Peano_dec
+Admitting library: Stdlib.Arith.Between
+Admitting library: Stdlib.Arith.Factorial
+Admitting library: Stdlib.Arith.Arith_base
+Admitting library: Stdlib.ZArith.Znat
+Admitting library: Stdlib.micromega.ZifyInst
+Admitting library: Stdlib.micromega.Zify
+Admitting library: Stdlib.micromega.ZifyBool
+Admitting library: Corelib.Lists.ListDef
+Admitting library: Stdlib.Lists.ListDef
+Admitting library: Stdlib.Lists.List
+Admitting library: Stdlib.micromega.VarMap
+Admitting library: Stdlib.micromega.Refl
+Admitting library: Stdlib.micromega.Tauto
+Admitting library: Stdlib.setoid_ring.Ring_theory
+Admitting library: Stdlib.setoid_ring.BinList
+Admitting library: Stdlib.setoid_ring.Ring_polynom
+Admitting library: Stdlib.setoid_ring.InitialRing
+Admitting library: Stdlib.Lists.ListTactics
+Admitting library: Stdlib.setoid_ring.Ring_tac
+Admitting library: Stdlib.setoid_ring.Ring_base
+Admitting library: Stdlib.setoid_ring.Ring
+Admitting library: Stdlib.micromega.OrderedRing
+Admitting library: Stdlib.micromega.Env
+Admitting library: Stdlib.micromega.EnvRing
+Admitting library: Stdlib.setoid_ring.NArithRing
+Admitting library: Stdlib.micromega.RingMicromega
+Admitting library: Stdlib.setoid_ring.ZArithRing
+Admitting library: Stdlib.micromega.ZMicromega
+Admitting library: Stdlib.micromega.Lia
+Admitting library: LeanImport.Lean
+Admitting library: PenrosePrefixLegacy
+Checking library: PenroseTargetLegacy
+  checking module: PenroseTargetLegacy
+  checking cst:PenroseTargetLegacy._private_ProofWidgets_Component_PenroseDiagram0_ProofWidgets_Penrose_Diagram__proof_1
+memory guard: status 2026-09-18T15:24:19+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2009216 KiB; cgroup=2001772/16777216 KiB; MemAvailable=24635896 KiB
+memory guard: status 2026-09-18T15:24:34+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2049236 KiB; cgroup=2043500/16777216 KiB; MemAvailable=24638880 KiB
+memory guard: status 2026-09-18T15:24:49+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2103612 KiB; cgroup=2096708/16777216 KiB; MemAvailable=24579128 KiB
+memory guard: status 2026-09-18T15:25:04+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2103612 KiB; cgroup=2096572/16777216 KiB; MemAvailable=24548000 KiB
+memory guard: status 2026-09-18T15:25:19+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2103612 KiB; cgroup=2096408/16777216 KiB; MemAvailable=24585048 KiB
+memory guard: status 2026-09-18T15:25:34+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2214888 KiB; cgroup=2208248/16777216 KiB; MemAvailable=24455800 KiB
+memory guard: status 2026-09-18T15:25:49+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2214896 KiB; cgroup=2208020/16777216 KiB; MemAvailable=24515676 KiB
+memory guard: status 2026-09-18T15:26:04+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2214900 KiB; cgroup=2207828/16777216 KiB; MemAvailable=24485296 KiB
+memory guard: status 2026-09-18T15:26:19+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2214908 KiB; cgroup=2208756/16777216 KiB; MemAvailable=24509932 KiB
+memory guard: status 2026-09-18T15:26:34+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2214908 KiB; cgroup=2207928/16777216 KiB; MemAvailable=24490484 KiB
+memory guard: status 2026-09-18T15:26:49+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2214908 KiB; cgroup=2208756/16777216 KiB; MemAvailable=24821548 KiB
+memory guard: status 2026-09-18T15:27:04+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2214908 KiB; cgroup=2208548/16777216 KiB; MemAvailable=24814024 KiB
+memory guard: status 2026-09-18T15:27:19+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2214908 KiB; cgroup=2208416/16777216 KiB; MemAvailable=24856152 KiB
+memory guard: status 2026-09-18T15:27:34+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2214908 KiB; cgroup=2208288/16777216 KiB; MemAvailable=24840780 KiB
+memory guard: status 2026-09-18T15:27:49+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2229248 KiB; cgroup=2222736/16777216 KiB; MemAvailable=24861048 KiB
+memory guard: status 2026-09-18T15:28:04+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2234440 KiB; cgroup=2227664/16777216 KiB; MemAvailable=24815624 KiB
+memory guard: status 2026-09-18T15:28:19+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2234448 KiB; cgroup=2227764/16777216 KiB; MemAvailable=24861660 KiB
+memory guard: status 2026-09-18T15:28:34+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2234448 KiB; cgroup=2228148/16777216 KiB; MemAvailable=24861704 KiB
+memory guard: status 2026-09-18T15:28:49+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2526804 KiB; cgroup=2520452/16777216 KiB; MemAvailable=24589236 KiB
+memory guard: status 2026-09-18T15:29:04+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2608724 KiB; cgroup=2603052/16777216 KiB; MemAvailable=24447912 KiB
+memory guard: status 2026-09-18T15:29:19+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2608724 KiB; cgroup=2603244/16777216 KiB; MemAvailable=24467108 KiB
+memory guard: status 2026-09-18T15:29:34+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2608724 KiB; cgroup=2602840/16777216 KiB; MemAvailable=24441492 KiB
+memory guard: status 2026-09-18T15:29:49+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2608724 KiB; cgroup=2602840/16777216 KiB; MemAvailable=24422712 KiB
+memory guard: status 2026-09-18T15:30:04+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2608724 KiB; cgroup=2603036/16777216 KiB; MemAvailable=24441768 KiB
+memory guard: status 2026-09-18T15:30:19+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2608724 KiB; cgroup=2603076/16777216 KiB; MemAvailable=24410832 KiB
+memory guard: status 2026-09-18T15:30:34+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2608724 KiB; cgroup=2602964/16777216 KiB; MemAvailable=24380280 KiB
+memory guard: status 2026-09-18T15:30:49+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2608724 KiB; cgroup=2602812/16777216 KiB; MemAvailable=24460148 KiB
+memory guard: status 2026-09-18T15:31:04+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2608724 KiB; cgroup=2603268/16777216 KiB; MemAvailable=24433436 KiB
+memory guard: status 2026-09-18T15:31:19+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2608728 KiB; cgroup=2602528/16777216 KiB; MemAvailable=24288548 KiB
+memory guard: status 2026-09-18T15:31:34+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2732640 KiB; cgroup=2727056/16777216 KiB; MemAvailable=24307732 KiB
+memory guard: status 2026-09-18T15:31:49+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2732640 KiB; cgroup=2727180/16777216 KiB; MemAvailable=24240408 KiB
+memory guard: status 2026-09-18T15:32:04+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2765408 KiB; cgroup=2760340/16777216 KiB; MemAvailable=24203364 KiB
+memory guard: status 2026-09-18T15:32:19+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2769824 KiB; cgroup=2763916/16777216 KiB; MemAvailable=24174464 KiB
+memory guard: status 2026-09-18T15:32:34+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2769824 KiB; cgroup=2764196/16777216 KiB; MemAvailable=24046708 KiB
+memory guard: status 2026-09-18T15:32:49+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2769824 KiB; cgroup=2764220/16777216 KiB; MemAvailable=24257376 KiB
+memory guard: status 2026-09-18T15:33:04+02:00: session=2699921 members(session/scope)=1/2 Rocq workers=0 scope RSS=2769824 KiB; cgroup=2764180/16777216 KiB; MemAvailable=24247176 KiB
+Modules were successfully checked
+
+CONTEXT SUMMARY
+===============
+
+* Theory: Set is predicative
+  
+* Theory: Rewrite rules are not allowed
+  
+* Axioms:
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.tail0_spec
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.leb_spec
+    Stdlib.Arith.PeanoNat.Nat.PrivateImplementsBitwiseSpec.land_spec
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.head0_spec
+    Stdlib.Arith.PeanoNat.Nat.PrivateImplementsBitwiseSpec.lor_spec
+    Stdlib.Arith.PeanoNat.Nat.PrivateImplementsBitwiseSpec.odd_bitwise
+    Corelib.ssr.ssrunder.Under_rel.Under_rel_from_rel
+    Stdlib.Arith.PeanoNat.Nat.PrivateImplementsBitwiseSpec.testbit_bitwise_2
+    Stdlib.Arith.PeanoNat.Nat.PrivateImplementsBitwiseSpec.testbit_bitwise_1
+    Stdlib.Arith.PeanoNat.Nat.PrivateImplementsBitwiseSpec.testbit_odd_0
+    Stdlib.Arith.PeanoNat.Nat.PrivateImplementsBitwiseSpec.testbit_neg_r
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.diveucl_21
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.mulc_spec
+    Stdlib.Arith.PeanoNat.Nat.PrivateImplementsBitwiseSpec.shiftl_spec_high
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.diveucl_def_spec
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.add_spec
+    Stdlib.Arith.PeanoNat.Nat.PrivateImplementsBitwiseSpec.shiftl_spec_low
+    Stdlib.Arith.PeanoNat.Nat.PrivateImplementsBitwiseSpec.shiftr_spec
+    Stdlib.Arith.PeanoNat.Nat.PrivateImplementsBitwiseSpec.testbit_odd_succ
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.eqb_correct
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lxor_spec
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.eqb_refl
+    Corelib.ssr.ssrunder.Under_rel.over_rel
+    Stdlib.Arith.PeanoNat.Nat.PrivateImplementsBitwiseSpec.div2_double
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.addmuldiv
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.ltb_spec
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lsr_spec
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lsl_spec
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.addcarryc
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subcarryc_def_spec
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.compare_def_spec
+    Stdlib.Arith.PeanoNat.Nat.PrivateImplementsBitwiseSpec.ldiff_spec
+    Corelib.ssr.ssrunder.Under_rel.over_rel_done
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.div_spec
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.mul_spec
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.of_to_Z
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.sub_spec
+    Corelib.ssr.ssrunder.Under_rel.Under_rel
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.tail0
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.head0
+    Stdlib.Arith.PeanoNat.Nat.PrivateImplementsBitwiseSpec.testbit_even_succ
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.land_spec
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.subc
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.mulc
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.mods
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.lxor
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.ltsb
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.lesb
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.land
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.divs
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.addc
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.sub
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.mul
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.mod
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.ltb
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.lsr
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.lsl
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.lor
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.leb
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.int
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.eqb
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.div
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.asr
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.add
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.lor_spec
+    Stdlib.Arith.PeanoNat.Nat.PrivateImplementsBitwiseSpec.div2_succ_double
+    Corelib.ssr.ssrunder.Under_rel.Under_relE
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.subcarryc
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.diveucl_21_spec
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addc_def_spec
+    Stdlib.Arith.PeanoNat.Nat.PrivateImplementsBitwiseSpec.testbit_even_0
+    Stdlib.Arith.PeanoNat.Nat.PrivateImplementsBitwiseSpec.div2_bitwise
+    Stdlib.Arith.PeanoNat.Nat.PrivateImplementsBitwiseSpec.div2_spec
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.mod_spec
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addcarryc_def_spec
+    Corelib.ssr.ssrunder.Under_rel.under_rel_done
+    Stdlib.Arith.PeanoNat.Nat.PrivateImplementsBitwiseSpec.lxor_spec
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.subc_def_spec
+    Corelib.Numbers.Cyclic.Int63.Uint63Axioms.addmuldiv_def_spec
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.diveucl
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.compare
+    Corelib.ssr.ssrunder.Under_rel.Over_rel
+    Corelib.Numbers.Cyclic.Int63.PrimInt63.compares
+  
+* Constants/Inductives relying on type-in-type: <none>
+  
+* Constants/Inductives relying on unsafe (co)fixpoints: <none>
+  
+* Inductives whose positivity is assumed: <none>
+  
+* Inductives relying on indices not mattering:
+    Corelib.Init.Datatypes.eq_true
+    Stdlib.Logic.EqdepFacts.eq_dep
+    PenrosePrefixLegacy.HEq
+    Corelib.Init.Logic.eq
+    LeanImport.Lean.eq
+    PenrosePrefixLegacy.HEq_inst1
+  
+memory guard: finished with status 0; cgroup peak=2780512 KiB (hard limit 16777216 KiB)

@@ -1,0 +1,9 @@
+memory guard: admitted with MemAvailable=27166916 KiB, reserve=3145728 KiB, RSS limit=15728640 KiB, cgroup high/max/swap=16777216/16777216/0 KiB, stack=262144 KiB
+memory guard: status 2026-09-18T15:04:04+02:00: session=2660275 members(session/scope)=1/1 Rocq workers=0 scope RSS=9672 KiB; cgroup=8084/16777216 KiB; MemAvailable=27163156 KiB
+Welcome to Chicken theo-HP-EliteBook-840-G8-Notebook-PC:/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/default,prototype/compact-peano-view (f756383de2e66f63c95815c73838596d7d97c1c2)
+[intern /home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/candidate-target-6/PenroseTargetLegacy.vo ...
+memory guard: status 2026-09-18T15:04:19+02:00: session=2660275 members(session/scope)=1/2 Rocq workers=0 scope RSS=1602836 KiB; cgroup=1598344/16777216 KiB; MemAvailable=25587320 KiB
+ failed!]
+
+Fatal Error: Stack overflow
+memory guard: finished with status 129; cgroup peak=1759364 KiB (hard limit 16777216 KiB)

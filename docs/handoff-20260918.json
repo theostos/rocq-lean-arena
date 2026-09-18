@@ -6,7 +6,8 @@
   "components": {
     "kernel": {
       "repository": "https://github.com/theostos/rocq.git",
-      "commit": "d17b66af824e344393b126e57fbcec99174f926a",
+      "commit": "7b45cab763216a35b043afd356d1852f18e09b8d",
+      "previous_snapshot": "d17b66af824e344393b126e57fbcec99174f926a",
       "base": "f756383de2e66f63c95815c73838596d7d97c1c2",
       "directory": "_worktrees/rocq/compact-peano-view"
     },
@@ -54,6 +55,20 @@
     "full_mathlib_pass": false,
     "strict_full_recheck": false,
     "remote_build_validated": false
+  },
+  "penrose_followup": {
+    "branch": "handoff/mathlib-20260918-penrose",
+    "github_published": false,
+    "delivery": "Incremental Git bundles over SSH; apply to the published baseline before checking the updated pins",
+    "bundle_directory": "/home/theo/mathlib-handoff-20260918-penrose",
+    "original_line": 58521284,
+    "worker_sha256": "a0aa7234b01883d29dcc51bc6b99e14065df4aa9dbff3d194e225f5fb1757983",
+    "checker_sha256": "769c3beaaa291ecb2985117c154cb5f437192a9c74212c74d9f9e1cdc310341e",
+    "validation_receipt": "work/mathlib-penrose-repro/validation-receipt.json",
+    "validation": "Exact proof replay, fresh standalone target check, 10 native groups, 18 focused fixtures, prior Padic proof replay",
+    "importer_source_changed": false,
+    "remote_build_validated": false,
+    "full_mathlib_pass": false
   },
   "production_policy": {"interval": 5000000, "seconds_per_declaration": 1800, "memory_bytes": 25000000000, "host_reserve_mib": 2048, "workload_swap": false},
   "transfer_policy": "Source and small review evidence only; regenerate binaries, exports and checkpoints on the remote machine. No migration of historical producer seals."

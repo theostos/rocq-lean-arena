@@ -1,0 +1,13 @@
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+memory guard: admitted with MemAvailable=27131252 KiB, reserve=6291456 KiB, RSS limit=3670016 KiB, cgroup high/max/swap=4194304/4194304/0 KiB, stack=262144 KiB
+memory guard: status 2026-09-18T14:57:51+02:00: session=2648949 members(session/scope)=2/2 Rocq workers=0 scope RSS=21048 KiB; cgroup=17664/4194304 KiB; MemAvailable=27130444 KiB
+memory guard: status 2026-09-18T14:58:06+02:00: session=2648949 members(session/scope)=2/2 Rocq workers=0 scope RSS=1132660 KiB; cgroup=1130744/4194304 KiB; MemAvailable=26115124 KiB
+memory guard: status 2026-09-18T14:58:21+02:00: session=2648949 members(session/scope)=2/2 Rocq workers=0 scope RSS=1450152 KiB; cgroup=1448576/4194304 KiB; MemAvailable=25759152 KiB
+PASS deep hashcons: 3000000 nodes in 39.286 CPU seconds
+memory guard: status 2026-09-18T14:58:36+02:00: session=2648949 members(session/scope)=2/2 Rocq workers=0 scope RSS=1786640 KiB; cgroup=1786004/4194304 KiB; MemAvailable=25455268 KiB
+PASS deep universe scan: 17.680 CPU seconds
+memory guard: status 2026-09-18T14:58:51+02:00: session=2648949 members(session/scope)=2/2 Rocq workers=0 scope RSS=1994436 KiB; cgroup=1994128/4194304 KiB; MemAvailable=25222996 KiB
+memory guard: status 2026-09-18T14:59:06+02:00: session=2648949 members(session/scope)=2/2 Rocq workers=0 scope RSS=2103452 KiB; cgroup=2103092/4194304 KiB; MemAvailable=25120968 KiB
+memory guard: status 2026-09-18T14:59:21+02:00: session=2648949 members(session/scope)=2/1 Rocq workers=0 scope RSS=2084 KiB; cgroup=7312/4194304 KiB; MemAvailable=27221488 KiB
+memory guard: finished with status 124; cgroup peak=2105612 KiB (hard limit 4194304 KiB)

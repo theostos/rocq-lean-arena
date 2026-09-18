@@ -1,0 +1,381 @@
+memory guard: admitted with MemAvailable=27367208 KiB, reserve=3145728 KiB, RSS limit=15728640 KiB, cgroup high/max/swap=16777216/16777216/0 KiB, stack=262144 KiB
+memory guard: status 2026-09-18T13:49:24+02:00: session=2470013 members(session/scope)=2/2 Rocq workers=0 scope RSS=26128 KiB; cgroup=11556/16777216 KiB; MemAvailable=27366484 KiB
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.ubuntu.com>
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+line 56: LE
+line 56: LE.(field).le
+line 80: LT
+line 80: LT.(field).lt
+line 88: LE.le
+line 147: List
+line 172: Array
+line 172: Array.(field).toList
+line 211: Nat
+Nat is predeclared
+line 218: LT.lt
+line 292: Nat.le
+Nat_le is predeclared
+line 298: Nat.lt
+line 306: instLTNat
+line 306: LT_inst1.(field).lt0
+line 344: Fin
+Fin is predeclared
+line 348: outParam
+line 412: HPow
+line 412: HPow.(field).hPow
+line 423: HPow.hPow
+line 464: Pow
+line 464: Pow.(field).pow
+line 473: Pow.pow
+line 516: instHPow
+line 546: NatPow
+line 546: NatPow.(field).pow0
+line 553: NatPow.pow
+line 579: instPowNat
+line 579: Pow_inst2.(field).pow1
+line 593: PUnit
+line 634: PProd
+line 634: PProd.(field).snd
+line 634: PProd.(field).fst
+line 654: Nat.below
+line 704: Nat.brecOn.go
+line 716: Nat.brecOn
+line 719: Unit
+line 761: OfNat
+line 761: OfNat.(field).ofNat
+line 770: OfNat.ofNat
+line 781: instOfNatNat
+line 781: OfNat_inst1.(field).ofNat0
+line 802: Nat.casesOn
+line 806: Unit.unit
+line 853: Nat.pow.match_1
+line 908: Nat.mul.match_1
+line 937: Nat.add.match_1
+line 977: Nat.add
+Nat_add is predeclared
+line 1004: Nat.mul
+Nat_mul is predeclared
+line 1040: Nat.pow
+Nat_pow is predeclared
+line 1048: instNatPowNat
+line 1048: NatPow_inst1.(field).pow2
+line 1098: BitVec
+BitVec is predeclared
+line 1122: UInt8
+line 1122: UInt8.(field).toBitVec
+line 1142: ByteArray
+line 1142: Array_inst1.(field).toList0
+line 1142: ByteArray.(field).data
+line 1164: UInt32
+UInt32 is predeclared
+line 1217: Or
+Or is predeclared
+line 1251: And
+And is predeclared
+line 1274: Nat.isValidChar
+Nat_isValidChar is predeclared
+line 1281: Fin.val
+line 1288: BitVec.toFin
+line 1288: Pow_inst3.(field).pow3
+line 1288: HPow_inst7.(field).hPow0
+line 1300: BitVec.toNat
+line 1305: UInt32.toBitVec
+line 1314: UInt32.toNat
+UInt32_toNat is predeclared
+line 1322: UInt32.isValidChar
+UInt32_isValidChar is predeclared
+line 1346: Char
+Char is predeclared
+line 1379: Eq
+Eq is predeclared
+line 1404: List.below
+line 1473: List.brecOn.go
+line 1488: List.brecOn
+line 1518: List.casesOn
+line 1593: List.toByteArray.match_1
+line 1607: ByteArray.casesOn
+line 1656: ByteArray.push.match_1
+line 1728: List.concat.match_1
+line 1808: List.concat
+line 1815: Array.toList
+line 1831: Array.push
+line 1853: ByteArray.push
+line 1900: List.toByteArray.loop
+line 1909: Array.emptyWithCapacity
+line 1916: Array.empty
+line 1923: ByteArray.emptyWithCapacity
+line 1927: ByteArray.empty
+line 1934: List.toByteArray
+line 1990: List.flatten.match_1
+line 2028: List.append.match_1
+line 2101: List.append
+line 2151: List.flatten
+line 2199: instDecidableEqList.match_1
+line 2274: List.map
+line 2296: List.flatMap
+line 2301: Char.val
+line 2308: False
+False is predeclared
+line 2312: Not
+line 2358: Decidable
+Decidable is predeclared
+line 2388: Decidable.casesOn
+line 2416: ite
+line 2423: instLENat
+line 2423: LE_inst1.(field).le0
+line 2438: dite
+line 2461: Bool
+Bool is predeclared
+line 2529: Nat.ble.match_1
+line 2569: Nat.ble
+line 2580: DecidableEq
+line 2597: Bool.casesOn
+line 2669: Bool.decEq.match_1
+line 2681: rfl
+line 2706: Bool.noConfusionType
+line 2748: Eq.ndrec
+line 2788: Bool.noConfusion
+line 2836: Bool.decEq
+line 2841: instDecidableEqBool
+line 2856: False.elim
+line 2883: Eq.casesOn
+line 2929: HEq
+line 2942: True
+line 3014: Nat.beq.match_1
+line 3038: Nat.beq
+line 3068: _private.Init.Prelude0.noConfusion_of_Nat.aux.match_1_1
+line 3111: _private.Init.Prelude0.noConfusion_of_Nat.aux
+line 3111: PProd_inst1.(field).snd0
+line 3111: PProd_inst1.(field).fst0
+line 3164: congrArg
+line 3215: noConfusion_of_Nat
+line 3229: Bool.ctorIdx
+line 3412: _private.Init.Prelude0.Nat.le_of_ble_eq_true.match_1_1
+line 3415: _private.Init.Prelude0.Nat.zero_le.match_1_1
+line 3464: Nat.zero_le
+line 3590: Nat.le.below
+line 3631: Nat.le.brecOn
+line 3705: Nat.le.below.casesOn
+line 3740: Eq.symm
+line 3769: cast
+line 3862: eq_of_heq
+line 4401: _private.Init.Prelude0.Nat.succ_le_succ.match_1_4
+Eq_inst1 is predeclared
+line 4439: HAdd
+line 4439: HAdd.(field).hAdd
+line 4450: HAdd.hAdd
+line 4478: Add
+line 4478: Add.(field).add
+line 4485: Add.add
+line 4513: instHAdd
+line 4520: instAddNat
+line 4520: Add_inst1.(field).add0
+line 4594: Nat.succ_le_succ
+line 4594: HAdd_inst7.(field).hAdd0
+line 4650: Nat.le_of_ble_eq_true
+line 4669: absurd
+line 4672: _private.Init.Prelude0.Nat.ble_eq_true_of_le.match_1_4
+line 4688: _private.Init.Prelude0.Nat.ble_self_eq_true.match_1_1
+line 4725: Nat.ble_self_eq_true
+line 4728: _private.Init.Prelude0.Nat.ble_succ_eq_true.match_1_1
+line 4813: Nat.ble_succ_eq_true
+line 4871: Nat.ble_eq_true_of_le
+line 4895: Nat.not_le_of_not_ble_eq_true
+line 4925: Nat.decLe
+line 4963: HMod
+line 4963: HMod.(field).hMod
+line 4974: HMod.hMod
+line 4998: Mod
+line 4998: Mod.(field).mod
+line 5005: Mod.mod
+line 5033: instHMod
+line 5043: namedPattern
+line 5110: Nat.mod.match_1
+line 5122: Nat.decLt
+line 5156: Nat.le.casesOn
+line 5165: Nat.ctorIdx
+line 5295: Nat.div.go.match_1
+line 5333: HSub
+line 5333: HSub.(field).hSub
+line 5344: HSub.hSub
+line 5368: Sub
+line 5368: Sub.(field).sub
+line 5375: Sub.sub
+line 5403: instHSub
+line 5416: Nat.pred
+Nat_pred is predeclared
+line 5441: Nat.sub
+Nat_sub is predeclared
+line 5449: instSubNat
+line 5449: Sub_inst1.(field).sub0
+line 5996: _private.Init.Prelude0.Nat.le_trans.match_1_6
+line 6080: Nat.le_trans
+line 6096: Nat.lt_of_lt_of_le
+line 6125: And.casesOn
+line 6198: _private.Init.Prelude0.Nat.div_rec_lemma.match_1_1
+line 6325: _private.Init.Prelude0.Nat.sub_lt.match_1_1
+line 6328: _private.Init.Prelude0.Nat.not_succ_le_self.match_1_1
+line 6357: Nat.noConfusionType
+line 6396: Nat.noConfusion
+line 6457: Nat.not_succ_le_zero
+line 6696: _private.Init.Prelude0.Nat.pred_le_pred.match_1_1
+line 6704: Nat.le_succ
+line 6749: Nat.pred_le_pred
+line 6761: Nat.le_of_succ_le_succ
+line 6822: Nat.not_succ_le_self
+line 6830: Nat.lt_irrefl
+line 6840: Nat.lt_succ_of_le
+line 6845: Nat.le_refl
+line 6848: _private.Init.Prelude0.Nat.pred_le.match_1_1
+line 6881: Nat.pred_le
+line 6931: Nat.sub_le
+line 6931: HSub_inst7.(field).hSub0
+line 6971: Nat.succ_sub_succ_eq_sub
+line 7061: Nat.sub_lt
+line 7095: Nat.div_rec_lemma
+line 7105: Nat.le_of_lt_succ
+line 7140: Nat.div_rec_fuel_lemma
+line 7211: Nat.modCore.go
+line 7219: Nat.lt_add_one
+line 7226: Nat.lt_succ_self
+line 7248: Nat.modCore
+line 7277: Nat.mod
+line 7285: Nat.instMod
+line 7285: Mod_inst1.(field).mod0
+line 7428: _private.Init.Prelude0.Nat.mod_lt.match_1_3
+line 7436: Nat.zero_lt_succ
+line 7482: _private.Init.Prelude0.Nat.mod_lt.match_1_1
+line 7527: _private.Init.Prelude0.Nat.modCore_lt.match_1_1
+line 7534: Nat.not_lt_zero
+line 7580: _private.Init.Prelude0.Nat.modCoreGo_lt.match_1_1
+line 7612: Or.casesOn
+line 7636: _private.Init.Prelude0.Or.elim.match_1_1
+line 7659: Or.elim
+line 7665: id
+line 7694: Or.resolve_right
+line 7710: GE.ge
+line 7713: _private.Init.Prelude0.Nat.lt_or_ge.match_1_5
+line 7777: _private.Init.Prelude0.Nat.lt_or_ge.match_1_3
+line 7789: Nat.le_succ_of_le
+line 7843: _private.Init.Prelude0.Nat.lt_or_ge.match_1_1
+line 7959: Nat.eq_or_lt_of_le.match_3
+line 8009: Nat.eq_or_lt_of_le.match_1
+line 8139: Nat.eq_or_lt_of_le
+line 8259: Nat.lt_or_ge
+line 8277: Nat.lt_of_not_le
+line 8400: Nat.modCoreGo_lt
+line 8469: Nat.modCore_lt
+line 8552: Nat.mod_lt
+line 8552: HMod_inst7.(field).hMod0
+line 8571: Fin.Internal.ofNat
+line 8621: _private.Init.Prelude0.Nat.pow_pos.match_1_1
+line 8659: HMul
+line 8659: HMul.(field).hMul
+line 8670: HMul.hMul
+line 8694: Mul
+line 8694: Mul.(field).mul
+line 8701: Mul.mul
+line 8729: instHMul
+line 8736: instMulNat
+line 8736: Mul_inst1.(field).mul0
+line 8829: _private.Init.Prelude0.Nat.mul_pos.match_1_1
+line 8897: _private.Init.Prelude0.Nat.add_pos_right.match_1_1
+line 8933: Nat.add_pos_right
+line 8989: Nat.mul_pos
+line 8989: HMul_inst7.(field).hMul0
+line 9066: Nat.pow_pos
+line 9077: BitVec.ofNat._proof_1
+line 9091: BitVec.ofNat
+line 9099: UInt8.ofNat
+line 9137: HDiv
+line 9137: HDiv.(field).hDiv
+line 9148: HDiv.hDiv
+line 9172: Div
+line 9172: Div.(field).div
+line 9179: Div.div
+line 9207: instHDiv
+line 9236: Nat.div.go
+line 9250: Nat.div
+line 9258: Nat.instDiv
+line 9258: Div_inst1.(field).div0
+line 9386: String.utf8EncodeChar
+line 9386: HDiv_inst7.(field).hDiv0
+line 9399: List.utf8Encode
+line 9436: ByteArray.IsValidUTF8
+line 9436: ByteArray_IsValidUTF8.(field).hm
+line 9436: ByteArray_IsValidUTF8.(field).m
+line 9459: String
+line 9459: String.(field).isValidUTF8
+line 9459: String.(field).toByteArray
+File "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/baseline-prefix/PenrosePrefix.v", line 8, characters 0-113:
+Error:
+NDJSON parse error at line 9460: name id 1626 is not the next expected id 1613
+Raised at Exninfo.iraise in file "clib/exninfo.ml", line 79, characters 4-11
+Called from LeanParseNdjson.parse_name in file "src/leanParseNdjson.ml", line 112, characters 2-59
+Called from LeanParseNdjson.do_line in file "src/leanParseNdjson.ml", line 359, characters 2-40
+Called from Control.unix_timeout in file "lib/control.ml", line 53, characters 11-16
+Called from Stdlib__Fun.protect in file "fun.ml", line 33, characters 8-15
+Re-raised at Stdlib__Fun.protect in file "fun.ml", line 38, characters 6-52
+Called from Lean.with_line_timeout in file "src/lean.ml", line 4713, characters 11-50
+Called from Lean.do_line in file "src/lean.ml", line 4722, characters 8-29
+Re-raised at Exninfo.iraise in file "clib/exninfo.ml", line 81, characters 4-38
+Called from Lean.do_input_pending in file "src/lean.ml", line 4809, characters 27-58
+Called from Stdlib__Fun.protect in file "fun.ml", line 33, characters 8-15
+Re-raised at Stdlib__Fun.protect in file "fun.ml", line 38, characters 6-52
+Called from Lean.import in file "src/lean.ml", line 5155, characters 4-107
+Called from Vernactypes.vtdefault.(fun) in file "vernac/vernactypes.ml", line 199, characters 34-38
+Called from Vernactypes.typed_vernac.(fun) in file "vernac/vernactypes.ml", line 196, characters 65-71
+Called from Vernactypes.run.(fun) in file "vernac/vernactypes.ml", line 190, characters 15-32
+Called from Vernactypes.combine_runners.(fun) in file "vernac/vernactypes.ml", line 152, characters 16-23
+Called from Vernactypes.OpaqueAccess.runner.(fun) in file "vernac/vernactypes.ml", line 140, characters 30-34
+Called from Vernactypes.combine_runners.(fun) in file "vernac/vernactypes.ml", line 151, characters 14-105
+Called from Vernactypes.combine_runners.(fun) in file "vernac/vernactypes.ml", line 152, characters 16-23
+Called from Vernactypes.Proof.runner.(fun) in file "vernac/vernactypes.ml", line 93, characters 30-34
+Called from Vernactypes.combine_runners.(fun) in file "vernac/vernactypes.ml", line 151, characters 14-105
+Called from Vernactypes.Prog.runner.(fun) in file "vernac/vernactypes.ml", line 27, characters 30-34
+Called from Vernactypes.combine_runners.(fun) in file "vernac/vernactypes.ml", line 150, characters 12-183
+Called from Vernactypes.combine_runners.(fun) in file "vernac/vernactypes.ml", line 150, characters 12-183
+Called from Vernactypes.run in file "vernac/vernactypes.ml", line 189, characters 14-101
+Called from Vernacinterp.interp_expr_core in file "vernac/vernacinterp.ml", line 80, characters 60-162
+Called from Vernacinterp.interp_expr in file "vernac/vernacinterp.ml", line 49, characters 19-121
+Called from Stdlib__Fun.protect in file "fun.ml", line 33, characters 8-15
+Re-raised at Stdlib__Fun.protect in file "fun.ml", line 38, characters 6-52
+Called from VernacControl.under_control in file "vernac/vernacControl.ml", line 244, characters 14-18
+Called from Vernacinterp.interp_control_gen in file "vernac/vernacinterp.ml", line 36, characters 4-208
+Called from Stdlib__Fun.protect in file "fun.ml", line 33, characters 8-15
+Re-raised at Stdlib__Fun.protect in file "fun.ml", line 38, characters 6-52
+Called from Stdlib__Fun.protect in file "fun.ml", line 33, characters 8-15
+Re-raised at Stdlib__Fun.protect in file "fun.ml", line 38, characters 6-52
+Called from Vernacinterp.interp_gen in file "vernac/vernacinterp.ml", line 157, characters 16-41
+Re-raised at Exninfo.iraise in file "clib/exninfo.ml", line 81, characters 4-38
+Called from Vernacinterp.interp in file "vernac/vernacinterp.ml", line 171, characters 15-115
+Called from Stm.Reach.known_state.reach.(fun) in file "stm/stm.ml", line 2035, characters 16-43
+Called from Stm.State.define in file "stm/stm.ml", line 963, characters 6-10
+Re-raised at Exninfo.iraise in file "clib/exninfo.ml", line 81, characters 4-38
+Called from Stm.Reach.known_state.reach in file "stm/stm.ml", line 2204, characters 4-105
+Called from Stm.observe in file "stm/stm.ml", line 2296, characters 4-60
+Re-raised at Exninfo.iraise in file "clib/exninfo.ml", line 81, characters 4-38
+Called from Vernac.interp_vernac in file "toplevel/vernac.ml", line 87, characters 29-50
+Re-raised at Exninfo.iraise in file "clib/exninfo.ml", line 81, characters 4-38
+Called from Stdlib__Fun.protect in file "fun.ml", line 33, characters 8-15
+Re-raised at Stdlib__Fun.protect in file "fun.ml", line 38, characters 6-52
+Called from Stdlib__Fun.protect in file "fun.ml", line 33, characters 8-15
+Re-raised at Stdlib__Fun.protect in file "fun.ml", line 38, characters 6-52
+Called from Vernac.load_vernac_core.loop in file "toplevel/vernac.ml", line 135, characters 8-774
+Called from Vernac.load_vernac_core in file "toplevel/vernac.ml", line 158, characters 6-16
+Re-raised at Exninfo.iraise in file "clib/exninfo.ml", line 81, characters 4-38
+Called from Stdlib__Fun.protect in file "fun.ml", line 33, characters 8-15
+Re-raised at Stdlib__Fun.protect in file "fun.ml", line 38, characters 6-52
+Called from Ccompile.compile in file "toplevel/ccompile.ml", line 64, characters 18-82
+Called from Ccompile.compile in file "toplevel/ccompile.ml", line 98, characters 2-53
+Called from Coqc.coqc_main in file "toplevel/coqc.ml", line 38, characters 2-100
+Called from Coqc.coqc_run in file "toplevel/coqc.ml", line 54, characters 4-36
+
+
+[Inferior 1 (process 2470081) exited with code 01]
+memory guard: finished with status 1; cgroup peak=272400 KiB (hard limit 16777216 KiB)

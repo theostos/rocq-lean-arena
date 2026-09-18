@@ -1,0 +1,100 @@
+memory guard: admitted with MemAvailable=26915688 KiB, reserve=3145728 KiB, RSS limit=15728640 KiB, cgroup high/max/swap=16777216/16777216/0 KiB, stack=262144 KiB
+memory guard: status 2026-09-18T15:47:08+02:00: session=2766303 members(session/scope)=2/2 Rocq workers=0 scope RSS=28544 KiB; cgroup=9752/16777216 KiB; MemAvailable=26909456 KiB
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.ubuntu.com>
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[lean checkpoint] before unpack cpu=7.109 heap_words=73861632 major_collections=5
+[lean checkpoint] after unpack cpu=11.196 heap_words=84941312 major_collections=7
+line 2636964: PadicInt.coe_adicCompletionIntegersEquiv_apply
+[declare start] PadicInt.coe_adicCompletionIntegersEquiv_apply instance 0 cpu=12.009 heap_words=84941312 major=8
+[declare before type] PadicInt.coe_adicCompletionIntegersEquiv_apply instance 0 cpu=12.009 heap_words=84941312 major=8
+[declare start] ContinuousAlgEquiv.equivLike instance 7 cpu=12.017 heap_words=84941312 major=8
+[declare before type] ContinuousAlgEquiv.equivLike instance 7 cpu=12.017 heap_words=84941312 major=8
+[declare after type] ContinuousAlgEquiv.equivLike instance 7 cpu=12.018 heap_words=84941312 major=8
+[declare before body] ContinuousAlgEquiv.equivLike instance 7 cpu=12.018 heap_words=84941312 major=8
+[declare start] ContinuousAlgEquiv.equivLike._proof_2 instance 7 cpu=12.019 heap_words=84941312 major=8
+[declare before type] ContinuousAlgEquiv.equivLike._proof_2 instance 7 cpu=12.019 heap_words=84941312 major=8
+[declare after type] ContinuousAlgEquiv.equivLike._proof_2 instance 7 cpu=12.020 heap_words=84941312 major=8
+[declare before body] ContinuousAlgEquiv.equivLike._proof_2 instance 7 cpu=12.020 heap_words=84941312 major=8
+[declare after body] ContinuousAlgEquiv.equivLike._proof_2 instance 7 cpu=12.020 heap_words=84941312 major=8
+[declare before universes] ContinuousAlgEquiv.equivLike._proof_2 instance 7 cpu=12.020 heap_words=84941312 major=8
+[declare after universes] ContinuousAlgEquiv.equivLike._proof_2 instance 7 cpu=12.038 heap_words=84941312 major=8
+[declare before quickdef] ContinuousAlgEquiv.equivLike._proof_2 instance 7 cpu=12.039 heap_words=84941312 major=8
+[declare after name] ContinuousAlgEquiv.equivLike._proof_2 instance 7 cpu=12.039 heap_words=84941312 major=8
+[declare after quickdef] ContinuousAlgEquiv.equivLike._proof_2 instance 7 cpu=12.041 heap_words=84941312 major=8
+[declare done] ContinuousAlgEquiv.equivLike._proof_2 instance 7 cpu=12.041 heap_words=84941312 major=8
+[declare start] ContinuousAlgEquiv.equivLike._proof_3 instance 7 cpu=12.041 heap_words=84941312 major=8
+[declare before type] ContinuousAlgEquiv.equivLike._proof_3 instance 7 cpu=12.041 heap_words=84941312 major=8
+[declare after type] ContinuousAlgEquiv.equivLike._proof_3 instance 7 cpu=12.042 heap_words=84941312 major=8
+[declare before body] ContinuousAlgEquiv.equivLike._proof_3 instance 7 cpu=12.042 heap_words=84941312 major=8
+[declare after body] ContinuousAlgEquiv.equivLike._proof_3 instance 7 cpu=12.042 heap_words=84941312 major=8
+[declare before universes] ContinuousAlgEquiv.equivLike._proof_3 instance 7 cpu=12.042 heap_words=84941312 major=8
+[declare after universes] ContinuousAlgEquiv.equivLike._proof_3 instance 7 cpu=12.060 heap_words=84941312 major=8
+[declare before quickdef] ContinuousAlgEquiv.equivLike._proof_3 instance 7 cpu=12.060 heap_words=84941312 major=8
+[declare after name] ContinuousAlgEquiv.equivLike._proof_3 instance 7 cpu=12.060 heap_words=84941312 major=8
+[declare after quickdef] ContinuousAlgEquiv.equivLike._proof_3 instance 7 cpu=12.062 heap_words=84941312 major=8
+[declare done] ContinuousAlgEquiv.equivLike._proof_3 instance 7 cpu=12.062 heap_words=84941312 major=8
+[declare start] ContinuousAlgEquiv.equivLike._proof_1 instance 7 cpu=12.063 heap_words=84941312 major=8
+[declare before type] ContinuousAlgEquiv.equivLike._proof_1 instance 7 cpu=12.063 heap_words=84941312 major=8
+[declare after type] ContinuousAlgEquiv.equivLike._proof_1 instance 7 cpu=12.064 heap_words=84941312 major=8
+[declare before body] ContinuousAlgEquiv.equivLike._proof_1 instance 7 cpu=12.064 heap_words=84941312 major=8
+[declare start] ContinuousAlgEquiv.casesOn instance 15 cpu=12.072 heap_words=84941312 major=8
+[declare before type] ContinuousAlgEquiv.casesOn instance 15 cpu=12.072 heap_words=84941312 major=8
+[declare after type] ContinuousAlgEquiv.casesOn instance 15 cpu=12.073 heap_words=84941312 major=8
+[declare before body] ContinuousAlgEquiv.casesOn instance 15 cpu=12.073 heap_words=84941312 major=8
+[declare after body] ContinuousAlgEquiv.casesOn instance 15 cpu=12.074 heap_words=84941312 major=8
+[declare before universes] ContinuousAlgEquiv.casesOn instance 15 cpu=12.074 heap_words=84941312 major=8
+[declare after universes] ContinuousAlgEquiv.casesOn instance 15 cpu=12.095 heap_words=84941312 major=8
+[declare before quickdef] ContinuousAlgEquiv.casesOn instance 15 cpu=12.095 heap_words=84941312 major=8
+[declare after name] ContinuousAlgEquiv.casesOn instance 15 cpu=12.095 heap_words=84941312 major=8
+[declare after quickdef] ContinuousAlgEquiv.casesOn instance 15 cpu=12.097 heap_words=84941312 major=8
+[declare done] ContinuousAlgEquiv.casesOn instance 15 cpu=12.097 heap_words=84941312 major=8
+[declare after body] ContinuousAlgEquiv.equivLike._proof_1 instance 7 cpu=12.143 heap_words=84941312 major=8
+[declare before universes] ContinuousAlgEquiv.equivLike._proof_1 instance 7 cpu=12.143 heap_words=84941312 major=8
+[declare after universes] ContinuousAlgEquiv.equivLike._proof_1 instance 7 cpu=12.161 heap_words=84941312 major=8
+[declare before quickdef] ContinuousAlgEquiv.equivLike._proof_1 instance 7 cpu=12.161 heap_words=84941312 major=8
+[declare after name] ContinuousAlgEquiv.equivLike._proof_1 instance 7 cpu=12.161 heap_words=84941312 major=8
+[declare after quickdef] ContinuousAlgEquiv.equivLike._proof_1 instance 7 cpu=12.242 heap_words=84941312 major=8
+[declare done] ContinuousAlgEquiv.equivLike._proof_1 instance 7 cpu=12.242 heap_words=84941312 major=8
+[declare after body] ContinuousAlgEquiv.equivLike instance 7 cpu=12.242 heap_words=84941312 major=8
+[declare before universes] ContinuousAlgEquiv.equivLike instance 7 cpu=12.242 heap_words=84941312 major=8
+[declare after universes] ContinuousAlgEquiv.equivLike instance 7 cpu=12.261 heap_words=84941312 major=8
+[declare before quickdef] ContinuousAlgEquiv.equivLike instance 7 cpu=12.261 heap_words=84941312 major=8
+[declare after name] ContinuousAlgEquiv.equivLike instance 7 cpu=12.261 heap_words=84941312 major=8
+[declare after quickdef] ContinuousAlgEquiv.equivLike instance 7 cpu=12.263 heap_words=84941312 major=8
+[declare done] ContinuousAlgEquiv.equivLike instance 7 cpu=12.264 heap_words=84941312 major=8
+[declare after type] PadicInt.coe_adicCompletionIntegersEquiv_apply instance 0 cpu=12.266 heap_words=84941312 major=8
+[declare before body] PadicInt.coe_adicCompletionIntegersEquiv_apply instance 0 cpu=12.266 heap_words=84941312 major=8
+[declare after body] PadicInt.coe_adicCompletionIntegersEquiv_apply instance 0 cpu=12.275 heap_words=84941312 major=8
+[declare before universes] PadicInt.coe_adicCompletionIntegersEquiv_apply instance 0 cpu=12.275 heap_words=84941312 major=8
+[declare after universes] PadicInt.coe_adicCompletionIntegersEquiv_apply instance 0 cpu=12.298 heap_words=84941312 major=8
+[declare before quickdef] PadicInt.coe_adicCompletionIntegersEquiv_apply instance 0 cpu=12.298 heap_words=84941312 major=8
+[declare after name] PadicInt.coe_adicCompletionIntegersEquiv_apply instance 0 cpu=12.298 heap_words=84941312 major=8
+memory guard: status 2026-09-18T15:47:23+02:00: session=2766303 members(session/scope)=3/3 Rocq workers=1 scope RSS=809932 KiB; cgroup=764468/16777216 KiB; MemAvailable=26120756 KiB
+[declare after quickdef] PadicInt.coe_adicCompletionIntegersEquiv_apply instance 0 cpu=21.093 heap_words=97682944 major=8
+[declare done] PadicInt.coe_adicCompletionIntegersEquiv_apply instance 0 cpu=21.093 heap_words=97682944 major=8
+
+
+Done!
+- 25030 entries (85505 possible instances) (including quot).
+- 1049 universe expressions
+- 154293 names
+- 2456594 expression nodes
+Max universe instance length 9.
+0 inductives have non syntactically arity types.
+[lean checkpoint] before checkpoint GC cpu=21.101 heap_words=97682944 major_collections=8
+[lean checkpoint] before indexed encoding cpu=28.464 heap_words=97682944 major_collections=10
+memory guard: status 2026-09-18T15:47:38+02:00: session=2766303 members(session/scope)=3/3 Rocq workers=1 scope RSS=954056 KiB; cgroup=908892/16777216 KiB; MemAvailable=26002932 KiB
+memory guard: status 2026-09-18T15:47:53+02:00: session=2766303 members(session/scope)=3/3 Rocq workers=1 scope RSS=954148 KiB; cgroup=919220/16777216 KiB; MemAvailable=26017460 KiB
+[lean indexed checkpoint] expressions=2456594 probes=14531918 max_probe=77
+[lean checkpoint] after indexed encoding cpu=49.599 heap_words=97682944 major_collections=10
+[lean checkpoint] before pack cpu=57.469 heap_words=97682944 major_collections=12
+[lean checkpoint] after checkpoint file write cpu=57.693 heap_words=97682944 major_collections=12
+[lean checkpoint] after pack cpu=57.704 heap_words=97682944 major_collections=12
+[Inferior 1 (process 2766357) exited normally]
+memory guard: status 2026-09-18T15:48:08+02:00: session=2766303 members(session/scope)=3/2 Rocq workers=0 scope RSS=113032 KiB; cgroup=148812/16777216 KiB; MemAvailable=26693708 KiB
+memory guard: finished with status 0; cgroup peak=975648 KiB (hard limit 16777216 KiB)

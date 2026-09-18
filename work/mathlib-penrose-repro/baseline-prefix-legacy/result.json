@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 15.188698332000058,
+  "module": "PenrosePrefixLegacy",
+  "worker_sha256": "484cb306cb0f5d114071d601202a45c93de9c7ee803bbcd5c455553a6863649a",
+  "vo_sha256": "90e272e5bd24fc76ffa5e45cff2875faff1ea4532a99d4cd5649b91ef563f2b7"
+}

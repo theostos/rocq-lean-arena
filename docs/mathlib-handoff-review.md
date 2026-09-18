@@ -11,6 +11,11 @@ experiments, and claims of exact Lean/Rocq equivalence.
   `f756383de2e66f63c95815c73838596d7d97c1c2`: 34 modified tracked files plus
   added native and OCaml tests. It captures the live source bytes; it is a
   preservation commit, not a claim that the large patch is a review-ready PR.
+- Penrose follow-up `7b45cab763216a35b043afd356d1852f18e09b8d` is a child of
+  that snapshot, changing exactly four kernel files and two checker files.
+  It is delivered to `homepc` on `handoff/mathlib-20260918-penrose` through
+  Git bundles, not yet published to GitHub. Its source-only transfer does not
+  constitute remote build validation. The importer source is unchanged.
 - Importer snapshot `5cf335ec68a41ad23dd720018a191f95b161a5cc`: source of the
   actual staged production importer `importer.rEXkanSl`, not merely the older
   development worktree. Relative to integration `d3e25df...`, it retains the
@@ -27,6 +32,7 @@ To start the kernel review in its clone:
 ```sh
 git diff --stat f756383de2e66f63c95815c73838596d7d97c1c2 d17b66af824e344393b126e57fbcec99174f926a
 git diff f756383de2e66f63c95815c73838596d7d97c1c2 d17b66af824e344393b126e57fbcec99174f926a -- kernel/conversion.ml
+git diff d17b66af824e344393b126e57fbcec99174f926a 7b45cab763216a35b043afd356d1852f18e09b8d
 ```
 
 ## Implementation families
@@ -77,6 +83,7 @@ which accepts unresolved relevance variables.
 | Cotangent at 45,934,611 | [Cotangent report](../work/mathlib-cotangent-repro/README.md): corrected syntax-cache wrapper identity was insufficient alone; applied projection reduction through transparent aliases solved the production detour. Do not attribute the whole speedup to the cache fix. |
 | AugmentedSimplex at 50,115,358 | [Simplex report](../work/mathlib-augmented-simplex-repro/README.md): full transparency-respecting type-head reduction for computed singleton discriminants, preserving complete-type checking. |
 | PadicInt at 54,302,445 | [Padic report](../work/mathlib-padic-repro/README.md): nested cast inversion shares enclosing strategy work; symbolic recovery defers cast evaluation without poisoning closure state. Target-only recheck and same-cell retry/negative tests passed. |
+| Penrose at 58,521,284 (SSH follow-up) | [Penrose report](../work/mathlib-penrose-repro/README.md): very large literal traversal, physical-memo collision behavior, application conversion fingerprints, large reflexive type comparison, and standalone serialized-value validation. The exact proof, fresh standalone target check, ten native groups, 18 focused fixtures and prior Padic replay passed on the laptop. The separate validation receipt pins that scope; it is not a remote validation or full Mathlib pass. |
 
 Not every directory has a README. For those, start with its release receipt's
 `source_diff`, `scope`, `evidence` and `validated_inputs`; never infer validation

@@ -1,0 +1,6 @@
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+memory guard: admitted with MemAvailable=26929068 KiB, reserve=6291456 KiB, RSS limit=3670016 KiB, cgroup high/max/swap=4194304/4194304/0 KiB, stack=262144 KiB
+memory guard: status 2026-09-18T13:46:39+02:00: session=2466631 members(session/scope)=2/2 Rocq workers=0 scope RSS=21552 KiB; cgroup=18468/4194304 KiB; MemAvailable=26912172 KiB
+Fatal error: exception Stack overflow
+memory guard: finished with status 2; cgroup peak=508184 KiB (hard limit 4194304 KiB)

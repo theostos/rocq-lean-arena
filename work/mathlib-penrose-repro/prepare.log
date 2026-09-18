@@ -1,0 +1,54 @@
+indexed 2,000,000 records
+indexed 4,000,000 records
+indexed 6,000,000 records
+indexed 8,000,000 records
+indexed 10,000,000 records
+indexed 12,000,000 records
+indexed 14,000,000 records
+indexed 16,000,000 records
+indexed 18,000,000 records
+indexed 20,000,000 records
+indexed 22,000,000 records
+indexed 24,000,000 records
+indexed 26,000,000 records
+indexed 28,000,000 records
+indexed 30,000,000 records
+indexed 32,000,000 records
+indexed 34,000,000 records
+indexed 36,000,000 records
+indexed 38,000,000 records
+indexed 40,000,000 records
+indexed 42,000,000 records
+indexed 44,000,000 records
+indexed 46,000,000 records
+indexed 48,000,000 records
+indexed 50,000,000 records
+indexed 52,000,000 records
+indexed 54,000,000 records
+indexed 56,000,000 records
+indexed 58,000,000 records
+Selected 9940 records; abstracted 0 dependency proofs.
+{"inputs": {"/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/mathlib.ndjson": "a466d22a521f0fc0406b6d0ece2173f2b2e3d9eb4d8bc26a5e14316d39944d27", "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-riemann-sharing-repro/slice_roots.py": "8bc089e4743a0c4501921e83d03920d7c42d74c8d8cc441725489268a19ff36a", "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-cotangent-repro/prepare.py": "da13638cb0884515c58c8c19d43bc87f4531332b790adf8d37517ca8d6de4572", "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/prepare.py": "da126fdbcf6c3bbec85bf26eeccac672d36121667aad858881898cc39f7af0db"}, "outputs": {"/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/Penrose.ndjson": "e60b2ece574b2d1eb2982c31d8e592be1884029159a22f83a3692c20c531e79a"}, "keep_all_proofs": true, "stats": {"selected": 9940, "abstracted": 0, "root_name_ids": {"_private.ProofWidgets.Component.PenroseDiagram.0.ProofWidgets.Penrose.Diagram._proof_1": 2119211}}, "target": "_private.ProofWidgets.Component.PenroseDiagram.0.ProofWidgets.Penrose.Diagram._proof_1", "range": {"start": 9940, "end": 9941}, "original_line": 58521284, "seconds": 567.5618769819994}
+	Command being timed: "python3 work/mathlib-penrose-repro/prepare.py"
+	User time (seconds): 584.98
+	System time (seconds): 4.53
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 9:52.29
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 778368
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 2
+	Minor (reclaiming a frame) page faults: 210875
+	Voluntary context switches: 15548
+	Involuntary context switches: 74385
+	Swaps: 0
+	File system inputs: 7935704
+	File system outputs: 6784
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

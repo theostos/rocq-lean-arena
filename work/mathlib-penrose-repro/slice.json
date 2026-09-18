@@ -1,0 +1,26 @@
+{
+  "inputs": {
+    "/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/mathlib.ndjson": "a466d22a521f0fc0406b6d0ece2173f2b2e3d9eb4d8bc26a5e14316d39944d27",
+    "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-riemann-sharing-repro/slice_roots.py": "8bc089e4743a0c4501921e83d03920d7c42d74c8d8cc441725489268a19ff36a",
+    "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-cotangent-repro/prepare.py": "da13638cb0884515c58c8c19d43bc87f4531332b790adf8d37517ca8d6de4572",
+    "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/prepare.py": "da126fdbcf6c3bbec85bf26eeccac672d36121667aad858881898cc39f7af0db"
+  },
+  "outputs": {
+    "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/Penrose.ndjson": "e60b2ece574b2d1eb2982c31d8e592be1884029159a22f83a3692c20c531e79a"
+  },
+  "keep_all_proofs": true,
+  "stats": {
+    "selected": 9940,
+    "abstracted": 0,
+    "root_name_ids": {
+      "_private.ProofWidgets.Component.PenroseDiagram.0.ProofWidgets.Penrose.Diagram._proof_1": 2119211
+    }
+  },
+  "target": "_private.ProofWidgets.Component.PenroseDiagram.0.ProofWidgets.Penrose.Diagram._proof_1",
+  "range": {
+    "start": 9940,
+    "end": 9941
+  },
+  "original_line": 58521284,
+  "seconds": 567.5618769819994
+}

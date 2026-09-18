@@ -1,0 +1,9 @@
+memory guard: admitted with MemAvailable=26986176 KiB, reserve=6291456 KiB, RSS limit=2621440 KiB, cgroup high/max/swap=3145728/3145728/0 KiB, stack=262144 KiB
+memory guard: status 2026-09-18T14:38:53+02:00: session=2603513 members(session/scope)=2/2 Rocq workers=0 scope RSS=28772 KiB; cgroup=16372/3145728 KiB; MemAvailable=26970372 KiB
+Entering directory '/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view'
+File "kernel/hConstr.ml", line 190, characters 6-12:
+190 |   let length = Table.length
+            ^^^^^^
+Error (warning 32 [unused-value-declaration]): unused value length.
+Leaving directory '/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view'
+memory guard: finished with status 1; cgroup peak=130136 KiB (hard limit 3145728 KiB)

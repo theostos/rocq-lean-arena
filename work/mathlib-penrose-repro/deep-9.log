@@ -1,0 +1,6 @@
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+File "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/deep_test.ml", line 30, characters 10-15:
+30 |   assert (isSet !node);
+               ^^^^^
+Error: Unbound value isSet
+Hint: Did you mean is_Set?

@@ -1,0 +1,12 @@
+Running: ['/home/theo/miniconda3/bin/python3', '/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/units.py']
+{"test": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/test-hashcons.sh", "exit_code": 0, "wall_seconds": 4.317713397991611, "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/candidate-units/test-hashcons.log", "log_sha256": "b62ec639edb6c73db4073c3505368d81fc9bdb4b1d964ebc0bbeeed2882775d8"}
+{"test": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/test-canonical.sh", "exit_code": 0, "wall_seconds": 1.2815909000055399, "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/candidate-units/test-canonical.log", "log_sha256": "3aef26dd1fff904b04ead891791967980d984822c4b8b995b504ac1cb63fb839"}
+{"test": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/test-conversion-hash.sh", "exit_code": 0, "wall_seconds": 2.0369257620041026, "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/candidate-units/test-conversion-hash.log", "log_sha256": "b5237c5c641d0552da62ec00b8f2c0310800b107076f8ec39741aff57b4f2007"}
+{"test": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/test-cross-dag.sh", "exit_code": 0, "wall_seconds": 0.8375959669938311, "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/candidate-units/test-cross-dag.log", "log_sha256": "ae42fd2b3139d8ff83597c7265bd16adf4edd820fc978a56bd6ad4e2e7b35a6e"}
+{"test": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/test-deep.sh", "exit_code": 124, "wall_seconds": 92.2245267679973, "log": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/candidate-units/test-deep.log", "log_sha256": "c55073c27056a5160820253e6954a4ca0f6697d0221e3b8462a35de65c92169b"}
+Traceback (most recent call last):
+  File "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/validate.py", line 32, in <module>
+    subprocess.run(command, cwd=ROOT, env=env, check=True)
+  File "/home/theo/miniconda3/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/theo/miniconda3/bin/python3', '/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/units.py']' returned non-zero exit status 124.

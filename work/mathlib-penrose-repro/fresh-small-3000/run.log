@@ -1,0 +1,207 @@
+memory guard: admitted with MemAvailable=27479764 KiB, reserve=3145728 KiB, RSS limit=15728640 KiB, cgroup high/max/swap=16777216/16777216/0 KiB, stack=262144 KiB
+memory guard: status 2026-09-18T14:27:39+02:00: session=2574335 members(session/scope)=2/2 Rocq workers=0 scope RSS=29664 KiB; cgroup=10408/16777216 KiB; MemAvailable=27472632 KiB
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.ubuntu.com>
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[lean checkpoint] before unpack cpu=0.824 heap_words=13895680 major_collections=1
+[lean checkpoint] after unpack cpu=0.833 heap_words=15980032 major_collections=1
+line 9944: _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1
+[declare] before name check
+[declare] after name check
+[declare] after entry conversion
+[declare] after universe context
+[safe-typing] after constant name
+[safe-typing] after section universes
+[definition] before universes
+[definition] before body universe substitution
+[definition] before hconstr
+[definition] before infer
+[infer-hconstr] before wellformed universes
+[infer-hconstr] before execute
+[typeops applications] cpu=0.444 calls=9084 hits=8999
+[infer-hconstr] after execute
+[definition] after infer
+[definition] before type universe substitution
+[definition] before declared type
+[typeops applications] cpu=0.437 calls=9085 hits=9000
+[definition] before cast
+memory guard: status 2026-09-18T14:27:54+02:00: session=2574335 members(session/scope)=3/3 Rocq workers=1 scope RSS=396436 KiB; cgroup=349956/16777216 KiB; MemAvailable=27127404 KiB
+memory guard: status 2026-09-18T14:28:09+02:00: session=2574335 members(session/scope)=3/3 Rocq workers=1 scope RSS=421156 KiB; cgroup=375220/16777216 KiB; MemAvailable=27130272 KiB
+memory guard: status 2026-09-18T14:28:24+02:00: session=2574335 members(session/scope)=3/3 Rocq workers=1 scope RSS=439512 KiB; cgroup=393324/16777216 KiB; MemAvailable=27107676 KiB
+memory guard: status 2026-09-18T14:28:39+02:00: session=2574335 members(session/scope)=3/3 Rocq workers=1 scope RSS=462488 KiB; cgroup=416020/16777216 KiB; MemAvailable=27088968 KiB
+
+Program received signal SIGUSR1, User defined signal 1.
+0x00005948137ee7ba in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1244
+warning: 1244	kernel/conversion.ml: No such file or directory
+
+[penrose stack] SIGUSR1 time=1789734524.164
+
+Thread 1 (Thread 0x765e1020fb80 (LWP 2574370) "rocqworker.exe"):
+#0  0x00005948137ee7ba in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1244
+#1  0x000059481394006c in camlCArray__aux_395 () at clib/cArray.ml:45
+#2  0x00005948137ede88 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1266
+#3  0x000059481394006c in camlCArray__aux_395 () at clib/cArray.ml:45
+#4  0x00005948137ede88 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1266
+#5  0x000059481394006c in camlCArray__aux_395 () at clib/cArray.ml:45
+#6  0x00005948137ede88 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1266
+#7  0x000059481394006c in camlCArray__aux_395 () at clib/cArray.ml:45
+#8  0x00005948137ede88 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1266
+#9  0x000059481394006c in camlCArray__aux_395 () at clib/cArray.ml:45
+#10 0x00005948137ede88 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1266
+#11 0x000059481394006c in camlCArray__aux_395 () at clib/cArray.ml:45
+#12 0x00005948137ede88 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1266
+#13 0x000059481394006c in camlCArray__aux_395 () at clib/cArray.ml:45
+#14 0x00005948137ede88 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1266
+#15 0x000059481394006c in camlCArray__aux_395 () at clib/cArray.ml:45
+#16 0x00005948137ede88 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1266
+#17 0x000059481394006c in camlCArray__aux_395 () at clib/cArray.ml:45
+#18 0x00005948137ede88 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1266
+#19 0x000059481394006c in camlCArray__aux_395 () at clib/cArray.ml:45
+[outer frames; traversed 16384]
+#16339 camlConversion__eqwhnf_5346
+#16340 camlConversion__eqwhnf_5346
+#16341 camlConversion__eqwhnf_5346
+#16342 camlConversion__eqwhnf_5346
+#16343 camlConversion__eqwhnf_5346
+#16344 camlConversion__eqwhnf_5346
+#16345 camlConversion__eqwhnf_5346
+#16346 camlConversion__eqwhnf_5346
+#16347 camlConversion__eqwhnf_5346
+#16348 camlConversion__eqwhnf_5346
+#16349 camlConversion__eqwhnf_5346
+#16350 camlConversion__eqwhnf_5346
+#16351 camlConversion__eqwhnf_5346
+#16352 camlConversion__eqwhnf_5346
+#16353 camlConversion__eqwhnf_5346
+#16354 camlConversion__eqwhnf_5346
+#16355 camlConversion__eqwhnf_5346
+#16356 camlConversion__eqwhnf_5346
+#16357 camlConversion__eqwhnf_5346
+#16358 camlConversion__eqwhnf_5346
+#16359 camlConversion__eqwhnf_5346
+#16360 camlConversion__eqwhnf_5346
+#16361 camlConversion__eqwhnf_5346
+#16362 camlConversion__eqwhnf_5346
+#16363 camlConversion__eqwhnf_5346
+#16364 camlConversion__eqwhnf_5346
+#16365 camlConversion__eqwhnf_5346
+#16366 camlConversion__eqwhnf_5346
+#16367 camlConversion__eqwhnf_5346
+#16368 camlConversion__eqwhnf_5346
+#16369 camlConversion__eqwhnf_5346
+#16370 camlConversion__eqwhnf_5346
+#16371 camlConversion__eqwhnf_5346
+#16372 camlConversion__eqwhnf_5346
+#16373 camlConversion__eqwhnf_5346
+#16374 camlConversion__eqwhnf_5346
+#16375 camlConversion__eqwhnf_5346
+#16376 camlConversion__eqwhnf_5346
+#16377 camlConversion__eqwhnf_5346
+#16378 camlConversion__eqwhnf_5346
+#16379 camlConversion__eqwhnf_5346
+#16380 camlConversion__eqwhnf_5346
+#16381 camlConversion__eqwhnf_5346
+#16382 camlConversion__eqwhnf_5346
+#16383 camlConversion__eqwhnf_5346
+memory guard: status 2026-09-18T14:28:54+02:00: session=2574335 members(session/scope)=3/3 Rocq workers=1 scope RSS=657476 KiB; cgroup=609512/16777216 KiB; MemAvailable=26895248 KiB
+memory guard: status 2026-09-18T14:29:09+02:00: session=2574335 members(session/scope)=3/3 Rocq workers=1 scope RSS=689592 KiB; cgroup=641996/16777216 KiB; MemAvailable=26859808 KiB
+memory guard: status 2026-09-18T14:29:24+02:00: session=2574335 members(session/scope)=3/3 Rocq workers=1 scope RSS=706960 KiB; cgroup=659416/16777216 KiB; MemAvailable=26854968 KiB
+memory guard: status 2026-09-18T14:29:39+02:00: session=2574335 members(session/scope)=3/3 Rocq workers=1 scope RSS=725508 KiB; cgroup=677508/16777216 KiB; MemAvailable=26739824 KiB
+
+Program received signal SIGUSR1, User defined signal 1.
+0x00005948139a23e8 in camlStdlib__Hashtbl__mem_in_bucket_1118 () at hashtbl.ml:449
+warning: 449	hashtbl.ml: No such file or directory
+
+[penrose stack] SIGUSR1 time=1789734584.169
+
+Thread 1 (Thread 0x765e1020fb80 (LWP 2574370) "rocqworker.exe"):
+#0  0x00005948139a23e8 in camlStdlib__Hashtbl__mem_in_bucket_1118 () at hashtbl.ml:449
+#1  0x00005948137ebbcd in camlConversion__compare_under_inner_9405 () at kernel/conversion.ml:1119
+#2  0x000059481394006c in camlCArray__aux_395 () at clib/cArray.ml:45
+#3  0x00005948137ec4ab in camlConversion__compare_under_inner_9405 () at kernel/conversion.ml:1165
+#4  0x00005948137ec1fd in camlConversion__compare_under_inner_9405 () at kernel/conversion.ml:1156
+#5  0x00005948137ec1fd in camlConversion__compare_under_inner_9405 () at kernel/conversion.ml:1156
+#6  0x00005948137ec1fd in camlConversion__compare_under_inner_9405 () at kernel/conversion.ml:1156
+#7  0x00005948137ee42a in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1286
+#8  0x00005948137ebde9 in camlConversion__compare_under_inner_9405 () at kernel/conversion.ml:1133
+#9  0x00005948137ec40e in camlConversion__compare_under_inner_9405 () at kernel/conversion.ml:1164
+#10 0x00005948137ee714 in camlConversion__fast_test_under_inner_9413 () at kernel/conversion.ml:1247
+#11 0x00005948137f8ada in camlConversion__ccnv_5343 () at kernel/conversion.ml:2489
+#12 0x00005948139410b3 in camlCArray__fold_497 () at clib/cArray.ml:164
+#13 0x00005948137fae83 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:2750
+#14 0x000059481399e0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#15 0x00005948137f8cb0 in camlConversion__ccnv_5343 () at kernel/conversion.ml:2535
+#16 0x000059481399e0d9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#17 0x00005948137f8cb0 in camlConversion__ccnv_5343 () at kernel/conversion.ml:2535
+#18 0x0000594813807800 in camlConversion__fold_6291 () at kernel/conversion.ml:4232
+#19 0x00005948137ff142 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:4018
+[outer frames; traversed 16384]
+#16339 camlConversion__eqwhnf_5346
+#16340 camlConversion__eqwhnf_5346
+#16341 camlConversion__eqwhnf_5346
+#16342 camlConversion__eqwhnf_5346
+#16343 camlConversion__eqwhnf_5346
+#16344 camlConversion__eqwhnf_5346
+#16345 camlConversion__eqwhnf_5346
+#16346 camlConversion__eqwhnf_5346
+#16347 camlConversion__eqwhnf_5346
+#16348 camlConversion__eqwhnf_5346
+#16349 camlConversion__eqwhnf_5346
+#16350 camlConversion__eqwhnf_5346
+#16351 camlConversion__eqwhnf_5346
+#16352 camlConversion__eqwhnf_5346
+#16353 camlConversion__eqwhnf_5346
+#16354 camlConversion__eqwhnf_5346
+#16355 camlConversion__eqwhnf_5346
+#16356 camlConversion__eqwhnf_5346
+#16357 camlConversion__eqwhnf_5346
+#16358 camlConversion__eqwhnf_5346
+#16359 camlConversion__eqwhnf_5346
+#16360 camlConversion__eqwhnf_5346
+#16361 camlConversion__eqwhnf_5346
+#16362 camlConversion__eqwhnf_5346
+#16363 camlConversion__eqwhnf_5346
+#16364 camlConversion__eqwhnf_5346
+#16365 camlConversion__eqwhnf_5346
+#16366 camlConversion__eqwhnf_5346
+#16367 camlConversion__eqwhnf_5346
+#16368 camlConversion__eqwhnf_5346
+#16369 camlConversion__eqwhnf_5346
+#16370 camlConversion__eqwhnf_5346
+#16371 camlConversion__eqwhnf_5346
+#16372 camlConversion__eqwhnf_5346
+#16373 camlConversion__eqwhnf_5346
+#16374 camlConversion__eqwhnf_5346
+#16375 camlConversion__eqwhnf_5346
+#16376 camlConversion__eqwhnf_5346
+#16377 camlConversion__eqwhnf_5346
+#16378 camlConversion__eqwhnf_5346
+#16379 camlConversion__eqwhnf_5346
+#16380 camlConversion__eqwhnf_5346
+#16381 camlConversion__eqwhnf_5346
+#16382 camlConversion__eqwhnf_5346
+#16383 camlConversion__eqwhnf_5346
+[definition] after cast
+[declare] after kernel declaration
+
+
+Done!
+- 261 entries (472 possible instances).
+- 25 universe expressions
+- 1727 names
+- 7933 expression nodes
+Max universe instance length 3.
+0 inductives have non syntactically arity types.
+[lean checkpoint] before checkpoint GC cpu=124.081 heap_words=48885760 major_collections=103
+[lean checkpoint] before indexed encoding cpu=125.181 heap_words=27751936 major_collections=105
+[lean indexed checkpoint] expressions=7933 probes=46262 max_probe=23
+[lean checkpoint] after indexed encoding cpu=125.256 heap_words=27751936 major_collections=105
+[lean checkpoint] before pack cpu=126.163 heap_words=27751936 major_collections=107
+[lean checkpoint] after checkpoint file write cpu=126.168 heap_words=27751936 major_collections=107
+[lean checkpoint] after pack cpu=126.169 heap_words=27751936 major_collections=107
+[Inferior 1 (process 2574370) exited normally]
+memory guard: finished with status 0; cgroup peak=714656 KiB (hard limit 16777216 KiB)

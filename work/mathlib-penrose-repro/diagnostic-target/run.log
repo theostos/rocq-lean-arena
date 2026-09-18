@@ -1,0 +1,976 @@
+memory guard: admitted with MemAvailable=27461020 KiB, reserve=3145728 KiB, RSS limit=15728640 KiB, cgroup high/max/swap=16777216/16777216/0 KiB, stack=262144 KiB
+memory guard: status 2026-09-18T14:12:03+02:00: session=2526515 members(session/scope)=2/2 Rocq workers=0 scope RSS=28488 KiB; cgroup=10032/16777216 KiB; MemAvailable=27455764 KiB
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.ubuntu.com>
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[lean checkpoint] before unpack cpu=0.835 heap_words=13895680 major_collections=1
+[lean checkpoint] after unpack cpu=0.844 heap_words=15980032 major_collections=1
+line 9939: _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1
+[declare start] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=0.878 heap_words=18377216 major=1
+[declare before type] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=0.878 heap_words=18377216 major=1
+[declare after type] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=5.889 heap_words=64651776 major=7
+[declare before body] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=5.889 heap_words=64651776 major=7
+[declare after body] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=5.903 heap_words=64651776 major=7
+[declare before universes] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=5.903 heap_words=64651776 major=7
+[declare after universes] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=6.104 heap_words=64651776 major=7
+[declare before quickdef] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=6.104 heap_words=64651776 major=7
+[declare after name] _private.ProofWidgets.Component.PenroseDiagram0.ProofWidgets.Penrose.Diagram._proof_1 instance 0 cpu=6.104 heap_words=64651776 major=7
+memory guard: status 2026-09-18T14:12:18+02:00: session=2526515 members(session/scope)=3/3 Rocq workers=1 scope RSS=1003972 KiB; cgroup=958960/16777216 KiB; MemAvailable=26468272 KiB
+memory guard: status 2026-09-18T14:12:33+02:00: session=2526515 members(session/scope)=3/3 Rocq workers=1 scope RSS=1672172 KiB; cgroup=1628272/16777216 KiB; MemAvailable=25808520 KiB
+memory guard: status 2026-09-18T14:12:48+02:00: session=2526515 members(session/scope)=3/3 Rocq workers=1 scope RSS=2085040 KiB; cgroup=2041888/16777216 KiB; MemAvailable=25511472 KiB
+[penrose-diagnostic] calls=10000 hits=7409 cpu=50.632 left=Case
+ (Cst((Corelib.Init.Datatypes.andb))
+  (Cst((Stdlib.NArith.BinNat.N.ltb,Stdlib.NArith.BinNatDef.N.ltb))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(111)))
+   (Constr(Corelib.Numbers.BinNums.N,0,2)
+    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                    Constr(Corelib.Numbers.BinNums.positive,0,3)))))))))))))))))))))))))))))))))))
+  (Cst((LeanImport.Lean.check_N_isValidChar))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(111)))))
+params
+ 
+return
+ _ |- Set
+with
+|- Ind(LeanImport.Lean.Char,0)
+|-
+  (Ind(LeanImport.Lean.InvalidChar,0)
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(111))))
+end right=Ind(LeanImport.Lean.Char,0)
+[penrose-diagnostic] calls=20000 hits=14374 cpu=53.867 left=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0)) right=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0))
+[penrose-diagnostic] calls=30000 hits=21328 cpu=57.087 left=Set right=Type(Lean.Set+1.0)
+memory guard: status 2026-09-18T14:13:03+02:00: session=2526515 members(session/scope)=3/3 Rocq workers=1 scope RSS=2316364 KiB; cgroup=2273768/16777216 KiB; MemAvailable=25275696 KiB
+[penrose-diagnostic] calls=40000 hits=28285 cpu=60.379 left=Case
+ (Cst((Corelib.Init.Datatypes.andb))
+  (Cst((Stdlib.NArith.BinNat.N.ltb,Stdlib.NArith.BinNatDef.N.ltb))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(116)))
+   (Constr(Corelib.Numbers.BinNums.N,0,2)
+    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                    Constr(Corelib.Numbers.BinNums.positive,0,3)))))))))))))))))))))))))))))))))))
+  (Cst((LeanImport.Lean.check_N_isValidChar))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(116)))))
+params
+ 
+return
+ _ |- Set
+with
+|- Ind(LeanImport.Lean.Char,0)
+|-
+  (Ind(LeanImport.Lean.InvalidChar,0)
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(116))))
+end right=Ind(LeanImport.Lean.Char,0)
+[penrose-diagnostic] calls=50000 hits=35180 cpu=63.613 left=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0)) right=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0))
+
+Program received signal SIGUSR1, User defined signal 1.
+camlCamlinternalAtomic__fetch_and_add_30 () at camlinternalAtomic.ml:54
+warning: 54	camlinternalAtomic.ml: No such file or directory
+
+[diagnostic stack] SIGUSR1 time=1789733588.579
+
+Thread 1 (Thread 0x757a408c2b80 (LWP 2526550) "rocqworker.exe"):
+#0  camlCamlinternalAtomic__fetch_and_add_30 () at camlinternalAtomic.ml:54
+#1  0x0000635685851ce5 in camlCClosure__make_fconstr_1624 () at kernel/cClosure.ml:287
+#2  0x000063568585a39b in camlCClosure__get_native_args_3696 () at kernel/cClosure.ml:1418
+#3  0x000063568585a859 in camlCClosure__get_native_args1_3730 () at kernel/cClosure.ml:1421
+#4  0x0000635685868316 in camlCClosure__knr_5291 () at kernel/cClosure.ml:3197
+#5  0x000063568586c220 in camlCClosure__whd_stack_5729 () at kernel/cClosure.ml:3583
+#6  0x00006356858af3f4 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3820
+#7  0x00006356858a6c1c in camlConversion__ccnv_5343 () at kernel/conversion.ml:2531
+#8  0x00006356858b745d in camlConversion__run_conversion_6501 () at kernel/conversion.ml:4452
+#9  0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#10 0x00006356858b861a in camlConversion__gen_conv_inner_12559 () at kernel/conversion.ml:4624
+#11 0x00006356858dc9a8 in camlTypeops__convert_1280 () at kernel/typeops.ml:85
+#12 0x00006356858de090 in camlTypeops__apply_rec_2351 () at kernel/typeops.ml:308
+#13 0x00006356858e191a in camlTypeops__apply_3319 () at kernel/typeops.ml:773
+#14 0x00006356858e1c2a in camlTypeops__return_3328 () at kernel/typeops.ml:793
+#15 0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#16 0x00006356858e3f2d in camlTypeops__infer_hconstr_3698 () at kernel/typeops.ml:1051
+#17 0x00006356858ed5d4 in camlConstant_typing__infer_definition_1845 () at kernel/constant_typing.ml:228
+#18 0x0000635685904e00 in camlSafe_typing__add_constant_3915 () at kernel/safe_typing.ml:1187
+#19 0x00006356857cbd30 in camlGlobal__fun_2342 () at library/global.ml:65
+#20 0x000063568541d658 in camlDeclare__declare_constant_inner_10093 () at vernac/declare.ml:687
+#21 0x000063568541f73c in camlDeclare__declare_entry_inner_10181 () at vernac/declare.ml:944
+#22 0x0000757a373dfdb1 in camlLean_import__Lean__quickdef_inner_10503 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.Ex4Pptq9/src/././lean_import.cmxs
+#23 0x0000757a373f94c0 in camlLean_import__Lean__declare_def_6894 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.Ex4Pptq9/src/././lean_import.cmxs
+#24 0x0000757a374002f1 in camlLean_import__Lean__fun_15027 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.Ex4Pptq9/src/././lean_import.cmxs
+#25 0x0000757a3740025e in camlLean_import__Lean__loop_7963 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.Ex4Pptq9/src/././lean_import.cmxs
+#26 0x0000757a37400518 in camlLean_import__Lean__add_entry_7986 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.Ex4Pptq9/src/././lean_import.cmxs
+#27 0x000063568599b4de in camlControl__fun_854 () at lib/control.ml:53
+#28 0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#29 0x0000757a37401375 in camlLean_import__Lean__with_line_timeout_8109 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.Ex4Pptq9/src/././lean_import.cmxs
+#30 0x0000757a374016ed in camlLean_import__Lean__process_effect_8215 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.Ex4Pptq9/src/././lean_import.cmxs
+#31 0x0000757a3740207b in camlLean_import__Lean__do_input_pending_8273 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.Ex4Pptq9/src/././lean_import.cmxs
+#32 0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#33 0x0000757a3740396b in camlLean_import__Lean__import_8707 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.Ex4Pptq9/src/././lean_import.cmxs
+#34 0x00006356854357e2 in camlVernactypes__fun_1447 () at vernac/vernactypes.ml:199
+#35 0x00006356854356ed in camlVernactypes__fun_1443 () at vernac/vernactypes.ml:196
+#36 0x0000635685435668 in camlVernactypes__fun_1435 () at vernac/vernactypes.ml:190
+#37 0x0000635685435363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#38 0x000063568543510a in camlVernactypes__fun_1403 () at vernac/vernactypes.ml:140
+#39 0x00006356854352d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#40 0x0000635685435363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#41 0x0000635685434d02 in camlVernactypes__fun_1399 () at vernac/vernactypes.ml:93
+#42 0x00006356854352d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#43 0x0000635685434606 in camlVernactypes__fun_1390 () at vernac/vernactypes.ml:27
+#44 0x000063568543521f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#45 0x000063568543521f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#46 0x00006356854355e4 in camlVernactypes__run_1126 () at vernac/vernactypes.ml:189
+#47 0x00006356854c3cff in camlVernacinterp__interp_expr_core_514 () at vernac/vernacinterp.ml:80
+#48 0x00006356854c38a2 in camlVernacinterp__interp_expr_513 () at vernac/vernacinterp.ml:49
+#49 0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#50 0x000063568547250a in camlVernacControl__under_control_1954 () at vernac/vernacControl.ml:244
+#51 0x00006356854c37aa in camlVernacinterp__interp_control_gen_474 () at vernac/vernacinterp.ml:36
+#52 0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#53 0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#54 0x00006356854c4446 in camlVernacinterp__interp_gen_1193 () at vernac/vernacinterp.ml:157
+#55 0x00006356854c462f in camlVernacinterp__interp_inner_1540 () at vernac/vernacinterp.ml:171
+#56 0x00006356853767d4 in camlStm__step_8350 () at stm/stm.ml:2035
+#57 0x000063568536f7a9 in camlStm__define_inner_9646 () at stm/stm.ml:963
+#58 0x0000635685375ee1 in camlStm__reach_inner_10580 () at stm/stm.ml:2204
+#59 0x00006356853784c1 in camlStm__observe_6834 () at stm/stm.ml:2296
+#60 0x0000635685358831 in camlVernac__interp_vernac_1328 () at toplevel/vernac.ml:87
+#61 0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#62 0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#63 0x0000635685358dbd in camlVernac__loop_1481 () at toplevel/vernac.ml:135
+#64 0x0000635685358ad5 in camlVernac__load_vernac_core_1387 () at toplevel/vernac.ml:158
+#65 0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#66 0x000063568535fc54 in camlCcompile__compile_408 () at toplevel/ccompile.ml:64
+#67 0x000063568535ffed in camlCcompile__compile_941 () at toplevel/ccompile.ml:98
+#68 0x00006356853601e7 in camlCoqc__coqc_main_369 () at toplevel/coqc.ml:38
+#69 0x0000635685360312 in camlCoqc__coqc_run_1054 () at toplevel/coqc.ml:54
+#70 0x0000635685356e2b in camlDune__exe__Rocqworker__entry () at topbin/rocqworker.ml:45
+#71 0x000063568534d3d9 in caml_program ()
+#72 0x0000635685ab83ad in caml_start_program ()
+#73 0x0000635685a961ac in caml_startup_common (argv=0x7ffda67aeaf8, pooling=<optimized out>, pooling@entry=0) at startup_nat.c:160
+#74 0x0000635685a9622f in caml_startup_exn (argv=<optimized out>) at startup_nat.c:167
+#75 caml_startup (argv=<optimized out>) at startup_nat.c:172
+#76 caml_main (argv=<optimized out>) at startup_nat.c:179
+#77 0x000063568534b222 in main (argc=<optimized out>, argv=<optimized out>) at main.c:37
+[penrose-diagnostic] calls=60000 hits=42084 cpu=66.804 left=Set right=Type(Lean.Set+1.0)
+[penrose-diagnostic] calls=70000 hits=49008 cpu=70.042 left=Case
+ (Cst((Corelib.Init.Datatypes.andb))
+  (Cst((Stdlib.NArith.BinNat.N.ltb,Stdlib.NArith.BinNatDef.N.ltb))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(121)))
+   (Constr(Corelib.Numbers.BinNums.N,0,2)
+    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                    Constr(Corelib.Numbers.BinNums.positive,0,3)))))))))))))))))))))))))))))))))))
+  (Cst((LeanImport.Lean.check_N_isValidChar))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(121)))))
+params
+ 
+return
+ _ |- Set
+with
+|- Ind(LeanImport.Lean.Char,0)
+|-
+  (Ind(LeanImport.Lean.InvalidChar,0)
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(121))))
+end right=Ind(LeanImport.Lean.Char,0)
+memory guard: status 2026-09-18T14:13:18+02:00: session=2526515 members(session/scope)=3/3 Rocq workers=1 scope RSS=2327368 KiB; cgroup=2281232/16777216 KiB; MemAvailable=25276828 KiB
+[penrose-diagnostic] calls=80000 hits=55969 cpu=73.243 left=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0)) right=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0))
+[penrose-diagnostic] calls=90000 hits=62938 cpu=76.506 left=Set right=Type(Lean.Set+1.0)
+[penrose-diagnostic] calls=100000 hits=69870 cpu=79.762 left=Case
+ (Cst((Corelib.Init.Datatypes.andb))
+  (Cst((Stdlib.NArith.BinNat.N.ltb,Stdlib.NArith.BinNatDef.N.ltb))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(97)))
+   (Constr(Corelib.Numbers.BinNums.N,0,2)
+    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                    Constr(Corelib.Numbers.BinNums.positive,0,3)))))))))))))))))))))))))))))))))))
+  (Cst((LeanImport.Lean.check_N_isValidChar))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(97)))))
+params
+ 
+return
+ _ |- Set
+with
+|- Ind(LeanImport.Lean.Char,0)
+|-
+  (Ind(LeanImport.Lean.InvalidChar,0)
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(97))))
+end right=Ind(LeanImport.Lean.Char,0)
+[penrose-diagnostic] calls=110000 hits=76796 cpu=83.044 left=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0)) right=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0))
+[penrose-diagnostic] calls=120000 hits=83725 cpu=86.305 left=Set right=Type(Lean.Set+1.0)
+memory guard: status 2026-09-18T14:13:33+02:00: session=2526515 members(session/scope)=3/3 Rocq workers=1 scope RSS=2327368 KiB; cgroup=2281008/16777216 KiB; MemAvailable=25286436 KiB
+[penrose-diagnostic] calls=130000 hits=90644 cpu=89.657 left=Case
+ (Cst((Corelib.Init.Datatypes.andb))
+  (Cst((Stdlib.NArith.BinNat.N.ltb,Stdlib.NArith.BinNatDef.N.ltb))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(116)))
+   (Constr(Corelib.Numbers.BinNums.N,0,2)
+    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                    Constr(Corelib.Numbers.BinNums.positive,0,3)))))))))))))))))))))))))))))))))))
+  (Cst((LeanImport.Lean.check_N_isValidChar))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(116)))))
+params
+ 
+return
+ _ |- Set
+with
+|- Ind(LeanImport.Lean.Char,0)
+|-
+  (Ind(LeanImport.Lean.InvalidChar,0)
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(116))))
+end right=Ind(LeanImport.Lean.Char,0)
+[penrose-diagnostic] calls=140000 hits=97669 cpu=93.151 left=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0)) right=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0))
+[penrose-diagnostic] calls=150000 hits=104615 cpu=96.347 left=Set right=Type(Lean.Set+1.0)
+[penrose-diagnostic] calls=160000 hits=111578 cpu=99.597 left=Case
+ (Cst((Corelib.Init.Datatypes.andb))
+  (Cst((Stdlib.NArith.BinNat.N.ltb,Stdlib.NArith.BinNatDef.N.ltb))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(111)))
+   (Constr(Corelib.Numbers.BinNums.N,0,2)
+    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                    Constr(Corelib.Numbers.BinNums.positive,0,3)))))))))))))))))))))))))))))))))))
+  (Cst((LeanImport.Lean.check_N_isValidChar))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(111)))))
+params
+ 
+return
+ _ |- Set
+with
+|- Ind(LeanImport.Lean.Char,0)
+|-
+  (Ind(LeanImport.Lean.InvalidChar,0)
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(111))))
+end right=Ind(LeanImport.Lean.Char,0)
+memory guard: status 2026-09-18T14:13:48+02:00: session=2526515 members(session/scope)=3/3 Rocq workers=1 scope RSS=2327368 KiB; cgroup=2281696/16777216 KiB; MemAvailable=25289064 KiB
+[penrose-diagnostic] calls=170000 hits=118521 cpu=102.941 left=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0)) right=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0))
+[penrose-diagnostic] calls=180000 hits=125465 cpu=106.222 left=Set right=Type(Lean.Set+1.0)
+[penrose-diagnostic] calls=190000 hits=132411 cpu=109.605 left=Case
+ (Cst((Corelib.Init.Datatypes.andb))
+  (Cst((Stdlib.NArith.BinNat.N.ltb,Stdlib.NArith.BinNatDef.N.ltb))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(61)))
+   (Constr(Corelib.Numbers.BinNums.N,0,2)
+    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                    Constr(Corelib.Numbers.BinNums.positive,0,3)))))))))))))))))))))))))))))))))))
+  (Cst((LeanImport.Lean.check_N_isValidChar))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(61)))))
+params
+ 
+return
+ _ |- Set
+with
+|- Ind(LeanImport.Lean.Char,0)
+|-
+  (Ind(LeanImport.Lean.InvalidChar,0)
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(61))))
+end right=Ind(LeanImport.Lean.Char,0)
+[penrose-diagnostic] calls=200000 hits=139315 cpu=112.969 left=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0)) right=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0))
+[penrose-diagnostic] calls=210000 hits=146292 cpu=116.500 left=Set right=Type(Lean.Set+1.0)
+memory guard: status 2026-09-18T14:14:03+02:00: session=2526515 members(session/scope)=3/3 Rocq workers=1 scope RSS=2327368 KiB; cgroup=2281492/16777216 KiB; MemAvailable=25294892 KiB
+[penrose-diagnostic] calls=220000 hits=153266 cpu=119.826 left=Case
+ (Cst((Corelib.Init.Datatypes.andb))
+  (Cst((Stdlib.NArith.BinNat.N.ltb,Stdlib.NArith.BinNatDef.N.ltb))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(104)))
+   (Constr(Corelib.Numbers.BinNums.N,0,2)
+    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                    Constr(Corelib.Numbers.BinNums.positive,0,3)))))))))))))))))))))))))))))))))))
+  (Cst((LeanImport.Lean.check_N_isValidChar))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(104)))))
+params
+ 
+return
+ _ |- Set
+with
+|- Ind(LeanImport.Lean.Char,0)
+|-
+  (Ind(LeanImport.Lean.InvalidChar,0)
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(104))))
+end right=Ind(LeanImport.Lean.Char,0)
+[penrose-diagnostic] calls=230000 hits=160154 cpu=123.170 left=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0)) right=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0))
+
+Program received signal SIGUSR1, User defined signal 1.
+0x000063568585ee44 in camlCClosure__compact_peano_of_constr_4328 () at kernel/cClosure.ml:2154
+warning: 2154	kernel/cClosure.ml: No such file or directory
+
+[diagnostic stack] SIGUSR1 time=1789733648.586
+
+Thread 1 (Thread 0x757a408c2b80 (LWP 2526550) "rocqworker.exe"):
+#0  0x000063568585ee44 in camlCClosure__compact_peano_of_constr_4328 () at kernel/cClosure.ml:2154
+#1  0x0000635685862699 in camlCClosure__knht_4573 () at kernel/cClosure.ml:2574
+#2  0x0000635685869ada in camlCClosure__knit_5294 () at kernel/cClosure.ml:3362
+#3  0x000063568586c220 in camlCClosure__whd_stack_5729 () at kernel/cClosure.ml:3583
+#4  0x00006356858af3f4 in camlConversion__eqwhnf_5346 () at kernel/conversion.ml:3820
+#5  0x00006356858a6c1c in camlConversion__ccnv_5343 () at kernel/conversion.ml:2531
+#6  0x00006356858b745d in camlConversion__run_conversion_6501 () at kernel/conversion.ml:4452
+#7  0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#8  0x00006356858b861a in camlConversion__gen_conv_inner_12559 () at kernel/conversion.ml:4624
+#9  0x00006356858dc9a8 in camlTypeops__convert_1280 () at kernel/typeops.ml:85
+#10 0x00006356858de090 in camlTypeops__apply_rec_2351 () at kernel/typeops.ml:308
+#11 0x00006356858e191a in camlTypeops__apply_3319 () at kernel/typeops.ml:773
+#12 0x00006356858e1c2a in camlTypeops__return_3328 () at kernel/typeops.ml:793
+#13 0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#14 0x00006356858e3f2d in camlTypeops__infer_hconstr_3698 () at kernel/typeops.ml:1051
+#15 0x00006356858ed5d4 in camlConstant_typing__infer_definition_1845 () at kernel/constant_typing.ml:228
+#16 0x0000635685904e00 in camlSafe_typing__add_constant_3915 () at kernel/safe_typing.ml:1187
+#17 0x00006356857cbd30 in camlGlobal__fun_2342 () at library/global.ml:65
+#18 0x000063568541d658 in camlDeclare__declare_constant_inner_10093 () at vernac/declare.ml:687
+#19 0x000063568541f73c in camlDeclare__declare_entry_inner_10181 () at vernac/declare.ml:944
+#20 0x0000757a373dfdb1 in camlLean_import__Lean__quickdef_inner_10503 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.Ex4Pptq9/src/././lean_import.cmxs
+#21 0x0000757a373f94c0 in camlLean_import__Lean__declare_def_6894 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.Ex4Pptq9/src/././lean_import.cmxs
+#22 0x0000757a374002f1 in camlLean_import__Lean__fun_15027 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.Ex4Pptq9/src/././lean_import.cmxs
+#23 0x0000757a3740025e in camlLean_import__Lean__loop_7963 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.Ex4Pptq9/src/././lean_import.cmxs
+#24 0x0000757a37400518 in camlLean_import__Lean__add_entry_7986 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.Ex4Pptq9/src/././lean_import.cmxs
+#25 0x000063568599b4de in camlControl__fun_854 () at lib/control.ml:53
+#26 0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#27 0x0000757a37401375 in camlLean_import__Lean__with_line_timeout_8109 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.Ex4Pptq9/src/././lean_import.cmxs
+#28 0x0000757a374016ed in camlLean_import__Lean__process_effect_8215 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.Ex4Pptq9/src/././lean_import.cmxs
+#29 0x0000757a3740207b in camlLean_import__Lean__do_input_pending_8273 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.Ex4Pptq9/src/././lean_import.cmxs
+#30 0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#31 0x0000757a3740396b in camlLean_import__Lean__import_8707 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.Ex4Pptq9/src/././lean_import.cmxs
+#32 0x00006356854357e2 in camlVernactypes__fun_1447 () at vernac/vernactypes.ml:199
+#33 0x00006356854356ed in camlVernactypes__fun_1443 () at vernac/vernactypes.ml:196
+#34 0x0000635685435668 in camlVernactypes__fun_1435 () at vernac/vernactypes.ml:190
+#35 0x0000635685435363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#36 0x000063568543510a in camlVernactypes__fun_1403 () at vernac/vernactypes.ml:140
+#37 0x00006356854352d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#38 0x0000635685435363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#39 0x0000635685434d02 in camlVernactypes__fun_1399 () at vernac/vernactypes.ml:93
+#40 0x00006356854352d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#41 0x0000635685434606 in camlVernactypes__fun_1390 () at vernac/vernactypes.ml:27
+#42 0x000063568543521f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#43 0x000063568543521f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#44 0x00006356854355e4 in camlVernactypes__run_1126 () at vernac/vernactypes.ml:189
+#45 0x00006356854c3cff in camlVernacinterp__interp_expr_core_514 () at vernac/vernacinterp.ml:80
+#46 0x00006356854c38a2 in camlVernacinterp__interp_expr_513 () at vernac/vernacinterp.ml:49
+#47 0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#48 0x000063568547250a in camlVernacControl__under_control_1954 () at vernac/vernacControl.ml:244
+#49 0x00006356854c37aa in camlVernacinterp__interp_control_gen_474 () at vernac/vernacinterp.ml:36
+#50 0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#51 0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#52 0x00006356854c4446 in camlVernacinterp__interp_gen_1193 () at vernac/vernacinterp.ml:157
+#53 0x00006356854c462f in camlVernacinterp__interp_inner_1540 () at vernac/vernacinterp.ml:171
+#54 0x00006356853767d4 in camlStm__step_8350 () at stm/stm.ml:2035
+#55 0x000063568536f7a9 in camlStm__define_inner_9646 () at stm/stm.ml:963
+#56 0x0000635685375ee1 in camlStm__reach_inner_10580 () at stm/stm.ml:2204
+#57 0x00006356853784c1 in camlStm__observe_6834 () at stm/stm.ml:2296
+#58 0x0000635685358831 in camlVernac__interp_vernac_1328 () at toplevel/vernac.ml:87
+#59 0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#60 0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#61 0x0000635685358dbd in camlVernac__loop_1481 () at toplevel/vernac.ml:135
+#62 0x0000635685358ad5 in camlVernac__load_vernac_core_1387 () at toplevel/vernac.ml:158
+#63 0x0000635685a4bfe9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#64 0x000063568535fc54 in camlCcompile__compile_408 () at toplevel/ccompile.ml:64
+#65 0x000063568535ffed in camlCcompile__compile_941 () at toplevel/ccompile.ml:98
+#66 0x00006356853601e7 in camlCoqc__coqc_main_369 () at toplevel/coqc.ml:38
+#67 0x0000635685360312 in camlCoqc__coqc_run_1054 () at toplevel/coqc.ml:54
+#68 0x0000635685356e2b in camlDune__exe__Rocqworker__entry () at topbin/rocqworker.ml:45
+#69 0x000063568534d3d9 in caml_program ()
+#70 0x0000635685ab83ad in caml_start_program ()
+#71 0x0000635685a961ac in caml_startup_common (argv=0x7ffda67aeaf8, pooling=<optimized out>, pooling@entry=0) at startup_nat.c:160
+#72 0x0000635685a9622f in caml_startup_exn (argv=<optimized out>) at startup_nat.c:167
+#73 caml_startup (argv=<optimized out>) at startup_nat.c:172
+#74 caml_main (argv=<optimized out>) at startup_nat.c:179
+#75 0x000063568534b222 in main (argc=<optimized out>, argv=<optimized out>) at main.c:37
+[penrose-diagnostic] calls=240000 hits=167043 cpu=126.802 left=Set right=Type(Lean.Set+1.0)
+[penrose-diagnostic] calls=250000 hits=173996 cpu=130.561 left=Case
+ (Cst((Corelib.Init.Datatypes.andb))
+  (Cst((Stdlib.NArith.BinNat.N.ltb,Stdlib.NArith.BinNatDef.N.ltb))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(54)))
+   (Constr(Corelib.Numbers.BinNums.N,0,2)
+    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                    Constr(Corelib.Numbers.BinNums.positive,0,3)))))))))))))))))))))))))))))))))))
+  (Cst((LeanImport.Lean.check_N_isValidChar))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(54)))))
+params
+ 
+return
+ _ |- Set
+with
+|- Ind(LeanImport.Lean.Char,0)
+|-
+  (Ind(LeanImport.Lean.InvalidChar,0)
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(54))))
+end right=Ind(LeanImport.Lean.Char,0)
+memory guard: status 2026-09-18T14:14:18+02:00: session=2526515 members(session/scope)=3/3 Rocq workers=1 scope RSS=2327368 KiB; cgroup=2281680/16777216 KiB; MemAvailable=25264652 KiB
+[penrose-diagnostic] calls=260000 hits=180971 cpu=133.846 left=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0)) right=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0))
+[penrose-diagnostic] calls=270000 hits=187872 cpu=137.253 left=Set right=Type(Lean.Set+1.0)
+[penrose-diagnostic] calls=280000 hits=194785 cpu=140.901 left=Case
+ (Cst((Corelib.Init.Datatypes.andb))
+  (Cst((Stdlib.NArith.BinNat.N.ltb,Stdlib.NArith.BinNatDef.N.ltb))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(115)))
+   (Constr(Corelib.Numbers.BinNums.N,0,2)
+    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                    Constr(Corelib.Numbers.BinNums.positive,0,3)))))))))))))))))))))))))))))))))))
+  (Cst((LeanImport.Lean.check_N_isValidChar))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(115)))))
+params
+ 
+return
+ _ |- Set
+with
+|- Ind(LeanImport.Lean.Char,0)
+|-
+  (Ind(LeanImport.Lean.InvalidChar,0)
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(115))))
+end right=Ind(LeanImport.Lean.Char,0)
+[penrose-diagnostic] calls=290000 hits=201732 cpu=144.173 left=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0)) right=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0))
+[penrose-diagnostic] calls=300000 hits=208814 cpu=147.323 left=Set right=Type(Lean.Set+1.0)
+memory guard: status 2026-09-18T14:14:33+02:00: session=2526515 members(session/scope)=3/3 Rocq workers=1 scope RSS=2327368 KiB; cgroup=2281024/16777216 KiB; MemAvailable=25278112 KiB
+[penrose-diagnostic] calls=310000 hits=215918 cpu=150.567 left=Case
+ (Cst((Corelib.Init.Datatypes.andb))
+  (Cst((Stdlib.NArith.BinNat.N.ltb,Stdlib.NArith.BinNatDef.N.ltb))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(99)))
+   (Constr(Corelib.Numbers.BinNums.N,0,2)
+    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                    Constr(Corelib.Numbers.BinNums.positive,0,3)))))))))))))))))))))))))))))))))))
+  (Cst((LeanImport.Lean.check_N_isValidChar))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(99)))))
+params
+ 
+return
+ _ |- Set
+with
+|- Ind(LeanImport.Lean.Char,0)
+|-
+  (Ind(LeanImport.Lean.InvalidChar,0)
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(99))))
+end right=Ind(LeanImport.Lean.Char,0)
+[penrose-diagnostic] calls=320000 hits=222907 cpu=153.789 left=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0)) right=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0))
+[penrose-diagnostic] calls=330000 hits=229963 cpu=156.901 left=Set right=Type(Lean.Set+1.0)
+[penrose-diagnostic] calls=340000 hits=237020 cpu=160.062 left=Case
+ (Cst((Corelib.Init.Datatypes.andb))
+  (Cst((Stdlib.NArith.BinNat.N.ltb,Stdlib.NArith.BinNatDef.N.ltb))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(97)))
+   (Constr(Corelib.Numbers.BinNums.N,0,2)
+    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                    Constr(Corelib.Numbers.BinNums.positive,0,3)))))))))))))))))))))))))))))))))))
+  (Cst((LeanImport.Lean.check_N_isValidChar))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(97)))))
+params
+ 
+return
+ _ |- Set
+with
+|- Ind(LeanImport.Lean.Char,0)
+|-
+  (Ind(LeanImport.Lean.InvalidChar,0)
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(97))))
+end right=Ind(LeanImport.Lean.Char,0)
+memory guard: status 2026-09-18T14:14:48+02:00: session=2526515 members(session/scope)=3/3 Rocq workers=1 scope RSS=2330780 KiB; cgroup=2285028/16777216 KiB; MemAvailable=25303180 KiB
+[penrose-diagnostic] calls=350000 hits=243986 cpu=163.388 left=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0)) right=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0))
+[penrose-diagnostic] calls=360000 hits=250867 cpu=166.859 left=Set right=Type(Lean.Set+1.0)
+[penrose-diagnostic] calls=370000 hits=257787 cpu=170.196 left=Case
+ (Cst((Corelib.Init.Datatypes.andb))
+  (Cst((Stdlib.NArith.BinNat.N.ltb,Stdlib.NArith.BinNatDef.N.ltb))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(103)))
+   (Constr(Corelib.Numbers.BinNums.N,0,2)
+    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                    Constr(Corelib.Numbers.BinNums.positive,0,3)))))))))))))))))))))))))))))))))))
+  (Cst((LeanImport.Lean.check_N_isValidChar))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(103)))))
+params
+ 
+return
+ _ |- Set
+with
+|- Ind(LeanImport.Lean.Char,0)
+|-
+  (Ind(LeanImport.Lean.InvalidChar,0)
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(103))))
+end right=Ind(LeanImport.Lean.Char,0)
+[penrose-diagnostic] calls=380000 hits=264704 cpu=173.551 left=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0)) right=(Ind(PenrosePrefixLegacy.List_inst1,0) Ind(LeanImport.Lean.Char,0))
+[penrose-diagnostic] calls=390000 hits=271638 cpu=177.008 left=Set right=Type(Lean.Set+1.0)
+memory guard: status 2026-09-18T14:15:03+02:00: session=2526515 members(session/scope)=3/3 Rocq workers=1 scope RSS=2369720 KiB; cgroup=2324124/16777216 KiB; MemAvailable=25268296 KiB
+[penrose-diagnostic] calls=400000 hits=278548 cpu=180.341 left=Case
+ (Cst((Corelib.Init.Datatypes.andb))
+  (Cst((Stdlib.NArith.BinNat.N.ltb,Stdlib.NArith.BinNatDef.N.ltb))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(125)))
+   (Constr(Corelib.Numbers.BinNums.N,0,2)
+    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                    (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                     (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                      (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                       (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                        (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                         (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                          (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                           (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                            (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                             (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                              (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                               (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                 (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                  (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                   (Constr(Corelib.Numbers.BinNums.positive,0,2)
+                                    Constr(Corelib.Numbers.BinNums.positive,0,3)))))))))))))))))))))))))))))))))))
+  (Cst((LeanImport.Lean.check_N_isValidChar))
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(125)))))
+params
+ 
+return
+ _ |- Set
+with
+|- Ind(LeanImport.Lean.Char,0)
+|-
+  (Ind(LeanImport.Lean.InvalidChar,0)
+   (Cst((Stdlib.ZArith.BinInt.Z.to_N,Stdlib.ZArith.BinIntDef.Z.to_N))
+    (Cst((Corelib.Numbers.Cyclic.Int63.Uint63Axioms.to_Z)) Int(125))))
+end right=Ind(LeanImport.Lean.Char,0)
+
+Program received signal SIGTERM, Terminated.
+0x0000635685860f13 in camlCClosure__compact_peano_bool_operation_4499 () at kernel/cClosure.ml:1939
+1939	in kernel/cClosure.ml
+memory guard: finished with status 255; cgroup peak=2333796 KiB (hard limit 16777216 KiB)

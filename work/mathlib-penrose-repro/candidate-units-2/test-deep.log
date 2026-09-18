@@ -1,0 +1,14 @@
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+findlib: [WARNING] Package rocq-runtime has multiple definitions in /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/install/default/lib/rocq-runtime/META, /home/theo/.opam/rocq93_native/lib/rocq-runtime/META
+memory guard: admitted with MemAvailable=27066192 KiB, reserve=6291456 KiB, RSS limit=3670016 KiB, cgroup high/max/swap=4194304/4194304/0 KiB, stack=262144 KiB
+memory guard: status 2026-09-18T15:00:38+02:00: session=2652605 members(session/scope)=2/2 Rocq workers=0 scope RSS=21380 KiB; cgroup=17232/4194304 KiB; MemAvailable=27061148 KiB
+memory guard: status 2026-09-18T15:00:53+02:00: session=2652605 members(session/scope)=2/2 Rocq workers=0 scope RSS=1132556 KiB; cgroup=1130944/4194304 KiB; MemAvailable=26191280 KiB
+memory guard: status 2026-09-18T15:01:08+02:00: session=2652605 members(session/scope)=2/2 Rocq workers=0 scope RSS=1450048 KiB; cgroup=1449364/4194304 KiB; MemAvailable=25813900 KiB
+PASS deep hashcons: 3000000 nodes in 39.247 CPU seconds
+memory guard: status 2026-09-18T15:01:23+02:00: session=2652605 members(session/scope)=2/2 Rocq workers=0 scope RSS=1786536 KiB; cgroup=1786020/4194304 KiB; MemAvailable=25480788 KiB
+PASS deep universe scan: 17.713 CPU seconds
+memory guard: status 2026-09-18T15:01:38+02:00: session=2652605 members(session/scope)=2/2 Rocq workers=0 scope RSS=1994332 KiB; cgroup=1993792/4194304 KiB; MemAvailable=25225932 KiB
+memory guard: status 2026-09-18T15:01:53+02:00: session=2652605 members(session/scope)=2/2 Rocq workers=0 scope RSS=2103348 KiB; cgroup=2103356/4194304 KiB; MemAvailable=25169416 KiB
+memory guard: status 2026-09-18T15:02:09+02:00: session=2652605 members(session/scope)=2/2 Rocq workers=0 scope RSS=2103348 KiB; cgroup=2103200/4194304 KiB; MemAvailable=25068212 KiB
+PASS deep canonical hashcons: 33.011 CPU seconds
+memory guard: finished with status 0; cgroup peak=2105700 KiB (hard limit 4194304 KiB)
