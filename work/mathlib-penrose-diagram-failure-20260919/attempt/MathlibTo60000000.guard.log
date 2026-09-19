@@ -1,0 +1,620 @@
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/plan.json: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_deps/lean-kernel-arena/_build/tests/mathlib.ndjson: OK
+/home/theo/Documents/github/rocq-lean-typechecker/scripts/run_chunked_import.py: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/default/topbin/rocqworker.exe: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/run-sealed-checkpoint.sh: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/toolchain.json: OK
+/home/theo/Documents/github/rocq-lean-typechecker/scripts/mathlib_ndjson_loop.py: OK
+/home/theo/Documents/github/rocq-lean-typechecker/scripts/mathlib_ndjson_trace.gdb: OK
+/usr/bin/gdb: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/foundation/Lean.v: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/foundation/Lean.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/src/lean_import.cmxs: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/src/META.coq-lean-import: OK
+/home/theo/Documents/github/rocq-lean-typechecker/scripts/run_cslib_ndjson.py: OK
+/home/theo/Documents/github/rocq-lean-typechecker/scripts/run_mathlib_from_start.py: OK
+/home/theo/Documents/github/rocq-lean-typechecker/scripts/run_cslib_from_start.py: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/run-memory-guarded.sh: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/run-checkpoint-atomic.sh: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Structures/Equalities.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Structures/OrdersFacts.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Structures/OrdersTac.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Structures/GenericMinMax.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Structures/Orders.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/setoid_ring/Ring.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/setoid_ring/NArithRing.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/setoid_ring/Ring_base.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/setoid_ring/BinList.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/setoid_ring/Ring_theory.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/setoid_ring/ZArithRing.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/setoid_ring/InitialRing.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/setoid_ring/Ring_tac.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/setoid_ring/Ring_polynom.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Lists/ListDef.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Lists/List.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Lists/ListTactics.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/Zify.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/ZifyBool.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/EnvRing.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/VarMap.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/Tauto.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/Env.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/ZifyInst.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/ZMicromega.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/OrderedRing.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/Lia.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/Refl.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/ZifyClasses.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/micromega/RingMicromega.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Setoids/Setoid.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Logic/Decidable.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Logic/HLevelsBase.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Logic/EqdepFacts.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Logic/Eqdep_dec.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NumPrelude.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/BinNums.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Bool/Bool.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/ZArith/BinInt.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/ZArith/Znat.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/ZArith/BinIntDef.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Classes/Morphisms.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Classes/DecidableClass.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Classes/Morphisms_Prop.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Classes/RelationClasses.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Arith/Between.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Arith/Compare_dec.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Arith/Peano_dec.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Arith/Factorial.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Arith/Arith_base.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Arith/PeanoNat.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Arith/Wf_nat.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Arith/EqNat.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Relations/Operators_Properties.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Relations/Relation_Operators.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Relations/Relation_Definitions.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Relations/Relations.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/NArith/BinNat.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/NArith/Nnat.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/NArith/BinNatDef.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/PArith/BinPosDef.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/PArith/Pnat.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/PArith/BinPos.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Program/Basics.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/BinNums/IntDef.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/BinNums/NatDef.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/BinNums/PosDef.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZAddOrder.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZAxioms.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZMulOrder.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZLog.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZBase.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZSqrt.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZOrder.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZAdd.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZDiv.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZParity.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZGcd.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZPow.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZBits.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/NatInt/NZMul.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NLcm0.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NLog.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NAddOrder.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NOrder.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NParity.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NDiv.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NProperties.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NMulOrder.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NMaxMin.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NAxioms.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NDiv0.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NPow.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NBase.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NSub.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NSqrt.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NGcd.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NLcm.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NAdd.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Natural/Abstract/NBits.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZSgnAbs.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZBits.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZDivFloor.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZDivTrunc.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZMul.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZGcd.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZPow.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZLcm.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZMaxMin.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZLt.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZBase.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZAddOrder.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZAdd.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZAxioms.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZProperties.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZParity.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/stdlib-int32-repro/theories/Numbers/Integer/Abstract/ZMulOrder.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/_build/findlib/yojson/META: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/_build/findlib/yojson/yojson.cmxs: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/validation-receipt.json: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/src/g_lean.mlg: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/g_lean.mlg: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/src/leanParse.ml: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/leanParse.ml: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/src/leanExpr.mli: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/leanExpr.mli: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/src/leanName.mli: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/leanName.mli: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/src/lean.mli: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/lean.mli: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/src/leanParseShared.mli: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/leanParseShared.mli: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/src/leanParseNdjson.mli: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/leanParseNdjson.mli: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/src/lean.ml: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/lean.ml: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/src/lean_import.mlpack: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/lean_import.mlpack: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/src/leanName.ml: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/leanName.ml: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/src/leanParseNdjson.ml: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/leanParseNdjson.ml: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/src/leanParseShared.ml: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/leanParseShared.ml: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/src/leanParse.mli: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/leanParse.mli: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/src/dune: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/dune: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/src/Lean.v: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/Lean.v: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/src/ULiftCumulativeRegistration.v: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/ULiftCumulativeRegistration.v: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.lFy9zJVL/src/g_lean.ml: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/g_lean.ml: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/lean_import.cmxs: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/META.coq-lean-import: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/_build/findlib/yojson/META: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/_build/findlib/yojson/yojson.cmxs: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-srg-release-20260917-v1/consumer_toolchain.py: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/consumer-certificate.json: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/resume.py: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-cotangent-repro/resume-25gb.py: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-penrose-repro/resume-approval.json: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo5000000.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo5000000.v: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo10000000.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo10000000.v: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo15000000.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo15000000.v: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo20000000.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo20000000.v: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo25000000.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo25000000.v: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo30000000.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo30000000.v: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo35000000.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo35000000.v: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo40000000.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo40000000.v: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo45000000.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo45000000.v: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo50000000.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo50000000.v: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo55000000.vo: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo55000000.v: OK
+/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo60000000.v: OK
+checkpoint runner: staging MathlibTo60000000.vo in /home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/.MathlibTo60000000.stage.b1FHk49U
+memory guard: admitted with MemAvailable=27656960 KiB, reserve=2097152 KiB, RSS limit=24414062 KiB, cgroup high/max/swap=24414062/24414062/0 KiB, stack=262144 KiB
+memory guard: status 2026-09-18T16:22:13+02:00: session=2863365 members(session/scope)=3/3 Rocq workers=0 scope RSS=13536 KiB; cgroup=9124/24414062 KiB; MemAvailable=27650744 KiB
+memory guard: status 2026-09-18T16:22:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=4472028 KiB; cgroup=4444064/24414062 KiB; MemAvailable=22702056 KiB
+memory guard: status 2026-09-18T16:22:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=7791696 KiB; cgroup=7774172/24414062 KiB; MemAvailable=19079148 KiB
+memory guard: status 2026-09-18T16:22:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=8078632 KiB; cgroup=8057636/24414062 KiB; MemAvailable=19237392 KiB
+memory guard: status 2026-09-18T16:23:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=8113756 KiB; cgroup=8090392/24414062 KiB; MemAvailable=19473852 KiB
+memory guard: status 2026-09-18T16:23:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=8148092 KiB; cgroup=8124188/24414062 KiB; MemAvailable=19541248 KiB
+memory guard: status 2026-09-18T16:23:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=8217112 KiB; cgroup=8192928/24414062 KiB; MemAvailable=19487964 KiB
+memory guard: status 2026-09-18T16:23:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=8955696 KiB; cgroup=8933928/24414062 KiB; MemAvailable=18720940 KiB
+memory guard: status 2026-09-18T16:24:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=10910464 KiB; cgroup=10894192/24414062 KiB; MemAvailable=16732136 KiB
+memory guard: status 2026-09-18T16:24:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=11341368 KiB; cgroup=11323740/24414062 KiB; MemAvailable=16314956 KiB
+memory guard: status 2026-09-18T16:24:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=11847336 KiB; cgroup=11830412/24414062 KiB; MemAvailable=15838712 KiB
+memory guard: status 2026-09-18T16:24:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=12428876 KiB; cgroup=12413456/24414062 KiB; MemAvailable=15404584 KiB
+memory guard: status 2026-09-18T16:25:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=12475416 KiB; cgroup=12459712/24414062 KiB; MemAvailable=14830648 KiB
+memory guard: status 2026-09-18T16:25:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=12475416 KiB; cgroup=12459692/24414062 KiB; MemAvailable=14866272 KiB
+memory guard: status 2026-09-18T16:25:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=12475472 KiB; cgroup=12460192/24414062 KiB; MemAvailable=14964400 KiB
+memory guard: status 2026-09-18T16:25:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=12487684 KiB; cgroup=12472264/24414062 KiB; MemAvailable=14991172 KiB
+memory guard: status 2026-09-18T16:26:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=12776036 KiB; cgroup=12761024/24414062 KiB; MemAvailable=15094164 KiB
+memory guard: status 2026-09-18T16:26:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=13011068 KiB; cgroup=12996056/24414062 KiB; MemAvailable=14600048 KiB
+memory guard: status 2026-09-18T16:26:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=13126880 KiB; cgroup=13111384/24414062 KiB; MemAvailable=14726460 KiB
+memory guard: status 2026-09-18T16:26:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=13282668 KiB; cgroup=13267912/24414062 KiB; MemAvailable=14549792 KiB
+memory guard: status 2026-09-18T16:27:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=13408176 KiB; cgroup=13393632/24414062 KiB; MemAvailable=13835920 KiB
+memory guard: status 2026-09-18T16:27:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=13618460 KiB; cgroup=13604580/24414062 KiB; MemAvailable=13714220 KiB
+memory guard: status 2026-09-18T16:27:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=13749388 KiB; cgroup=13735160/24414062 KiB; MemAvailable=13679120 KiB
+memory guard: status 2026-09-18T16:27:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=13932736 KiB; cgroup=13919608/24414062 KiB; MemAvailable=13862124 KiB
+memory guard: status 2026-09-18T16:28:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=14144208 KiB; cgroup=14131844/24414062 KiB; MemAvailable=13702892 KiB
+memory guard: status 2026-09-18T16:28:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=14237824 KiB; cgroup=14225240/24414062 KiB; MemAvailable=13583764 KiB
+memory guard: status 2026-09-18T16:28:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=14237824 KiB; cgroup=14225024/24414062 KiB; MemAvailable=13653280 KiB
+memory guard: status 2026-09-18T16:28:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=14237828 KiB; cgroup=14225300/24414062 KiB; MemAvailable=13606132 KiB
+memory guard: status 2026-09-18T16:29:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=14237828 KiB; cgroup=14225160/24414062 KiB; MemAvailable=13601704 KiB
+memory guard: status 2026-09-18T16:29:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=14329368 KiB; cgroup=14316940/24414062 KiB; MemAvailable=13527840 KiB
+memory guard: status 2026-09-18T16:29:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=14583916 KiB; cgroup=14572020/24414062 KiB; MemAvailable=13232604 KiB
+memory guard: status 2026-09-18T16:29:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=14773144 KiB; cgroup=14761568/24414062 KiB; MemAvailable=13082752 KiB
+memory guard: status 2026-09-18T16:30:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=15016748 KiB; cgroup=15005608/24414062 KiB; MemAvailable=12916588 KiB
+memory guard: status 2026-09-18T16:30:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=15294320 KiB; cgroup=15283364/24414062 KiB; MemAvailable=12603212 KiB
+memory guard: status 2026-09-18T16:30:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=15453536 KiB; cgroup=15443684/24414062 KiB; MemAvailable=12402240 KiB
+memory guard: status 2026-09-18T16:30:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16014308 KiB; cgroup=16003328/24414062 KiB; MemAvailable=11911416 KiB
+memory guard: status 2026-09-18T16:31:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408420 KiB; cgroup=16396760/24414062 KiB; MemAvailable=11553896 KiB
+memory guard: status 2026-09-18T16:31:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408420 KiB; cgroup=16396556/24414062 KiB; MemAvailable=11581564 KiB
+memory guard: status 2026-09-18T16:31:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408420 KiB; cgroup=16396348/24414062 KiB; MemAvailable=11578256 KiB
+memory guard: status 2026-09-18T16:31:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408420 KiB; cgroup=16396388/24414062 KiB; MemAvailable=11575592 KiB
+memory guard: status 2026-09-18T16:32:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408420 KiB; cgroup=16396708/24414062 KiB; MemAvailable=11592368 KiB
+memory guard: status 2026-09-18T16:32:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408420 KiB; cgroup=16396256/24414062 KiB; MemAvailable=11397748 KiB
+memory guard: status 2026-09-18T16:32:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408420 KiB; cgroup=16396444/24414062 KiB; MemAvailable=11471676 KiB
+memory guard: status 2026-09-18T16:32:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408420 KiB; cgroup=16396560/24414062 KiB; MemAvailable=11463812 KiB
+memory guard: status 2026-09-18T16:33:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408420 KiB; cgroup=16396052/24414062 KiB; MemAvailable=11493628 KiB
+memory guard: status 2026-09-18T16:33:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408788 KiB; cgroup=16396720/24414062 KiB; MemAvailable=11449036 KiB
+memory guard: status 2026-09-18T16:33:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408788 KiB; cgroup=16396556/24414062 KiB; MemAvailable=11443868 KiB
+memory guard: status 2026-09-18T16:33:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408788 KiB; cgroup=16396244/24414062 KiB; MemAvailable=11454856 KiB
+memory guard: status 2026-09-18T16:34:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408788 KiB; cgroup=16396396/24414062 KiB; MemAvailable=11469036 KiB
+memory guard: status 2026-09-18T16:34:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408788 KiB; cgroup=16396392/24414062 KiB; MemAvailable=11430800 KiB
+memory guard: status 2026-09-18T16:34:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408788 KiB; cgroup=16396544/24414062 KiB; MemAvailable=11450828 KiB
+memory guard: status 2026-09-18T16:34:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408788 KiB; cgroup=16396468/24414062 KiB; MemAvailable=11458604 KiB
+memory guard: status 2026-09-18T16:35:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408788 KiB; cgroup=16396608/24414062 KiB; MemAvailable=11456292 KiB
+memory guard: status 2026-09-18T16:35:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396584/24414062 KiB; MemAvailable=11462404 KiB
+memory guard: status 2026-09-18T16:35:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396144/24414062 KiB; MemAvailable=11448960 KiB
+memory guard: status 2026-09-18T16:35:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396784/24414062 KiB; MemAvailable=11454268 KiB
+memory guard: status 2026-09-18T16:36:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16395884/24414062 KiB; MemAvailable=11163852 KiB
+memory guard: status 2026-09-18T16:36:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396684/24414062 KiB; MemAvailable=11681424 KiB
+memory guard: status 2026-09-18T16:36:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396360/24414062 KiB; MemAvailable=11695128 KiB
+memory guard: status 2026-09-18T16:36:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396228/24414062 KiB; MemAvailable=11738956 KiB
+memory guard: status 2026-09-18T16:37:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396552/24414062 KiB; MemAvailable=11745268 KiB
+memory guard: status 2026-09-18T16:37:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396340/24414062 KiB; MemAvailable=11762420 KiB
+memory guard: status 2026-09-18T16:37:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396264/24414062 KiB; MemAvailable=11756580 KiB
+memory guard: status 2026-09-18T16:37:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396500/24414062 KiB; MemAvailable=11769000 KiB
+memory guard: status 2026-09-18T16:38:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396684/24414062 KiB; MemAvailable=11772268 KiB
+memory guard: status 2026-09-18T16:38:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396620/24414062 KiB; MemAvailable=11747360 KiB
+memory guard: status 2026-09-18T16:38:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396516/24414062 KiB; MemAvailable=11760084 KiB
+memory guard: status 2026-09-18T16:38:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396428/24414062 KiB; MemAvailable=11749920 KiB
+memory guard: status 2026-09-18T16:39:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396224/24414062 KiB; MemAvailable=11776428 KiB
+memory guard: status 2026-09-18T16:39:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396416/24414062 KiB; MemAvailable=11760208 KiB
+memory guard: status 2026-09-18T16:39:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396248/24414062 KiB; MemAvailable=11764452 KiB
+memory guard: status 2026-09-18T16:39:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396912/24414062 KiB; MemAvailable=11760112 KiB
+memory guard: status 2026-09-18T16:40:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396464/24414062 KiB; MemAvailable=11772044 KiB
+memory guard: status 2026-09-18T16:40:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396644/24414062 KiB; MemAvailable=11735320 KiB
+memory guard: status 2026-09-18T16:40:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396200/24414062 KiB; MemAvailable=11756708 KiB
+memory guard: status 2026-09-18T16:40:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396380/24414062 KiB; MemAvailable=11741760 KiB
+memory guard: status 2026-09-18T16:41:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396808/24414062 KiB; MemAvailable=11767460 KiB
+memory guard: status 2026-09-18T16:41:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396932/24414062 KiB; MemAvailable=11803820 KiB
+memory guard: status 2026-09-18T16:41:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396668/24414062 KiB; MemAvailable=11820836 KiB
+memory guard: status 2026-09-18T16:41:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396368/24414062 KiB; MemAvailable=11802712 KiB
+memory guard: status 2026-09-18T16:42:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396596/24414062 KiB; MemAvailable=11822444 KiB
+memory guard: status 2026-09-18T16:42:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396720/24414062 KiB; MemAvailable=11781776 KiB
+memory guard: status 2026-09-18T16:42:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396492/24414062 KiB; MemAvailable=11802236 KiB
+memory guard: status 2026-09-18T16:42:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396296/24414062 KiB; MemAvailable=11803480 KiB
+memory guard: status 2026-09-18T16:43:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396800/24414062 KiB; MemAvailable=11811452 KiB
+memory guard: status 2026-09-18T16:43:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396580/24414062 KiB; MemAvailable=11811608 KiB
+memory guard: status 2026-09-18T16:43:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396684/24414062 KiB; MemAvailable=11819768 KiB
+memory guard: status 2026-09-18T16:43:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396596/24414062 KiB; MemAvailable=11857992 KiB
+memory guard: status 2026-09-18T16:44:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16408804 KiB; cgroup=16396252/24414062 KiB; MemAvailable=11769048 KiB
+memory guard: status 2026-09-18T16:44:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16416308/24414062 KiB; MemAvailable=11773432 KiB
+memory guard: status 2026-09-18T16:44:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16416180/24414062 KiB; MemAvailable=11785000 KiB
+memory guard: status 2026-09-18T16:44:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16416812/24414062 KiB; MemAvailable=11764660 KiB
+memory guard: status 2026-09-18T16:45:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16416708/24414062 KiB; MemAvailable=11786432 KiB
+memory guard: status 2026-09-18T16:45:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16416808/24414062 KiB; MemAvailable=11756716 KiB
+memory guard: status 2026-09-18T16:45:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16416680/24414062 KiB; MemAvailable=11788516 KiB
+memory guard: status 2026-09-18T16:45:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16416532/24414062 KiB; MemAvailable=11788236 KiB
+memory guard: status 2026-09-18T16:46:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16416456/24414062 KiB; MemAvailable=11801192 KiB
+memory guard: status 2026-09-18T16:46:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16416436/24414062 KiB; MemAvailable=11745824 KiB
+memory guard: status 2026-09-18T16:46:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16415980/24414062 KiB; MemAvailable=11772676 KiB
+memory guard: status 2026-09-18T16:46:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16416620/24414062 KiB; MemAvailable=11811836 KiB
+memory guard: status 2026-09-18T16:47:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16416132/24414062 KiB; MemAvailable=11516988 KiB
+memory guard: status 2026-09-18T16:47:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16416636/24414062 KiB; MemAvailable=11536616 KiB
+memory guard: status 2026-09-18T16:47:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16416876/24414062 KiB; MemAvailable=11527880 KiB
+memory guard: status 2026-09-18T16:47:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16416864/24414062 KiB; MemAvailable=11552956 KiB
+memory guard: status 2026-09-18T16:48:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16416728/24414062 KiB; MemAvailable=11805384 KiB
+memory guard: status 2026-09-18T16:48:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16416336/24414062 KiB; MemAvailable=11809384 KiB
+memory guard: status 2026-09-18T16:48:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16417024/24414062 KiB; MemAvailable=11826524 KiB
+memory guard: status 2026-09-18T16:48:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16416580/24414062 KiB; MemAvailable=11829916 KiB
+memory guard: status 2026-09-18T16:49:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16417080/24414062 KiB; MemAvailable=11837468 KiB
+memory guard: status 2026-09-18T16:49:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16416540/24414062 KiB; MemAvailable=11806632 KiB
+memory guard: status 2026-09-18T16:49:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16428756 KiB; cgroup=16416764/24414062 KiB; MemAvailable=11794732 KiB
+memory guard: status 2026-09-18T16:49:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16486120 KiB; cgroup=16474096/24414062 KiB; MemAvailable=11756440 KiB
+memory guard: status 2026-09-18T16:50:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487168 KiB; cgroup=16474508/24414062 KiB; MemAvailable=11721840 KiB
+memory guard: status 2026-09-18T16:50:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487168 KiB; cgroup=16474648/24414062 KiB; MemAvailable=11401740 KiB
+memory guard: status 2026-09-18T16:50:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487168 KiB; cgroup=16475208/24414062 KiB; MemAvailable=11412568 KiB
+memory guard: status 2026-09-18T16:50:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487168 KiB; cgroup=16475056/24414062 KiB; MemAvailable=11455168 KiB
+memory guard: status 2026-09-18T16:51:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487168 KiB; cgroup=16475160/24414062 KiB; MemAvailable=11448204 KiB
+memory guard: status 2026-09-18T16:51:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475120/24414062 KiB; MemAvailable=11442804 KiB
+memory guard: status 2026-09-18T16:51:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475044/24414062 KiB; MemAvailable=11449808 KiB
+memory guard: status 2026-09-18T16:51:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475156/24414062 KiB; MemAvailable=11435648 KiB
+memory guard: status 2026-09-18T16:52:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475152/24414062 KiB; MemAvailable=11436968 KiB
+memory guard: status 2026-09-18T16:52:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16474552/24414062 KiB; MemAvailable=11428780 KiB
+memory guard: status 2026-09-18T16:52:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475032/24414062 KiB; MemAvailable=11463488 KiB
+memory guard: status 2026-09-18T16:52:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475028/24414062 KiB; MemAvailable=11474264 KiB
+memory guard: status 2026-09-18T16:53:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475276/24414062 KiB; MemAvailable=11498600 KiB
+memory guard: status 2026-09-18T16:53:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475116/24414062 KiB; MemAvailable=11503496 KiB
+memory guard: status 2026-09-18T16:53:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475100/24414062 KiB; MemAvailable=11496448 KiB
+memory guard: status 2026-09-18T16:53:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475048/24414062 KiB; MemAvailable=11464012 KiB
+memory guard: status 2026-09-18T16:54:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475024/24414062 KiB; MemAvailable=11872432 KiB
+memory guard: status 2026-09-18T16:54:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16474800/24414062 KiB; MemAvailable=11842716 KiB
+memory guard: status 2026-09-18T16:54:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16474900/24414062 KiB; MemAvailable=11824768 KiB
+memory guard: status 2026-09-18T16:54:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475368/24414062 KiB; MemAvailable=11654360 KiB
+memory guard: status 2026-09-18T16:55:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475172/24414062 KiB; MemAvailable=11664564 KiB
+memory guard: status 2026-09-18T16:55:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475120/24414062 KiB; MemAvailable=11696816 KiB
+memory guard: status 2026-09-18T16:55:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475044/24414062 KiB; MemAvailable=11456892 KiB
+memory guard: status 2026-09-18T16:55:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16474480/24414062 KiB; MemAvailable=11449396 KiB
+memory guard: status 2026-09-18T16:56:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16474724/24414062 KiB; MemAvailable=11474680 KiB
+memory guard: status 2026-09-18T16:56:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475180/24414062 KiB; MemAvailable=11434840 KiB
+memory guard: status 2026-09-18T16:56:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16474904/24414062 KiB; MemAvailable=11399184 KiB
+memory guard: status 2026-09-18T16:56:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475076/24414062 KiB; MemAvailable=11426836 KiB
+memory guard: status 2026-09-18T16:57:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475060/24414062 KiB; MemAvailable=11431704 KiB
+memory guard: status 2026-09-18T16:57:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475064/24414062 KiB; MemAvailable=11501272 KiB
+memory guard: status 2026-09-18T16:57:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475752/24414062 KiB; MemAvailable=11503216 KiB
+memory guard: status 2026-09-18T16:57:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475952/24414062 KiB; MemAvailable=11580536 KiB
+memory guard: status 2026-09-18T16:58:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16475744/24414062 KiB; MemAvailable=11493192 KiB
+memory guard: status 2026-09-18T16:58:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16476100/24414062 KiB; MemAvailable=11473544 KiB
+memory guard: status 2026-09-18T16:58:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16476168/24414062 KiB; MemAvailable=11512184 KiB
+memory guard: status 2026-09-18T16:58:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16476376/24414062 KiB; MemAvailable=11523696 KiB
+memory guard: status 2026-09-18T16:59:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487264 KiB; cgroup=16476048/24414062 KiB; MemAvailable=11545176 KiB
+memory guard: status 2026-09-18T16:59:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487268 KiB; cgroup=16476008/24414062 KiB; MemAvailable=11532608 KiB
+memory guard: status 2026-09-18T16:59:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487268 KiB; cgroup=16475936/24414062 KiB; MemAvailable=11521108 KiB
+memory guard: status 2026-09-18T16:59:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487268 KiB; cgroup=16475952/24414062 KiB; MemAvailable=11534044 KiB
+memory guard: status 2026-09-18T17:00:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487268 KiB; cgroup=16476020/24414062 KiB; MemAvailable=11487804 KiB
+memory guard: status 2026-09-18T17:00:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487268 KiB; cgroup=16476112/24414062 KiB; MemAvailable=11471336 KiB
+memory guard: status 2026-09-18T17:00:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487268 KiB; cgroup=16476236/24414062 KiB; MemAvailable=11479320 KiB
+memory guard: status 2026-09-18T17:00:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487268 KiB; cgroup=16476168/24414062 KiB; MemAvailable=11492704 KiB
+memory guard: status 2026-09-18T17:01:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487268 KiB; cgroup=16475948/24414062 KiB; MemAvailable=11508172 KiB
+memory guard: status 2026-09-18T17:01:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487268 KiB; cgroup=16476064/24414062 KiB; MemAvailable=11479452 KiB
+memory guard: status 2026-09-18T17:01:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487268 KiB; cgroup=16476136/24414062 KiB; MemAvailable=11495056 KiB
+memory guard: status 2026-09-18T17:01:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487268 KiB; cgroup=16476488/24414062 KiB; MemAvailable=11537448 KiB
+memory guard: status 2026-09-18T17:02:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487268 KiB; cgroup=16476836/24414062 KiB; MemAvailable=11534248 KiB
+memory guard: status 2026-09-18T17:02:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16487268 KiB; cgroup=16475728/24414062 KiB; MemAvailable=11719028 KiB
+memory guard: status 2026-09-18T17:02:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16525256 KiB; cgroup=16514084/24414062 KiB; MemAvailable=11743904 KiB
+memory guard: status 2026-09-18T17:02:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16525256 KiB; cgroup=16514272/24414062 KiB; MemAvailable=11598952 KiB
+memory guard: status 2026-09-18T17:03:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=16525256 KiB; cgroup=16514672/24414062 KiB; MemAvailable=11711076 KiB
+memory guard: status 2026-09-18T17:03:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17004220 KiB; cgroup=16993872/24414062 KiB; MemAvailable=11449124 KiB
+memory guard: status 2026-09-18T17:03:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17257192 KiB; cgroup=17253496/24414062 KiB; MemAvailable=11414220 KiB
+memory guard: status 2026-09-18T17:03:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17256116 KiB; cgroup=17253036/24414062 KiB; MemAvailable=11232728 KiB
+memory guard: status 2026-09-18T17:04:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17256116 KiB; cgroup=17252548/24414062 KiB; MemAvailable=11234764 KiB
+memory guard: status 2026-09-18T17:04:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17249448 KiB; cgroup=17248932/24414062 KiB; MemAvailable=10823624 KiB
+memory guard: status 2026-09-18T17:04:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248188 KiB; cgroup=17249484/24414062 KiB; MemAvailable=11321552 KiB
+memory guard: status 2026-09-18T17:04:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248188 KiB; cgroup=17249236/24414062 KiB; MemAvailable=11251928 KiB
+memory guard: status 2026-09-18T17:05:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248188 KiB; cgroup=17249928/24414062 KiB; MemAvailable=11242028 KiB
+memory guard: status 2026-09-18T17:05:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248188 KiB; cgroup=17250308/24414062 KiB; MemAvailable=11182472 KiB
+memory guard: status 2026-09-18T17:05:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248188 KiB; cgroup=17252032/24414062 KiB; MemAvailable=11252640 KiB
+memory guard: status 2026-09-18T17:05:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248188 KiB; cgroup=17253072/24414062 KiB; MemAvailable=11187008 KiB
+memory guard: status 2026-09-18T17:06:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248188 KiB; cgroup=17254520/24414062 KiB; MemAvailable=11166136 KiB
+memory guard: status 2026-09-18T17:06:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248188 KiB; cgroup=17255484/24414062 KiB; MemAvailable=11207164 KiB
+memory guard: status 2026-09-18T17:06:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248188 KiB; cgroup=17257228/24414062 KiB; MemAvailable=11208020 KiB
+memory guard: status 2026-09-18T17:06:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248188 KiB; cgroup=17257820/24414062 KiB; MemAvailable=11220800 KiB
+memory guard: status 2026-09-18T17:07:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248188 KiB; cgroup=17258104/24414062 KiB; MemAvailable=11237584 KiB
+memory guard: status 2026-09-18T17:07:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248188 KiB; cgroup=17258280/24414062 KiB; MemAvailable=11180924 KiB
+memory guard: status 2026-09-18T17:07:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248212 KiB; cgroup=17257980/24414062 KiB; MemAvailable=11189496 KiB
+memory guard: status 2026-09-18T17:07:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17258328/24414062 KiB; MemAvailable=11216104 KiB
+memory guard: status 2026-09-18T17:08:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17258440/24414062 KiB; MemAvailable=11203940 KiB
+memory guard: status 2026-09-18T17:08:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17258000/24414062 KiB; MemAvailable=11228560 KiB
+memory guard: status 2026-09-18T17:08:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17258260/24414062 KiB; MemAvailable=11310552 KiB
+memory guard: status 2026-09-18T17:08:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17257760/24414062 KiB; MemAvailable=10850628 KiB
+memory guard: status 2026-09-18T17:09:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17257980/24414062 KiB; MemAvailable=10916440 KiB
+memory guard: status 2026-09-18T17:09:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17257776/24414062 KiB; MemAvailable=10934684 KiB
+memory guard: status 2026-09-18T17:09:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17258212/24414062 KiB; MemAvailable=10977544 KiB
+memory guard: status 2026-09-18T17:09:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17257400/24414062 KiB; MemAvailable=11238628 KiB
+memory guard: status 2026-09-18T17:10:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17258092/24414062 KiB; MemAvailable=11158748 KiB
+memory guard: status 2026-09-18T17:10:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17258028/24414062 KiB; MemAvailable=11173772 KiB
+memory guard: status 2026-09-18T17:10:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17257540/24414062 KiB; MemAvailable=11230304 KiB
+memory guard: status 2026-09-18T17:10:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17257756/24414062 KiB; MemAvailable=11240980 KiB
+memory guard: status 2026-09-18T17:11:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17257836/24414062 KiB; MemAvailable=11193108 KiB
+memory guard: status 2026-09-18T17:11:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17257900/24414062 KiB; MemAvailable=11200604 KiB
+memory guard: status 2026-09-18T17:11:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17258020/24414062 KiB; MemAvailable=11254156 KiB
+memory guard: status 2026-09-18T17:11:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17258360/24414062 KiB; MemAvailable=11260668 KiB
+memory guard: status 2026-09-18T17:12:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17258120/24414062 KiB; MemAvailable=11321440 KiB
+memory guard: status 2026-09-18T17:12:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17258288/24414062 KiB; MemAvailable=11281012 KiB
+memory guard: status 2026-09-18T17:12:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17258320/24414062 KiB; MemAvailable=11323628 KiB
+memory guard: status 2026-09-18T17:12:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17258520/24414062 KiB; MemAvailable=11334960 KiB
+memory guard: status 2026-09-18T17:13:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248336 KiB; cgroup=17258236/24414062 KiB; MemAvailable=11263028 KiB
+memory guard: status 2026-09-18T17:13:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258744/24414062 KiB; MemAvailable=11123668 KiB
+memory guard: status 2026-09-18T17:13:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258340/24414062 KiB; MemAvailable=11149200 KiB
+memory guard: status 2026-09-18T17:13:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258756/24414062 KiB; MemAvailable=11104212 KiB
+memory guard: status 2026-09-18T17:14:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258684/24414062 KiB; MemAvailable=11125168 KiB
+memory guard: status 2026-09-18T17:14:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258420/24414062 KiB; MemAvailable=11165976 KiB
+memory guard: status 2026-09-18T17:14:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258072/24414062 KiB; MemAvailable=11166964 KiB
+memory guard: status 2026-09-18T17:14:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258344/24414062 KiB; MemAvailable=10533024 KiB
+memory guard: status 2026-09-18T17:15:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17257748/24414062 KiB; MemAvailable=10596916 KiB
+memory guard: status 2026-09-18T17:15:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17257756/24414062 KiB; MemAvailable=10438804 KiB
+memory guard: status 2026-09-18T17:15:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258428/24414062 KiB; MemAvailable=10750828 KiB
+memory guard: status 2026-09-18T17:15:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258488/24414062 KiB; MemAvailable=10716028 KiB
+memory guard: status 2026-09-18T17:16:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258448/24414062 KiB; MemAvailable=10946092 KiB
+memory guard: status 2026-09-18T17:16:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258312/24414062 KiB; MemAvailable=10996252 KiB
+memory guard: status 2026-09-18T17:16:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17257780/24414062 KiB; MemAvailable=10941700 KiB
+memory guard: status 2026-09-18T17:16:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258744/24414062 KiB; MemAvailable=11006120 KiB
+memory guard: status 2026-09-18T17:17:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258192/24414062 KiB; MemAvailable=10993572 KiB
+memory guard: status 2026-09-18T17:17:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258712/24414062 KiB; MemAvailable=11006364 KiB
+memory guard: status 2026-09-18T17:17:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258808/24414062 KiB; MemAvailable=10945496 KiB
+memory guard: status 2026-09-18T17:17:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258960/24414062 KiB; MemAvailable=10995660 KiB
+memory guard: status 2026-09-18T17:18:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258752/24414062 KiB; MemAvailable=11156456 KiB
+memory guard: status 2026-09-18T17:18:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258856/24414062 KiB; MemAvailable=11145448 KiB
+memory guard: status 2026-09-18T17:18:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258572/24414062 KiB; MemAvailable=11119636 KiB
+memory guard: status 2026-09-18T17:18:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258680/24414062 KiB; MemAvailable=11147216 KiB
+memory guard: status 2026-09-18T17:19:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258748/24414062 KiB; MemAvailable=11129460 KiB
+memory guard: status 2026-09-18T17:19:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258876/24414062 KiB; MemAvailable=11100932 KiB
+memory guard: status 2026-09-18T17:19:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258736/24414062 KiB; MemAvailable=11191016 KiB
+memory guard: status 2026-09-18T17:19:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258820/24414062 KiB; MemAvailable=11209464 KiB
+memory guard: status 2026-09-18T17:20:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258736/24414062 KiB; MemAvailable=11205428 KiB
+memory guard: status 2026-09-18T17:20:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258464/24414062 KiB; MemAvailable=11225408 KiB
+memory guard: status 2026-09-18T17:20:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17259032/24414062 KiB; MemAvailable=11236712 KiB
+memory guard: status 2026-09-18T17:20:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17258804/24414062 KiB; MemAvailable=11253648 KiB
+memory guard: status 2026-09-18T17:21:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17259172/24414062 KiB; MemAvailable=11254304 KiB
+memory guard: status 2026-09-18T17:21:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17259076/24414062 KiB; MemAvailable=11253548 KiB
+memory guard: status 2026-09-18T17:21:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17259388/24414062 KiB; MemAvailable=11231472 KiB
+memory guard: status 2026-09-18T17:21:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17259648/24414062 KiB; MemAvailable=11278020 KiB
+memory guard: status 2026-09-18T17:22:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17259624/24414062 KiB; MemAvailable=11277332 KiB
+memory guard: status 2026-09-18T17:22:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17260140/24414062 KiB; MemAvailable=11241988 KiB
+memory guard: status 2026-09-18T17:22:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17261200/24414062 KiB; MemAvailable=11108912 KiB
+memory guard: status 2026-09-18T17:22:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17261456/24414062 KiB; MemAvailable=11161544 KiB
+memory guard: status 2026-09-18T17:23:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17261028/24414062 KiB; MemAvailable=11207464 KiB
+memory guard: status 2026-09-18T17:23:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17261400/24414062 KiB; MemAvailable=11109672 KiB
+memory guard: status 2026-09-18T17:23:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17248348 KiB; cgroup=17261264/24414062 KiB; MemAvailable=11139356 KiB
+memory guard: status 2026-09-18T17:23:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17335036 KiB; cgroup=17348568/24414062 KiB; MemAvailable=10955960 KiB
+memory guard: status 2026-09-18T17:24:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17335036 KiB; cgroup=17348604/24414062 KiB; MemAvailable=10994228 KiB
+memory guard: status 2026-09-18T17:24:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17335036 KiB; cgroup=17348780/24414062 KiB; MemAvailable=11032492 KiB
+memory guard: status 2026-09-18T17:24:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17335036 KiB; cgroup=17348980/24414062 KiB; MemAvailable=11082808 KiB
+memory guard: status 2026-09-18T17:24:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17343136 KiB; cgroup=17358116/24414062 KiB; MemAvailable=11190788 KiB
+memory guard: status 2026-09-18T17:25:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17343136 KiB; cgroup=17358724/24414062 KiB; MemAvailable=11214156 KiB
+memory guard: status 2026-09-18T17:25:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17507332 KiB; cgroup=17522868/24414062 KiB; MemAvailable=11023268 KiB
+memory guard: status 2026-09-18T17:25:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17682528 KiB; cgroup=17699308/24414062 KiB; MemAvailable=10847268 KiB
+memory guard: status 2026-09-18T17:25:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17682528 KiB; cgroup=17698804/24414062 KiB; MemAvailable=10810948 KiB
+memory guard: status 2026-09-18T17:26:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17682528 KiB; cgroup=17698880/24414062 KiB; MemAvailable=10823748 KiB
+memory guard: status 2026-09-18T17:26:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17682528 KiB; cgroup=17698568/24414062 KiB; MemAvailable=10834720 KiB
+memory guard: status 2026-09-18T17:26:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17682528 KiB; cgroup=17698616/24414062 KiB; MemAvailable=10750944 KiB
+memory guard: status 2026-09-18T17:26:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17682868 KiB; cgroup=17699392/24414062 KiB; MemAvailable=10705328 KiB
+memory guard: status 2026-09-18T17:27:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17682868 KiB; cgroup=17699492/24414062 KiB; MemAvailable=10617556 KiB
+memory guard: status 2026-09-18T17:27:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17682868 KiB; cgroup=17697252/24414062 KiB; MemAvailable=10643140 KiB
+memory guard: status 2026-09-18T17:27:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17682868 KiB; cgroup=17696824/24414062 KiB; MemAvailable=10661156 KiB
+memory guard: status 2026-09-18T17:27:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17682868 KiB; cgroup=17696688/24414062 KiB; MemAvailable=10615744 KiB
+memory guard: status 2026-09-18T17:28:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17715636 KiB; cgroup=17728580/24414062 KiB; MemAvailable=10661868 KiB
+memory guard: status 2026-09-18T17:28:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17715636 KiB; cgroup=17728636/24414062 KiB; MemAvailable=10690240 KiB
+memory guard: status 2026-09-18T17:28:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=17752592 KiB; cgroup=17768432/24414062 KiB; MemAvailable=10480484 KiB
+memory guard: status 2026-09-18T17:28:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=18411772 KiB; cgroup=18424460/24414062 KiB; MemAvailable=9955596 KiB
+memory guard: status 2026-09-18T17:29:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=18708916 KiB; cgroup=18721032/24414062 KiB; MemAvailable=9744616 KiB
+memory guard: status 2026-09-18T17:29:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19361344 KiB; cgroup=19372312/24414062 KiB; MemAvailable=9057336 KiB
+memory guard: status 2026-09-18T17:29:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19609000 KiB; cgroup=19619004/24414062 KiB; MemAvailable=8710804 KiB
+memory guard: status 2026-09-18T17:29:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19609000 KiB; cgroup=19618648/24414062 KiB; MemAvailable=8801296 KiB
+memory guard: status 2026-09-18T17:30:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19609000 KiB; cgroup=19618448/24414062 KiB; MemAvailable=8786648 KiB
+memory guard: status 2026-09-18T17:30:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19609000 KiB; cgroup=19618764/24414062 KiB; MemAvailable=8675404 KiB
+memory guard: status 2026-09-18T17:30:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19609000 KiB; cgroup=19618748/24414062 KiB; MemAvailable=8717112 KiB
+memory guard: status 2026-09-18T17:30:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19609000 KiB; cgroup=19618896/24414062 KiB; MemAvailable=8715476 KiB
+memory guard: status 2026-09-18T17:31:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19609000 KiB; cgroup=19619052/24414062 KiB; MemAvailable=8716088 KiB
+memory guard: status 2026-09-18T17:31:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19609000 KiB; cgroup=19618140/24414062 KiB; MemAvailable=8302580 KiB
+memory guard: status 2026-09-18T17:31:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19609000 KiB; cgroup=19618088/24414062 KiB; MemAvailable=8279968 KiB
+memory guard: status 2026-09-18T17:31:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19609000 KiB; cgroup=19618276/24414062 KiB; MemAvailable=8712548 KiB
+memory guard: status 2026-09-18T17:32:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19609000 KiB; cgroup=19618276/24414062 KiB; MemAvailable=8722448 KiB
+memory guard: status 2026-09-18T17:32:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19609000 KiB; cgroup=19617964/24414062 KiB; MemAvailable=8732552 KiB
+memory guard: status 2026-09-18T17:32:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19609000 KiB; cgroup=19618216/24414062 KiB; MemAvailable=8744840 KiB
+memory guard: status 2026-09-18T17:32:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19609000 KiB; cgroup=19617832/24414062 KiB; MemAvailable=8718072 KiB
+memory guard: status 2026-09-18T17:33:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19609000 KiB; cgroup=19617888/24414062 KiB; MemAvailable=8747696 KiB
+memory guard: status 2026-09-18T17:33:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19609000 KiB; cgroup=19618512/24414062 KiB; MemAvailable=8748316 KiB
+memory guard: status 2026-09-18T17:33:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19609000 KiB; cgroup=19617792/24414062 KiB; MemAvailable=8712080 KiB
+memory guard: status 2026-09-18T17:33:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19612076 KiB; cgroup=19621500/24414062 KiB; MemAvailable=8693264 KiB
+memory guard: status 2026-09-18T17:34:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19614156 KiB; cgroup=19623352/24414062 KiB; MemAvailable=8756360 KiB
+memory guard: status 2026-09-18T17:34:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19614156 KiB; cgroup=19623660/24414062 KiB; MemAvailable=8710360 KiB
+memory guard: status 2026-09-18T17:34:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19614156 KiB; cgroup=19623088/24414062 KiB; MemAvailable=8708664 KiB
+memory guard: status 2026-09-18T17:34:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19614236 KiB; cgroup=19623376/24414062 KiB; MemAvailable=8723640 KiB
+memory guard: status 2026-09-18T17:35:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19614236 KiB; cgroup=19623272/24414062 KiB; MemAvailable=8740348 KiB
+memory guard: status 2026-09-18T17:35:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19614236 KiB; cgroup=19623336/24414062 KiB; MemAvailable=8734016 KiB
+memory guard: status 2026-09-18T17:35:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=19614236 KiB; cgroup=19623224/24414062 KiB; MemAvailable=8767992 KiB
+memory guard: status 2026-09-18T17:35:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20121788 KiB; cgroup=20131808/24414062 KiB; MemAvailable=8262600 KiB
+memory guard: status 2026-09-18T17:36:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20121788 KiB; cgroup=20132288/24414062 KiB; MemAvailable=8260084 KiB
+memory guard: status 2026-09-18T17:36:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20121788 KiB; cgroup=20131852/24414062 KiB; MemAvailable=8265468 KiB
+memory guard: status 2026-09-18T17:36:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20121788 KiB; cgroup=20131716/24414062 KiB; MemAvailable=8263372 KiB
+memory guard: status 2026-09-18T17:36:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20121788 KiB; cgroup=20131588/24414062 KiB; MemAvailable=8358736 KiB
+memory guard: status 2026-09-18T17:37:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20121788 KiB; cgroup=20131608/24414062 KiB; MemAvailable=8324400 KiB
+memory guard: status 2026-09-18T17:37:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20157388 KiB; cgroup=20167280/24414062 KiB; MemAvailable=8302760 KiB
+memory guard: status 2026-09-18T17:37:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20157388 KiB; cgroup=20167112/24414062 KiB; MemAvailable=8245008 KiB
+memory guard: status 2026-09-18T17:37:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20157388 KiB; cgroup=20167668/24414062 KiB; MemAvailable=8241660 KiB
+memory guard: status 2026-09-18T17:38:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20157388 KiB; cgroup=20167932/24414062 KiB; MemAvailable=8249660 KiB
+memory guard: status 2026-09-18T17:38:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20157388 KiB; cgroup=20167132/24414062 KiB; MemAvailable=8200540 KiB
+memory guard: status 2026-09-18T17:38:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20288460 KiB; cgroup=20299072/24414062 KiB; MemAvailable=8150400 KiB
+memory guard: status 2026-09-18T17:38:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20288356 KiB; cgroup=20298860/24414062 KiB; MemAvailable=7943468 KiB
+memory guard: status 2026-09-18T17:39:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20288224 KiB; cgroup=20298472/24414062 KiB; MemAvailable=7595744 KiB
+memory guard: status 2026-09-18T17:39:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20288224 KiB; cgroup=20298376/24414062 KiB; MemAvailable=7661404 KiB
+memory guard: status 2026-09-18T17:39:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20288224 KiB; cgroup=20298604/24414062 KiB; MemAvailable=8061384 KiB
+memory guard: status 2026-09-18T17:39:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20288224 KiB; cgroup=20299228/24414062 KiB; MemAvailable=8146388 KiB
+memory guard: status 2026-09-18T17:40:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20288224 KiB; cgroup=20299008/24414062 KiB; MemAvailable=8170072 KiB
+memory guard: status 2026-09-18T17:40:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20288224 KiB; cgroup=20298948/24414062 KiB; MemAvailable=8147404 KiB
+memory guard: status 2026-09-18T17:40:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20288224 KiB; cgroup=20298916/24414062 KiB; MemAvailable=8109056 KiB
+memory guard: status 2026-09-18T17:40:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20288224 KiB; cgroup=20299140/24414062 KiB; MemAvailable=8160552 KiB
+memory guard: status 2026-09-18T17:41:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20288224 KiB; cgroup=20298780/24414062 KiB; MemAvailable=8202424 KiB
+memory guard: status 2026-09-18T17:41:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20288224 KiB; cgroup=20298888/24414062 KiB; MemAvailable=8086668 KiB
+memory guard: status 2026-09-18T17:41:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=20465116 KiB; cgroup=20476184/24414062 KiB; MemAvailable=7995012 KiB
+memory guard: status 2026-09-18T17:41:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=21071552 KiB; cgroup=21084056/24414062 KiB; MemAvailable=7469796 KiB
+memory guard: status 2026-09-18T17:42:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=21736964 KiB; cgroup=21750616/24414062 KiB; MemAvailable=6761656 KiB
+memory guard: status 2026-09-18T17:42:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080960/24414062 KiB; MemAvailable=6423476 KiB
+memory guard: status 2026-09-18T17:42:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080504/24414062 KiB; MemAvailable=6056256 KiB
+memory guard: status 2026-09-18T17:42:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080536/24414062 KiB; MemAvailable=5962464 KiB
+memory guard: status 2026-09-18T17:43:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080552/24414062 KiB; MemAvailable=5959580 KiB
+memory guard: status 2026-09-18T17:43:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080888/24414062 KiB; MemAvailable=5961768 KiB
+memory guard: status 2026-09-18T17:43:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080752/24414062 KiB; MemAvailable=5946108 KiB
+memory guard: status 2026-09-18T17:43:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080856/24414062 KiB; MemAvailable=6115556 KiB
+memory guard: status 2026-09-18T17:44:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080764/24414062 KiB; MemAvailable=5939532 KiB
+memory guard: status 2026-09-18T17:44:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22081036/24414062 KiB; MemAvailable=5493640 KiB
+memory guard: status 2026-09-18T17:44:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080680/24414062 KiB; MemAvailable=5907248 KiB
+memory guard: status 2026-09-18T17:44:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22081060/24414062 KiB; MemAvailable=5942100 KiB
+memory guard: status 2026-09-18T17:45:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080640/24414062 KiB; MemAvailable=6001580 KiB
+memory guard: status 2026-09-18T17:45:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080832/24414062 KiB; MemAvailable=5978040 KiB
+memory guard: status 2026-09-18T17:45:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080724/24414062 KiB; MemAvailable=5962204 KiB
+memory guard: status 2026-09-18T17:45:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080832/24414062 KiB; MemAvailable=6014960 KiB
+memory guard: status 2026-09-18T17:46:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080584/24414062 KiB; MemAvailable=6021144 KiB
+memory guard: status 2026-09-18T17:46:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080644/24414062 KiB; MemAvailable=6002332 KiB
+memory guard: status 2026-09-18T17:46:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080916/24414062 KiB; MemAvailable=6012268 KiB
+memory guard: status 2026-09-18T17:46:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080988/24414062 KiB; MemAvailable=6030472 KiB
+memory guard: status 2026-09-18T17:47:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080860/24414062 KiB; MemAvailable=6052564 KiB
+memory guard: status 2026-09-18T17:47:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080596/24414062 KiB; MemAvailable=5944168 KiB
+memory guard: status 2026-09-18T17:47:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080704/24414062 KiB; MemAvailable=5960956 KiB
+memory guard: status 2026-09-18T17:47:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080952/24414062 KiB; MemAvailable=5980816 KiB
+memory guard: status 2026-09-18T17:48:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22081288/24414062 KiB; MemAvailable=5985260 KiB
+memory guard: status 2026-09-18T17:48:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080516/24414062 KiB; MemAvailable=5967020 KiB
+memory guard: status 2026-09-18T17:48:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080716/24414062 KiB; MemAvailable=5962792 KiB
+memory guard: status 2026-09-18T17:48:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080792/24414062 KiB; MemAvailable=5973016 KiB
+memory guard: status 2026-09-18T17:49:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080964/24414062 KiB; MemAvailable=5987312 KiB
+memory guard: status 2026-09-18T17:49:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080672/24414062 KiB; MemAvailable=5965136 KiB
+memory guard: status 2026-09-18T17:49:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22081248/24414062 KiB; MemAvailable=5937296 KiB
+memory guard: status 2026-09-18T17:49:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080956/24414062 KiB; MemAvailable=5956632 KiB
+memory guard: status 2026-09-18T17:50:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080916/24414062 KiB; MemAvailable=5959860 KiB
+memory guard: status 2026-09-18T17:50:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080972/24414062 KiB; MemAvailable=5945156 KiB
+memory guard: status 2026-09-18T17:50:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080960/24414062 KiB; MemAvailable=5967828 KiB
+memory guard: status 2026-09-18T17:50:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080680/24414062 KiB; MemAvailable=6050200 KiB
+memory guard: status 2026-09-18T17:51:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080864/24414062 KiB; MemAvailable=5659760 KiB
+memory guard: status 2026-09-18T17:51:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080688/24414062 KiB; MemAvailable=5927576 KiB
+memory guard: status 2026-09-18T17:51:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22081080/24414062 KiB; MemAvailable=5965612 KiB
+memory guard: status 2026-09-18T17:51:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22081136/24414062 KiB; MemAvailable=5986172 KiB
+memory guard: status 2026-09-18T17:52:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080784/24414062 KiB; MemAvailable=5950508 KiB
+memory guard: status 2026-09-18T17:52:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080476/24414062 KiB; MemAvailable=5932504 KiB
+memory guard: status 2026-09-18T17:52:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080800/24414062 KiB; MemAvailable=5777000 KiB
+memory guard: status 2026-09-18T17:52:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080840/24414062 KiB; MemAvailable=5815432 KiB
+memory guard: status 2026-09-18T17:53:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22081052/24414062 KiB; MemAvailable=5937528 KiB
+memory guard: status 2026-09-18T17:53:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080912/24414062 KiB; MemAvailable=5980444 KiB
+memory guard: status 2026-09-18T17:53:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080972/24414062 KiB; MemAvailable=5970856 KiB
+memory guard: status 2026-09-18T17:53:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080848/24414062 KiB; MemAvailable=6013024 KiB
+memory guard: status 2026-09-18T17:54:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080916/24414062 KiB; MemAvailable=5999084 KiB
+memory guard: status 2026-09-18T17:54:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080648/24414062 KiB; MemAvailable=5966200 KiB
+memory guard: status 2026-09-18T17:54:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080624/24414062 KiB; MemAvailable=5972872 KiB
+memory guard: status 2026-09-18T17:54:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080764/24414062 KiB; MemAvailable=6017132 KiB
+memory guard: status 2026-09-18T17:55:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22081088/24414062 KiB; MemAvailable=6019612 KiB
+memory guard: status 2026-09-18T17:55:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080712/24414062 KiB; MemAvailable=5989288 KiB
+memory guard: status 2026-09-18T17:55:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080676/24414062 KiB; MemAvailable=5983892 KiB
+memory guard: status 2026-09-18T17:55:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080916/24414062 KiB; MemAvailable=5994600 KiB
+memory guard: status 2026-09-18T17:56:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080480/24414062 KiB; MemAvailable=6005840 KiB
+memory guard: status 2026-09-18T17:56:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080344/24414062 KiB; MemAvailable=5980976 KiB
+memory guard: status 2026-09-18T17:56:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080924/24414062 KiB; MemAvailable=5984588 KiB
+memory guard: status 2026-09-18T17:56:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080628/24414062 KiB; MemAvailable=5946768 KiB
+memory guard: status 2026-09-18T17:57:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22081060/24414062 KiB; MemAvailable=5951428 KiB
+memory guard: status 2026-09-18T17:57:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080716/24414062 KiB; MemAvailable=5966168 KiB
+memory guard: status 2026-09-18T17:57:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080968/24414062 KiB; MemAvailable=5963144 KiB
+memory guard: status 2026-09-18T17:57:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080992/24414062 KiB; MemAvailable=5952548 KiB
+memory guard: status 2026-09-18T17:58:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080924/24414062 KiB; MemAvailable=5980448 KiB
+memory guard: status 2026-09-18T17:58:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22081096/24414062 KiB; MemAvailable=5946428 KiB
+memory guard: status 2026-09-18T17:58:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22081052/24414062 KiB; MemAvailable=5942260 KiB
+memory guard: status 2026-09-18T17:58:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080652/24414062 KiB; MemAvailable=5959364 KiB
+memory guard: status 2026-09-18T17:59:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22081024/24414062 KiB; MemAvailable=5947136 KiB
+memory guard: status 2026-09-18T17:59:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080804/24414062 KiB; MemAvailable=5923600 KiB
+memory guard: status 2026-09-18T17:59:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080980/24414062 KiB; MemAvailable=5950480 KiB
+memory guard: status 2026-09-18T17:59:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080240/24414062 KiB; MemAvailable=5916188 KiB
+memory guard: status 2026-09-18T18:00:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080616/24414062 KiB; MemAvailable=5920472 KiB
+memory guard: status 2026-09-18T18:00:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080512/24414062 KiB; MemAvailable=6002104 KiB
+memory guard: status 2026-09-18T18:00:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22081540/24414062 KiB; MemAvailable=5970748 KiB
+memory guard: status 2026-09-18T18:00:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22081356/24414062 KiB; MemAvailable=5984396 KiB
+memory guard: status 2026-09-18T18:01:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22081176/24414062 KiB; MemAvailable=5991496 KiB
+memory guard: status 2026-09-18T18:01:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22081340/24414062 KiB; MemAvailable=5986512 KiB
+memory guard: status 2026-09-18T18:01:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080644/24414062 KiB; MemAvailable=5988116 KiB
+memory guard: status 2026-09-18T18:01:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080888/24414062 KiB; MemAvailable=5996824 KiB
+memory guard: status 2026-09-18T18:02:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080756/24414062 KiB; MemAvailable=6029576 KiB
+memory guard: status 2026-09-18T18:02:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080508/24414062 KiB; MemAvailable=5993760 KiB
+memory guard: status 2026-09-18T18:02:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080556/24414062 KiB; MemAvailable=6002632 KiB
+memory guard: status 2026-09-18T18:02:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080664/24414062 KiB; MemAvailable=5968064 KiB
+memory guard: status 2026-09-18T18:03:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080392/24414062 KiB; MemAvailable=5974912 KiB
+memory guard: status 2026-09-18T18:03:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080588/24414062 KiB; MemAvailable=5988984 KiB
+memory guard: status 2026-09-18T18:03:43+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080816/24414062 KiB; MemAvailable=5972272 KiB
+memory guard: status 2026-09-18T18:03:58+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080892/24414062 KiB; MemAvailable=5958192 KiB
+memory guard: status 2026-09-18T18:04:13+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22080804/24414062 KiB; MemAvailable=5948600 KiB
+memory guard: status 2026-09-18T18:04:28+02:00: session=2863365 members(session/scope)=4/4 Rocq workers=1 scope RSS=22066712 KiB; cgroup=22081020/24414062 KiB; MemAvailable=5928520 KiB
+memory guard: status 2026-09-18T18:04:43+02:00: session=2863365 members(session/scope)=4/3 Rocq workers=1 scope RSS=124608 KiB; cgroup=4708756/24414062 KiB; MemAvailable=23276812 KiB
+checkpoint runner: command failed with status 1; canonical /home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo60000000.vo was not changed
+memory guard: finished with status 1; cgroup peak=22083312 KiB (hard limit 24414062 KiB)
+checkpoint runner: guarded transaction failed with status 1; canonical /home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/MathlibTo60000000.vo was not changed

@@ -5,6 +5,13 @@ It is not a new whole-kernel audit and not the final report of a completed
 Mathlib run. Keep it separate from the older CSLib review stack, candidate
 experiments, and claims of exact Lean/Rocq equivalence.
 
+Current task/status, updated 19 September:
+[remote continuation brief](mathlib-homepc-next-steps.md). The objective is a
+complete proof-checking Mathlib import through robust adaptations informed by
+the pinned Lean kernel. The subsequent `ProofWidgets.Penrose.Diagram` timeout
+at 58,521,298 remains unresolved; the latest documentation update adds no kernel
+repair or validation result.
+
 ## Source of truth
 
 - Kernel snapshot `d17b66af824e344393b126e57fbcec99174f926a`, diff against
@@ -84,6 +91,7 @@ which accepts unresolved relevance variables.
 | AugmentedSimplex at 50,115,358 | [Simplex report](../work/mathlib-augmented-simplex-repro/README.md): full transparency-respecting type-head reduction for computed singleton discriminants, preserving complete-type checking. |
 | PadicInt at 54,302,445 | [Padic report](../work/mathlib-padic-repro/README.md): nested cast inversion shares enclosing strategy work; symbolic recovery defers cast evaluation without poisoning closure state. Target-only recheck and same-cell retry/negative tests passed. |
 | Penrose at 58,521,284 (SSH follow-up) | [Penrose report](../work/mathlib-penrose-repro/README.md): very large literal traversal, physical-memo collision behavior, application conversion fingerprints, large reflexive type comparison, and standalone serialized-value validation. The exact proof, fresh standalone target check, ten native groups, 18 focused fixtures and prior Padic replay passed on the laptop. The separate validation receipt pins that scope; it is not a remote validation or full Mathlib pass. |
+| **Unresolved: `ProofWidgets.Penrose.Diagram` at 58,521,298** | The resumed production chunk passed the original proof, then timed out on this definition. [Raw failure evidence and hashes](../work/mathlib-penrose-diagram-failure-20260919/manifest.json). Samples show conversion/congruence; root cause is not established. No 60M checkpoint was saved. Investigate this target separately, retaining the earlier proof as a regression control. |
 
 Not every directory has a README. For those, start with its release receipt's
 `source_diff`, `scope`, `evidence` and `validated_inputs`; never infer validation

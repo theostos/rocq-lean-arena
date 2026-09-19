@@ -1,0 +1,53 @@
+{
+  "format": "completed-mathlib-failure-evidence-v1",
+  "captured_date": "2026-09-19",
+  "scope": "Unmodified completed laptop failure; no remote execution or successful repair",
+  "line": 58521298,
+  "declaration": "ProofWidgets.Penrose.Diagram",
+  "fixed": false,
+  "attempt": "20260918T135919175502Z",
+  "sealed_through": 55000000,
+  "note": "attempt/status.json is intermediate; terminal logs, result and progress establish failure",
+  "files": {
+    "progress.json": {
+      "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/progress.json",
+      "bytes": 561,
+      "sha256": "6d9858f8b04c7a1a9e014d6832fafa471a03137c31c14883b0e151db90d354e5"
+    },
+    "result.json": {
+      "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/result.json",
+      "bytes": 255,
+      "sha256": "788983eada4fc590a1ac84de6a9bd288d99395720a1c733ff91d7ade57ed9404"
+    },
+    "attempt/MathlibTo60000000.run.log": {
+      "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/attempts/20260918T135919175502Z/MathlibTo60000000.run.log",
+      "bytes": 1384371,
+      "sha256": "a04edf3ee9bb1b8d6f27752925f331964199ca9ac098ca267fb882449e2ee8b3"
+    },
+    "attempt/MathlibTo60000000.guard.log": {
+      "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/attempts/20260918T135919175502Z/MathlibTo60000000.guard.log",
+      "bytes": 101879,
+      "sha256": "db7c0adda3a828e2cab7cc81c1b46f9bfd5408f51d842b034f770fab058f18ff"
+    },
+    "attempt/MathlibTo60000000.inputs.sha256": {
+      "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/attempts/20260918T135919175502Z/MathlibTo60000000.inputs.sha256",
+      "bytes": 37177,
+      "sha256": "a60ebbe80dc41bbad3e6ba13e912cafe5c70a159b501e1b489fc49b31bb4c474"
+    },
+    "attempt/status.json": {
+      "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/attempts/20260918T135919175502Z/status.json",
+      "bytes": 3856,
+      "sha256": "9d96bd1d62b0887204ed937f8712f51b63e0968ec98901391104f44b8faf4599"
+    },
+    "attempt/MathlibTo55000000Reload.run.log": {
+      "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/attempts/20260918T135919175502Z/MathlibTo55000000Reload.run.log",
+      "bytes": 16101,
+      "sha256": "4612e152d0ef084a2da8586be9a89643a05cb172aaba96129d22347b9f5575c5"
+    },
+    "attempt/MathlibTo55000000Reload.guard.log": {
+      "source": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/attempts/20260918T135919175502Z/MathlibTo55000000Reload.guard.log",
+      "bytes": 13821,
+      "sha256": "a054dc265390a2ceb7dcb3e4ecaf294e794fae28bfd7a4c70c9b14549cbd07e9"
+    }
+  }
+}

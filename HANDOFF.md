@@ -1,7 +1,25 @@
-# Mathlib source handoff — 18 September 2026, Penrose update
+# Mathlib source handoff — updated 19 September 2026
 
 Start here in the remote session. This is a reproducible **source snapshot**,
 not a claim that all Mathlib passes or that the patched kernel is fully audited.
+
+## Objective and immediate next task
+
+**The goal is to import and typecheck the entire pinned Mathlib export in Rocq,
+with every proof checked, and a robust, reviewable implementation.** Compare
+problematic operations with the **pinned Lean kernel**, then adapt useful
+representation, sharing, caching and reduction strategies to Rocq's own typing,
+universe, substitution and closure invariants. Do not substitute larger limits,
+declaration-specific exceptions or skipped checks for a kernel repair. More RAM
+on `homepc` is working space, not evidence that the remaining problem is fixed.
+
+Read [the remote continuation brief](docs/mathlib-homepc-next-steps.md) before
+building or running anything. It is the current task specification. The latest
+local continuation **failed at line 58,521,298, `ProofWidgets.Penrose.Diagram`**,
+after passing the earlier proof at 58,521,284. That new timeout is **unresolved**.
+The saved contiguous prefix remains **55M**, not 60M. The custom kernel sources
+are already on `homepc`; its runtime, plugins, export and checkpoints must be
+built/regenerated. No remote validation or production run has happened.
 
 Follow-up to the original snapshot: the 55M–60M run stopped at Penrose line
 58,521,284. A separate repair passed the exact proof replay, standalone target
@@ -14,6 +32,9 @@ source branch, delivered to `homepc` through incremental Git bundles. It is
 **not published to GitHub**. The original published branch remains unchanged.
 The Penrose report and receipts retain their historical laptop paths and
 pre-transfer wording; this handoff documents the later source transfer.
+This documentation/failure-evidence update is a child of arena commit
+`9ee84cb0c4433b2430a93f210f0d1d85197fbc87`, on the SSH-only branch
+`handoff/mathlib-20260919`. It does not change kernel or importer sources.
 
 ## What is saved
 
@@ -41,14 +62,20 @@ records describe the producer machine and must not be rewritten as new results.
 ## On homepc
 
 Target directory: `/home/theo/Documents/github/rocq-lean-typechecker`.
-Host inspected: x86_64 Ubuntu 22.04, 188 GiB RAM, approximately 266 GiB free disk
-at handoff preparation. The laptop uses Ubuntu 24.04: its native binaries require
+Host inspected on 19 September: x86_64 Ubuntu 22.04, 188 GiB RAM,
+approximately 132 GiB available RAM and **62 GiB free disk**. Recheck both before
+building: the old 266 GiB disk reading is no longer current. Plan space for
+builds, exports and cumulative checkpoints before starting. The laptop uses
+Ubuntu 24.04: its native binaries require
 GLIBC 2.38 and cannot simply be copied onto this host. Rebuild from source.
 
 The source-only update bundles and their per-file receipts are in
 `/home/theo/mathlib-handoff-20260918-penrose` on `homepc`. Neither the importer
 source nor reference dependency revisions changed. No rebuild or remote run
 is part of this transfer.
+The later documentation/evidence bundle is in
+`/home/theo/mathlib-handoff-20260919`, with its source inventory and application
+receipt. `homepc` uses the later arena branch and the same Penrose kernel pin.
 
 To provision another fresh machine, first install the **published baseline**:
 
@@ -73,7 +100,16 @@ git switch handoff/mathlib-20260918-penrose
 python3 scripts/handoff/install_sources.py --check
 ```
 
-A GitHub pull alone does **not** include this SSH-only update. The existing
+Finally, copy the later bundle directory and apply the documentation update:
+
+```sh
+git fetch /path/to/mathlib-handoff-20260919/arena.bundle \
+  refs/heads/handoff/mathlib-20260919:refs/heads/handoff/mathlib-20260919
+git switch handoff/mathlib-20260919
+python3 scripts/handoff/install_sources.py --check
+```
+
+A GitHub pull alone does **not** include either SSH-only update. The existing
 source installer refuses mismatched revisions; do not reset local work to
 bypass it. The final `--check` verifies the updated kernel pin.
 
@@ -100,14 +136,20 @@ This archive contains small records/logs only, not a resumable checkpoint.
 The current generation has successfully compiled, saved and freshly reloaded
 the contiguous prefix through **55,000,000 / 100,001,405 NDJSON records**.
 It began from line 1 and has used validated worker migrations; it is not a fresh
-line-1 check entirely on the last worker. The laptop was checking the 55M–60M
-chunk when this handoff was prepared. Its run was not stopped by this handoff.
+line-1 check entirely on the last worker. The laptop's 55M–60M continuation
+exited with code 1 on 18 September at 16:04:44 UTC. The declaration timeout was
+at 58,521,298; no new 60M checkpoint was saved. This handoff did not stop it.
 Record counts are not counts of theorems, nor a workload-weighted percentage.
 
-Latest fix: the Penrose proof at line 58,521,284, described above. The exact
+Latest qualified fix: the Penrose proof at line 58,521,284, described above. The exact
 compiler replay passed in 660.31 seconds and fresh standalone target checking
 in 587.80 seconds. The local loop was restarted from 55M with the same resource
-and proof policies. The full export has not yet been validated.
+and proof policies, but then failed on the later definition. The samples there
+show repeated conversion/congruence work, not a demonstrated recurrence of the
+original physical-hash lookup problem. The cause still needs isolation and
+comparison with Lean. See the copied, hash-inventoried
+[completed failure evidence](work/mathlib-penrose-diagram-failure-20260919/manifest.json).
+The full export has not yet been validated.
 
 Previous fix: `PadicInt.coe_adicCompletionIntegersEquiv_apply`, line 54,302,445.
 The original proof-preserving replay now checks the declaration in about 11.65
@@ -167,7 +209,9 @@ the authority for what is included; individual test receipts state which worker
 was actually validated. Some earlier checkpoints were deleted on request, so
 their hashes/results remain, but the compiled files must be regenerated.
 
-The next session should first verify the source layout, then build and qualify
-the remote runtime. No remote production run has been started as part of this
-source-only handoff. When deciding to move computation, coordinate stopping the
-laptop explicitly; do not infer that this document stopped it.
+The next session should follow the continuation brief: verify source and disk
+readiness, build and qualify the remote runtime, reproduce and fix the later
+Penrose definition without losing the original proof's repair, then launch a
+fresh line-1 generation with 5M checkpoints. Do not assume an old experiment is
+still running or stop unrelated processes. No remote production run has been
+started as part of this source-only handoff.

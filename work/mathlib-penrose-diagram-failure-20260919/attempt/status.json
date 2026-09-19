@@ -1,0 +1,66 @@
+{
+  "format": "chunked-import-v1",
+  "plan": "/home/theo/Documents/github/rocq-lean-typechecker/work/mathlib-alignment-5m-20260913-with-terminal/checkpoints/plan.json",
+  "phase": "importing",
+  "migrations": [
+    {
+      "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/default/topbin/rocqworker.exe",
+      "producer": "938cf20b10fc8ebcde26d325e797057e79d59e42b1a2078613ff7f53222fe5ac",
+      "current": "a0aa7234b01883d29dcc51bc6b99e14065df4aa9dbff3d194e225f5fb1757983"
+    },
+    {
+      "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/default/topbin/rocqworker.exe",
+      "producer": "938cf20b10fc8ebcde26d325e797057e79d59e42b1a2078613ff7f53222fe5ac",
+      "current": "a0aa7234b01883d29dcc51bc6b99e14065df4aa9dbff3d194e225f5fb1757983"
+    },
+    {
+      "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/default/topbin/rocqworker.exe",
+      "producer": "27e6a824c34bf8256a73e778023f78ed2061b573a51afc6653151cf59f800bc8",
+      "current": "a0aa7234b01883d29dcc51bc6b99e14065df4aa9dbff3d194e225f5fb1757983"
+    },
+    {
+      "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/default/topbin/rocqworker.exe",
+      "producer": "27e6a824c34bf8256a73e778023f78ed2061b573a51afc6653151cf59f800bc8",
+      "current": "a0aa7234b01883d29dcc51bc6b99e14065df4aa9dbff3d194e225f5fb1757983"
+    },
+    {
+      "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/default/topbin/rocqworker.exe",
+      "producer": "11acf90892e197e1f4a61ac756906b59225e35189d837c223786266bb400f15c",
+      "current": "a0aa7234b01883d29dcc51bc6b99e14065df4aa9dbff3d194e225f5fb1757983"
+    },
+    {
+      "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/default/topbin/rocqworker.exe",
+      "producer": "e17936ee0b3a7417d9452e083ccf9ef64cc1225eea856f2076a2456c6447bc3f",
+      "current": "a0aa7234b01883d29dcc51bc6b99e14065df4aa9dbff3d194e225f5fb1757983"
+    },
+    {
+      "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/default/topbin/rocqworker.exe",
+      "producer": "a363c589e05023fecfe27114ef587aeeb88715717929eafedbd3dece21c00b36",
+      "current": "a0aa7234b01883d29dcc51bc6b99e14065df4aa9dbff3d194e225f5fb1757983"
+    },
+    {
+      "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/default/topbin/rocqworker.exe",
+      "producer": "a363c589e05023fecfe27114ef587aeeb88715717929eafedbd3dece21c00b36",
+      "current": "a0aa7234b01883d29dcc51bc6b99e14065df4aa9dbff3d194e225f5fb1757983"
+    },
+    {
+      "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/default/topbin/rocqworker.exe",
+      "producer": "a363c589e05023fecfe27114ef587aeeb88715717929eafedbd3dece21c00b36",
+      "current": "a0aa7234b01883d29dcc51bc6b99e14065df4aa9dbff3d194e225f5fb1757983"
+    },
+    {
+      "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/default/topbin/rocqworker.exe",
+      "producer": "bb48befc1cd8dd8c14df1ae1db1822a8a5fab1ccb40c95e53a38e7f3082d65e3",
+      "current": "a0aa7234b01883d29dcc51bc6b99e14065df4aa9dbff3d194e225f5fb1757983"
+    },
+    {
+      "path": "/home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/default/topbin/rocqworker.exe",
+      "producer": "484cb306cb0f5d114071d601202a45c93de9c7ee803bbcd5c455553a6863649a",
+      "current": "a0aa7234b01883d29dcc51bc6b99e14065df4aa9dbff3d194e225f5fb1757983"
+    }
+  ],
+  "module": "MathlibTo60000000",
+  "next_line": 55000001,
+  "start": 55000001,
+  "end": 60000001
+}

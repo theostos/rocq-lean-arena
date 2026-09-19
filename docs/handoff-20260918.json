@@ -1,6 +1,8 @@
 {
   "format": "mathlib-source-handoff-v1",
   "snapshot_date": "2026-09-18",
+  "handoff_updated": "2026-09-19",
+  "objective": "Fully import and typecheck the pinned Mathlib export, retaining all proofs; robustly adapt relevant strategies from the pinned Lean kernel to Rocq invariants. No claim of full kernel equivalence or full pass yet.",
   "branch": "handoff/mathlib-20260918",
   "arena_repository": "https://github.com/theostos/rocq-lean-arena.git",
   "components": {
@@ -69,6 +71,37 @@
     "importer_source_changed": false,
     "remote_build_validated": false,
     "full_mathlib_pass": false
+  },
+  "continuation": {
+    "branch": "handoff/mathlib-20260919",
+    "arena_parent": "9ee84cb0c4433b2430a93f210f0d1d85197fbc87",
+    "github_published": false,
+    "bundle_directory": "/home/theo/mathlib-handoff-20260919",
+    "brief": "docs/mathlib-homepc-next-steps.md",
+    "kernel_or_importer_changed_by_this_update": false,
+    "remote_runtime_built": false,
+    "remote_validation_completed": false,
+    "remote_run_started": false,
+    "remote_regenerate_from_line": 1,
+    "latest_local_failure": {
+      "line": 58521298,
+      "declaration": "ProofWidgets.Penrose.Diagram",
+      "kind": "declaration timeout",
+      "exit_code": 1,
+      "completed_utc": "2026-09-18T16:04:44.123397+00:00",
+      "attempt": "20260918T135919175502Z",
+      "sealed_through": 55000000,
+      "fixed": false,
+      "root_cause_established": false,
+      "evidence": "work/mathlib-penrose-diagram-failure-20260919/manifest.json"
+    },
+    "host_observation": {
+      "date": "2026-09-19",
+      "ram_total_gib_approx": 188,
+      "ram_available_gib_approx": 132,
+      "disk_available_gib_approx": 62,
+      "recheck_before_build_or_run": true
+    }
   },
   "production_policy": {"interval": 5000000, "seconds_per_declaration": 1800, "memory_bytes": 25000000000, "host_reserve_mib": 2048, "workload_swap": false},
   "transfer_policy": "Source and small review evidence only; regenerate binaries, exports and checkpoints on the remote machine. No migration of historical producer seals."

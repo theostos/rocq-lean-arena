@@ -1,0 +1,206 @@
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.ubuntu.com>
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+process 2803276 is executing new program: /home/theo/Documents/github/rocq-lean-typechecker/_worktrees/rocq/compact-peano-view/_build/default/topbin/rocqworker.exe
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Program received signal SIGUSR1, User defined signal 1.
+0x000060663c98d7ec in camlNametab__push_2071 () at library/nametab.ml:586
+warning: 586	library/nametab.ml: No such file or directory
+
+[diagnostic stack] SIGUSR1 time=1789740229.452
+
+Thread 1 (Thread 0x73d27cc5eb80 (LWP 2803276) "rocqworker"):
+#0  0x000060663c98d7ec in camlNametab__push_2071 () at library/nametab.ml:586
+#1  0x000060663c98dc4c in camlNametab__push_2230 () at library/nametab.ml:632
+#2  0x000060663c5d3f0f in camlDeclare__load_constant_2829 () at vernac/declare.ml:418
+#3  0x000060663cbce7e0 in camlStdlib__List__iter_507 () at list.ml:110
+#4  0x000060663c552740 in camlDeclaremods__register_library_3847 () at vernac/declaremods.ml:1648
+#5  0x000060663c5e8ef2 in camlLibrary__register_library_1986 () at vernac/library.ml:371
+#6  0x000060663cbce7e0 in camlStdlib__List__iter_507 () at list.ml:110
+#7  0x000060663c993ef4 in camlLib__add_leaf_1568 () at library/lib.ml:517
+#8  0x000060663c66dd4e in camlVernacentries__fun_10792 () at vernac/vernacentries.ml:1684
+#9  0x000060663c5ed7e2 in camlVernactypes__fun_1447 () at vernac/vernactypes.ml:199
+#10 0x000060663c5ed6ed in camlVernactypes__fun_1443 () at vernac/vernactypes.ml:196
+#11 0x000060663c5ed668 in camlVernactypes__fun_1435 () at vernac/vernactypes.ml:190
+#12 0x000060663c5ed363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#13 0x000060663c5ed10a in camlVernactypes__fun_1403 () at vernac/vernactypes.ml:140
+#14 0x000060663c5ed2d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#15 0x000060663c5ed363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#16 0x000060663c5ecd02 in camlVernactypes__fun_1399 () at vernac/vernactypes.ml:93
+#17 0x000060663c5ed2d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#18 0x000060663c5ec606 in camlVernactypes__fun_1390 () at vernac/vernactypes.ml:27
+#19 0x000060663c5ed21f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#20 0x000060663c5ed21f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#21 0x000060663c5ed5e4 in camlVernactypes__run_1126 () at vernac/vernactypes.ml:189
+#22 0x000060663c67bcff in camlVernacinterp__interp_expr_core_514 () at vernac/vernacinterp.ml:80
+#23 0x000060663c67b8a2 in camlVernacinterp__interp_expr_513 () at vernac/vernacinterp.ml:49
+#24 0x000060663cc045a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#25 0x000060663c62a50a in camlVernacControl__under_control_1954 () at vernac/vernacControl.ml:244
+#26 0x000060663c67b7aa in camlVernacinterp__interp_control_gen_474 () at vernac/vernacinterp.ml:36
+#27 0x000060663cc045a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#28 0x000060663cc045a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#29 0x000060663c67c446 in camlVernacinterp__interp_gen_1193 () at vernac/vernacinterp.ml:157
+#30 0x000060663c67c62f in camlVernacinterp__interp_inner_1540 () at vernac/vernacinterp.ml:171
+#31 0x000060663c52e7d4 in camlStm__step_8350 () at stm/stm.ml:2035
+#32 0x000060663c5277a9 in camlStm__define_inner_9646 () at stm/stm.ml:963
+#33 0x000060663c52dee1 in camlStm__reach_inner_10580 () at stm/stm.ml:2204
+#34 0x000060663c5304c1 in camlStm__observe_6834 () at stm/stm.ml:2296
+#35 0x000060663c532118 in camlStm__process_transaction_inner_11344 () at stm/stm.ml:2541
+#36 0x000060663c532ecf in camlStm__add_7142 () at stm/stm.ml:2640
+#37 0x000060663c5107af in camlVernac__interp_vernac_1328 () at toplevel/vernac.ml:80
+#38 0x000060663cc045a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#39 0x000060663cc045a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#40 0x000060663c510dbd in camlVernac__loop_1481 () at toplevel/vernac.ml:135
+#41 0x000060663c510ad5 in camlVernac__load_vernac_core_1387 () at toplevel/vernac.ml:158
+#42 0x000060663cc045a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#43 0x000060663c517c54 in camlCcompile__compile_408 () at toplevel/ccompile.ml:64
+#44 0x000060663c517fed in camlCcompile__compile_941 () at toplevel/ccompile.ml:98
+#45 0x000060663c5181e7 in camlCoqc__coqc_main_369 () at toplevel/coqc.ml:38
+#46 0x000060663c518312 in camlCoqc__coqc_run_1054 () at toplevel/coqc.ml:54
+#47 0x000060663c50ee2b in camlDune__exe__Rocqworker__entry () at topbin/rocqworker.ml:45
+#48 0x000060663c5053d9 in caml_program ()
+#49 0x000060663cc7096d in caml_start_program ()
+#50 0x000060663cc4e76c in caml_startup_common (argv=0x7ffd423e1c28, pooling=<optimized out>, pooling@entry=0) at startup_nat.c:160
+#51 0x000060663cc4e7ef in caml_startup_exn (argv=<optimized out>) at startup_nat.c:167
+#52 caml_startup (argv=<optimized out>) at startup_nat.c:172
+#53 caml_main (argv=<optimized out>) at startup_nat.c:179
+#54 0x000060663c503222 in main (argc=<optimized out>, argv=<optimized out>) at main.c:37
+[lean checkpoint] before unpack cpu=127.851 heap_words=1230802432 major_collections=9
+
+Program received signal SIGUSR1, User defined signal 1.
+0x000073d2737e6ed4 in camlLean_import__LeanParseShared__get_359 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+
+[diagnostic stack] SIGUSR1 time=1789740349.564
+
+Thread 1 (Thread 0x73d27cc5eb80 (LWP 2803276) "rocqworker"):
+#0  0x000073d2737e6ed4 in camlLean_import__LeanParseShared__get_359 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#1  0x000073d2737ecf4a in camlLean_import__LeanParse__get_1717 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#2  0x000073d2737ec6bb in camlLean_import__LeanParse__unpack_1689 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#3  0x000073d2738138ae in camlLean_import__Lean__decode_indexed_lean_state_8385 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#4  0x000073d2738146e8 in camlLean_import__Lean__force_packed_state_8643 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#5  0x000073d2738148eb in camlLean_import__Lean__import_8707 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#6  0x000060663c5ed7e2 in camlVernactypes__fun_1447 () at vernac/vernactypes.ml:199
+#7  0x000060663c5ed6ed in camlVernactypes__fun_1443 () at vernac/vernactypes.ml:196
+#8  0x000060663c5ed668 in camlVernactypes__fun_1435 () at vernac/vernactypes.ml:190
+#9  0x000060663c5ed363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#10 0x000060663c5ed10a in camlVernactypes__fun_1403 () at vernac/vernactypes.ml:140
+#11 0x000060663c5ed2d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#12 0x000060663c5ed363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#13 0x000060663c5ecd02 in camlVernactypes__fun_1399 () at vernac/vernactypes.ml:93
+#14 0x000060663c5ed2d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#15 0x000060663c5ec606 in camlVernactypes__fun_1390 () at vernac/vernactypes.ml:27
+#16 0x000060663c5ed21f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#17 0x000060663c5ed21f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#18 0x000060663c5ed5e4 in camlVernactypes__run_1126 () at vernac/vernactypes.ml:189
+#19 0x000060663c67bcff in camlVernacinterp__interp_expr_core_514 () at vernac/vernacinterp.ml:80
+#20 0x000060663c67b8a2 in camlVernacinterp__interp_expr_513 () at vernac/vernacinterp.ml:49
+#21 0x000060663cc045a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#22 0x000060663c62a50a in camlVernacControl__under_control_1954 () at vernac/vernacControl.ml:244
+#23 0x000060663c67b7aa in camlVernacinterp__interp_control_gen_474 () at vernac/vernacinterp.ml:36
+#24 0x000060663cc045a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#25 0x000060663cc045a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#26 0x000060663c67c446 in camlVernacinterp__interp_gen_1193 () at vernac/vernacinterp.ml:157
+#27 0x000060663c67c62f in camlVernacinterp__interp_inner_1540 () at vernac/vernacinterp.ml:171
+#28 0x000060663c52e7d4 in camlStm__step_8350 () at stm/stm.ml:2035
+#29 0x000060663c5277a9 in camlStm__define_inner_9646 () at stm/stm.ml:963
+#30 0x000060663c52dee1 in camlStm__reach_inner_10580 () at stm/stm.ml:2204
+#31 0x000060663c5304c1 in camlStm__observe_6834 () at stm/stm.ml:2296
+#32 0x000060663c510831 in camlVernac__interp_vernac_1328 () at toplevel/vernac.ml:87
+#33 0x000060663cc045a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#34 0x000060663cc045a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#35 0x000060663c510dbd in camlVernac__loop_1481 () at toplevel/vernac.ml:135
+#36 0x000060663c510ad5 in camlVernac__load_vernac_core_1387 () at toplevel/vernac.ml:158
+#37 0x000060663cc045a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#38 0x000060663c517c54 in camlCcompile__compile_408 () at toplevel/ccompile.ml:64
+#39 0x000060663c517fed in camlCcompile__compile_941 () at toplevel/ccompile.ml:98
+#40 0x000060663c5181e7 in camlCoqc__coqc_main_369 () at toplevel/coqc.ml:38
+#41 0x000060663c518312 in camlCoqc__coqc_run_1054 () at toplevel/coqc.ml:54
+#42 0x000060663c50ee2b in camlDune__exe__Rocqworker__entry () at topbin/rocqworker.ml:45
+#43 0x000060663c5053d9 in caml_program ()
+#44 0x000060663cc7096d in caml_start_program ()
+#45 0x000060663cc4e76c in caml_startup_common (argv=0x7ffd423e1c28, pooling=<optimized out>, pooling@entry=0) at startup_nat.c:160
+#46 0x000060663cc4e7ef in caml_startup_exn (argv=<optimized out>) at startup_nat.c:167
+#47 caml_startup (argv=<optimized out>) at startup_nat.c:172
+#48 caml_main (argv=<optimized out>) at startup_nat.c:179
+#49 0x000060663c503222 in main (argc=<optimized out>, argv=<optimized out>) at main.c:37
+[lean checkpoint] after unpack cpu=217.132 heap_words=1690963968 major_collections=10
+
+
+Done!
+- 303102 entries (165202754 possible instances) (including quot).
+- 26498 universe expressions
+- 1990828 names
+- 52679601 expression nodes
+Max universe instance length 26.
+34 inductives have non syntactically arity types.
+[lean checkpoint] before checkpoint GC cpu=235.991 heap_words=1690963968 major_collections=10
+
+Program received signal SIGUSR1, User defined signal 1.
+0x000060663cc67f8a in do_compaction (new_allocation_policy=new_allocation_policy@entry=-1) at compact.c:182
+warning: 182	compact.c: No such file or directory
+
+[diagnostic stack] SIGUSR1 time=1789740469.701
+
+Thread 1 (Thread 0x73d27cc5eb80 (LWP 2803276) "rocqworker"):
+#0  0x000060663cc67f8a in do_compaction (new_allocation_policy=new_allocation_policy@entry=-1) at compact.c:182
+#1  0x000060663cc685ca in caml_compact_heap (new_allocation_policy=new_allocation_policy@entry=-1) at compact.c:394
+#2  0x000060663cc63aae in caml_gc_compaction (v=<optimized out>) at gc_ctrl.c:641
+#3  0x000073d273814195 in camlLean_import__Lean__pack_lean_state_8584 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#4  0x000073d273814a86 in camlLean_import__Lean__import_8707 () from /home/theo/Documents/github/rocq-lean-typechecker/work/kernel-alignment-pass/importer.m63OyviU/src/././lean_import.cmxs
+#5  0x000060663c5ed7e2 in camlVernactypes__fun_1447 () at vernac/vernactypes.ml:199
+#6  0x000060663c5ed6ed in camlVernactypes__fun_1443 () at vernac/vernactypes.ml:196
+#7  0x000060663c5ed668 in camlVernactypes__fun_1435 () at vernac/vernactypes.ml:190
+#8  0x000060663c5ed363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#9  0x000060663c5ed10a in camlVernactypes__fun_1403 () at vernac/vernactypes.ml:140
+#10 0x000060663c5ed2d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#11 0x000060663c5ed363 in camlVernactypes__fun_1425 () at vernac/vernactypes.ml:152
+#12 0x000060663c5ecd02 in camlVernactypes__fun_1399 () at vernac/vernactypes.ml:93
+#13 0x000060663c5ed2d8 in camlVernactypes__fun_1419 () at vernac/vernactypes.ml:151
+#14 0x000060663c5ec606 in camlVernactypes__fun_1390 () at vernac/vernactypes.ml:27
+#15 0x000060663c5ed21f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#16 0x000060663c5ed21f in camlVernactypes__fun_1407 () at vernac/vernactypes.ml:150
+#17 0x000060663c5ed5e4 in camlVernactypes__run_1126 () at vernac/vernactypes.ml:189
+#18 0x000060663c67bcff in camlVernacinterp__interp_expr_core_514 () at vernac/vernacinterp.ml:80
+#19 0x000060663c67b8a2 in camlVernacinterp__interp_expr_513 () at vernac/vernacinterp.ml:49
+#20 0x000060663cc045a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#21 0x000060663c62a50a in camlVernacControl__under_control_1954 () at vernac/vernacControl.ml:244
+#22 0x000060663c67b7aa in camlVernacinterp__interp_control_gen_474 () at vernac/vernacinterp.ml:36
+#23 0x000060663cc045a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#24 0x000060663cc045a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#25 0x000060663c67c446 in camlVernacinterp__interp_gen_1193 () at vernac/vernacinterp.ml:157
+#26 0x000060663c67c62f in camlVernacinterp__interp_inner_1540 () at vernac/vernacinterp.ml:171
+#27 0x000060663c52e7d4 in camlStm__step_8350 () at stm/stm.ml:2035
+#28 0x000060663c5277a9 in camlStm__define_inner_9646 () at stm/stm.ml:963
+#29 0x000060663c52dee1 in camlStm__reach_inner_10580 () at stm/stm.ml:2204
+#30 0x000060663c5304c1 in camlStm__observe_6834 () at stm/stm.ml:2296
+#31 0x000060663c510831 in camlVernac__interp_vernac_1328 () at toplevel/vernac.ml:87
+#32 0x000060663cc045a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#33 0x000060663cc045a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#34 0x000060663c510dbd in camlVernac__loop_1481 () at toplevel/vernac.ml:135
+#35 0x000060663c510ad5 in camlVernac__load_vernac_core_1387 () at toplevel/vernac.ml:158
+#36 0x000060663cc045a9 in camlStdlib__Fun__protect_317 () at fun.ml:33
+#37 0x000060663c517c54 in camlCcompile__compile_408 () at toplevel/ccompile.ml:64
+#38 0x000060663c517fed in camlCcompile__compile_941 () at toplevel/ccompile.ml:98
+#39 0x000060663c5181e7 in camlCoqc__coqc_main_369 () at toplevel/coqc.ml:38
+#40 0x000060663c518312 in camlCoqc__coqc_run_1054 () at toplevel/coqc.ml:54
+#41 0x000060663c50ee2b in camlDune__exe__Rocqworker__entry () at topbin/rocqworker.ml:45
+#42 0x000060663c5053d9 in caml_program ()
+#43 0x000060663cc7096d in caml_start_program ()
+#44 0x000060663cc4e76c in caml_startup_common (argv=0x7ffd423e1c28, pooling=<optimized out>, pooling@entry=0) at startup_nat.c:160
+#45 0x000060663cc4e7ef in caml_startup_exn (argv=<optimized out>) at startup_nat.c:167
+#46 caml_startup (argv=<optimized out>) at startup_nat.c:172
+#47 caml_main (argv=<optimized out>) at startup_nat.c:179
+#48 0x000060663c503222 in main (argc=<optimized out>, argv=<optimized out>) at main.c:37
+[lean checkpoint] before indexed encoding cpu=349.370 heap_words=1690963968 major_collections=12
+[lean indexed checkpoint] expressions=52679601 probes=546646087 max_probe=4311
+[lean checkpoint] after indexed encoding cpu=922.328 heap_words=1690963968 major_collections=12
+[lean checkpoint] before pack cpu=1035.586 heap_words=1690963968 major_collections=14
+[lean checkpoint] after checkpoint file write cpu=1043.131 heap_words=1690963968 major_collections=14
+[lean checkpoint] after pack cpu=1048.515 heap_words=1690963968 major_collections=14
+[Inferior 1 (process 2803276) exited normally]
