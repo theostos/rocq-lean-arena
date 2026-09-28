@@ -8,7 +8,6 @@ Reproduce it with the [quickstart](QUICKSTART.md): use `kernel/nested-conversion
 
 One branch per feature, stacked in the order below; each builds and passes its tests.
 No environment variable is read; the only switch is `Set Kernel Conversion Dep Heuristic` (upstream).
-Author of every commit: Théo Stoskopf. No PR opened.
 
 ## Rocq kernel — `theostos/rocq`, base `f756383de` (Rocq 9.3 dev)
 
