@@ -1,8 +1,8 @@
 # Reproduce Mathlib → Rocq
 
-The September 2026 run checked **100,001,405 export records, zero admissions**
+Run checked **100,001,405 export records, zero admissions**
 with a modified Rocq kernel. ProofWidgets/Mathlib widget UI declarations are
-excluded; original mathematical statements and proofs are retained.
+excluded.
 Recorded cost: **~11 hours on one core, ~30 GiB peak RAM**.
 
 Use Linux with **48 GiB RAM and 60 GB free disk** recommended. Install Git,
@@ -25,8 +25,7 @@ Stdlib modules, and the importer. `export` builds pinned Mathlib, checks the exp
 audits/removes UI declarations. `check` starts at record 1, fails on any error
 or timeout, and prints `PASS` only on success.
 Progress: `tail -f "$MATHLIB_REPRO_DIR/check.log"`.
-It runs in one process and saves no checkpoint;
-keep the terminal alive (e.g. tmux). Change build parallelism with `JOBS=8`.
+It runs in one process and saves no checkpoint.
 
 Exact sources (the script pins full commit hashes):
 
@@ -39,8 +38,5 @@ Exact sources (the script pins full commit hashes):
 | lean4export | `leanprover/lean4export` (Lean override: `v4.29.0`) | `3de59f10bc4b` |
 | Mathlib | `leanprover-community/mathlib4`, Lean `v4.29.0` | `8a178386ffc0` |
 
-Both fork branches include the complete patch stacks; no cherry-picking or
-experimental environment flags are needed. Despite its branch name, the
-importer runs with **survey mode disabled**. The scope filter reproduces the
-successful export, including 40 retained UI records before record 40M.
+The importer runs with **survey mode disabled**.
 Patch details: [SUBMISSION.md](SUBMISSION.md).
