@@ -5,11 +5,6 @@ with a modified Rocq kernel. ProofWidgets/Mathlib widget UI declarations are
 excluded.
 Recorded cost: **~11 hours on one core, ~30 GiB peak RAM**.
 
-Use Linux with **48 GiB RAM and 60 GB free disk** recommended. Install Git,
-Make, a C compiler, GMP development headers, pkg-config, GNU time,
-Python 3, opam (initialized), elan, and uv. On Debian/Ubuntu, the system packages
-are `git build-essential libgmp-dev pkg-config time python3 opam`.
-
 ```bash
 git clone --branch handoff/mathlib-20260919 https://github.com/theostos/rocq-lean-arena.git
 cd rocq-lean-arena
