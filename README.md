@@ -1,5 +1,9 @@
 # Rocq Lean Typechecker Arena
 
+**Mathlib reproduction: [short quickstart](QUICKSTART.md).** The September 2026
+scoped export passes with zero admissions; use the pinned experimental branches
+in that guide. The workflows below describe earlier experiments.
+
 Small experiment: run Lean Kernel Arena exports through
 [`rocq-lean-import`](https://github.com/rocq-community/rocq-lean-import), then let
 Rocq check the result.
@@ -206,3 +210,12 @@ Remove the temporary directory automatically:
 ```sh
 ROCQLKA_KEEP_TMP=0 make run TEST=mathlib
 ```
+
+### v9 survey-mode pre-validation results (`data/prevalidate-dev9`, 600 s theorem cutoff)
+
+- 20M-40M: complete, 0 new timeouts (2.6 h). 80M-100M: complete, 0 new timeouts (2.7 h).
+- 60M-80M: 1 timeout (`pseudofunctor._proof_7`, fixed in v10+), otherwise clean to 80M.
+- 40M-60M: kernel anomaly at 53,910,405 (fixed in v11+); the 53.9M-60M tail is re-validated with v12
+  (`data/prevalidate-dev12`, worker from 40M).
+So, on v9, the only issues found across 20M-100M were the two already repaired; v12 carries both
+repairs plus the review fixes.
